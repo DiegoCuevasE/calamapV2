@@ -58,7 +58,7 @@
     <div class="collapse-content justify-content-center">
       <div class="row justify-content-center">
         <div class="col-md-2">
-          <p class="card-text collapse" id="collapseContent{{$mype->id}}">Servicios</p>
+        <p class="card-text collapse" id="collapseContent{{$mype->id}}">Servicios<br>{{}}</p>
         </div>
         <div class="col-md-2">
           <p class="card-text collapse" id="collapseContent{{$mype->id}}">Horario</p>
