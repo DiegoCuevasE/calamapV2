@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imagenmype extends Model
 {
-    public function Mypes(){
-        return $this->belongsTo(Mypes::class);
+    public function mype()
+    {
+    	return $this->belongsTo(Mype::class);
     }
 }

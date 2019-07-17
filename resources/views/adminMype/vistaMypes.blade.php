@@ -83,80 +83,88 @@
     </div>
   </div>
 
-        
-  <!-- Sitios MyPES 2-->
-  @foreach($datos as $mype)
-<div class="card promoting-card mt-5">        
-  <div class="card-body d-flex flex-row ">
-    <div class="row">
-      <h4 class="card-title font-weight-bold mb-2 text-center">{{$mype->nombre_fantasia_mype}}</h4>
-      
-    </div>
-    
-  </div>
 
-  <div class="row ml-3 mr-3">
-    <div class="view overlay col-lg-2 collapsed "style="height: 100px; width: 100px;" data-toggle="collapse" href="#collapseContent1" aria-expanded="false" aria-controls="collapseContent1">
-            @foreach ($mype->imagenMypes as $imagen)
-            @if ($imagen->tipo_imagen_mype == 'logo') 
-      <img class="card-img-top rounded-0 " style="width:100%; height:100%; " src="{{$imagen->enlace_imagen_mype}}" alt="Card image cap">
-      <a href="#!">
-            @endif
-            @endforeach
-      <div class="mask rgba-white-slight" ></div>
-      </a>
-    </div>
-    <div class="view overlay col-lg-10 " data-toggle="collapse" href="#collapseContent1" aria-expanded="false" aria-controls="collapseContent1">
-         <p class="card-text ">{{$mype->descripcion_mype}}</p>
-         <a href="{{ url('/moduloMype/'.$mype->id.'/edit') }}" >Editar</a> 
-            
-                <form method="post" action="{{url('/moduloMype/'.$mype->id)}}">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }} 
-                <button type="submit" onclick="return confirm('¿Borrar?');">Borrar</button>  
-                </form> 
-    </div>
-  </div>
-    <!-- Sitios MyPES 2 collapse-->
-  <div class="card-body justify-content-center">
-    <div class="collapse-content justify-content-center">
-      <div class="row justify-content-center text-center ">
-            <div class="col-md-12 justify-content-center row mt-3 mb-3" >
-                @foreach ($mype->imagenMypes as $imagen)
-                @if ($imagen->tipo_imagen_mype == 'galeria')
-                <div class="col-md-3 justify-content-center" >
-                <img class="card-img-top rounded-0 " style="width:100%; height:100%; " src="{{$imagen->enlace_imagen_mype}}" alt="Card image cap ">
-                </div>
-                @endif
-                @endforeach
-            </div>
-        <div class="col-md-3">
-          <p class="card-text collapse" id="collapseContent1">Servicios</p>
-          <p class="card-text collapse" id="collapseContent1">{{$mype->direccion_mype}}</p>
-        </div>
-        <div class="col-md-3">
-          <p class="card-text collapse" id="collapseContent1">Horario</p>
-          <p class="card-text collapse" id="collapseContent1">{{$mype->horario_mype}}</p>
-        </div>
-        <div class="col-md-3">
-          <p class="card-text collapse" id="collapseContent1">Dirección</p>
-          <p class="card-text collapse" id="collapseContent1">{{$mype->direccion_mype}}</p>
-        </div>     
-        <div class="col-md-3">
-          <p class="card-text collapse" id="collapseContent1">Contacto</p>
-          <p class="card-text collapse" id="collapseContent1">{{$mype->telefono_mype}}</p>
-          <p class="card-text collapse" id="collapseContent1">{{$mype->celular_mype}}</p>
-          <p class="card-text collapse" id="collapseContent1">{{$mype->correo_mype}}</p>
-            
-        </div>
+
+
+  <div class="card promoting-card mt-5">        
+    <div class="card-body d-flex flex-row ">
+      <div class="row">
+        <h4 class="card-title font-weight-bold mb-2 text-center">{{$datos->nombre_fantasia_mype}}</h4>
+        
       </div>
-      <i class="fas icon-instagram text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"><a href="{{$mype->instagram_mype}}"></a></i>
-      <i class="fas icon-facebook text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"><a href="{{$mype->facebook_mype}}"></a></i>
       
     </div>
+  
+    <div class="row ml-3 mr-3">
+      <div class="view overlay col-lg-2 collapsed "style="height: 100px; width: 100px;" data-toggle="collapse" href="#collapseContent1" aria-expanded="false" aria-controls="collapseContent1">
+              @foreach ($datos->imagenmypes as $imagen)
+              @if ($imagen->tipo_imagen_mype == 'logo') 
+        <img class="card-img-top rounded-0 " style="width:100%; height:100%; " src="../{{$imagen->enlace_imagen_mype}}" alt="Card image cap">
+        <a href="#!">
+              @endif
+              @endforeach
+        <div class="mask rgba-white-slight" ></div>
+        </a>
+      </div>
+      <div class="view overlay col-lg-10 " data-toggle="collapse" href="#collapseContent1" aria-expanded="false" aria-controls="collapseContent1">
+           <p class="card-text ">{{$datos->descripcion_mype}}</p>
+           <a href="{{ url('/moduloMype/'.$datos->id.'/edit') }}" >Editar</a> 
+              
+                  <form method="post" action="{{url('/moduloMype/'.$datos->id)}}">
+                  {{ csrf_field() }}
+                  {{ method_field('DELETE') }} 
+                  <button type="submit" onclick="return confirm('¿Borrar?');">Borrar</button>  
+                  </form> 
+      </div>
+    </div>
+      <!-- Sitios MyPES 2 collapse-->
+    <div class="card-body justify-content-center">
+      <div class="collapse-content justify-content-center">
+        <div class="row justify-content-center text-center ">
+              <div class="col-md-12 justify-content-center row mt-3 mb-3" >
+                  @foreach ($datos->imagenmypes as $imagen)
+                  @if ($imagen->tipo_imagen_mype == 'galeria')
+                  <div class="col-md-3 justify-content-center" >
+                  <img class="card-img-top rounded-0 " style="width:100%; height:100%; " src="../{{$imagen->enlace_imagen_mype}}" alt="Card image cap ">
+                  </div>
+                  @endif
+                  @endforeach
+              </div>
+          <div class="col-md-2">
+            <p class="card-text collapse" id="collapseContent1"><strong>Servicios</strong></p>
+            @foreach ($datos->servicios as $servicio)
+            <p class="card-text collapse" id="collapseContent1">{{$servicio->nombre_servicio}}</p>
+            @endforeach
+          </div>
+          <div class="col-md-2">
+            <p class="card-text collapse" id="collapseContent1"><strong>Idiomas</strong></p>
+            @foreach ($datos->idiomas as $idioma)
+            <p class="card-text collapse" id="collapseContent1">{{$idioma->nombre_idioma}}</p>
+            @endforeach
+          </div>
+          <div class="col-md-2">
+            <p class="card-text collapse" id="collapseContent1"><strong>Horario</strong></p>
+            <p class="card-text collapse" id="collapseContent1">{{$datos->horario_mype}}</p>
+          </div>
+          <div class="col-md-2">
+            <p class="card-text collapse" id="collapseContent1"><strong>Dirección</strong></p>
+            <p class="card-text collapse" id="collapseContent1">{{$datos->direccion_mype}}</p>
+          </div>     
+          <div class="col-md-2">
+            <p class="card-text collapse" id="collapseContent1"><strong>Contacto</strong></p>
+            <p class="card-text collapse" id="collapseContent1">{{$datos->telefono_mype}}</p>
+            <p class="card-text collapse" id="collapseContent1">{{$datos->celular_mype}}</p>
+            <p class="card-text collapse" id="collapseContent1">{{$datos->correo_mype}}</p>
+              
+          </div>
+          <i class="fas icon-instagram text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="https://{{$datos->instagram_mype}}"><a href="https://{{$datos->instagram_mype}}"></a></i>
+          <i class="fas icon-facebook text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="Facebook"><a href="https://{{$datos->facebook_mype}}"></a></i>
+        </div>
+
+        
+      </div>
+    </div>
   </div>
-</div>
-@endforeach
   <!-- Paginacion -->
 
 

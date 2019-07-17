@@ -13,10 +13,11 @@
                     <div class="card-header">Registro de Negocio</div>
                       <div class="card-body">
                         <form action="{{ route('adminMype/registrarMype')}}" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}                        
+                            {{ csrf_field() }}
+                            
                             <div class="form-group row">
                                 <input type="hidden" id="estado_mype" name="estado_mype" value="1"> 
-                                <input type="hidden" id="user_id" name="user_id" value="1">             
+                                <input type="hidden" id="user_id" name="user_id" value="{{Auth::id()}}">             
                                 <label for="nombre_fantasia_mype" class="col-md-4 col-form-label text-md-right">Nombre de Fantasía</label>
                                 <div class="col-md-6">
                                     <input type="text" name="nombre_fantasia_mype" id="nombre_fantasia_mype" value="" class="form-control " >  
@@ -206,17 +207,90 @@
                                 <label for="rubro_mype" class="col-md-4 col-form-label text-md-right">Rubro</label>
       
                                 <div class="col-md-6">
-                                        <select name="rubro_mype" id="rubro_mype">
-                                                <option>Seleccione su rubro</option>
+                                        <select name="rubro_mype" id="rubro_mype" onchange="getRubro(this)">
+                                                <option value="0">Seleccione su rubro</option>
                                                 <option value="Gastronomía">Gastronomía</option>
-                                                <option value="Hotelería">Hotelera</option>
+                                                <option value="Hotelería">Hotelería</option>
                                                 <option value="Turismo">Turismo</option>
                                                 <option value="Bazares">Bazares</option>
                                                 <option value="Artesanía">Artesanía</option>
-                                        </select>
+                                            </select>
+                                </div>
+                                
+                            </div>
+
+                            <div class="form-group row" id="serviciosH" style="display:none;">
+                                            <label for="serviciosH" class="col-md-4 col-form-label text-md-right">Servicios</label>
+                                            <div class="col-md-6">
+                                            @foreach ($servicios as $servicio)
+                                            @if ($servicio->tipo_servicio == "Hotelería")
+                                            <input type="checkbox" name="servicioH[]" value="{{$servicio->id}}"/>{{$servicio->nombre_servicio}}<br/>
+                                            @endif
+                                            @endforeach
+                                        </div>
+                            </div>
+                            <div class="form-group row" id="serviciosG" style="display:none;">
+                                    <label for="serviciosG" class="col-md-4 col-form-label text-md-right">Servicios</label>
+                                    <div class="col-md-6">
+                                    @foreach ($servicios as $servicio)
+                                    @if ($servicio->tipo_servicio == "Gastronomía")
+                                    <input type="checkbox" name="servicioG[]" value="{{$servicio->id}}"/>{{$servicio->nombre_servicio}}<br/>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="serviciosT" style="display:none;">
+                                    <label for="serviciosT" class="col-md-4 col-form-label text-md-right">Servicios</label>
+                                    <div class="col-md-6">
+                                    @foreach ($servicios as $servicio)
+                                    @if ($servicio->tipo_servicio == "Turismo")
+                                    <input type="checkbox" name="servicioT[]" value="{{$servicio->id}}"/>{{$servicio->nombre_servicio}}<br/>
+                                    @endif
+                                    @endforeach
                                 </div>
                             </div>
     
+                            <div class="form-group row" id="serviciosB" style="display:none;">
+                                    <label for="serviciosB" class="col-md-4 col-form-label text-md-right">Servicios</label>
+                                    <div class="col-md-6">
+                                    @foreach ($servicios as $servicio)
+                                    @if ($servicio->tipo_servicio == "Bazares")
+                                    <input type="checkbox" name="servicioB[]" value="{{$servicio->id}}"/>{{$servicio->nombre_servicio}}<br/>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="serviciosA" style="display:none;">
+                                    <label for="serviciosA" class="col-md-4 col-form-label text-md-right">Servicios</label>
+                                    <div class="col-md-6">
+                                    @foreach ($servicios as $servicio)
+                                    @if ($servicio->tipo_servicio == "Artesanía")
+                                    <input type="checkbox" name="servicioA[]" value="{{$servicio->id}}"/>{{$servicio->nombre_servicio}}<br/>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label for="idiomas_mype" class="col-md-4 col-form-label text-md-right">Idiomas</label>
+          
+                                    <div class="col-md-6">
+                                            <select name="idioma_mype" id="idioma_mype" onchange="getIdioma(this)">
+                                                    <option value="1">Solo español</option>
+                                                    <option value="0">Español y otros idiomas</option>
+                                                </select>
+                                    </div>
+                                    
+                                </div>
+    
+                                <div class="form-group row" id="idiomas" style="display:none;">
+                                                <div class="col-md-6">
+                                                @foreach ($idiomas as $idioma)
+                                                <input type="checkbox" name="idioma[]" value="{{$idioma->id}}"/>{{$idioma->nombre_idioma}}<br/>
+                                                @endforeach
+                                            </div>
+                                </div>
                             <div class="form-group row">
                                 <label for="descripcion_mype" class="col-md-4 col-form-label text-md-right">Descripción</label>
       
@@ -264,3 +338,60 @@
  
 
 @endsection
+
+    <script>
+        function getRubro(select){
+          var selectedString = select.options[select.selectedIndex].value;
+          if(selectedString == "Hotelería")
+          {
+              document.getElementById("serviciosH").style.display = "block";
+          }else {
+              document.getElementById("serviciosH").style.display = "none";
+          }
+
+
+          if(selectedString == "Gastronomía")
+          {
+              document.getElementById("serviciosG").style.display = "block";
+          }else {
+              document.getElementById("serviciosG").style.display = "none";
+          }
+
+          if(selectedString == "Turismo")
+          {
+              document.getElementById("serviciosT").style.display = "block";
+          }else {
+              document.getElementById("serviciosT").style.display = "none";
+          }
+
+          if(selectedString == "Bazares")
+          {
+              document.getElementById("serviciosB").style.display = "block";
+          }else {
+              document.getElementById("serviciosB").style.display = "none";
+          }
+
+          if(selectedString == "Artesanía")
+          {
+              document.getElementById("serviciosA").style.display = "block";
+          }else {
+              document.getElementById("serviciosA").style.display = "none";
+          }
+      }
+
+    </script>
+
+
+    <script>
+        function getIdioma(select){
+          var selectedString = select.options[select.selectedIndex].value;
+          if(selectedString == "0")
+          {
+              document.getElementById("idiomas").style.display = "block";
+          }else {
+              document.getElementById("idiomas").style.display = "none";
+          }
+
+      }
+
+    </script>

@@ -112,7 +112,7 @@
    
     <div class="card-deck col-lg-4">
       <div class="card mb-4"> 
-        @foreach ($sitio->imagensitioturistico as $imagen)
+        @foreach ($sitio->imagenSitioTuristicos as $imagen)
         @if($imagen->tipo_imagen_turistico=='logo')
         <div class="view overlay">
           <img class="card-img-top" src="{{ '/'.$imagen->enlace_imagen_turistico}}" alt="Card image cap">
@@ -130,7 +130,7 @@
         </div>
         <div class="row " style="text-align: center">
           <div class="card-body " >
-            <button class=" btn-outline-info btn-sm btn waves-effect col-md-8" ><a href="{{ url('/sitioTuristico/'.$sitio->id) }}">Ver más </a></button>
+              <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
             <form method="post" action="{{ url('/sitioTuristico/'.$sitio->id)}}" >
               {{csrf_field()}}
               {{ method_field('DELETE')}}

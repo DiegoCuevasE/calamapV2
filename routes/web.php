@@ -18,9 +18,14 @@ Route::post('visita/post', 'VisitaController@store');
 Route::get('adminMype/grafico', 'GraficoController@index');
 Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
 Route::get('adminMype/vistaMypes', 'MypeController@index');
+Route::get('adminMype/registroMype', 'MypeController@llenarForm');
 
+Route::get('adminMype', 'MypeController@Index')->name('adminMype');
+Route::post('adminMype/registrarMype', 'MypeController@store')->name('adminMype/registrarMype');
+Route::get('adminMype/editarMype', 'MypeController@edit')->name('adminMype/editarMype');
 Route::get('subirimagen', 'FotoController@index');
 Route::post('subirimagen', 'FotoController@uploadImage');
+
 
 Route::get('/', function () {
     return view('inicio2');
@@ -47,12 +52,12 @@ Route::get('formulario2', function () {
     return view('formulario2');
 });
 
-Route::get('adminMype/registroMype', function () {
-    return view('adminMype/registroMype');
+
+Route::get('registroDueno', function () {
+    return view('registroDueno');
 });
 
-Route::get('adminMype', 'MypeController@Index')->name('adminMype');
-Route::post('adminMype/registrarMype', 'MypeController@store')->name('adminMype/registrarMype');
+
 
 Route::get('mype/hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
 
@@ -60,6 +65,11 @@ Route::get('mype/artesanias', 'MypeVisitasController@getIndexA')->name('artesani
 
 Route::get('mype/restaurantes', 'MypeVisitasController@getIndexR')->name('restaurantes');
 
+Route::get('/sitioTuristico/{sitio_id}', 'SitioturisticoController@MostrarSitio');
+
+Route::get('admin/agregarSitioTuristico');
+Route::get('sitio')->name('sitio');
+Route::get('sitios', 'SitioturisticoController@MostrarSitios')->name('sitios');
 
 Route::resource('admin','SitioturisticoController');
 

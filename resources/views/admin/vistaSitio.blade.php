@@ -110,7 +110,7 @@
   <div class=" justify-content-center">
     <div class="card-deck row ">
       <div class="card mb-4 col-lg-9 col-sm-12 col-md-12"
-      @foreach ($sitios->imagensitioturistico as $imagen)
+      @foreach ($sitios->imagenSitioTuristicos as $imagen)
       @if ($imagen->tipo_imagen_turistico == 'logo')>
         <div class="view overlay mt-4 ml-3 mr-3 justify-content-center">
           <img class="card-img-top" src="{{$imagen->enlace_imagen_turistico}}" alt="Card image cap">
@@ -123,9 +123,9 @@
         <div class="card-body secciones">
             <div class="d-xl-inline-block">
                 <ul class="tabs js-clone-nav ml-auto list-unstyled d-flex text-right mb-0 " data-class="social">
-                    <li><a href="#informacion" class="pr-2 text-black">Información</a></li>
-                    <li><a href="#fotos" class="pr-2 text-black">Galeria de imagenes</a></li>
-                    <li><a href="#mapa" class="pr-2 text-black">ubicación</a></li>
+                    <li><a href="#informacion" class="pr-2 text-black"><strong>Información</strong></a></li>
+                    <li><a href="#fotos" class="pr-2 text-black"><strong>Galeria de imagenes</strong></a></li>
+                    <li><a href="#mapa" class="pr-2 text-black"><strong>Ubicación</strong></a></li>
                 </ul>
             </div>
             <article id="informacion">
@@ -157,7 +157,7 @@
             <article id="fotos">
                 <div class="row " id="fotos">
                     <div class="mt-3 row">
-                        @foreach ($sitios->imagensitioturistico as $imagen)
+                        @foreach ($sitios->imagenSitioTuristicos as $imagen)
                         @if ($imagen->tipo_imagen_turistico == 'galeria')        
                         <div class="card-deck col-lg-4 col-sm-4 col-md-4">
                             <div class="card mb-4">

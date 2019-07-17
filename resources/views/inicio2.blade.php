@@ -271,7 +271,7 @@
               <div>
                 <h3>Registrate como MyPE</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="mype/registroMype">Registrarse</a></p>
+                <p><a href="registroDueno">Registrarse</a></p>
               </div>
             </div>
           </div>

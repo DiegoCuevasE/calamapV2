@@ -40,7 +40,11 @@
   <div class="row ml-3 mr-3">
       
     <div class="view overlay col-lg-2 collapsed "style="height: 100px; width: 100px;">
-      <img data-enlargable class="card-img-top rounded-0" style="width:100%; height:100%; cursor: zoom-in; " src="{{ asset('template2/images/rutaGastro.png') }}" alt="Card image cap">
+      @foreach ($mype->imagenmypes as $imagen)
+      @if ($imagen->tipo_imagen_mype == 'logo') 
+      <img class="card-img-top rounded-0" style="width:100%; height:100%;" src="../{{$imagen->enlace_imagen_mype}}" alt="Card image cap">
+      @endif
+      @endforeach
       <a href="#!">
       <div class="mask rgba-white-slight" >      <input type="hidden"  name="mype_id" value="{{$mype->id}}"></div>
       </a>
@@ -49,7 +53,7 @@
     
     <div class="view overlay col-lg-10 " >
         
-         <p class="card-text ">Recently, Lorxem ipsu adam septura ttotle dimensap amire tionsito we added several exotic new dishes to the menu of our restaurant. They come from countries such as Mexico, Argentina, and Spain. Come to us, have a delicious wine and enjoy the juicy meals from around the world.</p>
+         <p class="card-text ">{{$mype->descripcion_mype}}</p>
          <input type="button" class="btn btn-primary visita-user" id="visita-user{{$mype->id}}" data-number="{{$mype->id}}" value="Ver más" data-toggle="collapse" href="#collapseContent{{$mype->id}}" aria-expanded="false" aria-controls="collapseContent{{$mype->id}}">
         </div>
   </div>
@@ -58,20 +62,40 @@
   <div class="card-body justify-content-center">
     <div class="collapse-content justify-content-center">
       <div class="row justify-content-center">
+          <div class="col-md-12 justify-content-center row mt-3 mb-3 collapse" id="collapseContent{{$mype->id}}">
+              @foreach ($mype->imagenmypes as $imagen)
+              @if ($imagen->tipo_imagen_mype == 'galeria')
+              <div class="col-md-3 justify-content-center" >
+              <img data-enlargable class="card-img-top rounded-0 " style="width:100%; height:100%; cursor: zoom-in;" src="../{{$imagen->enlace_imagen_mype}}" alt="Card image cap ">
+              </div>
+              @endif
+              @endforeach
+          </div>
         <div class="col-md-2">
-          <p class="card-text collapse" id="collapseContent{{$mype->id}}">Servicios</p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}"><strong>Servicios</strong></p>
+          @foreach ($mype->servicios as $servicio)
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$servicio->nombre_servicio}}</p>
+          @endforeach
         </div>
         <div class="col-md-2">
-          <p class="card-text collapse" id="collapseContent{{$mype->id}}">Horario</p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}"><strong>Horario</strong></p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$mype->horario_mype}}</p>
         </div>
         <div class="col-md-2">
-          <p class="card-text collapse" id="collapseContent{{$mype->id}}">Dirección</p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}"><strong>Dirección</strong></p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$mype->direccion_mype}}</p>
         </div>
         <div class="col-md-2">
-          <p class="card-text collapse" id="collapseContent{{$mype->id}}">Idiomas</p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}"><strong>Idiomas</strong></p>
+          @foreach ($mype->idiomas as $idioma)
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$idioma->nombre_idioma}}</p>
+          @endforeach
         </div>
-        <div class="col-md-2">
-          <p class="card-text collapse" id="collapseContent{{$mype->id}}">Contacto</p>
+        <div class="col-md-3">
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}"><strong>Contacto</strong></p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$mype->telefono_mype}}</p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$mype->celular_mype}}</p>
+          <p class="card-text collapse" id="collapseContent{{$mype->id}}">{{$mype->correo_mype}}</p>
         </div>
       </div>
       <i class="fas icon-instagram text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></i>

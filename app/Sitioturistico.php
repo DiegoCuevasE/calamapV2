@@ -3,13 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Imagensitioturistico;
 
-class Sitioturistico extends Model
+class SitioTuristico extends Model
 {
-    public function Imagensitioturistico()
+    public function imagenSitioTuristicos()
     {
-        return $this->hasMany(Imagensitioturistico::class);
+        return $this->hasMany(ImagenSitioTuristico::class);
     }
-    
 }

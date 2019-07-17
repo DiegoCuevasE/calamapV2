@@ -45,7 +45,7 @@
               <li><a href="{{ route('hoteles') }}">¿Donde Dormir?</a></li>
             <li><a href="{{url('admin')}}">¿Que hacer?</a></li>
               <li><a href="{{ route('restaurantes') }}">¿Donde Comer?</a></li>
-              <li><a href="#">¿Donde ir?</a></li>
+              <li><a href="{{ route('sitios') }}">¿Donde ir?</a></li>
             </ul>
           </nav>
         </div>
@@ -188,5 +188,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
     
+
+
     </body>
   </html>

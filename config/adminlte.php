@@ -108,6 +108,19 @@ return [
     */
 
     'menu' => [
+        'MANEJO DE PÁGINA',
+        [
+            'text' => 'Ingresar Sitio Turistico',
+            'url'  => 'admin/create',
+            'icon' => 'bank',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text'        => 'Editar o Eliminar Sitio Turistico',
+            'url'         => 'admin',
+            'icon' => 'bank',
+            'can'  => 'manage-blog',
+        ],
         'ESTADISTICAS',
         [
             'text' => 'Blog',
@@ -138,7 +151,7 @@ return [
         ],
         [
             'text' => 'Cambiar datos MYPE',
-            'url'  => 'moduloMype/edit',
+            'url'  => 'adminMype/editarMype',
             'icon' => 'bank',
         ],
         [

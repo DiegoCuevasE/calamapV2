@@ -14,7 +14,7 @@ class Visita extends Model
 
     public function mypes(){
 
-        return $this->belongsToMany('Mypes');
+        return $this->belongsToMany('Mype');
     }
 
 }

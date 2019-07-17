@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 use App\Visita;
 use Illuminate\Support\Facades\Auth;
-use App\Mypes;
+use App\Mype;
 use DB;
 use File;
 use Image;
 use App\Imagenmype;
+
 use Illuminate\Support\Facades\store;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use App\Servicio;
+use App\Idioma;
 
 class MypeController extends Controller
 {
@@ -32,11 +36,27 @@ class MypeController extends Controller
     public function index()
     {
 
+        $mype = Mype::find(1);
         
-        $datos = 'App\Mypes'::with('ImagenMype')->where('user_id', Auth::id())->get();
+        //$mype = Mype::with('imagenmypes')->all();
+        //$imagenes = $mype2->imagenmypes()->where('mype_id', '=', '1')->get();
 
-        return $datos;
-        //return view('adminMype/vistaMypes')->with('datos',$datos);
+        
+        return view('adminMype/vistaMypes',['datos' => $mype]);
+    }
+
+
+    public function llenarForm()
+    {
+
+        $servicios = Servicio::all();
+        $idiomas = Idioma::all();
+        
+        //$mype = Mype::with('imagenmypes')->all();
+        //$imagenes = $mype2->imagenmypes()->where('mype_id', '=', '1')->get();
+
+        
+        return view('adminMype/registroMype',['servicios' => $servicios, 'idiomas' => $idiomas]);
     }
 
     /**
@@ -60,9 +80,10 @@ class MypeController extends Controller
     {
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         
-        $datosmype = new Mypes();
-        $datosmype->user_id='1';
+        $datosmype = new Mype();
+        $datosmype->user_id=Auth::id();
         $datosmype->rubro_mype=request('rubro_mype');
+
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
         $datosmype->direccion_mype=request('direccion_mype');
@@ -81,6 +102,50 @@ class MypeController extends Controller
     $nombre = $request['razon_social_mype'];
 
     $idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
+
+
+    if ($datosmype->rubro_mype=request('idioma_mype') == "0") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->idiomas()->attach(request('idioma'));
+    }elseif ($datosmype->rubro_mype=request('idioma_mype') == "1") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->idiomas()->attach("1");
+    }
+
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Hotelería") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->attach(request('servicioH'));
+    }
+
+  
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Gastronomía") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->attach(request('servicioG'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Turismo") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->attach(request('servicioT'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Bazares") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->attach(request('servicioB'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Artesanía") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->attach(request('servicioA'));
+    }
 
     $request->validate([
         'enlace_imagen_mype' => 'required',
@@ -186,7 +251,7 @@ class MypeController extends Controller
      * @param  \App\mype  $mype
      * @return \Illuminate\Http\Response
      */
-    public function show(Mypes $mype)
+    public function show(Mype $mype)
     {
         //
     }
@@ -199,9 +264,9 @@ class MypeController extends Controller
      */
     public function edit($id)
     {
-        //
-        $mype = Mypes::findOrFail($id);
-        return view('moduloMype.editarMype', compact('mype'));
+        return dd($id);
+        $mype = Mype::findOrFail($id);
+        return view('adminMype.editarMype', compact('mype'));
     }
 
     /**
@@ -216,7 +281,7 @@ class MypeController extends Controller
 
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
 
-        $datosmype = new Mypes();
+        $datosmype = new Mype();
         $datosmype->user_id=request('user_id');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
@@ -233,7 +298,7 @@ class MypeController extends Controller
         $datosmype->otra_redS_mype=request('otra_redS_mype');
         //return$datosmype;
         $datosmype->update();
-        $mype = Mypes::findOrFail($id);
+        $mype = Mype::findOrFail($id);
         //return view('moduloMype.editarMype', compact('mype'));
         return redirect('moduloMype');
     
@@ -248,7 +313,7 @@ class MypeController extends Controller
     public function destroy($id)
     {
         //
-        Mypes::destroy($id);
+        Mype::destroy($id);
         return redirect('moduloMype');
     }
 

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Gate;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +23,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //$this->registerPolicies();
+
+        Gate::define('manage-blog', function ($user) {
+ 
+            if ($user->tipo_usuario == '1'){
+                return true;
+            }
+ 
+            return false;
+ 
+        });
     }
 }

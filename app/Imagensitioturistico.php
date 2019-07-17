@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Imagensitioturistico extends Model
+class ImagenSitioTuristico extends Model
 {
-    protected $fillable = ['enlace_imagen_turistico','tipo_imagen_turistico','thumbnail'];
-
-    public function Sitioturistico()
+    public function sitioTuristicos()
     {
-        return $this->belongsTo(Sitioturistico::class);
+    	return $this->belongsTo(SitioTuristico::class);
     }
 }
