@@ -69,7 +69,7 @@
                       <div class="form-group row">
   
                             <div class="col-md-6">
-                                <input id="tipo" type="hidden" class="form-control" name="tipo" value="0">
+                                <input id="tipo" type="hidden" class="form-control" name="tipo" value="2">
                             </div>
                         </div>
 

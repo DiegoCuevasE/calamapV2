@@ -113,6 +113,11 @@
   
                             <div class="col-md-6">
                                 <input id="tipo" type="hidden" class="form-control" name="tipo" value="1">
+                                <input type="date" id="fechaNac" name="fechaNac" class="form-control" placeholder="DD/MM/AAAA" hidden>
+                                <input type="radio" name="genero" value="0" checked hidden>
+                                <select name="nacionalidad" id="nacionalidad" class="form-control" hidden>
+                                    <option value="Chile" name="nacionalidad" hidden>Chile</option>
+                                  </select>
                             </div>
                         </div>
 
