@@ -59,8 +59,12 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    @if (Auth::user()->tipo_usuario == '1')
+                    @if (Auth::user()->tipo_usuario == '1' )
                     <a class="dropdown-item" href="{{ route('historico') }}">Ver estadisticas</a>
+                    @endif
+
+                    @if (Auth::user()->tipo_usuario == '0' )
+                    <a class="dropdown-item" href="{{ route('admin') }}">Gestionar</a>
                     @endif
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
