@@ -8,7 +8,7 @@
  
    
 
-    <div class="slide-one-item home-slider owl-carousel">    
+    <div class="slide-one-item home-slider">    
       <div class="site-blocks-cover overlay" style="background-image: url({{ secure_asset('template2/images/fondo1.jpg')}});" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
