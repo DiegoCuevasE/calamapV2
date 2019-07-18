@@ -43,7 +43,7 @@
           <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
             <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
               <li><a href="{{ route('hoteles') }}">¿Donde Dormir?</a></li>
-            <li><a href="{{url('admin')}}">¿Que hacer?</a></li>
+            <li><a href="">¿Que hacer?</a></li>
               <li><a href="{{ route('restaurantes') }}">¿Donde Comer?</a></li>
               <li><a href="{{ route('sitios') }}">¿Donde ir?</a></li>
             </ul>

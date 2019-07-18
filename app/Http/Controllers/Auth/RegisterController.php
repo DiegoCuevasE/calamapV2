@@ -63,7 +63,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['tipo'] == "2") {
         return User::create([
             'nombre' => $data['nombre'],
             'email' => $data['email'],
@@ -74,17 +73,6 @@ class RegisterController extends Controller
             'tipo_usuario' => $data['tipo']
 
         ]);
-    }elseif ($data['tipo'] == "1") {
-        return User::create([
-            'nombre' => $data['nombre'],
-            'apellido_usuario' => $data['apellido'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'telefono_usuario' => $data['telefono'],
-            'celular_usuario' => $data['celular'],
-            'tipo_usuario' => $data['tipo']
 
-        ]);
-    }
     }
 }
