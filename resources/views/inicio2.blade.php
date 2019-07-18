@@ -8,26 +8,17 @@
  
    
 
-    <div class="slide-one-item home-slider owl-carousel">    
-      <div class="site-blocks-cover overlay" style="background-image: url({{ secure_asset('template2/images/fondo1.jpg')}});" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
-              <h1 class="text-white font-weight-light">Bienvenido a CKALAMA</h1>
-            </div>
-          </div>
-        </div>
-      </div>  
-      <div class="site-blocks-cover overlay" style="background-image: url({{ secure_asset('template2/images/fondo2.jpg')}});" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
-              <h1 class="text-white font-weight-light">Disfruta de la ciudad</h1>              
-            </div>
-          </div>
-        </div>
-      </div>  
+<div class="site-blocks-cover overlay inner-page-cover" style="background-image: url({{ secure_asset('template2/images/fondo1.jpg')}}); background-attachment: fixed;">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+
+      <div class="col-md-7" data-aos="fade-up" data-aos-delay="400">
+        <h2 class="text-white font-weight-light mb-5 h1">Vive Calama</h2>
+        
+      </div>
     </div>
+  </div>
+</div>
 
 
     <div class="site-section">      
