@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //$this->registerPolicies();
+        Schema::defaultStringLength(191);
 
         Gate::define('manage-blog', function ($user) {
  
@@ -43,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
 
-        Schema::defaultStringLength(191);
+        
     }
 
     
