@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::define('manage-blog', function ($user) {
  
-            if ($user->tipo_usuario == '1'){
+            if ($user->tipo_usuario == '0'){
                 return true;
             }
  

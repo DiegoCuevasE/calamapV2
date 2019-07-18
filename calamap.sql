@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `calamap`
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `idiomas` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre_idioma` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre_idioma` varchar(255) COLLATE utf8_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `idiomas`
@@ -57,7 +57,7 @@ CREATE TABLE `idioma_mype` (
   `idioma_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `idioma_mype`
@@ -77,12 +77,12 @@ INSERT INTO `idioma_mype` (`id`, `mype_id`, `idioma_id`, `created_at`, `updated_
 CREATE TABLE `imagenmypes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `mype_id` bigint(20) UNSIGNED NOT NULL,
-  `enlace_imagen_mype` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo_imagen_mype` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `enlace_imagen_mype` varchar(254) COLLATE utf8_general_ci NOT NULL,
+  `tipo_imagen_mype` varchar(15) COLLATE utf8_general_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `imagenmypes`
@@ -111,12 +111,12 @@ INSERT INTO `imagenmypes` (`id`, `mype_id`, `enlace_imagen_mype`, `tipo_imagen_m
 CREATE TABLE `imagen_sitio_turisticos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `sitio_turistico_id` bigint(20) UNSIGNED NOT NULL,
-  `enlace_imagen_turistico` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo_imagen_turistico` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `enlace_imagen_turistico` varchar(254) COLLATE utf8_general_ci NOT NULL,
+  `tipo_imagen_turistico` varchar(15) COLLATE utf8_general_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `imagen_sitio_turisticos`
@@ -140,12 +140,12 @@ INSERT INTO `imagen_sitio_turisticos` (`id`, `sitio_turistico_id`, `enlace_image
 
 CREATE TABLE `locomocions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `linea_locomocion` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `recorrido_locomocion` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `linea_locomocion` varchar(2) COLLATE utf8_general_ci NOT NULL,
+  `recorrido_locomocion` varchar(1) COLLATE utf8_general_ci NOT NULL,
   `tipo_locomocion` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE `locomocion_mype` (
   `mype_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,7 @@ CREATE TABLE `locomocion_sitio_turistico` (
   `turistico_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -183,9 +183,9 @@ CREATE TABLE `locomocion_sitio_turistico` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8_general_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -216,22 +216,22 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `mypes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `nombre_fantasia_mype` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `razon_social_mype` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rubro_mype` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `direccion_mype` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `descripcion_mype` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `horario_mype` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombre_fantasia_mype` varchar(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `razon_social_mype` varchar(100) COLLATE utf8_general_ci DEFAULT NULL,
+  `rubro_mype` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `direccion_mype` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `descripcion_mype` varchar(254) COLLATE utf8_general_ci DEFAULT NULL,
+  `horario_mype` varchar(254) COLLATE utf8_general_ci DEFAULT NULL,
   `estado_mype` tinyint(1) DEFAULT NULL,
-  `telefono_mype` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `celular_mype` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `correo_mype` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook_mype` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram_mype` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pagina_mype` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telefono_mype` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
+  `celular_mype` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
+  `correo_mype` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `facebook_mype` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `instagram_mype` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `pagina_mype` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `mypes`
@@ -252,11 +252,11 @@ INSERT INTO `mypes` (`id`, `user_id`, `nombre_fantasia_mype`, `razon_social_mype
 
 CREATE TABLE `servicios` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre_servicio` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo_servicio` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre_servicio` varchar(20) COLLATE utf8_general_ci NOT NULL,
+  `tipo_servicio` varchar(20) COLLATE utf8_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `servicios`
@@ -282,7 +282,7 @@ CREATE TABLE `servicio_mype` (
   `mype_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `servicio_mype`
@@ -305,14 +305,14 @@ INSERT INTO `servicio_mype` (`id`, `servicio_id`, `mype_id`, `created_at`, `upda
 CREATE TABLE `sitio_turisticos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `tipo_turistico` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombre_turistico` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `horario_turistico` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `direccion_turistico` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion_turistico` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_turistico` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `nombre_turistico` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `horario_turistico` varchar(254) COLLATE utf8_general_ci NOT NULL,
+  `direccion_turistico` varchar(254) COLLATE utf8_general_ci NOT NULL,
+  `descripcion_turistico` varchar(254) COLLATE utf8_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `sitio_turisticos`
@@ -334,7 +334,7 @@ CREATE TABLE `sitio_turistico_servicio` (
   `servicio_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -344,21 +344,21 @@ CREATE TABLE `sitio_turistico_servicio` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `apellido_usuario` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefono_usuario` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `celular_usuario` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `apellido_usuario` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `telefono_usuario` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
+  `celular_usuario` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_general_ci NOT NULL,
   `fechaNac` date DEFAULT NULL,
-  `nacionalidad_usuario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nacionalidad_usuario` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
   `genero` tinyint(1) DEFAULT NULL,
-  `tipo_usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_usuario` varchar(50) COLLATE utf8_general_ci NOT NULL,
   `estado_usuario` tinyint(1) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -381,7 +381,7 @@ CREATE TABLE `visitas` (
   `mype_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `visitas`
