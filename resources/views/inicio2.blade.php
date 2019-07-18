@@ -260,8 +260,8 @@
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-airplane"></span></div>
               <div>
                 <h3>Registrate como turista</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Registrarse</a></p>
+                <p>Obtén beneficios exclusivos.</p>
+                <p><a href="formulario2">Registrarse</a></p>
               </div>
             </div>
           </div>
@@ -270,7 +270,7 @@
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-ship"></span></div>
               <div>
                 <h3>Registrate como MyPE</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                <p>Ingresa tu negocio para que todos puedan verlo.</p>
                 <p><a href="registroDueno">Registrarse</a></p>
               </div>
             </div>
