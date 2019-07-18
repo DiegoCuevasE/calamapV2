@@ -64,7 +64,7 @@
                     @endif
 
                     @if (Auth::user()->tipo_usuario == '0' )
-                    <a class="dropdown-item" href="{{ route('admin') }}">Gestionar</a>
+                    <a class="dropdown-item" href="{{ route('historico') }}">Gestionar</a>
                     @endif
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
