@@ -363,7 +363,11 @@ class SitioturisticoController extends Controller
     public function destroy($id)
     {
         //debe tener el cod_turistico omo id
-        Sitioturistico::destroy($id);
-        return redirect('sitioTuristico');
+        $sitio = Sitioturistico::find($id);
+        $sitio->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the nerd!');
+        return Redirect::to('admin');
     }
 }

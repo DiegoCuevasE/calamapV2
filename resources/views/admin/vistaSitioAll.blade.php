@@ -131,11 +131,11 @@
         <div class="row " style="text-align: center">
           <div class="card-body " >
               <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
-            <form method="post" action="{{ url('/sitioTuristico/'.$sitio->id)}}" >
-              {{csrf_field()}}
-              {{ method_field('DELETE')}}
-              <button type="submit" class="btn-sm btn btn-outline-danger waves-effect col-md-8" onclick="return confirm('¿Borrar?')"> Borrar</button>
-            </form>
+              {{ Form::open(array('url' => 'admin/' . $sitio->id, 'class' => 'pull-right')) }}
+              {{ Form::hidden('_method', 'DELETE') }}
+              {{ Form::submit('Eliminar Sitio', array('class' => 'btn btn-warning')) }}
+          {{ Form::close() }}
+
             <button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" ><a href="{{ url('/sitioTuristico/'.$sitio->id.'/edit') }}">Editar </a></button>
           </div>
 
