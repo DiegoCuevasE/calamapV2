@@ -178,6 +178,8 @@ return [
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
 
     ],
 
@@ -234,6 +236,9 @@ return [
       
 
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
