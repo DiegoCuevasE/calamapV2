@@ -212,7 +212,7 @@ class SitioturisticoController extends Controller
     {
         //
 
-        return view('admin.editarSitioTuristico',compact('sitioturistico'));
+        return view('admin.edit',compact('sitioturistico'));
     }
 
     /**
