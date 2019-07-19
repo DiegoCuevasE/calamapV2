@@ -127,9 +127,9 @@
                   </div>
                   <div class="row " style="text-align: center">
                     <div class="card-body " >
-                        <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
+                        <a href="{{ url('/sitioTuristico/'.$mype->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
           
-                    <a href="{{ route('adminMype/editarMype',$sitio->id) }}"><button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" >Editar </button></a>
+                    <a href="{{ route('adminMype/editarMype',$mype->id) }}"><button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" >Editar </button></a>
                     </div>
           
                   </div>
@@ -144,38 +144,34 @@
         
   @foreach ($mypes as $mype)
    
-    <div class="card-deck col-lg-4">
-      <div class="card mb-4"> 
-        @foreach ($sitio->imagenSitioTuristicos as $imagen)
-        @if($imagen->tipo_imagen_turistico=='logo')
-        <div class="view overlay">
-          <img class="card-img-top" src="{{ '/'.$imagen->enlace_imagen_turistico}}" alt="Card image cap">
-          <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-        @endif
-        @endforeach
-        <div class="card-body ">
-        <h4 class="card-tite">{{$sitio->nombre_turistico}}</h4>
-          <div class="cortar">
-            <p class="card-text " >{{$sitio->descripcion_turistico}}</p>
+  <div class="card-deck col-lg-4">
+        <div class="card mb-4"> 
+          @foreach ($mype->imagenmypes as $imagen)
+          @if($imagen->tipo_imagen_mype=='logo')
+          <div class="view overlay">
+            <img class="card-img-top" src="{{ '/'.$imagen->enlace_imagen_mype}}" alt="Card image cap">
+            <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+            </a>
           </div>
-        </div>
-        <div class="row " style="text-align: center">
-          <div class="card-body " >
-              <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
-              {{ Form::open(array('url' => 'admin/' . $sitio->id, 'class' => 'pull-right')) }}
-              {{ Form::hidden('_method', 'DELETE') }}
-              {{ Form::submit('Eliminar Sitio', array('class' => 'btn-sm btn btn-outline-danger waves-effect col-md-8'), ['onclick' => 'return confirm("¿Borrar?")']) }}
-          {{ Form::close() }}
-
-          <a href="{{ route('admin.edit',$sitio->id) }}"><button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" >Editar </button></a>
+          @endif
+          @endforeach
+          <div class="card-body ">
+          <h4 class="card-tite">{{$mype->nombre_fantasia_mype}}</h4>
+            <div class="cortar">
+              <p class="card-text " >{{$mype->descripcion_mype}}</p>
+            </div>
           </div>
-
+          <div class="row " style="text-align: center">
+            <div class="card-body " >
+                <a href="{{ url('/sitioTuristico/'.$mype->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
+  
+            <a href="{{ route('adminMype/editarMype',$mype->id) }}"><button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" >Editar </button></a>
+            </div>
+  
+          </div>
         </div>
       </div>
-    </div>
 
     @endforeach
   </div>
