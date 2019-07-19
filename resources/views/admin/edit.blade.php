@@ -302,7 +302,7 @@
                         @empty
                             No image found
                         @endforelse
-                        
+                        <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getGaleria()">
                         </div>
                         <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getGaleria()">
                         <div id="logos"  style="display:none;">
