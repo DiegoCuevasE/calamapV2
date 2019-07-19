@@ -128,7 +128,7 @@
                             <div class="col-md-6 col-form-label text-md-right" >
                               {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getHorario()">
                           </div>
-                            <div class="col-md-6 col-form-label text-md-right" id="horarios" style="display:none;">
+                            <div class="form-group row" id="horarios" style="display:none;">
                               <div class="col-md-6 row">
                                 <select name="d1" id="d1" class="browser-default custom-select " >
                                     <option value="Lunes">Lunes</option>
@@ -281,7 +281,7 @@
                                 @if ($imagen->tipo_imagen_turistico == "logo")
                                 <img src="{{ $imagen->enlace_imagen_turistico }}" class="img-responsive">
                                 <div class="col-md-6 col-form-label text-md-right" >
-                                    {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getLogo()">
+                                    <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getLogo()">
                                 </div>
                                 @endif
                                 @empty
@@ -454,6 +454,15 @@
     }
 
   </script>
+
+<script>
+    function getLogo(){
+
+          document.getElementById("logos").style.display = "block";
+
+  }
+
+</script>
   </body>
   </html>
     
