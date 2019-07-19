@@ -179,8 +179,9 @@ class SitioturisticoController extends Controller
         }
  
         $sitios='App\Sitioturistico'::with('imagenSitioTuristicos')->findOrFail($idSitio2);
-
-        return view('admin.vistaSitio')->with('sitios',$sitios);        
+        $msg = 'It is done, to see the result';
+        return Redirect::to('admin.vistaSitio')->with('sitios',$sitios)->withSuccess($msg); 
+        //return view('admin.vistaSitio')->with('sitios',$sitios)->withSuccess($msg);        
     }
     
     public function mostrar($id)
@@ -369,7 +370,7 @@ class SitioturisticoController extends Controller
         $sitio->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the nerd!');
-        return Redirect::to('admin');
+        $msg = 'It is done, to see the result';
+        return Redirect::to('admin')->withSuccess($msg);
     }
 }

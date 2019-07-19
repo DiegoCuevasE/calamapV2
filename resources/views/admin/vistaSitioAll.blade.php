@@ -21,7 +21,11 @@
 
   </head>
   <body>
-  
+    @if (session()->has('success'))
+    <div class="alert alert-success">
+        {!! session()->get('success')!!}        
+    </div>
+@endif
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
