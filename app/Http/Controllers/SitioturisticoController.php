@@ -252,6 +252,8 @@ class SitioturisticoController extends Controller
             $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
             
             if($request->hasFile('image')){
+                $msg = 'Entro';
+                return Redirect::to('admin')->withSuccess($msg);
             foreach($sitioturistico->imagenSitioTuristicos as $image) 
             {
                 Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','galeria')->delete();
