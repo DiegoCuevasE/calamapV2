@@ -293,15 +293,20 @@
                         </div>
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
-                            @forelse($sitio->imagenSitioTuristicos as $imagen)
-                            @if ($imagen->tipo_imagen_turistico == "galeria")
-                            <div class="col-md-2">
-                                <img src="{{ $imagen->thumbnail }}" class="img-responsive">
+                            @foreach ($sitio->imagenSitioTuristicos as $imagen)
+                            @if ($imagen->tipo_imagen_turistico == 'galeria')        
+                            <div class="card-deck col-lg-4 col-sm-4 col-md-4">
+                                <div class="card mb-4">
+                                    <div class="view overlay">
+                                        <img class="card-img-top" src="{{$imagen->enlace_imagen_turistico}}" alt="Card image cap">
+                                        <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             @endif
-                        @empty
-                            No image found
-                        @endforelse
+                            @endforeach
                         <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getGaleria()">
                         </div>
                         <div id="logos">
