@@ -179,8 +179,8 @@ class SitioturisticoController extends Controller
         }
  
         $sitios='App\Sitioturistico'::with('imagenSitioTuristicos')->findOrFail($idSitio2);
-        $msg = 'It is done, to see the result';
-        return Redirect::to('admin.vistaSitio')->with('sitios',$sitios)->withSuccess($msg); 
+        $msg = '¡Sitio agregado correctamente!';
+        return Redirect::to('admin/vistaSitio')->with('sitios',$sitios)->withSuccess($msg); 
         //return view('admin.vistaSitio')->with('sitios',$sitios)->withSuccess($msg);        
     }
     
@@ -370,7 +370,7 @@ class SitioturisticoController extends Controller
         $sitio->delete();
 
         // redirect
-        $msg = 'It is done, to see the result';
+        $msg = 'Sitio Eliminado correctamente.';
         return Redirect::to('admin')->withSuccess($msg);
     }
 }
