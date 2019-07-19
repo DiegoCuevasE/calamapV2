@@ -252,15 +252,13 @@ class SitioturisticoController extends Controller
             $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
             
             if($request->hasFile('image')){
-                return dd("adsd");
-            foreach($sitioturistico->imagensitioturistico as $image) 
+            foreach($sitioturistico->imagenSitioTuristicos as $image) 
             {
                 Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','galeria')->delete();
             }}
 
             if($request->hasFile('enlace_imagen_turistico')){
-                return dd("entro en el otro");
-            foreach($sitioturistico->imagensitioturistico as $image) 
+            foreach($sitioturistico->imagenSitioTuristicos as $image) 
             {
                 Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','logo')->delete();
             }}

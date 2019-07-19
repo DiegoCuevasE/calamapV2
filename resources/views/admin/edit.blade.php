@@ -124,8 +124,8 @@
                         </div>
                         <div class="form-group row">
                           
-                            <label for="horario_turistico" class="col-md-4 col-form-label">Horario</label>
-                            <div class="col-md-6 col-form-label text-md-right" >
+                            <label for="horario_turistico" class="col-md-4 col-form-label text-md-right">Horario</label>
+                            <div class="col-md-6 col-form-label" >
                               {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getHorario()">
                           </div>
                         </div>
@@ -304,7 +304,6 @@
                         @endforelse
                         <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getGaleria()">
                         </div>
-                        <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getGaleria()">
                         <div id="logos"  style="display:none;">
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
