@@ -267,7 +267,7 @@
                             <label for="descripcion_turistico" class="col-md-4 col-form-label text-md-right">Descripción</label>
   
                             <div class="col-md-6">
-                                <textarea id="descripcion_turistico" maxlength="255" class="form-control" name="descripcion_turistico" value="{{ old('descripcion_turistico', $sitio->descripcion_turistico) }}"></textarea>
+                                <textarea id="descripcion_turistico" maxlength="255" class="form-control" name="descripcion_turistico" >{{ $sitio->descripcion_turistico}}</textarea>
                                 
                             </div>
                         </div>
