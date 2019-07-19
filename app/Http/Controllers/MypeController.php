@@ -37,7 +37,7 @@ class MypeController extends Controller
     {
         if (Auth::check()) {
             
-        }
+        
         if (Auth::user()->tipo_usuario == '1') {
             $mype = Mype::where('id',Auth::id())->first();
             return view('adminMype/listaMypes', ['mype'=>$mype]);
