@@ -316,7 +316,7 @@
                             </div>
                           </div>
                         </div>
-                          <div id="imagenes"  style="display:none;">
+                          <div id="imagenes">
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
                         <div class="input-group col-md-6">
