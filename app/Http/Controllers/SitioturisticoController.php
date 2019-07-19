@@ -227,7 +227,7 @@ class SitioturisticoController extends Controller
     {
         $nombre = $request['nombre_turistico'];
 
-        $idSitio2 = DB::table('sitioturisticos')->where('nombre_turistico', $nombre)->value('id');
+        $idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
 
         //
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';

@@ -126,7 +126,7 @@
                           
                             <label for="horario_turistico" class="col-md-4 col-form-label text-md-right">Horario</label>
                             <div class="col-md-6">
-                              {{ $sitio->horario_turistico}}<button class="btn btn-outline-success btn-rounded waves-effect" onclick="getHorario()">Editar</button>
+                              {{ $sitio->horario_turistico}}<button href="#" class="btn btn-outline-success btn-rounded waves-effect" onclick="getHorario()">Editar</button>
                           </div>
                             <div class="col-md-6" id="horarios" style="display:none;">
                               <div class="col-md-6 row">
