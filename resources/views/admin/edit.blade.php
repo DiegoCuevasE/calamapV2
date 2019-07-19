@@ -102,7 +102,7 @@
     <div class="row justify-content-center">
         <div class="col-md-9">
             <div class="card">
-                <div class="card-header">Registro de Sitio Turistico</div>
+                <div class="card-header">Modificación de Sitio Turistico</div>
                   <div class="card-body">
                     <form action="{{ route('admin.update',$sitio->id) }}" method="POST">
                       @csrf
@@ -113,13 +113,13 @@
                             <input type="hidden" name="user_id" id="user_id" value="1"> 
                             <label for="nombre_turistico" class="col-md-4 col-form-label text-md-right">Nombre</label>
                             <div class="col-md-6">
-                                <input type="text" name="nombre_turistico" id="nombre_turistico" value="" class="form-control " >  
+                                <input type="text" name="nombre_turistico" id="nombre_turistico" value="{{ old('nombre_turistico', $sitio->nombre_turistico) }}" class="form-control " >  
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tipo_turistico" class="col-md-4 col-form-label text-md-right">Entrada</label>
                             <div class="col-md-6">
-                                <input id="tipo_turistico" type="text" class="form-control " name="tipo_turistico" value="">
+                                <input id="tipo_turistico" type="text" class="form-control " name="tipo_turistico" value="{{ old('tipo_turistico', $sitio->tipo_turistico) }}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -259,7 +259,7 @@
                             <label for="direccion_turistico" class="col-md-4 col-form-label text-md-right">Dirección</label>
   
                             <div class="col-md-6">
-                                <input id="direccion_turistico" type="text" class="form-control" name="direccion_turistico">
+                                <input id="direccion_turistico" type="text" class="form-control" name="direccion_turistico" value="{{ old('direccion_turistico', $sitio->direccion_turistico) }}">
                             </div>
                         </div>
 
@@ -267,7 +267,7 @@
                             <label for="descripcion_turistico" class="col-md-4 col-form-label text-md-right">Descripción</label>
   
                             <div class="col-md-6">
-                                <textarea id="descripcion_turistico" maxlength="255" class="form-control" name="descripcion_turistico"></textarea>
+                                <textarea id="descripcion_turistico" maxlength="255" class="form-control" name="descripcion_turistico" value="{{ old('descripcion_turistico', $sitio->descripcion_turistico) }}"></textarea>
                                 
                             </div>
                         </div>
