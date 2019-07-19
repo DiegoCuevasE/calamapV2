@@ -211,9 +211,9 @@ class SitioturisticoController extends Controller
     public function edit($id)
     {
         //
-        $sitioturistico= Sitioturistico::find($id);
+        $sitio= Sitioturistico::where('id',$id)->get();
 
-        return view('admin.edit',compact('sitioturistico'));
+        return view('admin.edit',compact('sitio'));
     }
 
     /**
