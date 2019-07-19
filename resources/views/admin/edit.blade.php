@@ -285,7 +285,8 @@
                             No image found
                         @endforelse
                             </div>
-                            <div class="form-group row">
+                        </div>
+                        <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             <div class="input-group col-md-6">
                               <div class="custom-file">
@@ -295,7 +296,6 @@
                               </div>
                             </div>
                           </div>
-                        </div>
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
                             @forelse($sitio->imagenSitioTuristicos as $imagen)
@@ -307,15 +307,14 @@
                         @empty
                             No image found
                         @endforelse
-                            <div class="input-group col-md-6">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
-                                </div>
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input " type="file" name="image[]" multiple="true" accept="image/*" aria-describedby="inputGroupFileAddon01">
-                                  <label class="custom-file-label" for="inputGroupFile01">Seleccionar Imagenes</label>
-                                </div>
-                              </div>
+                        </div>
+                        <div class="form-group row">
+                        <div class="input-group col-md-6">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input " type="file" name="image[]" multiple="true" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                              <label class="custom-file-label" for="inputGroupFile01">Seleccionar Imagenes</label>
+                            </div>
+                          </div>
                         </div>
                         <div class="form-group row mb-0 text-center">
                             <div class="col-md-6 offset-md-4 " style="">
