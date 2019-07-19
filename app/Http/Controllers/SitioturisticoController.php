@@ -180,7 +180,7 @@ class SitioturisticoController extends Controller
  
         $sitios='App\Sitioturistico'::with('imagenSitioTuristicos')->findOrFail($idSitio2);
         $msg = '¡Sitio agregado correctamente!';
-        return Redirect::route('admin.vistaSitio')->with( ['sitios' => $sitios] )->withSuccess($msg);
+        return Redirect::route('admin/vistaSitio')->with( ['sitios' => $sitios] )->withSuccess($msg);
         //return view('admin.vistaSitio')->with('sitios',$sitios)->withSuccess($msg);        
     }
     
