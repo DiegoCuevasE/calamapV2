@@ -36,15 +36,9 @@ class MypeController extends Controller
     public function index()
     {
             
-        
-        if (Auth::check() && Auth::user()->tipo_usuario == '2') {
             $mypes = Mype::all();
-            return view('adminMype/listaMypes', ['mypes'=>$mypes]);
-            
-        }elseif (Auth::check() && Auth::user()->tipo_usuario == '1') {
             $mype = Mype::where('id',Auth::id())->first();
-            return view('adminMype/listaMypes', ['mype'=>$mype]);
-        } 
+            return view('adminMype/listaMypes', ['mype'=>$mype, 'mypes' => $mypes]);
     }
 
 

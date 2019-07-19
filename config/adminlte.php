@@ -129,11 +129,6 @@ return [
         ],
         'ESTADISTICAS',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text'        => 'Estadisticas historicas',
             'url'         => 'adminMype/historico',
             'icon'        => 'line-chart',
