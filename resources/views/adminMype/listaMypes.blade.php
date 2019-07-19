@@ -105,7 +105,7 @@
         
   <!-- Sitios turisticos -->
   <div class="row justify-content-center">
-
+        @if (Auth::check())
         @if (Auth::user()->tipo_usuario == '1' )
         <div class="card-deck col-lg-4">
                 <div class="card mb-4"> 
@@ -138,8 +138,10 @@
         
             </div>
         @endif
+        @endif
 
-
+        @if (Auth::check())
+@if (Auth::user()->tipo_usuario == '2' )
         
   @foreach ($mypes as $mype)
    
@@ -174,6 +176,8 @@
 
     @endforeach
   </div>
+  @endif
+  @endif
 
   <!-- Paginacion -->
     
