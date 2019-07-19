@@ -126,6 +126,9 @@
                           
                             <label for="horario_turistico" class="col-md-4 col-form-label text-md-right">Horario</label>
                             <div class="col-md-6">
+                              {{ $sitio->horario_turistico}}<button class="btn btn-outline-success btn-rounded waves-effect" onchange="getHorario(this)">Editar</button>
+                          </div>
+                            <div class="col-md-6" id="horarios" style="display:none;">
                               <div class="col-md-6 row">
                                 <select name="d1" id="d1" class="browser-default custom-select " >
                                     <option value="Lunes">Lunes</option>
@@ -417,6 +420,14 @@
         });
 
     });
+  </script>
+  <script>
+      function getHorario(){
+
+            document.getElementById("horarios").style.display = "block";
+
+    }
+
   </script>
   </body>
   </html>
