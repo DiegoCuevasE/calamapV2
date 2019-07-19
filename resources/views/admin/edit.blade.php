@@ -275,11 +275,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             @forelse($sitio->imagenSitioTuristicos as $imagen)
-                            <div class="col-md-4">
-                                <img src="{{ $imagen->thumbnail }}" class="img-responsive">
-                            </div>
-                        @empty
+                                @if ($imagen->tipo_imagen_turistico == "logo")
+                                <img src="{{ $imagen->enlace_imagen_turistico }}" class="img-responsive">
+                                @endif
+                                @empty
                             No image found
                         @endforelse
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
@@ -296,6 +297,15 @@
                         </div>
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
+                            @forelse($sitio->imagenSitioTuristicos as $imagen)
+                            @if ($imagen->tipo_imagen_turistico == "galeria")
+                            <div class="col-md-4">
+                                <img src="{{ $imagen->thumbnail }}" class="img-responsive">
+                            </div>
+                            @endif
+                        @empty
+                            No image found
+                        @endforelse
                             <div class="input-group col-md-6">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
