@@ -133,7 +133,7 @@
               <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
               {{ Form::open(array('url' => 'admin/' . $sitio->id, 'class' => 'pull-right')) }}
               {{ Form::hidden('_method', 'DELETE') }}
-              {{ Form::submit('Eliminar Sitio', array('class' => 'btn btn-warning')) }}
+              {{ Form::submit('Eliminar Sitio', array('class' => 'btn-sm btn btn-outline-danger waves-effect col-md-8')) }}
           {{ Form::close() }}
 
             <button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" ><a href="{{ url('/sitioTuristico/'.$sitio->id.'/edit') }}">Editar </a></button>
