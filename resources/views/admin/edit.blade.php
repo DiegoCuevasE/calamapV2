@@ -128,7 +128,7 @@
                             <div class="col-md-6 col-form-label text-md-right" >
                               {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getHorario()">
                           </div>
-                            <div class="col-md-6" id="horarios" style="display:none;">
+                            <div class="form-group row" id="horarios" style="display:none;">
                               <div class="col-md-6 row">
                                 <select name="d1" id="d1" class="browser-default custom-select " >
                                     <option value="Lunes">Lunes</option>
@@ -290,7 +290,7 @@
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
                             @forelse($sitio->imagenSitioTuristicos as $imagen)
                             @if ($imagen->tipo_imagen_turistico == "galeria")
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <img src="{{ $imagen->thumbnail }}" class="img-responsive">
                             </div>
                             @endif
@@ -311,7 +311,7 @@
                           </div>
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
-                        <div class="input-group col-md-8">
+                        <div class="input-group col-md-6">
                             <div class="custom-file">
                               <input type="file" class="custom-file-input " type="file" name="image[]" multiple="true" accept="image/*" aria-describedby="inputGroupFileAddon01">
                               <label class="custom-file-label" for="inputGroupFile01">Seleccionar Imagenes</label>
