@@ -276,6 +276,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
+                            <div class="col-md-6">
                             @forelse($sitio->imagenSitioTuristicos as $imagen)
                                 @if ($imagen->tipo_imagen_turistico == "logo")
                                 <img src="{{ $imagen->enlace_imagen_turistico }}" class="img-responsive">
@@ -283,17 +284,17 @@
                                 @empty
                             No image found
                         @endforelse
+                            </div>
+                            <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             <div class="input-group col-md-6">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
-                              </div>
                               <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="enlace_imagen_turistico" id="enlace_imagen_turistico" value="" accept="image/* aria-describedby="inputGroupFileAddon01">
                                 <input type="hidden" name="tipo_imagen_turistico" id="tipo_imagen_turistico" value='logo'>
                                 <label class="custom-file-label" for="inputGroupFile01">Seleccionar imagen</label>
                               </div>
                             </div>
+                          </div>
                         </div>
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
