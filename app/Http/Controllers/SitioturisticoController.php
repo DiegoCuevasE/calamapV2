@@ -249,7 +249,7 @@ class SitioturisticoController extends Controller
         //
 
 
-            $sitioturistico=Sitioturistico::with('imagensitioturistico')->findOrFail($id);
+            $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
             
             if($request->hasFile('image')){
             foreach($sitioturistico->imagensitioturistico as $image) 
@@ -351,7 +351,7 @@ class SitioturisticoController extends Controller
             }
         
 
-        $sitioturistico=Sitioturistico::with('Imagensitioturistico')->findOrFail($id);
+        $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
 
         return view('admin.editarSitioTuristico',compact('sitioturistico'));
         //return $request;
