@@ -125,8 +125,8 @@
                         <div class="form-group row">
                           
                             <label for="horario_turistico" class="col-md-4 col-form-label text-md-right">Horario</label>
-                            <div class="col-md-6">
-                              {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" onclick="getHorario()">
+                            <div class="col-md-4">
+                              {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getHorario()">
                           </div>
                             <div class="col-md-6" id="horarios" style="display:none;">
                               <div class="col-md-6 row">
