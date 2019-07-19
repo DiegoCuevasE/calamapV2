@@ -121,6 +121,12 @@ return [
             'icon' => 'bank',
             'can'  => 'manage-blog',
         ],
+        [
+            'text'        => 'Editar o Eliminar Mype',
+            'url'         => 'adminMype/listaMypes',
+            'icon' => 'bank',
+            'can'  => 'manage-blog',
+        ],
         'ESTADISTICAS',
         [
             'text' => 'Blog',

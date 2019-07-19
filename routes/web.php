@@ -17,6 +17,7 @@ Route::post('visita/post', 'VisitaController@store');
 
 Route::get('adminMype/grafico', 'GraficoController@index');
 Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
+Route::get('adminMype/listaMypes', 'MypeController@index');
 Route::get('adminMype/vistaMypes', 'MypeController@index');
 Route::get('adminMype/registroMype', 'MypeController@llenarForm');
 

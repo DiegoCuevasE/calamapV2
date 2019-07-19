@@ -272,9 +272,6 @@
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             <div class="input-group col-md-6">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
-                              </div>
                               <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="enlace_imagen_turistico" id="enlace_imagen_turistico" value="" accept="image/* aria-describedby="inputGroupFileAddon01">
                                 <input type="hidden" name="tipo_imagen_turistico" id="tipo_imagen_turistico" value='logo'>
@@ -285,9 +282,6 @@
                         <div class="form-group row">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Galeria</label>
                             <div class="input-group col-md-6">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
-                                </div>
                                 <div class="custom-file">
                                   <input type="file" class="custom-file-input " type="file" name="image[]" multiple="true" accept="image/*" aria-describedby="inputGroupFileAddon01">
                                   <label class="custom-file-label" for="inputGroupFile01">Seleccionar Imagenes</label>

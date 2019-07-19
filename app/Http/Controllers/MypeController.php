@@ -36,13 +36,14 @@ class MypeController extends Controller
     public function index()
     {
 
-        $mype = Mype::find(1);
+        if (Auth::user()->tipo_usuario == '1') {
+            $mype = Mype::where('id',Auth::id())->first();
+            return view('adminMype/listaMypes', ['mype'=>$mype]);
+        }elseif (Auth::user()->tipo_usuario == '2') {
+            $mypes = Mype::all();
+            return view('adminMype/listaMypes', ['mypes'=>$mypes]);
+        }
         
-        //$mype = Mype::with('imagenmypes')->all();
-        //$imagenes = $mype2->imagenmypes()->where('mype_id', '=', '1')->get();
-
-        
-        return view('adminMype/vistaMypes',['datos' => $mype]);
     }
 
 
@@ -264,9 +265,10 @@ class MypeController extends Controller
      */
     public function edit($id)
     {
-        return dd($id);
-        $mype = Mype::findOrFail($id);
-        return view('adminMype.editarMype', compact('mype'));
+        
+        $mype= Mype::where('id',$id)->first();
+
+        return view('adminMype/editarMype',compact('mype'));
     }
 
     /**
