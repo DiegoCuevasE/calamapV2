@@ -104,7 +104,7 @@
             <div class="card">
                 <div class="card-header">Registro de Sitio Turistico</div>
                   <div class="card-body">
-                    <form action="{{ route('admin.update',$sitio->id) }}" method="POST">
+                    <form action="{{ route('admin.update',$sitio->nombre_turistico) }}" method="POST">
                       @csrf
                       @method('PUT')
                       {{ csrf_field() }}                        
