@@ -14,6 +14,7 @@ use File;
 use Image;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use Redirect;
 
 class SitioturisticoController extends Controller
 {
