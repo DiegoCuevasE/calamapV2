@@ -128,7 +128,8 @@
                             <div class="col-md-6 col-form-label text-md-right" >
                               {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getHorario()">
                           </div>
-                              <div class="col-md-6 row" id="horarios" style="display:none;">
+                            <div class="col-md-6" id="horarios" style="display:none;">
+                              <div class="col-md-6 row">
                                 <select name="d1" id="d1" class="browser-default custom-select " >
                                     <option value="Lunes">Lunes</option>
                                     <option value="Martes">Martes</option>
@@ -254,6 +255,7 @@
                                 </select>
                                 <label for=" Hrs ">{{' Hrs '}}</label>
                               </div>
+                          </div>
                         </div>
   
                         <div class="form-group row">
@@ -273,6 +275,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            @forelse($sitio->imagenSitioTuristicos as $imagen)
+                            <div class="col-md-4">
+                                <img src="{{ $imagen->thumbnail }}" class="img-responsive">
+                            </div>
+                        @empty
+                            No image found
+                        @endforelse
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             <div class="input-group col-md-6">
                               <div class="input-group-prepend">
