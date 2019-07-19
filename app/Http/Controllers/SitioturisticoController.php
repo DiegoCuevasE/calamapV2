@@ -13,6 +13,7 @@ use Illuminate\View\View;
 use File;
 use Image;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class SitioturisticoController extends Controller
 {
