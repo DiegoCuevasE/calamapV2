@@ -140,7 +140,6 @@
         @endif
 
 
-@if (Auth::user()->tipo_usuario == '2' )
         
   @foreach ($mypes as $mype)
    
@@ -175,7 +174,6 @@
 
     @endforeach
   </div>
-  @endif
 
   <!-- Paginacion -->
     
