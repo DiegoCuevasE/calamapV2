@@ -128,9 +128,7 @@
                             <div class="col-md-6 col-form-label text-md-right" >
                               {{ $sitio->horario_turistico}}<img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getHorario()">
                           </div>
-                          <div class="form-group row" id="horarios" style="display:none;">
-                            <div class="col-md-6" >
-                              <div class="col-md-6 row">
+                              <div class="col-md-6 row" id="horarios" style="display:none;">
                                 <select name="d1" id="d1" class="browser-default custom-select " >
                                     <option value="Lunes">Lunes</option>
                                     <option value="Martes">Martes</option>
@@ -256,8 +254,6 @@
                                 </select>
                                 <label for=" Hrs ">{{' Hrs '}}</label>
                               </div>
-                          </div>
-                          </div>
                         </div>
   
                         <div class="form-group row">
