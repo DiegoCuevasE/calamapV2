@@ -208,10 +208,9 @@ class SitioturisticoController extends Controller
      * @param  \App\sitioturistico  $sitioturistico
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sitioturistico $sitioturistico)
     {
         //
-        $sitioturistico= Sitioturistico::with('Imagensitioturistico')->findOrFail($id);
 
         return view('admin.editarSitioTuristico',compact('sitioturistico'));
     }

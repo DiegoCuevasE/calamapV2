@@ -134,7 +134,7 @@
               {{ Form::submit('Eliminar Sitio', array('class' => 'btn-sm btn btn-outline-danger waves-effect col-md-8'), ['onclick' => 'return confirm("¿Borrar?")']) }}
           {{ Form::close() }}
 
-            <button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" ><a href="{{ url('/sitioTuristico/'.$sitio->id.'/edit') }}">Editar </a></button>
+            <button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" ><a href="{{ route('admin.edit',$sitio->id) }}">Editar </a></button>
           </div>
 
         </div>
