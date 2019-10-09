@@ -142,7 +142,6 @@
 
         @if (Auth::check())
 @if (Auth::user()->tipo_usuario == '0' )
-        SLKDJALKJFDK
   @foreach ($mypes as $mype)
    
   <div class="card-deck col-lg-4">

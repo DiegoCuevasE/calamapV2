@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
-    <link rel="stylesheet" href="{{ secure_asset('template2/fonts/icomoon/style.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/fonts/flaticon/font2/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/fonts/flaticon/font2/flaticon.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/aos.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('template2/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('template2/css/style.css') }}">
 
   </head>
   <body>
@@ -37,7 +37,7 @@
     <div class="container-fluid justify-content-center">
       <div class="row align-items-center">
         <div class="col-6 col-xl-2">
-            <a href="/"><img src="{{ secure_asset('template2/images/logockalamaweb.png') }}" alt="Image" class="img-fluid"></a>
+            <a href="/"><img src="{{ asset('template2/images/logockalamaweb.png') }}" alt="Image" class="img-fluid"></a>
         </div>
         <div class="col-10 col-md-8 d-none d-xl-block justify-content-center">
           <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
@@ -171,18 +171,18 @@
       </footer>
     </div>
   
-    <script src="{{ secure_asset('template2/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/jquery-ui.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/popper.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/bootstrap.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/jquery.countdown.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/aos.js') }}"></script>
-    <script src="{{ secure_asset('template2/js/main.js') }}"></script>
+    <script src="{{ asset('template2/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('template2/js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('template2/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('template2/js/popper.min.js') }}"></script>
+    <script src="{{ asset('template2/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('template2/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('template2/js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('template2/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('template2/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('template2/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('template2/js/aos.js') }}"></script>
+    <script src="{{ asset('template2/js/main.js') }}"></script>
       
     
     <!-- JQuery -->

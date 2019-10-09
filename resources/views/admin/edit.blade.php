@@ -304,7 +304,7 @@
                         @endforelse
                         <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getGaleria()">
                         </div>
-                        <div id="logos">
+                        <div id="logos" style="display:none;">
                         <div class="form-group row" style="display:none;">
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             <div class="input-group col-md-6">
