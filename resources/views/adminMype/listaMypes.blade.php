@@ -164,7 +164,7 @@
           </div>
           <div class="row " style="text-align: center">
             <div class="card-body " >
-                <a href="{{ url('/sitioTuristico/'.$mype->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
+                <a href="{{ url(''.$mype->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
   
             <a href="{{ route('adminMype/editarMype',$mype->id) }}"><button class=" btn-outline-success btn-sm  btn waves-effect col-md-8" >Editar </button></a>
             </div>
