@@ -1,24 +1,18 @@
-
-  
 @extends('plantilla')
 
-
-
 @section('contenido')
- 
-   
 
-<div class="slide-one-item home-slider owl-carousel">    
-  <div class="site-blocks-cover overlay" style="background-image: url({{ asset('template2/images/Fondo1.jpg') }});" data-aos="fade" data-stellar-background-ratio="0.5">
+<div class="slide-one-item home-slider owl-carousel ">    
+  <div class="site-blocks-cover overlay " style="background-image:url({{ asset('template2/images/Fondo1.jpg') }});" data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
-      <div class="row align-items-center justify-content-center text-center">
+      <div class="row align-items-center justify-content-center text-center ">
         <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
           <h1 class="text-white font-weight-light">Bienvenido a CKALAMA</h1>
         </div>
       </div>
     </div>
   </div>  
-  <div class="site-blocks-cover overlay" style="background-image: url({{ asset('template2/images/Fondo2.jpg') }});" data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="site-blocks-cover overlay " style="background-image: url({{ asset('template2/images/Fondo2.jpg') }}); " data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
@@ -28,7 +22,6 @@
     </div>
   </div>  
 </div>
-
 
     <div class="site-section">      
       <div class="container subirImg">
@@ -68,10 +61,17 @@
         </div>
       </div>  
     </div>
+
     <div class="site-section">
-      <div class="container">
-        <div class="row align-items-stretch">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+      <div class="container-fluid">
+          <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center">
+              <h2 class="font-weight-light text-black">Servicios de la ciudad</h2>
+              <p class="color-black-opacity-5">Conoce los diferentes servicios de Calama que tenemos para ti</p>
+            </div>
+          </div>
+        <div class="row align-items-stretch justify-content-center">
+          <div class="col-md-5 col-lg-2 mb-4 mb-lg-0">
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-hotel"></span></div>
               <div>
@@ -81,7 +81,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="col-md-6 col-lg-2 mb-4 mb-lg-0">
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-fork"></span></div>
               <div>
@@ -91,7 +91,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="col-md-6 col-lg-2 mb-4 mb-lg-0">
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-vase"></span></div>
               <div>
@@ -101,12 +101,22 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="col-md-6 col-lg-2 mb-4 mb-lg-0">
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-bread"></span></div>
               <div>
                 <h3>Bazares</h3>
                 <p>Disfruta de los platos tipicos del desierto de atacama</p>
+                <p><a href="#">Ver más</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 mb-4 mb-lg-0">
+            <div class="unit-4 d-flex">
+              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-fork"></span></div>
+              <div>
+                <h3>Comercio</h3>
+                <p>Conoce los distintas productos que te ofrece la ciudad</p>
                 <p><a href="#">Ver más</a></p>
               </div>
             </div>
@@ -184,8 +194,6 @@
       </div>
     </div>
 
-
-
     <div class="site-section">
       
       <div class="container">
@@ -198,7 +206,7 @@
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
             <a href="#" class="unit-1 text-center">
-              <img src="{{ asset('template2/images/cascada.png') }}" alt="Image" class="img-fluid">
+              <img  src="{{ asset('template2/images/cascada.png') }}" alt="Image" class="img-fluid">
               <div class="unit-1-text">
                 <strong class="text-primary mb-2 d-block">Ver más</strong>
                 <h3 class="unit-1-heading">Sector de la Cascada</h3>

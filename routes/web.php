@@ -58,6 +58,13 @@ Route::get('registroDueno', function () {
     return view('registroDueno');
 });
 
+Route::get('vistaEvento', function () {
+    return view('vistaEvento');
+});
+
+Route::get('vistaRuta', function () {
+    return view('vistaRuta');
+});
 
 
 Route::get('mype/hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
