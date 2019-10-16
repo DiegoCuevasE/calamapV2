@@ -66,6 +66,20 @@ Route::get('vistaRuta', function () {
     return view('vistaRuta');
 });
 
+Route::get('admin/agregarEvento', function () {
+    return view('admin/agregarEvento');
+});
+
+Route::get('test', function () {
+    return view('admin/dashboard');
+});
+Route::get('homeadmin', function () {
+    return view('admin/home');
+});
+Route::get('gestionEvento', function () {
+    return view('admin/gestionEvento');
+});
+
 
 Route::get('mype/hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
 

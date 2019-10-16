@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>CKALAMA</b>',
+    'logo' => '<b>Calama Turística</b>',
 
-    'logo_mini' => '<b>C</b>KA',
+    'logo_mini' => '<b>C</b>T',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MANEJO DE PÁGINA',
+        'Gestión de la página',
         [
             'text' => 'Ingresar Sitio Turistico',
             'url'  => 'admin/create',
