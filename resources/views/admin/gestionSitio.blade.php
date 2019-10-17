@@ -8,16 +8,16 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="card">
-            <div class="card-header card-header-text card-header-warning">
+            <div class="card-header card-header-text card-header-success">
               <div class="card-text">
                 <div class="d-flex">
-                  <h4 class="card-title font-weight-bold"> <i class="material-icons mr-2">event</i>Agregar evento</h4>
+                  <h4 class="card-title font-weight-bold"><i class="fas fa-monument"></i>Agregar Sitio Turístico</h4>
                 </div>
               </div>
             </div>
           <div class="card-body">
             <div class="d-flex align-items-center ">
-              <p class="card-category">Si deseas añadir un nuevo evento ingresa aqui</p>
+              <p class="card-category">Si deseas añadir un nuevo Sitio Turístico ingresa aqui</p>
             <a href="{{'agregarEvento'}}">
               <button class="btn btn-warning btn-fab  btn-round">
               <i class="fas fa-plus"></i>
@@ -29,12 +29,12 @@
       </div>
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-warning">
+          <div class="card-header card-header-success">
             <div class="d-flex">
-            <i class="material-icons mr-2">event</i>
-            <h4 class="card-title font-weight-bold">Evento de la ciudad</h4>
+              <i class="fas h4 fa-monument mr-2"></i>
+              <h4 class="card-title font-weight-bold">Sitios Turísticos de la ciudad</h4>
             </div>
-            <p class="card-category">Esta lista es una vista previa de los eventos si desea ver uno en especifico seleccionalo</p>
+            <p class="card-category">Esta lista es una vista previa de los Sitio Turísticos si deseas ver uno en especifico seleccionalo</p>
           </div>
           <div class="card-body">
               <div class="table-responsive">
@@ -50,7 +50,7 @@
                         Dirección
                       </th>
                       <th>
-                        Fecha
+                        Horario
                       </th>
                       <th>
                         Entrada

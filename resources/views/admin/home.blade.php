@@ -17,7 +17,7 @@
                   </div>
                   <div class="card-footer justify-content-center">
                     <div class="stats ju">
-                      <button class="btn btn-rose pull-right btn-sm">Ver más</button>
+                      <a class="btn btn-rose pull-right btn-sm" href="{{ route('gestionevento') }}">Ver más</a>
                     </div>
                   </div>
                 </div>
@@ -42,14 +42,14 @@
                 <div class="card card-stats">
                   <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
-                      <i class="material-icons">insert_photo</i>
+                      <i class="fas fa-monument"></i>
                     </div>
                     <p class="card-category">Gestionar</p>
                     <h3 class="card-title">Sitios T.</h3>
                   </div>
                   <div class="card-footer justify-content-center">
                     <div class="stats">
-                      <button class="btn btn-success pull-right btn-sm">Ver más</button>
+                        <a class="btn btn-rose pull-right btn-sm" href="{{ route('gestionSitio') }}">Ver más</a>
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="card card-stats">
                   <div class="card-header card-header-primary card-header-icon">
                     <div class="card-icon">
-                      <i class="material-icons">supervised_user_circle</i>
+                      <i class="fas fa-users"></i>
                     </div>
                     <p class="card-category">Gestionar</p>
                     <h3 class="card-title">Membresia</h3>

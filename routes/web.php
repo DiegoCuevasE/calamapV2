@@ -65,20 +65,32 @@ Route::get('vistaEvento', function () {
 Route::get('vistaRuta', function () {
     return view('vistaRuta');
 });
-
-Route::get('admin/agregarEvento', function () {
-    return view('admin/agregarEvento');
-});
-
 Route::get('test', function () {
     return view('admin/dashboard');
 });
-Route::get('homeadmin', function () {
+
+Route::get('admin/home', function () {
     return view('admin/home');
-});
-Route::get('gestionEvento', function () {
+})->name('inicioAdmin');
+
+// Eventos!!
+
+Route::get('admin/agregarEvento', function () {
+    return view('admin/agregarEvento');
+})->name('agregarEvento');
+
+Route::get('admin/gestionEvento', function () {
     return view('admin/gestionEvento');
-});
+})->name('gestionevento');
+
+//Sitios turísticos!!
+Route::get('admin/agregarSitio', function () {
+    return view('admin/agregarSitio');
+})->name('agregarSitio');
+
+Route::get('admin/gestionSitio', function () {
+    return view('admin/gestionSitio');
+})->name('gestionSitio');
 
 
 Route::get('mype/hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
@@ -100,8 +112,6 @@ Route::get('vistaSitio', function () {
 });
 
 Route::resource('moduloMype', 'MypeController');
-
-
 
 Auth::routes();
 

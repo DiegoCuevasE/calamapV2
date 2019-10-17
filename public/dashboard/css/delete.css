@@ -11,8 +11,11 @@
 
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
- */.card {
+ */
+
+ .card {
     font-size:.875rem
+    
 }
 @media print {
  *,
@@ -13020,13 +13023,13 @@ thead.thead-inverse th {
 .card [class*=card-header-]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
  border-radius:3px;
  margin-top:-20px;
- padding:15px
+ padding:10px
 }
 .card [class*=card-header-] .card-icon,
 .card [class*=card-header-] .card-text {
  border-radius:3px;
  background-color:#999;
- padding:15px;
+ padding:10px;
  margin-top:-20px;
  margin-right:15px;
  float:left
