@@ -40,22 +40,22 @@
               <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>
+                      <th class="font-weight-bold">
                         ID
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Nombre
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Dirección
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Fecha
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Entrada
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Modificar
                       </th>
                     </thead>
@@ -65,24 +65,27 @@
                           1
                         </td>
                         <td>
-                          Dakota Rice
+                          Limpieza de Canales
                         </td>
                         <td>
-                          Niger
+                          Plaza Calama
                         </td>
                         
                         <td>
-                          Oud-Turnhout
+                          15 de Enero
                         </td>
                         <td>
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -91,23 +94,27 @@
                           2
                         </td>
                         <td>
-                          Minerva Hooper
+                          Limpieza de Canales
                         </td>
                         <td>
-                          Curaçao
+                          Plaza Calama
                         </td>
+                        
                         <td>
-                          Sinaai-Waas
+                          15 de Enero
                         </td>
                         <td>
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -116,23 +123,27 @@
                           3
                         </td>
                         <td>
-                          Sage Rodriguez
+                          Limpieza de Canales
                         </td>
                         <td>
-                          Netherlands
+                          Plaza Calama
                         </td>
+                        
                         <td>
-                          Baileux
+                          15 de Enero
                         </td>
                         <td>
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -141,23 +152,27 @@
                           4
                         </td>
                         <td>
-                          Philip Chaney
+                          Limpieza de Canales
                         </td>
                         <td>
-                          Korea, South
+                          Plaza Calama
+                        </td>
+                        
+                        <td>
+                          15 de Enero
                         </td>
                         <td>
-                          Overland Park
-                        </td>
-                        <td>
-                          $9.990
+                          Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -166,23 +181,27 @@
                           5
                         </td>
                         <td>
-                          Doris Greene
+                          Limpieza de Canales
                         </td>
                         <td>
-                          Malawi
+                          Plaza Calama
                         </td>
+                        
                         <td>
-                          Feldkirchen in 
+                          15 de Enero
                         </td>
                         <td>
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -191,23 +210,27 @@
                           6
                         </td>
                         <td>
-                          Mason Porter
+                          Limpieza de Canales
                         </td>
                         <td>
-                          Chile
+                          Plaza Calama
                         </td>
+                        
                         <td>
-                          Gloucester
+                          15 de Enero
                         </td>
                         <td>
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>

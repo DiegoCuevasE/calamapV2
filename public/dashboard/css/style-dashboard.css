@@ -13,3 +13,7 @@
     height:36px;
    }
 
+.hr {
+    height: 3px;
+    background-color: red;
+  }

@@ -33,7 +33,7 @@
                   </div>
                   <div class="card-footer justify-content-center">
                     <div class="stats">
-                      <button class="btn btn-info pull-right btn-sm">Ver más</button>
+                      <a class="btn btn-rose pull-right btn-sm" href="{{ route('gestionMype') }}">Ver más</a>
                     </div>
                   </div>
                 </div>
@@ -61,11 +61,11 @@
                       <i class="fas fa-users"></i>
                     </div>
                     <p class="card-category">Gestionar</p>
-                    <h3 class="card-title">Membresia</h3>
+                    <h3 class="card-title">Socios</h3>
                   </div>
                   <div class="card-footer justify-content-center">
                     <div class="stats">
-                      <button class="btn btn-primary pull-right btn-sm">Ver más</button>
+                        <a class="btn btn-rose pull-right btn-sm" href="{{ route('gestionSocio') }}">Ver más</a>
                     </div>
                   </div>
                 </div> 

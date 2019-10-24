@@ -92,6 +92,30 @@ Route::get('admin/gestionSitio', function () {
     return view('admin/gestionSitio');
 })->name('gestionSitio');
 
+//MyPES!!
+
+Route::get('admin/gestionMype', function () {
+    return view('admin/gestionMype');
+})->name('gestionMype');
+
+Route::get('admin/gestionMembresia', function () {
+    return view('admin/gestionMembresia');
+})->name('gestionMembresia');
+
+Route::get('admin/agregarMype', function () {
+    return view('admin/agregarMype');
+})->name('agregarMype');
+
+//Socios!!
+
+Route::get('admin/gestionSocio', function () {
+    return view('admin/gestionSocio');
+})->name('gestionSocio');
+
+Route::get('admin/agregarSocio', function () {
+    return view('admin/agregarSocio');
+})->name('agregarSocio');
+
 
 Route::get('mype/hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
 

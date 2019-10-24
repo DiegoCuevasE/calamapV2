@@ -8,17 +8,38 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="card">
-            <div class="card-header card-header-text card-header-success">
+            <div class="card-header card-header-text card-header-warning">
               <div class="card-text">
                 <div class="d-flex">
-                  <h4 class="card-title font-weight-bold"><i class="fas fa-monument"></i>Agregar Sitio Turístico</h4>
+                  <h4 class="card-title font-weight-bold"> <i class="material-icons mr-1">store</i>Agregar Socio</h4>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex align-items-center ">
+                <p class="card-category">Si deseas agregar un nuevo Socio ingresa acá</p>
+                <a href="{{'agregarMype'}}">
+                <button class="btn btn-warning btn-fab  btn-round">
+                <i class="fas fa-plus"></i>
+                </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="card-header card-header-text card-header-warning">
+              <div class="card-text">
+                <div class="d-flex">
+                  <h4 class="card-title font-weight-bold"> <i class="material-icons mr-2">store</i></i>Gestionar Membresias MyPES</h4>
                 </div>
               </div>
             </div>
           <div class="card-body">
             <div class="d-flex align-items-center ">
-              <p class="card-category">Si deseas añadir un nuevo Sitio Turístico ingresa aqui</p>
-            <a href="{{'agregarEvento'}}">
+              <p class="card-category">¿Quieres agregar o extender el plazo de membresia de una MyPE? Ingresa acá</p>
+            <a href="{{'gestionMembresia'}}">
               <button class="btn btn-warning btn-fab  btn-round">
               <i class="fas fa-plus"></i>
               </button>
@@ -29,67 +50,81 @@
       </div>
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-success">
+          <div class="card-header card-header-warning row">
+            <div class="col-md-8">
             <div class="d-flex">
-              <i class="fas h4 fa-monument mr-2"></i>
-              <h4 class="card-title font-weight-bold">Sitios Turísticos de la ciudad</h4>
+                <i class="material-icons mr-1">store</i>
+                <h4 class="card-title font-weight-bold">MyPES de la ciudad</h4>
             </div>
-            <p class="card-category">Esta lista es una vista previa de los Sitio Turísticos si deseas ver uno en especifico seleccionalo</p>
+            <p class="card-category">Esta lista es una vista previa de las MyPES registradas en la plataforma</p>
+            </div>
+            <div class="col-md-4 justify-content-end">
+              <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control " placeholder="Buscar...">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+              </form>
+            </div>
           </div>
           <div class="card-body">
               <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>
-                        ID
+                      <th class="font-weight-bold">
+                        Dueño MyPE
                       </th>
-                      <th>
-                        Nombre
+                      <th class="font-weight-bold">
+                        Nombre MyPE
                       </th>
-                      <th>
-                        Dirección
+                      <th class="font-weight-bold">
+                        Categoria
                       </th>
-                      <th>
-                        Horario
+                      <th class="font-weight-bold">
+                        Estado
                       </th>
-                      <th>
-                        Entrada
-                      </th>
-                      <th>
-                        Modificar
+                      <th class="font-weight-bold">
+                        Acciones
                       </th>
                     </thead>
                     <tbody>
                       <tr>
                         <td>
-                          1
-                        </td>
-                        <td>
                           Dakota Rice
                         </td>
                         <td>
-                          Niger
+                          Los tres enanitos
                         </td>
                         
                         <td>
-                          Oud-Turnhout
+                          Restaurant
                         </td>
                         <td>
-                          Liberada
+                            <div class="togglebutton">
+                                <label>
+                                  <input type="checkbox" checked="">
+                                  
+                                  <span class="toggle"></span>
+                                 
+                                </label>
+                              </div>
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          2
-                        </td>
                         <td>
                           Minerva Hooper
                         </td>
@@ -103,18 +138,18 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          3
-                        </td>
                         <td>
                           Sage Rodriguez
                         </td>
@@ -128,18 +163,18 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          4
-                        </td>
                         <td>
                           Philip Chaney
                         </td>
@@ -153,18 +188,18 @@
                           $9.990
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          5
-                        </td>
                         <td>
                           Doris Greene
                         </td>
@@ -178,18 +213,18 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          6
-                        </td>
                         <td>
                           Mason Porter
                         </td>
@@ -203,11 +238,14 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>

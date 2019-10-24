@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="card">
-            <div class="card-header card-header-text card-header-success">
+            <div class="card-header card-header-text card-header-warning">
               <div class="card-text">
                 <div class="d-flex">
                   <h4 class="card-title font-weight-bold"><i class="fas fa-monument"></i>Agregar Sitio Turístico</h4>
@@ -18,10 +18,10 @@
           <div class="card-body">
             <div class="d-flex align-items-center ">
               <p class="card-category">Si deseas añadir un nuevo Sitio Turístico ingresa aqui</p>
-            <a href="{{'agregarEvento'}}">
-              <button class="btn btn-warning btn-fab  btn-round">
-              <i class="fas fa-plus"></i>
-              </button>
+              <a href="{{'agregarSitio'}}">
+                <button class="btn btn-warning btn-fab  btn-round">
+                <i class="fas fa-plus"></i>
+                </button>
               </a>
             </div>
           </div>
@@ -29,33 +29,46 @@
       </div>
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-success">
-            <div class="d-flex">
-              <i class="fas h4 fa-monument mr-2"></i>
-              <h4 class="card-title font-weight-bold">Sitios Turísticos de la ciudad</h4>
-            </div>
-            <p class="card-category">Esta lista es una vista previa de los Sitio Turísticos si deseas ver uno en especifico seleccionalo</p>
-          </div>
+            <div class="card-header card-header-warning row">
+                <div class="col-md-8">
+                <div class="d-flex">
+                    <i class="fas h4 fa-monument mr-2"></i>
+                    <h4 class="card-title font-weight-bold">Sitios Turísticos de la ciudad</h4>
+                </div>
+                <p class="card-category">Esta lista es una vista previa de los Sitios Turísticos registrados en la plataforma</p>
+                </div>
+                <div class="col-md-4 justify-content-end">
+                  <form class="navbar-form">
+                  <div class="input-group no-border">
+                    <input type="text" value="" class="form-control " placeholder="Buscar...">
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                      <i class="material-icons">search</i>
+                      <div class="ripple-container"></div>
+                    </button>
+                  </div>
+                  </form>
+                </div>
+              </div>
           <div class="card-body">
               <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>
+                      <th class="font-weight-bold">
                         ID
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Nombre
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Dirección
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Horario
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Entrada
                       </th>
-                      <th>
+                      <th class="font-weight-bold">
                         Modificar
                       </th>
                     </thead>
@@ -78,11 +91,14 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -103,11 +119,14 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -128,11 +147,14 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -153,11 +175,14 @@
                           $9.990
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -178,11 +203,14 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>
@@ -203,11 +231,14 @@
                           Liberada
                         </td>
                         <td class="text-primary">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">remove_red_eye</i>
+                            </button>
+                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">edit</i>
+                            </button>
                             <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">delete</i>
-                            </button>
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
                             </button>
                         </td>
                       </tr>

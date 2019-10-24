@@ -81,15 +81,15 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+          <a class="nav-link" href="{{ route('gestionMype')}}">
               <i class="material-icons">store</i>
               <p>MyPES</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="{{ route('gestionSocio')}}">
               <i class="fas fa-users"></i>
-              <p>Membresias</p>
+              <p>Socios</p>
             </a>
           </li>
         </ul>
@@ -262,8 +262,54 @@
       $().ready(function() {
         $sidebar = $('.sidebar');
 
-        $('.datetimepicker').datetimepicker({
-    icons: {
+    $('.form-file-simple .inputFileVisible').click(function() {
+    $(this).siblings('.inputFileHidden').trigger('click');
+    });
+
+    $('.form-file-simple .inputFileHidden').change(function() {
+      var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+      $(this).siblings('.inputFileVisible').val(filename);
+    });
+
+    $('.form-file-multiple .inputFileVisible, .form-file-multiple .input-group-btn').click(function() {
+      $(this).parent().parent().find('.inputFileHidden').trigger('click');
+      $(this).parent().parent().addClass('is-focused');
+    });
+
+    $('.form-file-multiple .inputFileHidden').change(function() {
+      var names = '';
+      for (var i = 0; i < $(this).get(0).files.length; ++i) {
+        if (i < $(this).get(0).files.length - 1) {
+          names += $(this).get(0).files.item(i).name + ',';
+        } else {
+          names += $(this).get(0).files.item(i).name;
+        }
+      }
+      $(this).siblings('.input-group').find('.inputFileVisible').val(names);
+    });
+
+    $('.form-file-multiple .btn').on('focus', function() {
+      $(this).parent().siblings().trigger('focus');
+    });
+
+    $('.form-file-multiple .btn').on('focusout', function() {
+      $(this).parent().siblings().trigger('focusout');
+    });
+
+      $('.datetimepicker').datetimepicker({
+        icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'}});
+        $('.datepicker').datetimepicker({
+      format: 'DD/MM/YYYY',
+      icons: {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
         up: "fa fa-chevron-up",
@@ -273,8 +319,25 @@
         today: 'fa fa-screenshot',
         clear: 'fa fa-trash',
         close: 'fa fa-remove'
-    }
-});
+      }
+    });
+
+    $('.timepicker').datetimepicker({
+      //          format: 'H:mm',    // use this format if you want the 24hours timepicker
+      format: 'h:mm A', //use this format if you want the 12hours timpiecker with AM/PM toggle
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+
+      }
+    });
         $sidebar_img_container = $sidebar.find('.sidebar-background');
 
         $full_page = $('.full-page');
