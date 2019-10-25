@@ -10,12 +10,14 @@
           <div class="card-header card-header-warning">
             <div class="d-flex">
             <i class="material-icons mr-2">event</i>
-            <h4 class="card-title font-weight-bold">Agregar Sitio Turístico</h4>
+            <h4 class="card-title font-weight-bold">Editar Sitio Turístico</h4>
             </div>
-            <p class="card-category">Ingrese todos los datos solicitados para añadir el Sitio Turístico a la plataforma</p>
+            <p class="card-category">Modifique los datos que desea cambiar</p>
           </div>
           <div class="card-body">
-            <form action="{{ url('/admin')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.update',$sitio->id) }}" method="POST">
+                @csrf
+                @method('PUT')
                 {{ csrf_field() }}  
                 <input type="hidden" name="id" id="id" value="">
                 <input type="hidden" name="user_id" id="user_id" value="1"> 
@@ -23,19 +25,19 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Nombre del Sitio Turístico</label>
-                    <input name="nombre_turistico" id="nombre_turistico" type="text" class="form-control" >
+                    <input name="nombre_turistico" id="nombre_turistico" value="{{ old('nombre_turistico', $sitio->nombre_turistico) }}" type="text" class="form-control" >
                   </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">Categoria del Sitio</label>
-                      <input name="tipo_turistico" id="tipo_turistico" type="text" class="form-control" >
+                      <input name="tipo_turistico" id="tipo_turistico" value="{{ old('tipo_turistico', $sitio->tipo_turistico) }}" type="text" class="form-control" >
                     </div>
                   </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Dirección</label>
-                    <input name="direccion_turistico" id="direccion_turistico" type="text" class="form-control">
+                    <input name="direccion_turistico" id="direccion_turistico" value="{{ old('direccion_turistico', $sitio->direccion_turistico) }}" type="text" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -47,10 +49,47 @@
                 <div class="col-md-6">      
                   <div class="form-group">
                     <label class="label-control">Horario</label>
-                    <input name="horario_turistico" id="horario_turistico" type="text" class="form-control "/>
+                    <input name="horario_turistico" id="horario_turistico" value=" {{$sitio->horario_turistico}}" type="text" class="form-control "/>
                   </div>
-                </div>                                   
-              </div>     
+                </div>  
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Descripción</label>
+                    <div class="form-group">
+                      <textarea name="descripcion_turistico" id="descripcion_turistico" class="form-control" rows="5">{{ $sitio->descripcion_turistico}}</textarea>
+                    </div>
+                  </div>
+                </div>                             
+              </div>
+              
+              <div class="row">
+                @foreach ($sitio->imagenSitioTuristicos as $imagen)
+                @if ($imagen->tipo_imagen_turistico == 'portada')        
+                <div class="col-3">
+                    <div class="card">
+                        <div class="view overlay">
+                            <img class="card-img-top" src="../../{{$imagen->thumbnail}}" alt="Card image cap">
+                            <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if ($imagen->tipo_imagen_turistico == 'galeria')        
+                <div class="col-3">
+                    <div class="card">
+                        <div class="view overlay">
+                            <img class="card-img-top" src="../../{{$imagen->thumbnail}}" alt="Card image cap">
+                            <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
+              </div>  
                 
               <div class="row">
                 <div class="form-group form-file-upload form-file-multiple col-md-4">
@@ -65,8 +104,7 @@
                       </span>
                     </div>
                   </div>
-                  
-                  
+                
                   <div class="form-group form-file-upload form-file-multiple col-md-8">
                     <input type="file" multiple="" class="inputFileHidden" name="image[]">
                     <div class="input-group">
@@ -78,18 +116,8 @@
                       </span>
                     </div>
                   </div> 
-                  
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Descripción</label>
-                    <div class="form-group">
-                      <label class="bmd-label-floating"> Agrege la información necesaria para que el publico conosca detalladamente el evento</label>
-                      <textarea name="descripcion_turistico" id="descripcion_turistico" class="form-control" rows="5"></textarea>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <button type="submit" class="btn btn-warning pull-right">Agregar Sitio</button>
+              <button type="submit" class="btn btn-warning pull-right">Editar Sitio</button>
               <div class="clearfix"></div>
             </form>
           </div>
@@ -101,6 +129,13 @@
 </div>
 </div>
 
+<script>
+  function getLogo(){  document.getElementById("logos").style.display = "block";}
+</script>
+
+<script>
+    function getGaleria(){document.getElementById("imagenes").style.display = "block";}
+</script>
 
 
 @endsection

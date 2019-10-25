@@ -69,180 +69,116 @@
                         Entrada
                       </th>
                       <th class="font-weight-bold">
-                        Modificar
+                        Acciones
                       </th>
                     </thead>
                     <tbody>
+                      @foreach ($sitios as $sitio)
                       <tr>
                         <td>
-                          1
+                          {{$sitio->id}}
                         </td>
                         <td>
-                          Dakota Rice
+                          {{$sitio->nombre_turistico}}
                         </td>
                         <td>
-                          Niger
+                          {{$sitio->direccion_turistico}}
                         </td>
                         
                         <td>
-                          Oud-Turnhout
+                          {{$sitio->horario_turistico}}
                         </td>
                         <td>
-                          Liberada
+                          Agregar a la bd
                         </td>
                         <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
+                          <div class="d-flex">
+                            <button class="btn btn-info btn-fab btn-fab-mini btn-round" data-toggle="modal" data-target="#{{$sitio->id}}">
                                 <i class="material-icons">remove_red_eye</i>
                             </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
+                            <a href="{{ route('admin.edit',$sitio->id) }}">
+                              <button class="btn btn-success btn-fab btn-fab-mini btn-round" ><i class="material-icons">edit</i> </button>
+                            </a>
+                              {{ Form::open(array('url' => 'admin/' . $sitio->id)) }}
+                              {{Form::hidden('_method', 'DELETE') }}
+                              {{ Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-rose btn-fab btn-fab-mini btn-round'] ),['onclick' => 'return confirm("¿Borrar?")']}}
+                              {{ Form::close() }}
+                          </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td>
-                          Liberada
-                        </td>
-                        <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          Sage Rodriguez
-                        </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td>
-                          Liberada
-                        </td>
-                        <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          Philip Chaney
-                        </td>
-                        <td>
-                          Korea, South
-                        </td>
-                        <td>
-                          Overland Park
-                        </td>
-                        <td>
-                          $9.990
-                        </td>
-                        <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          5
-                        </td>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in 
-                        </td>
-                        <td>
-                          Liberada
-                        </td>
-                        <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          6
-                        </td>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td>
-                          Liberada
-                        </td>
-                        <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
-                      </tr>
-                    </tbody>
+                        <div id="{{$sitio->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">{{$sitio->nombre_turistico}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row ">
+                                  <!-- Arreglar visualización de imagen -->
+                                  <div class="row">
+                                      @foreach ($sitio->imagenSitioTuristicos as $imagen)
+                                      @if ($imagen->tipo_imagen_turistico == 'portada')        
+                                      <div class="col-3">
+                                          <div class="card">
+                                              <div class="view overlay">
+                                                  <img class="card-img-top" src="../{{$imagen->thumbnail}}" alt="Card image cap">
+                                                  <a href="#!">
+                                                  <div class="mask rgba-white-slight"></div>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      @endif
+                                      @if ($imagen->tipo_imagen_turistico == 'galeria')        
+                                      <div class="col-3">
+                                          <div class="card">
+                                              <div class="view overlay">
+                                                  <img class="card-img-top" src="../{{$imagen->thumbnail}}" alt="Card image cap">
+                                                  <a href="#!">
+                                                  <div class="mask rgba-white-slight"></div>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      @endif
+                                      @endforeach
+                                  </div>
+                                  <!--Fin -->
+                                  <div class="col-md-12">
+                                    <p class="card-text">{{$sitio->descripcion_turistico}}</p>
+                                  </div>
+                                  <div class="mt-2 col-4">
+                                    <h5>Dirección</h5>
+                                     <p class="card-text ">{{$sitio->direccion_turistico}}</p>
+                                  </div>
+                                  <div class="mt-2 col-4">
+                                      <h5>Categoria</h5>
+                                      <p class="card-text ">{{$sitio->tipo_turistico}}</p>
+                                  </div>
+                                  <div class="mt-2 col-4">
+                                    <h5>Locomoción</h5>
+                                    <p class="card-text ">Hacer?</p>
+                                  </div>
+                                  <div class="mt-2 col-6">
+                                    <h5 class="text-center">Servicios</h5>
+                                    <p class="card-text text-center">Copiar a MyPE</p>
+                                  </div>
+                                  <div class="mt-2 col-6">
+                                    <h5 class="text-center">Horario</h5>
+                                    <p class="card-text text-center">{{$sitio->horario_turistico}}</p>
+                                  </div>
+                                  
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      @endforeach
+                      </tbody>
                   </table>
                 </div>
           </div>
@@ -252,6 +188,23 @@
   </div>
 </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('.secciones article').hide();
+        $('.secciones article:first').show();
+
+        $('ul.tabs li a').click(function(){
+            $('this').addClass('active');
+            $('.secciones article').hide();
+
+            var activeTab = $(this).attr('href');
+            $(activeTab).show();
+            return false;
+
+        });
+
+    });
+</script>
 </div>
 
 

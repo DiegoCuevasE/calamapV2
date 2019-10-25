@@ -128,7 +128,7 @@
         </div>
         <div class="row " style="text-align: center">
           <div class="card-body " >
-              <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver más </button></a>
+              <a href="{{ url('/sitioTuristico/'.$sitio->id) }}"><button class=" btn-outline-info btn-sm btn waves-effect col-md-8" >Ver mmás </button></a>
               {{ Form::open(array('url' => 'admin/' . $sitio->id, 'class' => 'pull-right')) }}
               {{ Form::hidden('_method', 'DELETE') }}
               {{ Form::submit('Eliminar Sitio', array('class' => 'btn-sm btn btn-outline-danger waves-effect col-md-8'), ['onclick' => 'return confirm("¿Borrar?")']) }}

@@ -123,17 +123,17 @@
                     </div>
                   </div> 
                   <div class="col-md-6">      
-                      <div class="form-group">
-                        <label class="label-control">Fecha de inicio</label>
-                        <input type="text" class="form-control datetimepicker" value="21/06/2018"/>
-                      </div>
+                    <div class="form-group">
+                      <label class="label-control">Fecha de inicio</label>
+                      <input type="text" class="form-control datetimepicker" value="21/06/2018"/>
                     </div>
-                    <div class="col-md-6">      
-                      <div class="form-group">
-                        <label class="label-control">Fecha de Termino</label>
-                        <input type="text" class="form-control datetimepicker" value="21/06/2018"/>
-                      </div>
-                    </div>  
+                  </div>
+                  <div class="col-md-6">      
+                    <div class="form-group">
+                      <label class="label-control">Fecha de Termino</label>
+                      <input type="text" class="form-control datetimepicker" value="21/06/2018"/>
+                    </div>
+                  </div>  
 
                 <div class="col-md-12">
                   <div class="form-group">

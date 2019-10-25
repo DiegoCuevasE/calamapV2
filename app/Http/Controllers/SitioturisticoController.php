@@ -32,12 +32,9 @@ class SitioturisticoController extends Controller
 
     public function index()
     {
-
-
         $sitios= Sitioturistico::paginate(6);
 
-        return view('admin.vistaSitioAll')->with('sitios',$sitios);
-
+        return view('admin.gestionSitio')->with('sitios',$sitios);
     }
 
     public function MostrarSitio($sitio_id){
@@ -46,9 +43,11 @@ class SitioturisticoController extends Controller
     }
 
 
-    public function MostrarSitios(){
+    public function MostrarSitios()
+    {
         $sitios= Sitioturistico::paginate(6);
-        return view('sitios')->with('sitios',$sitios);
+
+        return view('admin.gestionSitio')->with('sitios',$sitios);
     }
 
     /**
@@ -59,7 +58,7 @@ class SitioturisticoController extends Controller
     public function create()
     {
         //
-        return view('admin.agregarSitioTuristico');
+        return view('admin.agregarSitio');
 
     }
 
@@ -76,10 +75,10 @@ class SitioturisticoController extends Controller
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         $datoSitioTuristico= new Sitioturistico();
 
-        $datoSitioTuristico->user_id = Auth::id();
+        $datoSitioTuristico->user_id = "4";
         $datoSitioTuristico->nombre_turistico =  $request['nombre_turistico'];
         $datoSitioTuristico->tipo_turistico = $request['tipo_turistico'];
-        $datoSitioTuristico->horario_turistico = $horario;
+        $datoSitioTuristico->horario_turistico = $request['horario_turistico'];
         $datoSitioTuristico->direccion_turistico = $request['direccion_turistico'];
         $datoSitioTuristico->descripcion_turistico = $request['descripcion_turistico'];
         $datoSitioTuristico->save();
@@ -95,6 +94,7 @@ class SitioturisticoController extends Controller
             'enlace_imagen_turistico' => 'required',
             'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
         if ($request->hasFile('enlace_imagen_turistico')) {
             $logos = $request->file('enlace_imagen_turistico');
             $org_img = $thm_img = true;
@@ -108,7 +108,7 @@ class SitioturisticoController extends Controller
                 $thm_path = 'images/thumbnails/' . $filename;
                 $newPhoto->enlace_imagen_turistico = 'images/originals/'.$filename;
                 $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
-                $newPhoto->tipo_imagen_turistico = 'logo';
+                $newPhoto->tipo_imagen_turistico = 'portada';
                 $newPhoto->sitio_turistico_id = $idSitio2;
                 //don't upload file when unable to save name to database
                 if ( ! $newPhoto->save()) {
@@ -213,7 +213,7 @@ class SitioturisticoController extends Controller
         //
         $sitio= Sitioturistico::where('id',$id)->first();
 
-        return view('admin.edit',compact('sitio'));
+        return view('admin.editarSitio',compact('sitio'));
     }
 
     /**
@@ -229,29 +229,34 @@ class SitioturisticoController extends Controller
 
         $idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
 
-        //
-        $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
+
+        //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         
         $datoSitioTuristico= Sitioturistico::find($id);
 
         //$datoSitioTuristico->user_id =  $request->get('user_id');
         $datoSitioTuristico->nombre_turistico = $request->get('nombre_turistico');
         $datoSitioTuristico->tipo_turistico =  $request->get('tipo_turistico');
-        $datoSitioTuristico->horario_turistico = $horario;
+        //$datoSitioTuristico->horario_turistico = $request->get('horario_turistico');
+        $datoSitioTuristico->horario_turistico = 'sadsad';
+
         $datoSitioTuristico->direccion_turistico =  $request->get('direccion_turistico');
         $datoSitioTuristico->descripcion_turistico =  $request->get('descripcion_turistico');
 
         $datoSitioTuristico->save();
+       
         //sitioturistico::where('id','=',$id)->update($datoSitioTuristico);
 
         $datoimagensitioturistico=request()->only(['enlace_imagen_turistico']);
-        //return $datoimagensitioturistico;
-        //
 
+        //return $datoimagensitioturistico;
 
             $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
-            
+            return response()->json($request);
+
             if($request->hasFile('image')){
+                //return response()->json($request);
+
                 $msg = 'Entro';
                 return Redirect::to('admin')->withSuccess($msg);
             foreach($sitioturistico->imagenSitioTuristicos as $image) 
@@ -261,10 +266,10 @@ class SitioturisticoController extends Controller
 
             if($request->hasFile('enlace_imagen_turistico')){
                 $msg = 'Entro';
-                return Redirect::to('admin')->withSuccess($msg);
+                //return Redirect::to('admin')->withSuccess($msg);
             foreach($sitioturistico->imagenSitioTuristicos as $image) 
             {
-                Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','logo')->delete();
+                Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','portada')->delete();
             }}
         
             $request->validate([
@@ -284,7 +289,7 @@ class SitioturisticoController extends Controller
                     $thm_path = 'images/thumbnails/' . $filename;
                     $newPhoto->enlace_imagen_turistico = 'images/originals/'.$filename;
                     $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
-                    $newPhoto->tipo_imagen_turistico = 'logo';
+                    $newPhoto->tipo_imagen_turistico = 'portada';
                     $newPhoto->sitio_turistico_id = $idSitio2;
                     //don't upload file when unable to save name to database
                     if ( ! $newPhoto->save()) {
@@ -357,7 +362,7 @@ class SitioturisticoController extends Controller
 
         $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
 
-        return view('admin.editarSitioTuristico',compact('sitioturistico'));
+        return view('admin.gestionSitio',compact('sitioturistico'));
         //return $request;
     }
 

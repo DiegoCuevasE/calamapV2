@@ -280,8 +280,8 @@
                             <label for="enlace_imagen_turistico" class="col-md-4 col-form-label text-md-right">Imagen Principal</label>
                             <div class="col-md-6">
                             @forelse($sitio->imagenSitioTuristicos as $imagen)
-                                @if ($imagen->tipo_imagen_turistico == "logo")
-                                <img src="{{ $imagen->enlace_imagen_turistico }}" class="img-responsive">
+                                @if ($imagen->tipo_imagen_turistico == "portada")
+                                <img src="{{ $imagen->thumbnail }}" class="img-responsive">
                                 <div class="col-md-6 col-form-label text-md-right" >
                                     <img src="{{ asset('template2/images/edit.png') }}" style="width:18px;height:18px;" onclick="getLogo()">
                                 </div>

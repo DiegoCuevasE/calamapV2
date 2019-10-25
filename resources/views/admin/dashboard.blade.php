@@ -208,6 +208,7 @@
       </ul>
     </div>
   </div>
+  <script src="{{ asset('template2/js/jquery-3.3.1.min.js') }}"></script>
   <!--   Core JS Files   -->
   <script src="{{ asset('dashboard/js/core/jquery.min.js')}}"></script>
   <script src="{{ asset('dashboard/js/core/popper.min.js')}}"></script>
@@ -259,6 +260,8 @@
     
   <script>
     $(document).ready(function() {
+
+    
       $().ready(function() {
         $sidebar = $('.sidebar');
 

@@ -98,7 +98,6 @@
                         <td>
                           Los tres enanitos
                         </td>
-                        
                         <td>
                           Restaurant
                         </td>
