@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use App\Servicio;
 use App\Idioma;
+use App\User;
 
 class MypeController extends Controller
 {
@@ -35,10 +36,18 @@ class MypeController extends Controller
      */
     public function index()
     {
-            
+
+
             $mypes = Mype::all();
-            $mype = Mype::where('id',Auth::id())->first();
-            return view('adminMype/listaMypes', ['mype'=>$mype, 'mypes' => $mypes]);
+            //return $mypes;
+            return view('admin.gestionMype')->with('mypes',$mypes);
+
+            //$users = User::all();
+            //return view('admin.gestionMype')->with('users',$users);
+            //return $users;
+
+            //$mype = Mype::where('id',Auth::id())->first();
+            //return view('admin/gestionMype', ['mype'=>$mype, 'mypes' => $mypes]);
     }
 
 
@@ -47,12 +56,11 @@ class MypeController extends Controller
 
         $servicios = Servicio::all();
         $idiomas = Idioma::all();
-        
+        $users = User::whereBetween('tipo_usuario',[0,1])->get();
         //$mype = Mype::with('imagenmypes')->all();
         //$imagenes = $mype2->imagenmypes()->where('mype_id', '=', '1')->get();
 
-        
-        return view('adminMype/registroMype',['servicios' => $servicios, 'idiomas' => $idiomas]);
+        return view('admin/agregarMype',['servicios' => $servicios, 'idiomas' => $idiomas, 'users'=> $users]);
     }
 
     /**
@@ -74,18 +82,21 @@ class MypeController extends Controller
      */
     public function store(Request $request)
     {
+        //return $request;
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         
         $datosmype = new Mype();
-        $datosmype->user_id=Auth::id();
-        $datosmype->rubro_mype=request('rubro_mype');
 
+
+        $datosmype->user_id=request('user_id');
+
+        $datosmype->rubro_mype=request('rubro_mype');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
         $datosmype->direccion_mype=request('direccion_mype');
         $datosmype->descripcion_mype=request('descripcion_mype');
-        $datosmype->horario_mype= $horario;
-        $datosmype->estado_mype=request('estado_mype');
+        $datosmype->horario_mype= request('horario_mype');
+        $datosmype->estado_mype='0';
         $datosmype->telefono_mype=request('telefono_mype');
         $datosmype->celular_mype=request('celular_mype');
         $datosmype->correo_mype=request('correo_mype');
@@ -95,9 +106,10 @@ class MypeController extends Controller
         $datosmype->save();
 
     //-----------------------------------------------------------------------------
-    $nombre = $request['razon_social_mype'];
+    $nombre = $request['nombre_fantasia_mype'];
 
-    $idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
+    //$idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
+    $idSitio2 = DB::table('mypes')->where('nombre_fantasia_mype', $nombre)->value('id');
 
 
     if ($datosmype->rubro_mype=request('idioma_mype') == "0") {
@@ -147,6 +159,7 @@ class MypeController extends Controller
         'enlace_imagen_mype' => 'required',
         'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]);
+
     if ($request->hasFile('enlace_imagen_mype')) {
         $logos = $request->file('enlace_imagen_mype');
         $org_img = $thm_img = true;
@@ -235,7 +248,7 @@ class MypeController extends Controller
             }
         }
     }
-        return redirect('adminMype/historico');
+    return redirect('gestionMype');
         
     }
     public function getIdiomas(Request $request){
@@ -261,9 +274,14 @@ class MypeController extends Controller
     public function edit($id)
     {
         
-        $mype= Mype::where('id',$id)->first();
+        $servicios = Servicio::all();
+        $idiomas = Idioma::all();
+        $mypes= Mype::where('id',$id)->first();
+        // return $mypes;
+        return view('admin/editarMype',['servicios' => $servicios, 'idiomas' => $idiomas, 'mypes'=> $mypes]);
+        //$mype= Mype::where('id',$id)->first();
 
-        return view('adminMype/editarMype',compact('mype'));
+        //return view('admin/editarMype',compact('mype'));
     }
 
     /**
@@ -275,16 +293,18 @@ class MypeController extends Controller
      */
     public function update(Request $request, $id)
     {
+       //return $request;
 
-        $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
+        //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
 
-        $datosmype = new Mype();
+        $datosmype = Mype::find($id);
+
         $datosmype->user_id=request('user_id');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
         $datosmype->direccion_mype=request('direccion_mype');
         $datosmype->descripcion_mype=request('descripcion_mype');
-        $datosmype->horario_mype= $horario;
+        $datosmype->horario_mype= request('horario_mype');
         $datosmype->estado_mype=request('estado_mype');
         $datosmype->telefono_mype=request('telefono_mype');
         $datosmype->celular_mype=request('celular_mype');
@@ -292,12 +312,152 @@ class MypeController extends Controller
         $datosmype->pagina_mype=request('pagina_mype');
         $datosmype->facebook_mype=request('facebook_mype');
         $datosmype->instagram_mype=request('instagram_mype');
-        $datosmype->otra_redS_mype=request('otra_redS_mype');
         //return$datosmype;
         $datosmype->update();
         $mype = Mype::findOrFail($id);
         //return view('moduloMype.editarMype', compact('mype'));
-        return redirect('moduloMype');
+
+        //$nombre = $request['nombre_fantasia_mype'];
+
+        //$idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
+        $idSitio2 = $id;
+
+
+    if ($datosmype->rubro_mype=request('idioma_mype') == "0") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->idiomas()->attach(request('idioma'));
+    }elseif ($datosmype->rubro_mype=request('idioma_mype') == "1") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->idiomas()->attach("1");
+    }
+
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Hotelería") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->sync(request('servicioH'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Gastronomía") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->sync(request('servicioG'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Turismo") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->sync(request('servicioT'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Bazares") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->sync(request('servicioB'));
+    }
+
+    if ($datosmype->rubro_mype=request('rubro_mype') == "Artesanía") {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        $mype4->servicios()->sync(request('servicioA'));
+    }
+
+    $request->validate([
+        'enlace_imagen_mype' => 'required',
+        'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
+
+    if ($request->hasFile('enlace_imagen_mype')) {
+        $logos = $request->file('enlace_imagen_mype');
+        $org_img = $thm_img = true;
+        if( ! File::exists('images/originals/')) {
+            $org_img = File::makeDirectory('images/originals/', 0777, true);
+        }
+        if ( ! File::exists('images/thumbnails/')) {
+            $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+        }
+        // loop through each image to save and upload
+            //create new instance of Photo class
+            $newPhoto = new $this->photo;
+            //get file name of image  and concatenate with 4 random integer for unique
+            $filename = rand(1111,9999).time().'.'.$logos->getClientOriginalExtension();
+            //path of image for upload
+            $org_path = 'images/originals/' . $filename;
+            $thm_path = 'images/thumbnails/' . $filename;
+            $newPhoto->enlace_imagen_mype = 'images/originals/'.$filename;
+            $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+            $newPhoto->tipo_imagen_mype = 'logo';
+            $newPhoto->mype_id = $idSitio2;
+            //don't upload file when unable to save name to database
+            if ( ! $newPhoto->save()) {
+                return false;
+            }
+            // upload image to server
+            if (($org_img && $thm_img) == true) {
+               Image::make($logos)->fit(900, 500, function ($constraint) {
+                       $constraint->upsize();
+                   })->save($org_path);
+               Image::make($logos)->fit(270, 160, function ($constraint) {
+                   $constraint->upsize();
+               })->save($thm_path);
+            }
+    }
+    //----------------------------------------------------------------------------------------
+    
+    $request->validate([
+        'image' => 'required',
+        'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
+
+    //check if image exist
+    if ($request->hasFile('image')) {
+        $images = $request->file('image');
+
+        //setting flag for condition
+        $org_img = $thm_img = true;
+
+        // create new directory for uploading image if doesn't exist
+        if( ! File::exists('images/originals/')) {
+            $org_img = File::makeDirectory('images/originals/', 0777, true);
+        }
+        if ( ! File::exists('images/thumbnails/')) {
+            $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+        }
+
+        // loop through each image to save and upload
+        foreach($images as $key => $image) {
+            //create new instance of Photo class
+            $newPhoto = new $this->photo;
+            //get file name of image  and concatenate with 4 random integer for unique
+            $filename = rand(1111,9999).time().'.'.$image->getClientOriginalExtension();
+            //path of image for upload
+            $org_path = 'images/originals/' . $filename;
+            $thm_path = 'images/thumbnails/' . $filename;
+            $newPhoto->enlace_imagen_mype = 'images/originals/'.$filename;
+            $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+            $newPhoto->tipo_imagen_mype = 'galeria';
+            $newPhoto->mype_id = $idSitio2;
+
+            //don't upload file when unable to save name to database
+            if ( ! $newPhoto->save()) {
+                return false;
+            }
+
+            // upload image to server
+            if (($org_img && $thm_img) == true) {
+
+               Image::make($image)->fit(900, 500, function ($constraint) {
+                       $constraint->upsize();
+                   })->save($org_path);
+               Image::make($image)->fit(270, 160, function ($constraint) {
+                   $constraint->upsize();
+               })->save($thm_path);
+            }
+        }
+    }
+    return redirect('moduloMype');
     
     }
 

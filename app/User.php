@@ -8,6 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    public function mypes()
+    {
+        return $this->hasMany(Mype::class);
+    }
+
     use Notifiable;
 
     /**

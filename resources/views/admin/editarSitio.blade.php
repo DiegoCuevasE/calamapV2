@@ -21,7 +21,7 @@
                 {{ csrf_field() }}  
                 <input type="hidden" name="id" id="id" value="">
                 <input type="hidden" name="user_id" id="user_id" value="1"> 
-              <div class="row">
+              <div class="row mt-3">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Nombre del Sitio Turístico</label>
@@ -106,7 +106,7 @@
                   </div>
                 
                   <div class="form-group form-file-upload form-file-multiple col-md-8">
-                    <input type="file" multiple="" class="inputFileHidden" name="image[]">
+                    <input type="file" multiple="" class="inputFileHidden" name="imagen[]">
                     <div class="input-group">
                       <input type="text" class="form-control inputFileVisible" placeholder="Galeria de Imágenes" multiple>
                       <span class="input-group-btn">
@@ -136,6 +136,12 @@
 <script>
     function getGaleria(){document.getElementById("imagenes").style.display = "block";}
 </script>
-
+<script>
+  var msg = '{{Session::get('alert')}}';
+  var exist = '{{Session::has('alert')}}';
+  if(exist){
+    alert(msg);
+  }
+</script>
 
 @endsection

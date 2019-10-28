@@ -17,12 +17,12 @@ Route::post('visita/post', 'VisitaController@store');
 
 Route::get('adminMype/grafico', 'GraficoController@index');
 Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
-Route::get('adminMype/listaMypes', 'MypeController@index');
-Route::get('adminMype/vistaMypes', 'MypeController@index');
-Route::get('adminMype/registroMype', 'MypeController@llenarForm');
+//Route::get('adminMype/listaMypes', 'MypeController@index');
+//Route::get('adminMype/vistaMypes', 'MypeController@index');
+//Route::get('adminMype/registroMype', 'MypeController@llenarForm');
 
 Route::get('adminMype', 'MypeController@Index')->name('adminMype');
-Route::post('adminMype/registrarMype', 'MypeController@store')->name('adminMype/registrarMype');
+//Route::post('adminMype/registrarMype', 'MypeController@store')->name('adminMype/registrarMype');
 Route::get('adminMype/editarMype', 'MypeController@edit')->name('adminMype/editarMype');
 Route::get('subirimagen', 'FotoController@index');
 Route::post('subirimagen', 'FotoController@uploadImage');
@@ -90,18 +90,19 @@ Route::get('admin/agregarSitio', 'SitioturisticoController@create')->name('agreg
 
 
 //MyPES!!
+Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
+Route::get('admin/agregarMype', 'MypeController@llenarForm')->name('agregarMype');
+Route::post('admin/registrarMype', 'MypeController@store')->name('registrarMype');
+Route::delete('admin/eliminarMype{id}', 'MypeController@destroy')->name('eliminarMype');
+Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
+Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
 
-Route::get('admin/gestionMype', function () {
-    return view('admin/gestionMype');
-})->name('gestionMype');
 
 Route::get('admin/gestionMembresia', function () {
     return view('admin/gestionMembresia');
 })->name('gestionMembresia');
 
-Route::get('admin/agregarMype', function () {
-    return view('admin/agregarMype');
-})->name('agregarMype');
+
 
 //Socios!!
 

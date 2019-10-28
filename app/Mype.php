@@ -21,5 +21,8 @@ class Mype extends Model
         return $this->belongsToMany(Idioma::class,'idioma_mype');
     }
 
-    
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
 }

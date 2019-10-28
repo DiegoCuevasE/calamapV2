@@ -90,7 +90,6 @@
     <div class="card-body d-flex flex-row ">
       <div class="row">
         <h4 class="card-title font-weight-bold mb-2 text-center">{{$datos->nombre_fantasia_mype}}</h4>
-        
       </div>
       
     </div>

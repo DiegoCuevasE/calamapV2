@@ -69,8 +69,9 @@ class SitioturisticoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //return $request;
+    {   
+        //return response()->json($request);
+
 
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         $datoSitioTuristico= new Sitioturistico();
@@ -227,7 +228,7 @@ class SitioturisticoController extends Controller
     {
         $nombre = $request['nombre_turistico'];
 
-        $idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
+        //$idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
 
 
         //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
@@ -247,117 +248,124 @@ class SitioturisticoController extends Controller
        
         //sitioturistico::where('id','=',$id)->update($datoSitioTuristico);
 
-        $datoimagensitioturistico=request()->only(['enlace_imagen_turistico']);
+        //$datoimagensitioturistico=request()->only(['enlace_imagen_turistico']);
 
         //return $datoimagensitioturistico;
+        $request->validate([
+            'imagen' => 'required',
+            'imagen.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
 
-            $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
+        $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
+        $pull=$request->hasFile('imagen');
+        //return response()->json($pull);
+
+        if($pull){
             return response()->json($request);
 
-            if($request->hasFile('image')){
-                //return response()->json($request);
-
-                $msg = 'Entro';
-                return Redirect::to('admin')->withSuccess($msg);
-            foreach($sitioturistico->imagenSitioTuristicos as $image) 
-            {
-                Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','galeria')->delete();
-            }}
-
-            if($request->hasFile('enlace_imagen_turistico')){
-                $msg = 'Entro';
-                //return Redirect::to('admin')->withSuccess($msg);
-            foreach($sitioturistico->imagenSitioTuristicos as $image) 
-            {
-                Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','portada')->delete();
-            }}
-        
-            $request->validate([
-                'enlace_imagen_turistico' => 'required',
-                'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            ]);
-            if ($request->hasFile('enlace_imagen_turistico')) {
-                $logos = $request->file('enlace_imagen_turistico');
-                $org_img = $thm_img = true;
-                // loop through each image to save and upload
-                    //create new instance of Photo class
-                    $newPhoto = new $this->photo;
-                    //get file name of image  and concatenate with 4 random integer for unique
-                    $filename = rand(1111,9999).time().'.'.$logos->getClientOriginalExtension();
-                    //path of image for upload
-                    $org_path = 'images/originals/' . $filename;
-                    $thm_path = 'images/thumbnails/' . $filename;
-                    $newPhoto->enlace_imagen_turistico = 'images/originals/'.$filename;
-                    $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
-                    $newPhoto->tipo_imagen_turistico = 'portada';
-                    $newPhoto->sitio_turistico_id = $idSitio2;
-                    //don't upload file when unable to save name to database
-                    if ( ! $newPhoto->save()) {
-                        return false;
-                    }
-                    // upload image to server
-                    if (($org_img && $thm_img) == true) {
-                       Image::make($logos)->fit(900, 500, function ($constraint) {
-                               $constraint->upsize();
-                           })->save($org_path);
-                       Image::make($logos)->fit(270, 160, function ($constraint) {
-                           $constraint->upsize();
-                       })->save($thm_path);
-                    }
-            }
-            //----------------------------------------------------------------------------------------
+            $msg = 'Entro';
             
-            $request->validate([
-                'image' => 'required',
-                'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            ]);
-     
-            //check if image exist
-            if ($request->hasFile('image')) {
-                $images = $request->file('image');
-     
-                //setting flag for condition
-                $org_img = $thm_img = true;
-     
-                // create new directory for uploading image if doesn't exist
-                if( ! File::exists('images/originals/')) {
-                    $org_img = File::makeDirectory('images/originals/', 0777, true);
-                }
-                if ( ! File::exists('images/thumbnails/')) {
-                    $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
-                }
-     
-                // loop through each image to save and upload
-                foreach($images as $key => $image) {
-                    //create new instance of Photo class
-                    $newPhoto = new $this->photo;
-                    //get file name of image  and concatenate with 4 random integer for unique
-                    $filename = rand(1111,9999).time().'.'.$image->getClientOriginalExtension();
-                    //path of image for upload
-                    $org_path = 'images/originals/' . $filename;
-                    $thm_path = 'images/thumbnails/' . $filename;
-                    $newPhoto->enlace_imagen_turistico = 'images/originals/'.$filename;
-                    $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
-                    $newPhoto->tipo_imagen_turistico = 'galeria';
-                    $newPhoto->sitio_turistico_id = $idSitio2;
+        foreach($sitioturistico->imagenSitioTuristicos as $image) {
+            Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','galeria')->delete();
+            
+        }}else{
+            return redirect()->back() ->with('alert', 'Updated!');
+        }
+
+        if($request->hasFile('enlace_imagen_turistico')){
+            $msg = 'Entro';
+            //return Redirect::to('admin')->withSuccess($msg);
+        foreach($sitioturistico->imagenSitioTuristicos as $image) 
+        {
+            Imagensitioturistico::where('enlace_imagen_turistico','=',$image->enlace_imagen_turistico)->where('tipo_imagen_turistico','=','portada')->delete();
+        }}
     
-                    //don't upload file when unable to save name to database
-                    if ( ! $newPhoto->save()) {
-                        return false;
-                    }
-     
-                    // upload image to server
-                    if (($org_img && $thm_img) == true) {
+        $request->validate([
+            'enlace_imagen_turistico' => 'required',
+            'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if ($request->hasFile('enlace_imagen_turistico')) {
+            $logos = $request->file('enlace_imagen_turistico');
+            $org_img = $thm_img = true;
+            // loop through each image to save and upload
+                //create new instance of Photo class
+                $newPhoto = new $this->photo;
+                //get file name of image  and concatenate with 4 random integer for unique
+                $filename = rand(1111,9999).time().'.'.$logos->getClientOriginalExtension();
+                //path of image for upload
+                $org_path = 'images/originals/' . $filename;
+                $thm_path = 'images/thumbnails/' . $filename;
+                $newPhoto->enlace_imagen_turistico = 'images/originals/'.$filename;
+                $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+                $newPhoto->tipo_imagen_turistico = 'portada';
+                $newPhoto->sitio_turistico_id = $$id;
+                //don't upload file when unable to save name to database
+                if ( ! $newPhoto->save()) {
+                    return false;
+                }
+                // upload image to server
+                if (($org_img && $thm_img) == true) {
+                    Image::make($logos)->fit(900, 500, function ($constraint) {
+                            $constraint->upsize();
+                        })->save($org_path);
+                    Image::make($logos)->fit(270, 160, function ($constraint) {
+                        $constraint->upsize();
+                    })->save($thm_path);
+                }
+        }
+        //----------------------------------------------------------------------------------------
+        
+        $request->validate([
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
     
-                       Image::make($image)->fit(900, 500, function ($constraint) {
-                               $constraint->upsize();
-                           })->save($org_path);
-                       Image::make($image)->fit(270, 160, function ($constraint) {
-                           $constraint->upsize();
-                       })->save($thm_path);
-                    }
+        //check if image exist
+        if ($request->hasFile('image')) {
+            $images = $request->file('image');
+    
+            //setting flag for condition
+            $org_img = $thm_img = true;
+    
+            // create new directory for uploading image if doesn't exist
+            if( ! File::exists('images/originals/')) {
+                $org_img = File::makeDirectory('images/originals/', 0777, true);
+            }
+            if ( ! File::exists('images/thumbnails/')) {
+                $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+            }
+    
+            // loop through each image to save and upload
+            foreach($images as $key => $image) {
+                //create new instance of Photo class
+                $newPhoto = new $this->photo;
+                //get file name of image  and concatenate with 4 random integer for unique
+                $filename = rand(1111,9999).time().'.'.$image->getClientOriginalExtension();
+                //path of image for upload
+                $org_path = 'images/originals/' . $filename;
+                $thm_path = 'images/thumbnails/' . $filename;
+                $newPhoto->enlace_imagen_turistico = 'images/originals/'.$filename;
+                $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+                $newPhoto->tipo_imagen_turistico = 'galeria';
+                $newPhoto->sitio_turistico_id = $$id;
+
+                //don't upload file when unable to save name to database
+                if ( ! $newPhoto->save()) {
+                    return false;
+                }
+    
+                // upload image to server
+                if (($org_img && $thm_img) == true) {
+
+                    Image::make($image)->fit(900, 500, function ($constraint) {
+                            $constraint->upsize();
+                        })->save($org_path);
+                    Image::make($image)->fit(270, 160, function ($constraint) {
+                        $constraint->upsize();
+                    })->save($thm_path);
                 }
             }
+        }
         
 
         $sitioturistico=Sitioturistico::with('imagenSitioTuristicos')->findOrFail($id);
