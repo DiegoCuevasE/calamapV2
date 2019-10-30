@@ -96,7 +96,7 @@ Route::post('admin/registrarMype', 'MypeController@store')->name('registrarMype'
 Route::delete('admin/eliminarMype{id}', 'MypeController@destroy')->name('eliminarMype');
 Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
 Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
-
+Route::get('admin/gestionMype/update', 'MypeController@updateStatus')->name('users.update.status');
 
 Route::get('admin/gestionMembresia', function () {
     return view('admin/gestionMembresia');

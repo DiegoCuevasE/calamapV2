@@ -50,6 +50,15 @@ class MypeController extends Controller
             //return view('admin/gestionMype', ['mype'=>$mype, 'mypes' => $mypes]);
     }
 
+    public function updateStatus(Request $request)
+    {
+    //return $request;
+    $mype = Mype::findOrFail($request->mype_id);
+    $mype->estado_mype = $request->status;
+    $mype->save();
+
+    return response()->json(['message' => 'Mype status updated successfully.']);
+    }
 
     public function llenarForm()
     {
@@ -248,7 +257,7 @@ class MypeController extends Controller
             }
         }
     }
-    return redirect('gestionMype');
+    return redirect('admin/gestionMype');
         
     }
     public function getIdiomas(Request $request){

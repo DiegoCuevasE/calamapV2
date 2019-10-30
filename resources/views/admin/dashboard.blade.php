@@ -36,8 +36,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Material Design Bootstrap -->
-
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 
 </head>
 
@@ -261,7 +261,24 @@
   <script>
     $(document).ready(function() {
 
-    
+    $('.js-switch').change(function () {
+      let status = $(this).prop('checked') === true ? 1 : 0;
+      let userId = $(this).data('id');
+      $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: '{{ route('users.update.status') }}',
+          data: {'status': status, 'mype_id': userId},
+          success: function (data) {
+              console.log(data.message);
+          }
+        });
+    });
+
+    $('.mostrarHorario').click(function(){
+      $(this).next('.expandir').slideToggle();
+        return false;
+    });
       $().ready(function() {
         $sidebar = $('.sidebar');
 

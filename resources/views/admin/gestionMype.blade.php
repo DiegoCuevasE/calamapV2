@@ -114,15 +114,11 @@
                         {{$mype->rubro_mype}}
                       </td>
                       <td>
+
                         <div class="togglebutton">
                           <label>
-                            @if($mype->estado_mype=='1')
-                            <input type="checkbox" checked="checked">
+                            <input type="checkbox" data-id="{{ $mype->id }}"  name="status" class="js-switch" {{ $mype->estado_mype == 1 ? 'checked' : '' }}>
                             <span class="toggle"></span>
-                            @else
-                            <input type="checkbox">
-                            <span class="toggle"></span>
-                            @endif
                           </label>
                         </div>
                       </td>
@@ -238,4 +234,6 @@
     </div>
   </div>
 </div>
+
 @endsection
+
