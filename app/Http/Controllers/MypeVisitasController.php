@@ -11,14 +11,14 @@ class MypeVisitasController extends Controller
     public function getIndex(){
         $mypes = Mype::where('rubro_mype','hoteleria')->paginate(4);
         // = DB::table('mypes')->where('rubro_mype','hoteleria')->paginate(4);
-        return view('mype/hoteles', ['mypes' => $mypes]);
+        return view('vistaMypes', ['mypes' => $mypes]);
     }
 
     public function getIndexR(){
 
         $mypes = Mype::where('rubro_mype','gastronomia')->paginate(4);
 
-        return view('mype/restaurantes', ['mypes' => $mypes]);
+        return view('vistaMypes', ['mypes' => $mypes]);
     }
 
     public function getIndexA(){

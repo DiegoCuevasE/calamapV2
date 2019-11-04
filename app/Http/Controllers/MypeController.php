@@ -91,8 +91,61 @@ class MypeController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $validarDatos =[
+            'nombre_fantasia_mype' => 'required|max:100',
+            'direccion_mype' => 'required|max:100',
+            'descripcion_mype' => 'required|max:250',
+            'enlace_imagen_mype' => 'required',
+            'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+
+        switch (request('rubro_mype')) {
+            case "Hotelería":
+            $validar =$validarDatos+['servicioH' => 'required',];
+                break;
+            case "Gastronomía":
+            $validar =$validarDatos+['servicioG' => 'required',];
+                break;
+            case "Turismo":
+            $validar =$validarDatos+['servicioT' => 'required',];
+                break;
+            case "Artesanía":
+            $validar =$validarDatos+['servicioA' => 'required',];
+                break;
+            case "Bazares":
+            $validar =$validarDatos+['servicioB' => 'required',];
+                break;
+        }
+
+        switch (request('idioma_mype')) {
+            case "0":
+            $validar =$validar+['idioma'=>'required',];
+                break;
+        }
+        
+
+        $mensaje=[
+            "nombre_fantasia_mype.required"=>'El nombre de la MyPE es obligatorio',
+            "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
+            "descripcion_mype.required"=>'La descripción de la MyPE es obligatoria',
+            "enlace_imagen_mype.required" => 'Si no posee un logo, ingrese una imagen de su MyPE',
+            "image.required" => 'Debe adjuntar minimo 1 imagen de su MyPE',
+            "idioma.required" => 'Debe seleccionar un idioma al menos',
+            "servicioT.required" => 'Debes seleccionar al menos un servicio',
+            "servicioH.required" => 'Debes seleccionar al menos un servicio',
+            "servicioA.required" => 'Debes seleccionar al menos un servicio',
+            "servicioB.required" => 'Debes seleccionar al menos un servicio',
+            "servicioG.required" => 'Debes seleccionar al menos un servicio',
+        ];
+
+        $this->validate($request,$validar,$mensaje);
+
+
         //return $request;
-        $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
+        //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         
         $datosmype = new Mype();
 
@@ -309,6 +362,7 @@ class MypeController extends Controller
         $datosmype = Mype::find($id);
 
         $datosmype->user_id=request('user_id');
+        $datosmype->rubro_mype=request('rubro_mype');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
         $datosmype->direccion_mype=request('direccion_mype');

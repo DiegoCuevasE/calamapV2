@@ -45,7 +45,7 @@
               <li><a href="{{ route('hoteles') }}">¿Donde Dormir?</a></li>
             <li><a href="{{url('admin')}}">¿Qué hacer?</a></li>
               <li><a href="{{ route('restaurantes') }}">¿Donde Comer?</a></li>
-              <li><a href="{{ route('sitios') }}">¿Donde ir?</a></li>
+              <li><a href="{{ route('sitio') }}">¿Donde ir?</a></li>
             </ul>
           </nav>
         </div>

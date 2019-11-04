@@ -18,10 +18,10 @@
             <form action="{{ route('registrarMype')}}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}   
             
-            <div class="row justify-content-center">  
+            <div class="row ">  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="user_id">Dueño MyPE</label>
+                  <label for="user_id">Dueño MyPE&nbsp;<span class="text-danger">*</span></label>
                   <select class="form-control selectpicker" data-style="btn btn-link" id="user_id" name="user_id">
                     @foreach ($users as $user)
                     <option value="{{$user->id}}">{{$user->nombre}} {{$user->apellido_usuario}}</option>
@@ -30,14 +30,15 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="rubro_mype">Seleccione el Rubro</label>
+                <div class="form-group ">
+                  <label for="rubro_mype">Seleccione el Rubro&nbsp;<span class="text-danger">*</span></label>
+
                   <select class="form-control selectpicker"  id="rubro_mype" name="rubro_mype"data-style="btn btn-link" onchange="getRubro(this)">
-                      <option value="Gastronomía" selected>Restaurant</option>
-                      <option value="Hotelería">Hotelería</option>
-                      <option value="Turismo">Turismo</option>
-                      <option value="Bazares">Comercio</option>
-                      <option value="Artesanía">Artesanía</option>
+                      <option value="Gastronomía" {{ old('rubro_mype') == "Gastronomía" ? 'selected' : '' }}>Restaurant</option>
+                      <option value="Hotelería" {{ old('rubro_mype') == "Hotelería" ? 'selected' : '' }}>Hotelería</option>
+                      <option value="Turismo" {{ old('rubro_mype') == "Turismo" ? 'selected' : '' }}>Turismo</option>
+                      <option value="Bazares" {{ old('rubro_mype') == "Bazares" ? 'selected' : '' }}>Comercio</option>
+                      <option value="Artesanía" {{ old('rubro_mype') == "Artesanía" ? 'selected' : '' }}>Artesanía</option>
                   </select>
                 </div>
               </div>
@@ -45,15 +46,19 @@
 
             <div class="row justify-content-center mt-2">
               <div class="col-md-12">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Nombre de la MyPE</label>
-                  <input type="text" name="nombre_fantasia_mype" id="nombre_fantasia_mype" class="form-control" >
+                <div class="form-group  {{$errors->has('nombre_fantasia_mype')?'has-danger':''}}">
+                  <label class="bmd-label-floating">Nombre de la MyPE&nbsp;<span class="text-danger">*</span></label>
+                <input type="text" name="nombre_fantasia_mype" id="nombre_fantasia_mype" class="form-control" value="{{ old('nombre_fantasia_mype')}}" >
+                  {!! $errors->first('nombre_fantasia_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+                  
                 </div>
               </div>
               <div class="col-md-12">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Dirección</label>
-                  <input type="text" id="direccion_mype" name="direccion_mype" class="form-control">
+                <div class="form-group {{$errors->has('direccion_mype')?'has-danger':''}}" >
+                  <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
+                  <input type="text" id="direccion_mype" name="direccion_mype" class="form-control" value="{{ old('direccion_mype')}}">
+                  {!! $errors->first('direccion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+
                 </div>
               </div>
             </div> 
@@ -61,15 +66,16 @@
             <div class="row mt-2 justify-content-center">
               
               <!-- Mostrar servicios de hotel-->
-              <div class="col-md-12 " id="serviciosH" style="display:none;">
-                <label for="serviciosH" class="mb-2">Servicios</label>
+              <div class="col-md-12 " id="serviciosH" {{ old('rubro_mype') == "Hotelería" ? 'style=display:block;' : 'style=display:none;' }}>
+                <label for="serviciosH" class="mb-2">Servicios&nbsp;<span class="text-danger">*</span></label>
+                {!! $errors->first('servicioH','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
                   @if ($servicio->tipo_servicio == "Hotelería")
                   <div class="col-md-3 mt-1">
                   <label class="form-check-label">
-                    <input class="form-check-input" name="servicioH[]" type="checkbox" value="{{$servicio->id}}">
+                    <input class="form-check-input" name="servicioH[]" type="checkbox" value="{{$servicio->id}}" {{ (is_array(old('servicioH')) and in_array($servicio->id, old('servicioH'))) ? 'checked' : '' }}>
                     {{$servicio->nombre_servicio}}
                     <span class="form-check-sign">
                       <span class="check"></span>
@@ -82,15 +88,16 @@
                 </div>
               </div>
               <!-- Mostrar servicios de restaurant-->
-              <div class="col-md-12" id="serviciosG" >
-                <label for="serviciosG" class="mb-2">Servicios</label>
+              <div class="col-md-12" id="serviciosG"  {{ old('rubro_mype') == "Gastronomía" ? 'style=display:block;' : 'style=display:none;' }}>
+                <label for="serviciosG" class="mb-2">Servicios&nbsp;<span class="text-danger">*</span></label>
+                {!! $errors->first('servicioG','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                     <div class="row">
                     @foreach ($servicios as $servicio)
                     @if ($servicio->tipo_servicio == "Gastronomía")
                     <div class="col-md-3 mt-1">
                     <label class="form-check-label">
-                        <input class="form-check-input" name="servicioG[]" type="checkbox" value="{{$servicio->id}}">
+                        <input class="form-check-input" name="servicioG[]" type="checkbox" value="{{$servicio->id}}" {{ (is_array(old('servicioG')) and in_array($servicio->id, old('servicioG'))) ? 'checked' : '' }}>
                         {{$servicio->nombre_servicio}}
                         <span class="form-check-sign">
                             <span class="check"></span>
@@ -103,15 +110,16 @@
                   </div>
               </div>
               <!-- Mostrar servicios de turismo-->
-              <div class="col-md-12" id="serviciosT" style="display:none;">
-                <label for="serviciosT" class="mb-2">Servicios</label>
+              <div class="col-md-12" id="serviciosT" {{ old('rubro_mype') == "Turismo" ? 'style=display:block;' : 'style=display:none;' }}>
+                <label for="serviciosT" class="mb-2">Servicios &nbsp;<span class="text-danger">*</span></label>
+                {!! $errors->first('servicioT','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
                   @if ($servicio->tipo_servicio == "Turismo")
                   <div class="col-md-3 mt-1">
                   <label class="form-check-label">
-                    <input class="form-check-input" name="servicioT[]" type="checkbox" value="{{$servicio->id}}">
+                    <input class="form-check-input" name="servicioT[]"  type="checkbox" value="{{$servicio->id}}" {{ (is_array(old('servicioT')) and in_array($servicio->id, old('servicioT'))) ? ' checked' : '' }}>
                     {{$servicio->nombre_servicio}}
                     <span class="form-check-sign">
                       <span class="check"></span>
@@ -124,15 +132,16 @@
                 </div>
               </div>
               <!-- Mostrar servicios de Bazar-->
-              <div class="col-md-12" id="serviciosB" style="display:none;">
-                <label for="serviciosB" class="mb-2">Servicios</label>
+              <div class="col-md-12" id="serviciosB" {{ old('rubro_mype') == "Bazares" ? 'style=display:block;' : 'style=display:none;' }}>
+                <label for="serviciosB" class="mb-2">Servicios &nbsp;<span class="text-danger"> *</span></label>
+                {!! $errors->first('servicioB','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
                   @if ($servicio->tipo_servicio == "Bazares")
                   <div class="col-md-3 mt-1">
                   <label class="form-check-label">
-                    <input class="form-check-input" name="servicioB[]" type="checkbox" value="{{$servicio->id}}">
+                    <input class="form-check-input" name="servicioB[]" type="checkbox" value="{{$servicio->id}}" {{ (is_array(old('servicioB')) and in_array($servicio->id, old('servicioB'))) ? 'checked' : '' }}>
                     {{$servicio->nombre_servicio}}
                     <span class="form-check-sign">
                       <span class="check"></span>
@@ -145,15 +154,16 @@
                 </div>
               </div>
               <!-- Mostrar servicios de Artesanias-->
-              <div class="col-md-12" id="serviciosA" style="display:none;">
-                <label for="serviciosA" class="mb-2">Servicios</label>
+              <div class="col-md-12" id="serviciosA" {{ old('rubro_mype') == "Artesanía" ? 'style=display:block;' : 'style=display:none;' }}>
+                <label for="serviciosA" class="mb-2">Servicios&nbsp;<span class="text-danger">*</span></label>
+                {!! $errors->first('servicioA','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
                   @if ($servicio->tipo_servicio == "Artesanía")
                   <div class="col-md-3 mt-1">
                   <label class="form-check-label">
-                    <input class="form-check-input" name="servicioA[]" type="checkbox" value="{{$servicio->id}}">
+                    <input class="form-check-input" name="servicioA[]" type="checkbox" value="{{$servicio->id}}" {{ (is_array(old('servicioA')) and in_array($servicio->id, old('servicioA'))) ? 'checked' : '' }}>
                     {{$servicio->nombre_servicio}}
                     <span class="form-check-sign">
                       <span class="check"></span>
@@ -208,20 +218,21 @@
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="idiomas_mype " class="bmd-label-floating">Idiomas</label>
+                    {!! $errors->first('idioma','<div class="invalid-feedback">:message</div>') !!}
                     <select class="form-control selectpicker" data-style="btn btn-link" name="idioma_mype" id="idioma_mype" onchange="getIdioma(this)">
-                      <option value="1" selected>Solo español</option>
-                      <option value="0">Español y otros idiomas</option>
+                      <option value="1" {{ old('idioma_mype') == "1" ? 'selected' : '' }}>Solo español</option>
+                      <option value="0" {{ old('idioma_mype') == "0" ? 'selected' : '' }}>Español y otros idiomas</option>
                     </select>
                 </div>
               </div>   
               
               <div class="col-md-6" >
-                <div class="form-check" id="idiomas" style="display:none;">
+                <div class="form-check" id="idiomas" {{ old('idioma_mype') == "0" ? 'style=display:block;' : 'style=display:none;' }}>
                   <div class="row">
                     @foreach ($idiomas as $idioma)
                     <div class="col-md-4 mt-1">
                       <label class="form-check-label">
-                      <input class="form-check-input" name="idioma[]" type="checkbox" value="{{$idioma->id}}">
+                      <input class="form-check-input" name="idioma[]" type="checkbox" value="{{$idioma->id}}" {{ (is_array(old('idioma')) and in_array($idioma->id, old('idioma'))) ? 'checked' : '' }}>
                       {{$idioma->nombre_idioma}}
                       <span class="form-check-sign">
                       <span class="check"></span>
@@ -469,31 +480,34 @@
               <div class="form-group form-file-upload form-file-multiple col-md-6">
                 <input type="file" multiple="" name="enlace_imagen_mype"  class="inputFileHidden">
                   <div class="input-group">
-                    <input type="text" class="form-control inputFileVisible" placeholder="Foto de Portada">
+                    <input type="text" class="form-control inputFileVisible" placeholder="Foto de Portada *">
                     <span class="input-group-btn">
                     <button type="button" class="btn btn-fab btn-round btn-primary">
                     <i class="material-icons">attach_file</i>
                     </button>
                     </span>
                   </div>
+                  {!! $errors->first('enlace_imagen_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
               </div>
               <div class="form-group form-file-upload form-file-multiple col-md-6">
                 <input type="file" name="image[]" multiple="" class="inputFileHidden">
                 <div class="input-group">
-                  <input type="text" class="form-control inputFileVisible" placeholder="Galería de Imágenes" multiple>
+                  <input type="text" class="form-control inputFileVisible" placeholder="Galería de Imágenes *" multiple>
                   <span class="input-group-btn">
                   <button type="button" class="btn btn-fab btn-round btn-info">
                     <i class="material-icons">layers</i>
                   </button>
                   </span>
                 </div>
+                {!! $errors->first('image','<div class="invalid-feedback" style="display:block">:message</div>') !!}
               </div> 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label>Descripción</label>
-                  <div class="form-group">
+                  <label>Descripción&nbsp;<span class="text-danger">*</span></label>
+                  <div class="form-group" {{$errors->has('descripcion_mype')?'has-danger':''}}>
                     <label class="bmd-label-floating"> Agrege la información necesaria para que el publico conosca detalladamente su MyPE</label>
-                    <textarea class="form-control" rows="5" id="descripcion_mype" name="descripcion_mype"></textarea>
+                    <textarea class="form-control" rows="5" id="descripcion_mype" name="descripcion_mype">{{ old('descripcion_mype')}}</textarea>
+                    {!! $errors->first('descripcion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
               </div>

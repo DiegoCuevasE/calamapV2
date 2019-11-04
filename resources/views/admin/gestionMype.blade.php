@@ -117,7 +117,7 @@
 
                         <div class="togglebutton">
                           <label>
-                            <input type="checkbox" data-id="{{ $mype->id }}"  name="status" class="js-switch" {{ $mype->estado_mype == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" data-id="{{ $mype->id }}"   onclick="md.showNotification('top','right')" name="status" class="js-switch" {{ $mype->estado_mype == 1 ? 'checked' : '' }}>
                             <span class="toggle"></span>
                           </label>
                         </div>
@@ -234,6 +234,7 @@
     </div>
   </div>
 </div>
+
 
 @endsection
 

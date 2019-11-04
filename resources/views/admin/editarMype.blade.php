@@ -5,33 +5,31 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-10 col-lg-10 col-xl-8">
         <div class="card">
           <div class="card-header card-header-warning">
             <div class="d-flex">
             <i class="material-icons mr-2">event</i>
             <h4 class="card-title font-weight-bold">Editar MyPE</h4>
             </div>
-            <p class="card-category">Ingrese todos los datos que desea modificar a la MyPE de la plataforma</p>
+            <p class="card-category">Ingrese los datos de la MyPE que desea modificar</p>
           </div>
           <div class="card-body">
             <form action="{{ route('updateMype',$mypes->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 {{ csrf_field() }} 
+
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <input type="hidden" name="user_id" id="user_id" value="{{$mypes->user->id}}">
-                  <label for="user_id">Dueño MyPE</label>
+                  <label for="user_id">Dueño MyPE&nbsp;<span class="text-danger">*</span></label>
                   <select class="form-control selectpicker" data-style="btn btn-link" id="user_id" name="user_id " disabled>
                     <option value="{{$mypes->user->id}}">{{$mypes->user->nombre}} {{$mypes->user->apellido_usuario}}</option>
                   </select>
                 </div>
               </div>
-            </div>  
-
-            <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="rubro_mype">Seleccione el Rubro</label>
@@ -77,124 +75,11 @@
                   </select>
                 </div>
               </div>
-              <!-- Mostrar servicios de hotel-->
-              <div class="col-md-6 align-content-center" id="serviciosH" @if ($mypes->rubro_mype == "Hotelería") style="display:display;"@else style="display:none;" @endif >
-                <label for="serviciosH" class="mb-2">Servicios</label>
-                <div class="form-check">
-                  @foreach ($servicios as $servicio)
-                  @if ($servicio->tipo_servicio == "Hotelería")
-                  <label class="form-check-label">
-                    <input class="form-check-input" name="servicioH[]" type="checkbox" value="{{$servicio->id}}"
-                    @foreach ($mypes->servicios as $servicioMype)
-                     @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
-                     checked
-                     @endif
-                    @endforeach
-                    >
-                    {{$servicio->nombre_servicio}}
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
-              <!-- Mostrar servicios de restaurant-->
-              <div class="col-md-6" id="serviciosG" @if ($mypes->rubro_mype == "Gastronomía") style="display:display;"@else style="display:none;" @endif>
-                <label for="serviciosG" class="mb-2">Servicios</label>
-                <div class="form-check">
-                    @foreach ($servicios as $servicio)
-                    @if ($servicio->tipo_servicio == "Gastronomía")
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="servicioG[]" type="checkbox" value="{{$servicio->id}}"
-                        @foreach ($mypes->servicios as $servicioMype)
-                          @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
-                          checked
-                          @endif
-                        @endforeach
-                        >
-                        {{$servicio->nombre_servicio}}
-                        <span class="form-check-sign">
-                            <span class="check"></span>
-                        </span>
-                    </label>
-                    @endif
-                    @endforeach
-                </div>
-              </div>
-              <!-- Mostrar servicios de turismo-->
-              <div class="col-md-6" id="serviciosT" @if ($mypes->rubro_mype == "Turismo") style="display:display;" @else style="display:none;" @endif>
-                <label for="serviciosT" class="mb-2">Servicios</label>
-                <div class="form-check">
-                  <div class="row">
-                  @foreach ($servicios as $servicio)
-                  @if ($servicio->tipo_servicio == "Turismo")
-                  
-                  <div class="col-md-6 mt-1">
-                  <label class="form-check-label">
-                    <input class="form-check-input" name="servicioT[]" type="checkbox" value="{{$servicio->id}}"
-                    @foreach ($mypes->servicios as $servicioMype)
-                     @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
-                     checked
-                     @endif
-                    @endforeach
-                    >
-                    {{$servicio->nombre_servicio}}
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                  </div>
-                  
-                  @endif
-                  @endforeach
-                </div>
-                </div>
-              </div>
-              <!-- Mostrar servicios de Bazar-->
-              <div class="col-md-6" id="serviciosB"  @if ($mypes->rubro_mype == "Bazares") style="display:display;"@else style="display:none;" @endif>
-                <label for="serviciosB" class="mb-2">Servicios</label>
-                <div class="form-check">
-                  @foreach ($servicios as $servicio)
-                  @if ($servicio->tipo_servicio == "Bazares")
-                  <label class="form-check-label">
-                    <input class="form-check-input"  name="servicioB[]" type="checkbox" value="{{$servicio->id}}"
-                    @foreach ($mypes->servicios as $servicioMype)
-                     @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
-                     checked
-                     @endif
-                    @endforeach
-                    >
-                    {{$servicio->nombre_servicio}}
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
-              <!-- Mostrar servicios de Artesanias-->
-              <div class="col-md-6" id="serviciosA" @if ($mypes->rubro_mype == "Artesanía") style="display:display;"@else style="display:none;" @endif>
-                <label for="serviciosA" class="mb-2">Servicios</label>
-                <div class="form-check">
-                  @foreach ($servicios as $servicio)
-                  @if ($servicio->tipo_servicio == "Artesanía")
-                  <label class="form-check-label">
-                    <input class="form-check-input" name="servicioA[]" type="checkbox" value="{{$servicio->id}}">
-                    {{$servicio->nombre_servicio}}
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
+             
             </div>
+            
 
-            <div class="row">
+            <div class="row mt-2">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Nombre de la MyPE</label>
@@ -209,7 +94,145 @@
               </div>
             </div> 
 
-            <div class="row mt-5">
+            <div class="row mt-2">
+                <!-- Mostrar servicios de hotel-->
+                <div class="col-md-12" id="serviciosH" @if ($mypes->rubro_mype == "Hotelería") style="display:display;"@else style="display:none;" @endif >
+                   <label for="serviciosH" class="mb-2">Servicios</label>
+                   {!! $errors->first('servicioH','<div class="invalid-feedback">:message</div>') !!}
+                   <div class="form-check">
+                      <div class="row">
+                          @foreach ($servicios as $servicio)
+                          @if ($servicio->tipo_servicio == "Hotelería")
+                          <div class="col-md-3 mt-1">
+                     <label class="form-check-label">
+                       <input class="form-check-input" name="servicioH[]" type="checkbox" value="{{$servicio->id}}"
+                       @foreach ($mypes->servicios as $servicioMype)
+                        @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
+                        checked
+                        @endif
+                       @endforeach>
+                       {{$servicio->nombre_servicio}}
+                       <span class="form-check-sign">
+                         <span class="check"></span>
+                       </span>
+                     </label>
+                      </div>
+                      @endif
+                      @endforeach
+                    </div>
+                   </div>
+                 </div>
+                 <!-- Mostrar servicios de restaurant-->
+                 <div class="col-md-12" id="serviciosG" @if ($mypes->rubro_mype == "Gastronomía") style="display:display;"@else style="display:none;" @endif>
+                   <label for="serviciosG" class="mb-2">Servicios</label>
+                   <div class="form-check">
+                      <div class="row">
+                        @foreach ($servicios as $servicio)
+                        @if ($servicio->tipo_servicio == "Gastronomía")
+                        <div class="col-md-3 mt-1">
+                          <label class="form-check-label">
+                          <input class="form-check-input" name="servicioG[]" type="checkbox" value="{{$servicio->id}}"
+                          @foreach ($mypes->servicios as $servicioMype)
+                          @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
+                             checked
+                          @endif
+                          @endforeach
+                           >
+                           {{$servicio->nombre_servicio}}
+                           <span class="form-check-sign">
+                               <span class="check"></span>
+                           </span>
+                        </label>
+                        </div>
+                        @endif
+                        @endforeach
+                        </div>
+                   </div>
+                 </div>
+                 <!-- Mostrar servicios de turismo-->
+                 <div class="col-md-12" id="serviciosT" @if ($mypes->rubro_mype == "Turismo") style="display:display;" @else style="display:none;" @endif>
+                   <label for="serviciosT" class="mb-2">Servicios</label>
+                   <div class="form-check">
+                      <div class="row">
+                      @foreach ($servicios as $servicio)
+                      @if ($servicio->tipo_servicio == "Turismo")
+                      <div class="col-md-3 mt-1">
+                     <label class="form-check-label">
+                       <input class="form-check-input" name="servicioT[]" type="checkbox" value="{{$servicio->id}}"
+                       @foreach ($mypes->servicios as $servicioMype)
+                        @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
+                        checked
+                        @endif
+                       @endforeach
+                       >
+                       {{$servicio->nombre_servicio}}
+                       <span class="form-check-sign">
+                         <span class="check"></span>
+                       </span>
+                     </label>
+                     </div>
+                     @endif
+                     @endforeach
+                   </div>
+                   </div>
+                 </div>
+                 <!-- Mostrar servicios de Bazar-->
+                 <div class="col-md-12" id="serviciosB"  @if ($mypes->rubro_mype == "Bazares") style="display:display;"@else style="display:none;" @endif>
+                   <label for="serviciosB" class="mb-2">Servicios</label>
+                   <div class="form-check">
+                      <div class="row">
+                      @foreach ($servicios as $servicio)
+                        @if ($servicio->tipo_servicio == "Bazares")
+                          <div class="col-md-3 mt-1">
+                     <label class="form-check-label">
+                       <input class="form-check-input"  name="servicioB[]" type="checkbox" value="{{$servicio->id}}"
+                       @foreach ($mypes->servicios as $servicioMype)
+                        @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
+                        checked
+                        @endif
+                       @endforeach
+                       >
+                       {{$servicio->nombre_servicio}}
+                       <span class="form-check-sign">
+                         <span class="check"></span>
+                       </span>
+                     </label>
+                     </div>
+                     @endif
+                     @endforeach
+                   </div>
+                   </div>
+                 </div>
+                 <!-- Mostrar servicios de Artesanias-->
+                 <div class="col-md-12" id="serviciosA" @if ($mypes->rubro_mype == "Artesanía") style="display:display;"@else style="display:none;" @endif>
+                   <label for="serviciosA" class="mb-2">Servicios</label>
+                   <div class="form-check">
+                      <div class="row">
+                        @foreach ($servicios as $servicio)
+                        @if ($servicio->tipo_servicio == "Artesanía")
+                        <div class="col-md-3 mt-1">
+                        <label class="form-check-label">
+                            <input class="form-check-input"  name="servicioA[]" type="checkbox" value="{{$servicio->id}}"
+                            @foreach ($mypes->servicios as $servicioMype)
+                             @if ($servicioMype->nombre_servicio==$servicio->nombre_servicio)
+                             checked
+                             @endif
+                            @endforeach
+                            >
+                        {{$servicio->nombre_servicio}}
+                       <span class="form-check-sign">
+                         <span class="check"></span>
+                       </span>
+                     </label>
+                    </div>
+                    @endif
+                    @endforeach
+                    </div>
+                   </div>
+                 </div>
+             </div>
+
+            <div class="row mt-3">
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Página principal</label>
@@ -245,11 +268,60 @@
                   <label class="bmd-label-floating">Correo</label>
                   <input type="text" id="correo_mype" name="correo_mype" value="{{ old('correo_mype', $mypes->correo_mype) }}" class="form-control">
                 </div>
-              </div>                              
-            </div>     
+              </div>   
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="idiomas_mype " class="bmd-label-floating">Idiomas</label>
+                      {!! $errors->first('idioma','<div class="invalid-feedback">:message</div>') !!}
+                      <select class="form-control selectpicker" data-style="btn btn-link" name="idioma_mype" id="idioma_mype" onchange="getIdioma(this)">
+                        <option value="1" {{ old('idioma_mype') == "1" ? 'selected' : '' }}>Solo español</option>
+                        <option value="0" {{ old('idioma_mype') == "0" ? 'selected' : '' }}>Español y otros idiomas</option>
+                      </select>
+                  </div>
+                </div>   
                 
-            <div class="row mt-5">
-              <div class="form-group form-file-upload form-file-multiple col-md-6">
+                <div class="col-md-8" >
+                  <div class="form-check" id="idiomas" {{ old('idioma_mype') == "0" ? 'style=display:block;' : 'style=display:none;' }}>
+                    <div class="row">
+                      @foreach ($idiomas as $idioma)
+                      <div class="col-md-4 mt-1 ">
+                        <label class="form-check-label">
+                        <input class="form-check-input" name="idioma[]" type="checkbox" value="{{$idioma->id}}" {{ (is_array(old('idioma')) and in_array($idioma->id, old('idioma'))) ? 'checked' : '' }}>
+                        {{$idioma->nombre_idioma}}
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                      </div>
+                      @endforeach
+                    </div>
+                  </div>
+                </div>                           
+            </div>     
+            <label for="">Imagenes</label>
+            <div class="row mt-2">
+              @foreach ($mypes->imagenMypes as $imagen)
+              @if ($imagen->tipo_imagen_mype == 'logo')        
+              <div class="col-md-3">
+                <div class="card" style="margin-bottom: 5px;">
+                  <img class="card-img" src="../../{{$imagen->thumbnail}}" alt="Card image">
+                </div>
+              <span class="badge badge-pill badge-primary">{{$imagen->tipo_imagen_mype}}</span>
+              </div>
+              @endif
+              @if ($imagen->tipo_imagen_mype == 'galeria')
+              <div class="col-md-3">
+                <div class="card align-items-start" style="margin-bottom: 5px;">
+                  <img class="card-img" src="../../{{$imagen->thumbnail}}" alt="Card image">
+                </div>
+                <span class="badge badge-pill badge-info" >{{$imagen->tipo_imagen_mype}}</span>
+              </div>        
+              @endif
+              @endforeach
+            </div>
+            <div class="row mt-3">
+
+              <div class="form-group form-file-upload form-file-multiple col-md-4">
                 <input type="file" multiple="" name="enlace_imagen_mype"  class="inputFileHidden">
                   <div class="input-group">
                     <input type="text" class="form-control inputFileVisible" placeholder="Foto de Portada">
@@ -260,7 +332,7 @@
                     </span>
                   </div>
               </div>
-              <div class="form-group form-file-upload form-file-multiple col-md-6">
+              <div class="form-group form-file-upload form-file-multiple col-md-8">
                 <input type="file" name="image[]" multiple="" class="inputFileHidden">
                 <div class="input-group">
                   <input type="text" class="form-control inputFileVisible" placeholder="Galería de Imágenes" multiple>
@@ -271,18 +343,6 @@
                   </span>
                 </div>
               </div> 
-              <div class="col-md-6">      
-                <div class="form-group">
-                  <label class="label-control">Fecha de inicio</label>
-                  <input type="text" id="horario_mype" name="horario_mype" class="form-control datetimepicker" value="21/06/2018"/>
-                </div>
-              </div>
-              <div class="col-md-6">      
-                <div class="form-group">
-                  <label class="label-control">Fecha de Termino</label>
-                  <input type="text" class="form-control datetimepicker" value="21/06/2018"/>
-                </div>
-              </div>  
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Descripción</label>

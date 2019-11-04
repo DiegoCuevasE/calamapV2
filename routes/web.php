@@ -115,7 +115,7 @@ Route::get('admin/agregarSocio', function () {
 })->name('agregarSocio');
 
 
-Route::get('mype/hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
+Route::get('vistaMypes', 'MypeVisitasController@getIndex')->name('hoteles');
 
 Route::get('mype/artesanias', 'MypeVisitasController@getIndexA')->name('artesanias');
 

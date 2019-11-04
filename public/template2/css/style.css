@@ -1196,4 +1196,25 @@ margin-top: 50px;
   border-radius: 10em !important; 
 }
 
+.tourInfo {
+  width: 100%;
+  display: block;
+}
+
+.tourInfo:after {
+  position:relative;
+  background-color:white;
+  content:'...';
+}
+.tourInfo p{
+  color:#666;
+  font-size:13px;
+  font-weight:normal;
+  display:block;
+  margin:0;
+  overflow:hidden;
+  max-height: 140px;
+}
+
+
 

@@ -19,10 +19,6 @@
   
   <!-- Titulo -->
   @foreach ($mypes as $mype)
-      
-  
-  <!-- Sitios MyPES 1-->
- 
 
   <form id="form{{$mype->id}}" name="form{{$mype->id}}" class="progress-form">
     

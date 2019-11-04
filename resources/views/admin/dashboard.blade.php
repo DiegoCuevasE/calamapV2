@@ -36,8 +36,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+
 
 </head>
 
@@ -263,15 +262,13 @@
 
     $('.js-switch').change(function () {
       let status = $(this).prop('checked') === true ? 1 : 0;
-      let userId = $(this).data('id');
+      let mypeId = $(this).data('id');
       $.ajax({
           type: "GET",
           dataType: "json",
           url: '{{ route('users.update.status') }}',
-          data: {'status': status, 'mype_id': userId},
-          success: function (data) {
-              console.log(data.message);
-          }
+          data: {'status': status, 'mype_id': mypeId},
+          success: function(e,a){type=["","info","danger","success","warning","rose","primary"],color=Math.floor(6*Math.random()+1),$.notify({icon:"add_alert",message:"Cambio exitoso!"},{type:type[color],timer:3e3,placement:{from:e,align:a}})},
         });
     });
 
