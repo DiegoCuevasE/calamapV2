@@ -42,7 +42,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange" data-background-color="white" data-image="{{ asset('dashboard/img/sidebar-1.jpg')}}">
+    <div class="sidebar" data-color="orange" data-background-color="black" data-image="{{ asset('dashboard/img/sidebar-1.jpg')}}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -55,7 +55,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item  active">
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('inicioAdmin') }}">
               <i class="material-icons">home</i>
               <p>Inicio</p>

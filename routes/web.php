@@ -85,8 +85,8 @@ Route::get('admin/gestionEvento', function () {
 
 //Sitios turísticos!!
 Route::get('admin/gestionSitio', 'SitioturisticoController@index')->name('gestionSitio');
-
-Route::get('admin/agregarSitio', 'SitioturisticoController@create')->name('agregarSitio');
+Route::get('admin/agregarSitio', 'SitioturisticoController@llenarForm')->name('agregarSitio');
+Route::post('admin/registrarSitio', 'MypeController@store')->name('registrarSitio');
 
 
 //MyPES!!
@@ -115,12 +115,14 @@ Route::get('admin/agregarSocio', function () {
 })->name('agregarSocio');
 
 
-Route::get('vistaMypes', 'MypeVisitasController@getIndex')->name('hoteles');
+Route::get('Hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
+Route::get('Artesanias', 'MypeVisitasController@getIndexA')->name('artesanias');
+Route::get('Restaurantes', 'MypeVisitasController@getIndexR')->name('restaurantes');
+Route::get('Turismo', 'MypeVisitasController@getIndexT')->name('turismo');
+Route::get('Comercio', 'MypeVisitasController@getIndexC')->name('comercio');
 
-Route::get('mype/artesanias', 'MypeVisitasController@getIndexA')->name('artesanias');
-
-Route::get('mype/restaurantes', 'MypeVisitasController@getIndexR')->name('restaurantes');
-
+Route::get('SitiosTuristicos', 'SitioTuristicoController@MostrarSitios')->name('sitios');
+Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
 
 
 //Route::get('/sitioTuristico/{sitio_id}', 'SitioturisticoController@MostrarSitio');

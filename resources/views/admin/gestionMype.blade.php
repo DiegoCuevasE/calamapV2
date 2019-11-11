@@ -12,13 +12,13 @@
             <div class="card-header card-header-text card-header-warning">
               <div class="card-text">
                 <div class="d-flex">
-                  <h4 class="card-title font-weight-bold"> <i class="material-icons mr-1">store</i>Agregar Socio</h4>
+                  <h4 class="card-title font-weight-bold"> <i class="material-icons mr-1">store</i>Agregar MyPE</h4>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <div class="d-flex align-items-center ">
-                <p class="card-category">Si deseas agregar un nuevo Socio ingresa acá</p>
+                <p class="card-category">Si deseas añadir una nueva MyPE a la plataforma ingresa acá</p>
                 <a href="{{'agregarMype'}}">
                 <button class="btn btn-warning btn-fab  btn-round">
                 <i class="fas fa-plus"></i>

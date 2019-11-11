@@ -50,7 +50,33 @@
                     <input name="horario_turistico" id="horario_turistico" type="text" class="form-control "/>
                   </div>
                 </div>                                   
-              </div>     
+              </div>  
+              
+              <div class="row mt-2 justify-content-center">
+                
+                <!-- Mostrar servicios de hotel-->
+                <div class="col-md-12 " id="servicioS">
+                  <label for="servicioS" class="mb-2">Servicios&nbsp;<span class="text-danger">*</span></label>
+                  {!! $errors->first('servicioS','<div class="invalid-feedback">:message</div>') !!}
+                  <div class="form-check">
+                    <div class="row">
+                    @foreach ($servicios as $servicio)
+                    @if ($servicio->tipo_servicio == "Sitio")
+                    <div class="col-md-3 mt-1">
+                    <label class="form-check-label">
+                      <input class="form-check-input" name="servicioS[]" type="checkbox" value="{{$servicio->id}}" {{ (is_array(old('servicioT')) and in_array($servicio->id, old('servicioT'))) ? 'checked' : '' }}>
+                      {{$servicio->nombre_servicio}}
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                    </div>
+                    @endif
+                    @endforeach
+                    </div>
+                  </div>
+                </div>
+              </div>
                 
               <div class="row">
                 <div class="form-group form-file-upload form-file-multiple col-md-4">

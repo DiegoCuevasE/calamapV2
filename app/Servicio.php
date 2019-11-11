@@ -10,4 +10,9 @@ class Servicio extends Model
     {
         return $this->belongsToMany(Mype::class,'servicio_mype');
     }
+
+    public function sitios()
+    {
+        return $this->belongsToMany(SitioTuristico::class,'servicio_mype');
+    }
 }

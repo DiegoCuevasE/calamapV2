@@ -38,7 +38,7 @@ class LoginController extends Controller
         }elseif ($tipo == 2) {
             return '/';
         }elseif ($tipo == 0) {
-            return 'admin';
+            return 'admin/home';
         }
         /*
         switch ($tipo) {

@@ -38,7 +38,7 @@ class MypeController extends Controller
     {
 
 
-            $mypes = Mype::all();
+            $mypes = Mype::all()->sortBy('created_at');
             //return $mypes;
             return view('admin.gestionMype')->with('mypes',$mypes);
 
@@ -65,7 +65,9 @@ class MypeController extends Controller
 
         $servicios = Servicio::all();
         $idiomas = Idioma::all();
-        $users = User::whereBetween('tipo_usuario',[0,1])->get();
+        $users = User::whereBetween('tipo_usuario',[0,1])
+        ->get();
+        
         //$mype = Mype::with('imagenmypes')->all();
         //$imagenes = $mype2->imagenmypes()->where('mype_id', '=', '1')->get();
 
@@ -95,11 +97,11 @@ class MypeController extends Controller
         $validarDatos =[
             'nombre_fantasia_mype' => 'required|max:100',
             'direccion_mype' => 'required|max:100',
-            'descripcion_mype' => 'required|max:250',
+            'descripcion_mype' => 'required|max:1000',
             'enlace_imagen_mype' => 'required',
             'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image' => 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ];
 
         switch (request('rubro_mype')) {
@@ -156,7 +158,7 @@ class MypeController extends Controller
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
         $datosmype->direccion_mype=request('direccion_mype');
-        $datosmype->descripcion_mype=request('descripcion_mype');
+        $datosmype->descripcion_mype=ucfirst(mb_strtolower(request('descripcion_mype')));
         $datosmype->horario_mype= request('horario_mype');
         $datosmype->estado_mype='0';
         $datosmype->telefono_mype=request('telefono_mype');
@@ -217,10 +219,7 @@ class MypeController extends Controller
         $mype4->servicios()->attach(request('servicioA'));
     }
 
-    $request->validate([
-        'enlace_imagen_mype' => 'required',
-        'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-    ]);
+
 
     if ($request->hasFile('enlace_imagen_mype')) {
         $logos = $request->file('enlace_imagen_mype');
@@ -259,10 +258,7 @@ class MypeController extends Controller
     }
     //----------------------------------------------------------------------------------------
     
-    $request->validate([
-        'image' => 'required',
-        'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-    ]);
+
 
     //check if image exist
     if ($request->hasFile('image')) {
@@ -366,7 +362,8 @@ class MypeController extends Controller
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
         $datosmype->razon_social_mype=request('razon_social_mype');
         $datosmype->direccion_mype=request('direccion_mype');
-        $datosmype->descripcion_mype=request('descripcion_mype');
+        $desc=ucfirst(mb_strtolower(request('descripcion_mype')));
+        $datosmype->descripcion_mype=$desc;
         $datosmype->horario_mype= request('horario_mype');
         $datosmype->estado_mype=request('estado_mype');
         $datosmype->telefono_mype=request('telefono_mype');
@@ -385,17 +382,17 @@ class MypeController extends Controller
         //$idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
         $idSitio2 = $id;
 
-
+        //0 español y otros
+        //1 solo español
     if ($datosmype->rubro_mype=request('idioma_mype') == "0") {
         $mype4 = new \App\Mype;
         $mype4->id = $idSitio2;
-        $mype4->idiomas()->attach(request('idioma'));
+        $mype4->idiomas()->sync(request('idioma'));
     }elseif ($datosmype->rubro_mype=request('idioma_mype') == "1") {
         $mype4 = new \App\Mype;
         $mype4->id = $idSitio2;
-        $mype4->idiomas()->attach("1");
+        $mype4->idiomas()->sync([]);
     }
-
 
     if ($datosmype->rubro_mype=request('rubro_mype') == "Hotelería") {
         $mype4 = new \App\Mype;
