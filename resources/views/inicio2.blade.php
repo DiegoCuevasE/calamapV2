@@ -136,19 +136,24 @@
           </div>
         </div>
         <div class="test owl-carousel owl-theme">
+          @foreach ($eventos as $evento)
           <div class="item">
             <div class="mb-lg-0 mb-4" >
               <!--Featured image-->
+              @foreach ($evento->imageneventos as $imagen)
+              @if ($imagen->tipo_imagen_evento == 'portada')
               <div class="view overlay rounded z-depth-1">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid" alt="Sample project image">
+                <img src="{{$imagen->enlace_imagen_evento}}" class="img-fluid" alt="Sample project image">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
+              @endif
+              @endforeach
               <!--Excerpt-->
               <div class="card-body pb-0">
                 <div class=" "> 
-                  <h4 class="font-weight-bold mt-1 mb-3">Limpieza de canales</h4>
+                <h4 class="font-weight-bold mt-1 mb-3">{{$evento->titulo_evento}}</h4>
                   <span class=" text-right">Jan 18, 2019</span>
                 </div>
                 <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
@@ -157,61 +162,7 @@
               </div>
             </div>
           </div>
-          <div class="item">
-            <div class="mb-lg-0 mb-4" >
-              <!--Featured image-->
-              <div class="view overlay rounded z-depth-1">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid" alt="Sample project image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--Excerpt-->
-              <div class="card-body pb-0">
-                <h4 class="font-weight-bold mt-1 mb-3">Title of the news</h4>
-                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-                  eveniet ut et voluptates repudiandae.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="mb-lg-0 mb-4" >
-              <!--Featured image-->
-              <div class="view overlay rounded z-depth-1">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid" alt="Sample project image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--Excerpt-->
-              <div class="card-body pb-0">
-                <h4 class="font-weight-bold mt-1 mb-3">Title of the news</h4>
-                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-                  eveniet ut et voluptates repudiandae.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="mb-lg-0 mb-4" >
-              <!--Featured image-->
-              <div class="view overlay rounded z-depth-1">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid" alt="Sample project image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--Excerpt-->
-              <div class="card-body pb-0">
-                <h4 class="font-weight-bold mt-1 mb-3">Title of the news</h4>
-                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-                  eveniet ut et voluptates repudiandae.
-                </p>
-              </div>
-            </div>
-          </div>
-
+          @endforeach
         </div>
       </div>
     </div>

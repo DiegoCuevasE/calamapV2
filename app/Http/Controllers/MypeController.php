@@ -151,7 +151,6 @@ class MypeController extends Controller
         
         $datosmype = new Mype();
 
-
         $datosmype->user_id=request('user_id');
 
         $datosmype->rubro_mype=request('rubro_mype');
@@ -180,10 +179,6 @@ class MypeController extends Controller
         $mype4 = new \App\Mype;
         $mype4->id = $idSitio2;
         $mype4->idiomas()->attach(request('idioma'));
-    }elseif ($datosmype->rubro_mype=request('idioma_mype') == "1") {
-        $mype4 = new \App\Mype;
-        $mype4->id = $idSitio2;
-        $mype4->idiomas()->attach("1");
     }
 
 
@@ -425,11 +420,17 @@ class MypeController extends Controller
     }
 
     $request->validate([
-        'enlace_imagen_mype' => 'required',
+        
         'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]);
 
+
+
     if ($request->hasFile('enlace_imagen_mype')) {
+        foreach($datosmype->imagenMypes as $image){
+            Imagenmype::where('enlace_imagen_mype','=',$image->enlace_imagen_mype)->where('tipo_imagen_mype','=','logo')->delete();
+        }
+
         $logos = $request->file('enlace_imagen_mype');
         $org_img = $thm_img = true;
         if( ! File::exists('images/originals/')) {
@@ -467,12 +468,15 @@ class MypeController extends Controller
     //----------------------------------------------------------------------------------------
     
     $request->validate([
-        'image' => 'required',
+        
         'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]);
 
     //check if image exist
     if ($request->hasFile('image')) {
+        foreach($datosmype->imagenMypes as $image){
+            Imagenmype::where('enlace_imagen_mype','=',$image->enlace_imagen_mype)->where('tipo_imagen_mype','=','galeria')->delete();
+        }
         $images = $request->file('image');
 
         //setting flag for condition
@@ -517,7 +521,8 @@ class MypeController extends Controller
             }
         }
     }
-    return redirect('moduloMype');
+    return redirect('admin/gestionMype');
+    // return redirect('moduloMype');
     
     }
 

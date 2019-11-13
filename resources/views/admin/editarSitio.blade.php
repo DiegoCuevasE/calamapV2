@@ -45,13 +45,7 @@
                     <label class="bmd-label-floating">Entrada</label>
                     <input name="entrada_turistico" id="entrada_turistico" type="text" class="form-control">
                   </div>
-                </div>
-                <div class="col-md-6">      
-                  <div class="form-group">
-                    <label class="label-control">Horario</label>
-                    <input name="horario_turistico" id="horario_turistico" value=" {{$sitio->horario_turistico}}" type="text" class="form-control "/>
-                  </div>
-                </div>                         
+                </div>                        
               </div>
               
               <div class="row mt-2">

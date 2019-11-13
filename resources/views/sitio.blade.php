@@ -38,9 +38,9 @@
           <div class="card-body secciones">
               <div class="d-xl-inline-block">
                   <ul class="tabs js-clone-nav ml-auto list-unstyled d-flex text-right mb-0 " data-class="social">
-                      <li><a href="#informacion" class="pr-2">Información</a></li>
-                      <li><a href="#fotos" class="pr-2">Fotos y videos</a></li>
-                      <li><a href="#mapa" class="pr-2 ">ubicación</a></li>
+                      <li><a href="#informacion" class="pr-2 font-weight-bold"><u>Información</u> </a></li>
+                      <li><a href="#fotos" class="pr-2 font-weight-bold"><u>Fotos y videos</u></a></li>
+                      <li><a href="#mapa" class="pr-2 font-weight-bold"><u>ubicación</u> </a></li>
                   </ul>
               </div>
               <article id="informacion">

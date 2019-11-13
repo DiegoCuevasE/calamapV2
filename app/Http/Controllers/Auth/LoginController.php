@@ -34,6 +34,7 @@ class LoginController extends Controller
         // Check user role
 
         if ($tipo == 1) {
+            
             return 'adminMype/historico';
         }elseif ($tipo == 2) {
             return '/';

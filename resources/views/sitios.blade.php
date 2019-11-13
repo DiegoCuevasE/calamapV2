@@ -26,7 +26,7 @@
     <div class="card-deck col-lg-4">
       <div class="card mb-4"> 
         @foreach ($sitio->imagenSitioTuristicos as $imagen)
-        @if($imagen->tipo_imagen_turistico=='logo')
+        @if($imagen->tipo_imagen_turistico=='portada')
         <div class="view overlay">
           <img class="card-img-top" src="{{ '/'.$imagen->enlace_imagen_turistico}}" alt="Card image cap">
           <a href="#!">

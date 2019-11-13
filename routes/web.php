@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use App\Evento;
+use App\SitioTuristico;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +31,12 @@ Route::post('subirimagen', 'FotoController@uploadImage');
 
 
 Route::get('/', function () {
-    return view('inicio2');
+
+    $eventos= Evento::paginate(6);
+    $sitios= SitioTuristico::paginate(3);
+
+    return view('inicio2',['eventos'=> $eventos,'sitios'=> $sitios]);
+
 });
 
 Route::get('adminMype/adminMype', function () {
@@ -87,6 +94,15 @@ Route::get('admin/gestionEvento', function () {
 Route::get('admin/gestionSitio', 'SitioturisticoController@index')->name('gestionSitio');
 Route::get('admin/agregarSitio', 'SitioturisticoController@llenarForm')->name('agregarSitio');
 Route::post('admin/registrarSitio', 'MypeController@store')->name('registrarSitio');
+
+//Eventos!!
+Route::get('admin/gestionEvento', 'EventoController@index')->name('gestionEvento');
+Route::get('admin/agregarEvento', 'EventoController@create')->name('agregarEvento');
+Route::post('admin/registrarEvento', 'EventoController@store')->name('registrarEvento');
+Route::delete('admin/eliminarEvento{id}', 'EventoController@destroy')->name('eliminarEvento');
+Route::get('admin/editarEvento{id}', 'EventoController@edit')->name('editarEvento');
+Route::put('admin/updateEvento{id}', 'EventoController@update')->name('updateEvento');
+
 
 
 //MyPES!!

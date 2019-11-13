@@ -15,8 +15,8 @@ class CreateSitioTuristicoServicioTable extends Migration
     {
         Schema::create('sitio_turistico_servicio', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('turistico_id');
-            $table->foreign('turistico_id')->references('id')->on('sitio_turisticos')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('sitio_turistico_id');
+            $table->foreign('sitio_turistico_id')->references('id')->on('sitio_turisticos')->onDelete('cascade')->onUpdate('cascade');
             //
             //foreanea de servicio
             $table->unsignedBigInteger('servicio_id');

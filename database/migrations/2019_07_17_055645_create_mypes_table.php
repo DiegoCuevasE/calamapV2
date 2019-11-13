@@ -22,7 +22,7 @@ class CreateMypesTable extends Migration
             $table->string('rubro_mype', 50)->nullable();;
             $table->string('direccion_mype', 50)->nullable();;
             $table->string('descripcion_mype', 254)->nullable();;
-            $table->string('horario_mype', 254)->nullable();;
+            $table->string('horario_mype', 1024)->nullable();;
             $table->boolean('estado_mype')->nullable();;
             $table->string('telefono_mype', 15)->nullable();;
             $table->string('celular_mype', 15)->nullable();;

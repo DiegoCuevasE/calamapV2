@@ -85,7 +85,7 @@ class SitioturisticoController extends Controller
         $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         $datoSitioTuristico= new Sitioturistico();
 
-        $datoSitioTuristico->user_id = "4";
+        $datoSitioTuristico->user_id = Auth::user()->id;
         $datoSitioTuristico->nombre_turistico =  $request['nombre_turistico'];
         $datoSitioTuristico->tipo_turistico = $request['tipo_turistico'];
         $datoSitioTuristico->horario_turistico = $request['horario_turistico'];

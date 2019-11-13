@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Mypes;
 
 class DatabaseSeeder extends Seeder
 {
