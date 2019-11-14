@@ -29,23 +29,28 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Categoria del Sitio</label>
-                      <input name="tipo_turistico" id="tipo_turistico" value="{{ old('tipo_turistico', $sitio->tipo_turistico) }}" type="text" class="form-control" >
-                    </div>
-                  </div>
-                <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Dirección</label>
                     <input name="direccion_turistico" id="direccion_turistico" value="{{ old('direccion_turistico', $sitio->direccion_turistico) }}" type="text" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Entrada</label>
-                    <input name="entrada_turistico" id="entrada_turistico" type="text" class="form-control">
+                    <div class="form-group">
+                      <label for="entrada_evento">Entrada&nbsp;<span class="text-danger">*</span></label>
+                      <select class="form-control selectpicker" data-style="btn btn-link" id="entrada_turistico" name="entrada_turistico" onchange="getPrecio(this)" value="{{ old('entrada_turistico', $sitio->entrada_sitio) }}">
+                        <option value="0">Liberada</option>
+                        <option value="1" {{ $sitio->entrada_sitio ?'selected':''}}>Con valor</option>
+                      </select>
+                    </div>
                   </div>
-                </div>                        
+  
+                  <div class="col-md-6 " id="entrada" {{ old('entrada_evento') == "1" ? 'style=display:block;' : 'style=display:none;' }}>
+                    {!! $errors->first('servicioH','<div class="invalid-feedback">:message</div>') !!}
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Precio</label>
+                      <input type="text" id="precio_turistico" name="precio_turistico" class="form-control">
+                    </div>
+                  </div>                         
               </div>
               
               <div class="row mt-2">
@@ -143,7 +148,19 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+  function getPrecio(select){
+    var selectedString = select.options[select.selectedIndex].value;
 
+    if(selectedString == "1")
+    {
+        document.getElementById("entrada").style.display = "block";
+    }else {
+        document.getElementById("entrada").style.display = "none";
+    }
+
+}
+</script>
 <script>
   function getLogo(){  document.getElementById("logos").style.display = "block";}
 </script>

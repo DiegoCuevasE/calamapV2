@@ -9,8 +9,8 @@
   <div class="mt-5">
     <div class="row">
       <div class="col-md-8">
-        <h2 class="card-text">Busca el mejor lugar para descanzar</h2>
-        <p class="color-black-opacity-5">Descubre los hoteles y hospedajes disponibles en ciudad</p>
+        <h2 class="card-text">{{$titulo}}</h2>
+      <p class="color-black-opacity-5">{{$subtitulo}}</p>
       </div>
 
       <div class="col-md-4" >

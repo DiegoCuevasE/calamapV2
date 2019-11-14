@@ -4,7 +4,8 @@
 <div class="container">
 
   <!-- Titulo -->
-  <div class="row mb-5 mt-5">
+  <div class="site-section mt-5">
+  <div class="row">
     <div class="col-md-8 ">
       <h2 class=" card-text">Visita nuestros sitios turisticos</h2>
       <p class="color-black-opacity-5">Descubre los lugares turisticos de la ciudad</p>
@@ -16,7 +17,7 @@
       </form>
     </div>
   </div>
-
+  </div>
         
   <!-- Sitios turisticos -->
   <div class="row justify-content-center">
@@ -38,7 +39,7 @@
         <div class="card-body ">
         <h4 class="card-tite">{{$sitio->nombre_turistico}}</h4>
           <div class="cortar">
-            <p class="card-text " >{{$sitio->descripcion_turistico}}</p>
+            <p class="card-text " >{{str_limit($sitio->descripcion_turistico, $limit = 200, $end = '...') }}</p>
           </div>
         </div>
         <div class="row " style="text-align: center">

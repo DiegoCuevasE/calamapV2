@@ -80,18 +80,19 @@ class SitioturisticoController extends Controller
     public function store(Request $request)
     {   
         //return response()->json($request);
-
-
-        $horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
         $datoSitioTuristico= new Sitioturistico();
 
         $datoSitioTuristico->user_id = Auth::user()->id;
+
         $datoSitioTuristico->nombre_turistico =  $request['nombre_turistico'];
-        $datoSitioTuristico->tipo_turistico = $request['tipo_turistico'];
-        $datoSitioTuristico->horario_turistico = $request['horario_turistico'];
         $datoSitioTuristico->direccion_turistico = $request['direccion_turistico'];
-        $datoSitioTuristico->descripcion_turistico = $request['descripcion_turistico'];
+        $datoSitioTuristico->descripcion_turistico = ucfirst(mb_strtolower(request('descripcion_turistico')));
+
+        $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
+        if($datoSitioTuristico->entrada_sitio) { $datoSitioTuristico->precio_sitio=request('precio_turistico'); }
+
         $datoSitioTuristico->save();
+
         $nombre = $request['nombre_turistico'];
 
         $idSitio = DB::select( DB::raw("SELECT sitio_turisticos.id FROM sitio_turisticos WHERE sitio_turisticos.nombre_turistico = '$nombre'"));
@@ -251,13 +252,12 @@ class SitioturisticoController extends Controller
         $datoSitioTuristico= Sitioturistico::find($id);
 
         $datoSitioTuristico->nombre_turistico = $request->get('nombre_turistico');
-        $datoSitioTuristico->tipo_turistico =  $request->get('tipo_turistico');
-
-        //$datoSitioTuristico->horario_turistico = $request->get('horario_turistico');
-        $datoSitioTuristico->horario_turistico = 'sadsad';
-
         $datoSitioTuristico->direccion_turistico =  $request->get('direccion_turistico');
         $datoSitioTuristico->descripcion_turistico =  $request->get('descripcion_turistico');
+
+        $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
+        if($datoSitioTuristico->entrada_sitio) { $datoSitioTuristico->precio_sitio=request('precio_turistico'); }
+
         $datoSitioTuristico->save();
         $datoSitioTuristico->id = $id;
         $datoSitioTuristico->servicios()->sync(request('servicioS'));

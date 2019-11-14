@@ -45,32 +45,36 @@
               </div>
               <article id="informacion">
                   <div class="row ">
-                      <div class="mt-3 col-lg-12 ">
-                          <h5 class=" mb-2 ">Sobre {{$sitio->nombre_turistico}}</h5>
-                          <p class="card-text "> {{$sitio->descripcion_turistico}}</p>
-                      </div>
                       <div class="mt-3 col-lg-6">
-                          <h5 class=" mb-2 ">Dirección</h5>
+                          <h6 class=" mb-2 ">Dirección</h6>
                           <p class="card-text ">{{$sitio->direccion_turistico}}</p>
                       </div>
                       <div class="mt-3 col-lg-6">
-                          <h5 class="card-tite mb-2">Servicios</h5>
-                          <p class="card-text ">Botes, museo.</p>
+                          <h6 class="card-tite mb-2">Servicios</h6>
+                          <p class="card-text ">
+                            @foreach ($sitio->servicios as $servicio)
+                            {{$servicio->nombre_servicio}},
+                            @endforeach
+                          </p>
                       </div>
                       <div class="mt-3 col-lg-6">
-                          <h5 class="card-title mb-2">Horario</h5>
+                          <h6 class="card-title mb-2">Horario</h6>
                           <p class="card-text ">Lun-Vie 9:00-17:30 | Sab-Dom 10:00.17:30</p>
                       </div>
                       <div class="mt-3 col-lg-6">
-                          <h5 class="card-title mb-2">Locomoción</h5>
-                          <p class="card-text ">Microbuses:177A | 177B</p>
+                          <h6 class="card-title mb-2">Entrada</h6>
+                          <p class="card-text ">{{$sitio->entrada_sitio}}</p>
+                      </div>
+                      <div class="mt-3 col-lg-12 ">
+                          <h6 class=" mb-2 ">Sobre {{$sitio->nombre_turistico}}</h6>
+                          <p class="card-text "> {{$sitio->descripcion_turistico}}</p>
                       </div>
                   </div>
               </article>
               <article id="fotos">
                   <div class="row ">
                       <div class="mt-3 col-12">
-                          <h5 class=" mb-2 ">Descubre más de {{$sitio->nombre_turistico}}</h5>
+                          <h6 class=" mb-2 ">Descubre más de {{$sitio->nombre_turistico}}</h6>
                       </div>
                       <div class="mt-3 col-12 row">
                           @foreach ($sitio->imagenSitioTuristicos as $imagen)
@@ -93,7 +97,7 @@
               <article id="mapa">
                 <div class="row ">
                   <div class="mt-3 col-lg-12">
-                    <h5 class=" mb-2 ">Encuetralo en la mapa!</h5>
+                    <h6 class=" mb-2 ">Encuetralo en la mapa!</h6>
                   </div>
                 </div>
               </article>  

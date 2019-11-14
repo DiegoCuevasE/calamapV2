@@ -91,7 +91,7 @@
                         {{$sitio->horario_turistico}}
                       </td>
                       <td>
-                        Agregar a la bd
+                        {{$sitio->entrada_sitio ? $sitio->precio_sitio : 'Liberada'}}
                       </td>
                       <td class="text-primary">
                         <div class="d-flex">
@@ -153,28 +153,29 @@
                               </div>
                               <!-- Fin Visualización de imágenes-->
 
-                              <div class="col-md-12">
-                                <p class="card-text">{{$sitio->descripcion_turistico}}</p>
-                              </div>
+                              
                               <div class="mt-2 col-4">
                                 <h5>Dirección</h5>
                                   <p class="card-text ">{{$sitio->direccion_turistico}}</p>
                               </div>
                               <div class="mt-2 col-4">
-                                  <h5>Categoria</h5>
-                                  <p class="card-text ">{{$sitio->tipo_turistico}}</p>
+                                  <h5>Entrada</h5>
+                                  <p class="card-text ">{{$sitio->entrada_sitio ? $sitio->precio_sitio : 'Liberada'}}</p>
                               </div>
                               <div class="mt-2 col-4">
-                                <h5>Locomoción</h5>
-                                <p class="card-text ">Hacer?</p>
+                                <h5>Servicios</h5>
+                                <p class="card-text">
+                                    @foreach ($sitio->servicios as $servicio)
+                                    {{$servicio->nombre_servicio}},
+                                    @endforeach
+                                </p>
                               </div>
-                              <div class="mt-2 col-6">
-                                <h5 class="text-center">Servicios</h5>
-                                <p class="card-text text-center">Copiar a MyPE</p>
+                              <div class="mt-2 col-4">
+                                <h5 class="">Horario</h5>
+                                <p class="card-text"></p>
                               </div>
-                              <div class="mt-2 col-6">
-                                <h5 class="text-center">Horario</h5>
-                                <p class="card-text text-center">{{$sitio->horario_turistico}}</p>
+                              <div class="col-md-12">
+                                <p class="card-text">{{$sitio->descripcion_turistico}}</p>
                               </div>
                             </div>
                           </div>

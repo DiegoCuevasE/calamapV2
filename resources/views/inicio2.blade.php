@@ -111,7 +111,7 @@
                 <p>Conoce la historia y cultura de la ciudad mediante las agencia de turismo</p>
               </div>
             </div>
-            <div class="align-self-end"><p><a href="{{ route('artesanias') }}">Ver más</a></p></div>
+            <div class="align-self-end"><p><a href="{{ route('turismo') }}">Ver más</a></p></div>
           </div>
           <div class="col-md-4 col-lg-3 col-xl-2 mb-4 mb-lg-0 flex-column d-flex">
             <div class="unit-4 d-flex mb-auto">
@@ -121,7 +121,7 @@
                 <p>Conoce los distintos locales de la ciudad que te ofrecen una varierdad de productos</p>
               </div>
             </div>
-            <div class="align-self-end"><p><a href="{{ route('artesanias') }}">Ver más</a></p></div>
+            <div class="align-self-end"><p><a href="{{ route('comercio') }}">Ver más</a></p></div>
           </div>
         </div>
       </div>
@@ -131,11 +131,12 @@
       <div class="container ">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center">
-            <h2 class="font-weight-light text-black">Eventos en CKALAMA</h2>
+            <h2 class="font-weight-light text-black">Eventos en CALAMA</h2>
             <p class="color-black-opacity-5">Conoce los eventos culturales de la ciudad y sus alrededores</p>
           </div>
         </div>
         <div class="test owl-carousel owl-theme">
+          @if(is_null($eventos))
           @foreach ($eventos as $evento)
           <div class="item">
             <div class="mb-lg-0 mb-4" >
@@ -154,15 +155,15 @@
               <div class="card-body pb-0">
                 <div class=" "> 
                 <h4 class="font-weight-bold mt-1 mb-3">{{$evento->titulo_evento}}</h4>
-                  <span class=" text-right">Jan 18, 2019</span>
+                  <span class=" text-right">{{date('d/m/y', strtotime($evento->fecha_inicio_evento))}}  </span>
                 </div>
-                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-                  eveniet ut et voluptates repudiandae.
+                <p class="grey-text">{{str_limit($evento->descripcion_evento, $limit = 150, $end = '...') }}
                 </p>
               </div>
             </div>
           </div>
           @endforeach
+          @endif
         </div>
       </div>
     </div>
@@ -180,25 +181,20 @@
               <div class="col-lg-12">
                 <div id="mdb-lightbox-ui"></div>
                 <div class="d-grid mdb-lightbox">
-                  
+                  @if (!is_null($sitios))
+                  @foreach ($sitios as $sitio)
+                  @foreach ($sitio->imagenSitioTuristicos as $imagen)
+                  @if ($imagen->tipo_imagen_turistico == 'portada')        
                   <figure class="item">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/12-col/img%20(11).jpg"
+                    <a href="{{ url('sitio'.$sitio->id) }}"
                       class="z-depth-1 rounded" data-size="1600x1067">
-                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/12-col/img%20(11).jpg" />
+                      <img src="{{$imagen->enlace_imagen_turistico}}" />
                     </a>
                   </figure>
-                  <figure class="item">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/12-col/img%20(12).jpg"
-                      class="z-depth-1 rounded" data-size="1600x1067">
-                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/12-col/img%20(12).jpg" />
-                    </a>
-                  </figure>
-                  <figure class="item">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/12-col/img%20(13).jpg"
-                      class="z-depth-1 rounded" data-size="1600x1067">
-                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/12-col/img%20(13).jpg" />
-                    </a>
-                  </figure>
+                  @endif
+                  @endforeach
+                  @endforeach
+                  @endif
                 </div>
               </div>
             </div>

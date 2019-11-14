@@ -15,8 +15,8 @@ class CreateImagenSitioTuristicosTable extends Migration
     {
         Schema::create('imagen_sitio_turisticos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('sitioturistico_id');
-            $table->foreign('sitioturistico_id')->references('id')->on('sitio_turisticos')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('sitio_turistico_id');
+            $table->foreign('sitio_turistico_id')->references('id')->on('sitio_turisticos')->onDelete('cascade')->onUpdate('cascade');
             //
             $table->string('enlace_imagen_turistico', 254);
             $table->string('tipo_imagen_turistico', 15);

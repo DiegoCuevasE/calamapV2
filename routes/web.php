@@ -32,11 +32,9 @@ Route::post('subirimagen', 'FotoController@uploadImage');
 
 Route::get('/', function () {
 
-    $eventos= Evento::paginate(6);
-    $sitios= SitioTuristico::paginate(3);
-
+    if ($eventos= Evento::paginate(6) && $sitios= SitioTuristico::paginate(3)){
     return view('inicio2',['eventos'=> $eventos,'sitios'=> $sitios]);
-
+    }
 });
 
 Route::get('adminMype/adminMype', function () {

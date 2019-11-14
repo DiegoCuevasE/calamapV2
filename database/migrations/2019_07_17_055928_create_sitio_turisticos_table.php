@@ -18,11 +18,12 @@ class CreateSitioTuristicosTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             //
-            $table->string('tipo_turistico', 50);
+            $table->boolean('entrada_sitio');
+            $table->string('precio_sitio',50)->nullable();
+            //$table->string('tipo_turistico', 50);
             $table->string('nombre_turistico', 50)->unique();
-            $table->string('horario_turistico', 254);
             $table->string('direccion_turistico', 254);
-            $table->string('descripcion_turistico', 254);
+            $table->string('descripcion_turistico', 1024);
             $table->timestamps();
         });
     }
