@@ -193,19 +193,29 @@
                                   <h5>Rubro</h5>
                                   <p class="card-text ">{{$mype->rubro_mype}}</p>
                               </div>
-                              <div class="mt-2 col-4">
-                                <h5>Locomoción</h5>
-                                <p class="card-text ">Hacer?</p>
-                              </div>
+
                               <div class="mt-2 col-4">
                                 <h5 class="">Servicios</h5>
                                 @foreach ($mype->servicios as $servicio)
                                 <p class="card-text ">{{$servicio->nombre_servicio}}</p>
                                 @endforeach
                               </div>
-                              <div class="mt-2 col-4">
+                              <div class="mt-2 col-12">
                                 <h5 class="">Horario</h5>
-                                <p class="card-text">{{$mype->horario_mype}}</p>
+                                <p class="card-text"> 
+                                @if($mype->horario_mype=="Personalizado")
+                                <ul>
+                                @foreach($mype->horarios as $horario)
+                                  <li>
+                                  {{$horario->dia.' '.$horario->pivot->hora_inicio.' - '.$horario->pivot->hora_termino}}
+                                  {{$horario->pivot->hora_inicio_dos ? ', '.$horario->pivot->hora_inicio_dos.' - '.$horario->pivot->hora_termino_dos:''}}
+                                  </li>
+                                @endforeach
+                                @else
+                                  {{$mype->horario_mype}}
+                                @endif
+                                </ul>
+                                </p>
                               </div>
                               <div class="mt-2 col-4">
                                 <h5 class="">Contacto</h5>

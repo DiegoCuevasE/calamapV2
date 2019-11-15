@@ -13,6 +13,6 @@ class Servicio extends Model
 
     public function sitios()
     {
-        return $this->belongsToMany(SitioTuristico::class,'servicio_mype');
+        return $this->belongsToMany(SitioTuristico::class,'sitio_turistico_servicio');
     }
 }

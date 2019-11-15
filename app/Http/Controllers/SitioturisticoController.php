@@ -281,7 +281,6 @@ class SitioturisticoController extends Controller
     
         if ($request->hasFile('enlace_imagen_turistico')) {
 
-
             $logos = $request->file('enlace_imagen_turistico');
             $org_img = $thm_img = true;
             // loop through each image to save and upload

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mype extends Model
 {
+    public function horarios()
+    {
+        return $this->belongsToMany(Horario::class,'horario_mype')->withPivot('hora_inicio', 'hora_termino', 'hora_inicio_dos','hora_termino_dos');
+    }
+
     public function imagenmypes()
     {
         return $this->hasMany(Imagenmype::class);

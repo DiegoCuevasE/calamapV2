@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\store;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use App\horario;
 use App\Servicio;
 use App\Idioma;
 use App\User;
@@ -38,7 +39,7 @@ class MypeController extends Controller
     {
 
 
-            $mypes = Mype::all()->sortBy('created_at');
+            $mypes = Mype::all();
             //return $mypes;
             return view('admin.gestionMype')->with('mypes',$mypes);
 
@@ -65,13 +66,14 @@ class MypeController extends Controller
 
         $servicios = Servicio::all();
         $idiomas = Idioma::all();
+        $horarios = horario::all();
         $users = User::whereBetween('tipo_usuario',[0,1])
         ->get();
         
         //$mype = Mype::with('imagenmypes')->all();
         //$imagenes = $mype2->imagenmypes()->where('mype_id', '=', '1')->get();
 
-        return view('admin/agregarMype',['servicios' => $servicios, 'idiomas' => $idiomas, 'users'=> $users]);
+        return view('admin/agregarMype',['servicios' => $servicios, 'idiomas' => $idiomas, 'users'=> $users, 'horarios' =>$horarios]);
     }
 
     /**
@@ -173,6 +175,21 @@ class MypeController extends Controller
 
     //$idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
     $idSitio2 = DB::table('mypes')->where('nombre_fantasia_mype', $nombre)->value('id');
+    
+    if ($datosmype->horario_mype== "Personalizado") {
+    for ($i = 1; $i <= 7; $i++) {
+        $mype4 = new \App\Mype;
+        $mype4->id = $idSitio2;
+        if(request($i.'I')){
+        $mype4->horarios()->attach($i,[
+        'hora_inicio'=> request($i.'I'),
+        'hora_termino'=>request($i.'T'),
+        'hora_inicio_dos'=> request($i.'II'),
+        'hora_termino_dos'=>request($i.'TT'),
+        ]);
+        }
+    }}
+    
 
 
     if ($datosmype->rubro_mype=request('idioma_mype') == "0") {

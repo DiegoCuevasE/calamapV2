@@ -248,233 +248,56 @@
 
             <hr>
             <div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">Lun</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="lunInicio" name="lunInicio" class="form-control timepicker" />
-                    </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="lunTermino" name="lunTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="horario_mype " class="bmd-label-floating">Horario</label>
+                    {!! $errors->first('horario','<div class="invalid-feedback">:message</div>') !!}
+                    <select class="form-control selectpicker" data-style="btn btn-link" name="horario_mype" id="horario_mype" onchange="getHorario(this)">
+                      <option value="Siempre abierto" {{ old('horario_mype') == "Siempre abierto" ? 'selected' : '' }}>Siempre abierto</option>
+                      <option value="Personalizado" {{ old('horario_mype') == "Personalizado" ? 'selected' : '' }}>Personalizado</option>
+                    </select>
                 </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
+              </div>   
+                  
+              <div id="horario" {{ old('horario_mype') == "Personalizado" ? 'style=display:block;' : 'style=display:none;' }}>
+                @foreach ($horarios as $horario)
+                <div class="row align-items-center" >
+                <label class="label-primary col-2">{{$horario->dia}}</label>
+                  <div class="d-flex col-md-4 align-items-center">
                     <div class="col">      
                       <div class="form-group">
-                        <input type="text" id="lunInicio2" name="lunInicio2" class="form-control timepicker" />
+                        <input type="text" id="{{$horario->id}}I" name="{{$horario->id}}I" class="form-control timepicker" />
                       </div>
                     </div>
                   <label class="label-primary">Hasta</label>
                     <div class="col">      
                       <div class="form-group">
-                        <input type="text" id="lunTermino2" name="lunTermino2" class="form-control timepicker" />
+                        <input type="text" id="{{$horario->id}}T" name="{{$horario->id}}T" class="form-control timepicker" />
                       </div>
                     </div>
                   </div>
-                </div> 
-              </div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">Mar</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="marInicio" name="marInicio" class="form-control timepicker" />
+                  <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
+                  <div class="expandir col-md-4" style="display:none">
+                    <div class="d-flex align-items-center">
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}II" name="{{$horario->id}}II" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    <label class="label-primary">Hasta</label>
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}TT" name="{{$horario->id}}TT" class="form-control timepicker" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="marTermino" name="marTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
+                  </div> 
                 </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="marInicio2" name="marInicio2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  <label class="label-primary">Hasta</label>
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="marTermino2" name="marTermino2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">Mie</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="mieInicio" name="mieInicio" class="form-control timepicker" />
-                    </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="mieTermino" name="mieTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="mieInicio2" name="mieInicio2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  <label class="label-primary">Hasta</label>
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="mieTermino2" name="mieTermino2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">jue</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="jueInicio" name="jueInicio" class="form-control timepicker" />
-                    </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="jueTermino" name="jueTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="jueInicio2" name="jueInicio2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  <label class="label-primary">Hasta</label>
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="jueTermino2" name="jueTermino2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">Vie</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="vieInicio" name="vieInicio" class="form-control timepicker" />
-                    </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="vieTermino" name="vieTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="vieInicio2" name="vieInicio2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  <label class="label-primary">Hasta</label>
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="vieTermino2" name="vieTermino2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">Sab</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="sabInicio" name="sabInicio" class="form-control timepicker" />
-                    </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="sabTermino" name="sabTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="sabInicio2" name="sabInicio2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  <label class="label-primary">Hasta</label>
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="sabTermino2" name="sabTermino2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-              <div class="row align-items-center">
-                <label class="label-primary col-md-1">  Dom</label>
-                <div class="d-flex col-md-4 align-items-center">
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="domInicio" name="domInicio" class="form-control timepicker" />
-                    </div>
-                  </div>
-                <label class="label-primary">Hasta</label>
-                  <div class="col">      
-                    <div class="form-group">
-                      <input type="text" id="domTermino" name="domTermino" class="form-control timepicker" />
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                <div class="expandir col-md-4" style="display:none">
-                  <div class="d-flex align-items-center">
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="domInicio2" name="domInicio2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  <label class="label-primary">Hasta</label>
-                    <div class="col">      
-                      <div class="form-group">
-                        <input type="text" id="domTermino2" name="domTermino2" class="form-control timepicker" />
-                      </div>
-                    </div>
-                  </div>
-                </div> 
+                @endforeach
               </div>
             </div>
-
             <hr>
+
             <div class="row mt-1">
               
               <div class="form-group form-file-upload form-file-multiple col-md-6">
@@ -526,6 +349,19 @@
 </div>
 
 @endsection
+<script>
+
+    function getHorario(select){
+      var selectedString = select.options[select.selectedIndex].value;
+      if(selectedString == "Personalizado")
+      {
+          document.getElementById("horario").style.display = "block";
+      }else {
+          document.getElementById("horario").style.display = "none";
+      }
+  
+    }
+</script>
 
 <script>
 
@@ -569,6 +405,8 @@
     }
 }
 </script>
+
+
 
 <script>
 
