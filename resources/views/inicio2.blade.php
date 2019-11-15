@@ -31,7 +31,7 @@
               <a href="#" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaHis.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
-                  <h3 class="unit-1-heading">Ruta Historica</h3>
+                  <h3 class="unit-1-heading">Ruta Histórica</h3>
                 </div>
               </a>
             </div>
@@ -39,7 +39,7 @@
               <a href="#" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaGastro.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
-                  <h3 class="unit-1-heading">Ruta Gastronomica</h3>
+                  <h3 class="unit-1-heading">Ruta Gastronómica</h3>
                 </div>
               </a>
             </div>
@@ -97,8 +97,8 @@
             <div class="unit-4 d-flex mb-auto">
               <div class="unit-4-icon mr-4"><span class="orange-text flaticon-vase"></span></div>
               <div class="h-100">
-                <h3>Artesanias</h3>
-                <p>Conoce todo tipo de artesanias elaborada con materia prima de la zona</p>
+                <h3>Artesanías</h3>
+                <p>Conoce todo tipo de artesanías elaboradas con materia prima de la zona.</p>
               </div>
             </div>
             <div class="align-self-end"><p><a href="{{ route('artesanias') }}">Ver más</a></p></div>
@@ -108,7 +108,7 @@
               <div class="unit-4-icon mr-4"><span class="orange-text flaticon-bread"></span></div>
               <div class="h-100">
                 <h3>Agencias de turismo</h3>
-                <p>Conoce la historia y cultura de la ciudad mediante las agencia de turismo</p>
+                <p>Conoce la historia y cultura de la ciudad mediante las agencia de turismo.</p>
               </div>
             </div>
             <div class="align-self-end"><p><a href="{{ route('turismo') }}">Ver más</a></p></div>
@@ -118,7 +118,7 @@
               <div class="unit-4-icon mr-4"><span class="orange-text flaticon-fork"></span></div>
               <div class="h-100">
                 <h3>Comercio</h3>
-                <p>Conoce los distintos locales de la ciudad que te ofrecen una varierdad de productos</p>
+                <p>Conoce los distintos locales de la ciudad que te ofrecen una varierdad de productos.</p>
               </div>
             </div>
             <div class="align-self-end"><p><a href="{{ route('comercio') }}">Ver más</a></p></div>
@@ -223,7 +223,7 @@
         <div class="col-md-12 justify-content-center mb-5">
           <div class="text-center">
             <h2 class="font-weight-light text-black">¿Quieres ser parte de nosotros?</h2>
-            <p class="color-black-opacity-5">Registrate segun tu perfil</p>
+            <p class="color-black-opacity-5">Regístrate según tu perfil</p>
           </div>
         </div>
         <div class="justify-content-center row">
@@ -234,7 +234,7 @@
                       <img src="{{ asset('template2/images/turista.svg')}}" class="img-fluid" alt="smaple image">
                   </div>
                   <div class="col-6 ">
-                    <h3>Registrate como turista</h3>
+                    <h3>Regístrate como turista</h3>
                     <p>Obtén beneficios exclusivos.</p>
                     <p><a href="formulario2">Registrarse</a></p>
                   </div>
@@ -248,7 +248,7 @@
                     <img src="{{ asset('template2/images/turista.svg')}}" class="img-fluid" alt="smaple image">
                 </div>
                 <div class="col-6">
-                  <h3>Registrate como MyPE</h3>
+                  <h3>Regístrate como MyPE</h3>
                   <p>Ingresa tu negocio para que todos puedan verlo.</p>
                   <p><a href="registroDueno">Registrarse</a></p>
                 </div>
