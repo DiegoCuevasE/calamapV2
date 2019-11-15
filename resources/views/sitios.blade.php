@@ -7,8 +7,8 @@
   <div class="site-section mt-5">
   <div class="row">
     <div class="col-md-8 ">
-      <h2 class=" card-text">Visita nuestros sitios turisticos</h2>
-      <p class="color-black-opacity-5">Descubre los lugares turisticos de la ciudad</p>
+      <h2 class=" card-text">Visita nuestros sitios turísticos</h2>
+      <p class="color-black-opacity-5">Descubre los lugares turísticos de la ciudad</p>
     </div>
     <div class="col-md-4 float-right" >
       <form class="form-inline md-form mr-auto mb-4">

@@ -69,10 +69,10 @@
         <div class="col-md-6  d-none d-xl-block justify-content-center">
           <nav class="site-navigation position-relative text-center" role="navigation">
             <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block list-unstyled">
-              <li><a href="{{ route('hoteles') }}">¿Donde Dormir?</a></li>
-              <li><a href="#">¿Que hacer?</a></li>
-              <li><a href="{{ route('restaurantes') }}">¿Donde Comer?</a></li>
-              <li><a href="{{ route('sitios') }}">¿Donde ir?</a></li>
+              <li><a href="{{ route('hoteles') }}">¿Dónde Dormir?</a></li>
+              <li><a href="#">¿Qué hacer?</a></li>
+              <li><a href="{{ route('restaurantes') }}">¿Dónde Comer?</a></li>
+              <li><a href="{{ route('sitios') }}">¿Dónde ir?</a></li>
             </ul>
           </nav>
         </div>
@@ -88,7 +88,7 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   @if (Auth::user()->tipo_usuario == '1' )
-                    <a class="dropdown-item" href="{{ route('historico') }}">Ver estadisticas</a>
+                    <a class="dropdown-item" href="{{ route('historico') }}">Ver estadísticas</a>
                   @endif
 
                   @if (Auth::user()->tipo_usuario == '0' )
@@ -124,7 +124,7 @@
                   <div class="col-md-3 col-lg-4 col-xl-4 mb-4">
             
                     <!-- Content -->
-                    <h6 class="text-uppercase text-white font-weight-bold">Calama Turistica</h6>
+                    <h6 class="text-uppercase text-white font-weight-bold">Calama Turística</h6>
                     <hr class="deep-orange accent-1 mb-4 mt-0 d-inline-block mx-auto" style="width: 80px;">
                     <p>Desde tiempos ancestrales, Calama ha sido un lugar de transito, descanso y activo comercio entre el Altiplano y la costa. Gracias a su proximidad con el Rio Loa, Calama es uno de los oasis habitados más grandes del mundo.</p>
             

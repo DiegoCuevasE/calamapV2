@@ -34,7 +34,7 @@
             <i class="material-icons mr-2">event</i>
             <h4 class="card-title font-weight-bold">Evento de la ciudad</h4>
             </div>
-            <p class="card-category">Esta lista es una vista previa de los eventos si desea ver uno en especifico seleccionalo</p>
+            <p class="card-category">Esta lista es una vista previa de los eventos si desea ver uno en específico selecciónalo</p>
           </div>
           <div class="card-body">
               <div class="table-responsive">

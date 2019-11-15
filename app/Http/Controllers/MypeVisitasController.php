@@ -12,7 +12,7 @@ class MypeVisitasController extends Controller
         $mypes = Mype::where('rubro_mype','hoteleria')
         ->where('estado_mype','1')
         ->paginate(4);
-        $titulo="Busca el mejor lugar para descanzar";
+        $titulo="Busca el mejor lugar para descansar";
         $subtitulo="Descubre los hoteles y hospedajes disponibles en ciudad.";
         
         return view('vistaMypes', ['mypes' => $mypes, 'titulo'=> $titulo, 'subtitulo'=>$subtitulo]);
