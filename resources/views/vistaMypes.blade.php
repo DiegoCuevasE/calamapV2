@@ -176,7 +176,6 @@
   
   
   <script type="text/javascript">
-
   
   $('.progress-form').submit(function(e){
   

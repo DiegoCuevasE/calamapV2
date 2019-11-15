@@ -32,9 +32,10 @@ Route::post('subirimagen', 'FotoController@uploadImage');
 
 Route::get('/', function () {
 
-    if ($eventos= Evento::paginate(6) && $sitios= SitioTuristico::paginate(3)){
+    $eventos= Evento::paginate(2);
+    $sitios= SitioTuristico::paginate(3);
     return view('inicio2',['eventos'=> $eventos,'sitios'=> $sitios]);
-    }
+    
 });
 
 Route::get('adminMype/adminMype', function () {
@@ -136,6 +137,8 @@ Route::get('Comercio', 'MypeVisitasController@getIndexC')->name('comercio');
 
 Route::get('SitiosTuristicos', 'SitioTuristicoController@MostrarSitios')->name('sitios');
 Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
+Route::get('evento{id}', 'Evento@MostrarSitio')->name('evento');
+
 
 
 //Route::get('/sitioTuristico/{sitio_id}', 'SitioturisticoController@MostrarSitio');

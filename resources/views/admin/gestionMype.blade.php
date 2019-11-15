@@ -204,7 +204,7 @@
                                 <h5 class="">Horario</h5>
                                 <p class="card-text"> 
                                 @if($mype->horario_mype=="Personalizado")
-                                <ul>
+                                <ul class="list-unstyled">
                                 @foreach($mype->horarios as $horario)
                                   <li>
                                   {{$horario->dia.' '.$horario->pivot->hora_inicio.' - '.$horario->pivot->hora_termino}}

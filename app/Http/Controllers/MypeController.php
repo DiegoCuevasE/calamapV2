@@ -343,12 +343,12 @@ class MypeController extends Controller
      */
     public function edit($id)
     {
-        
+        $horarios = horario::all();
         $servicios = Servicio::all();
         $idiomas = Idioma::all();
         $mypes= Mype::where('id',$id)->first();
         // return $mypes;
-        return view('admin/editarMype',['servicios' => $servicios, 'idiomas' => $idiomas, 'mypes'=> $mypes]);
+        return view('admin/editarMype',['servicios' => $servicios, 'idiomas' => $idiomas, 'mypes'=> $mypes, 'horarios'=>$horarios]);
         //$mype= Mype::where('id',$id)->first();
 
         //return view('admin/editarMype',compact('mype'));

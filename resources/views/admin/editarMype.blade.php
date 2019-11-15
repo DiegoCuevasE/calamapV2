@@ -309,6 +309,59 @@
                 </div>                           
             </div>
 
+            <hr>
+            <div class="row">
+              <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="horario_mype " class="bmd-label-floating">Horario</label>
+                    {!! $errors->first('horario','<div class="invalid-feedback">:message</div>') !!}
+                    <select class="form-control selectpicker" data-style="btn btn-link" name="horario_mype" id="horario_mype" onchange="getHorario(this)">
+                      <option value="Siempre abierto" {{ $mypes->horario_mype == "Siempre abierto" ? 'selected' : '' }}>Siempre abierto</option>
+                      <option value="Personalizado" {{ $mypes->horario_mype == "Personalizado" ? 'selected' : '' }}>Personalizado</option>
+                    </select>
+                </div>
+              </div>   
+                  
+              <div class="col-12" id="horario" {{ $mypes->horario_mype== "Personalizado" ? 'style=display:block;' : 'style=display:none;' }} >
+                @foreach($horarios as $horario)
+                
+                <div class="row align-items-center" >
+                <label class="label-primary col-md-2">{{$horario->dia}}</label>
+                  <div class="d-flex col-md-4 align-items-center">
+                    <div class="col">      
+                      <div class="form-group">
+                      <input type="text" id="{{$horario->id}}I" name="{{$horario->id}}I" value="" class="form-control timepicker" />
+                      </div>
+                    </div>
+                  <label class="label-primary">Hasta</label>
+                    <div class="col">      
+                      <div class="form-group">
+                        <input type="text" id="{{$horario->id}}T" name="{{$horario->id}}T" class="form-control timepicker" />
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
+                  <div class="expandir col-md-4" style="display:none">
+                    <div class="d-flex align-items-center">
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}II" name="{{$horario->id}}II" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    <label class="label-primary">Hasta</label>
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}TT" name="{{$horario->id}}TT" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                @endforeach
+              </div>
+            </div>
+            <hr>
+
             <label for="">Imagenes</label>
             
             <div class="row mt-2">
@@ -380,6 +433,19 @@
 
 @endsection
 
+<script>
+
+    function getHorario(select){
+      var selectedString = select.options[select.selectedIndex].value;
+      if(selectedString == "Personalizado")
+      {
+          document.getElementById("horario").style.display = "block";
+      }else {
+          document.getElementById("horario").style.display = "none";
+      }
+  
+    }
+</script>
 <script>
 
   function getRubro(select){

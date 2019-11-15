@@ -31,6 +31,11 @@ class EventoController extends Controller
         return view('admin.gestionEvento')->with('eventos',$eventos);
     }
 
+    public function MostrarSitio($sitio_id){
+        $evento = Evento::where('id',$sitio_id)->first();
+        return view('evento', ['evento'=>$evento]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

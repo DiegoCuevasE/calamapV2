@@ -136,7 +136,7 @@
           </div>
         </div>
         <div class="test owl-carousel owl-theme">
-          @if(is_null($eventos))
+          @if(!is_null($eventos))
           @foreach ($eventos as $evento)
           <div class="item">
             <div class="mb-lg-0 mb-4" >
@@ -154,7 +154,8 @@
               <!--Excerpt-->
               <div class="card-body pb-0">
                 <div class=" "> 
-                <h4 class="font-weight-bold mt-1 mb-3">{{$evento->titulo_evento}}</h4>
+                    <a href="{{ url('evento'.$evento->id) }}"></a>
+                  <h4 class="font-weight-bold mt-1 mb-3">{{$evento->titulo_evento}}</h4></a>
                   <span class=" text-right">{{date('d/m/y', strtotime($evento->fecha_inicio_evento))}}  </span>
                 </div>
                 <p class="grey-text">{{str_limit($evento->descripcion_evento, $limit = 150, $end = '...') }}
