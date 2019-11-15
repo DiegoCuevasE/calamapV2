@@ -74,9 +74,8 @@ Route::get('test', function () {
     return view('admin/dashboard');
 });
 
-Route::get('admin/home', function () {
-    return view('admin/home');
-})->name('inicioAdmin');
+Route::get('admin/home', 'GraficoController@index')->name('inicioAdmin');;
+
 
 // Eventos!!
 

@@ -135,7 +135,7 @@ class GraficoController extends Controller
         ->dimensions(450,450)
         ->responsive(true);
          
-         return view('adminMype/grafico',compact('pie','chart', 'Gedad'));
+         return view('admin/home',compact('pie','chart', 'Gedad'));
 
     }
 
@@ -263,7 +263,7 @@ class GraficoController extends Controller
         ->dimensions(450,450)
         ->responsive(true);
          
-         return view('adminMype/historico',compact('pie','chart', 'Gedad','cantVisitas'));
+         return view('admin/home',compact('pie','chart', 'Gedad','cantVisitas'));
 
     }
 }

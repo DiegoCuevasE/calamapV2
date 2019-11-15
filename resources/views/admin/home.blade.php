@@ -1,5 +1,4 @@
 @extends('admin/dashboard')
-
 @section('panel')
 
 <div class="content">
@@ -83,7 +82,31 @@
               <p class="card-category">Monitorea como va el tráfico en la plataforma</p>
             </div>
             <div class="card-body">
-              <!-- aca van los graficos -->
+
+                <div class="panel-body">
+                    <div class="mb-7">
+                    {!! $chart->html() !!}
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    </div>
+                    <div class="row col-md-12 justify-content-center mt-9">
+                            <div class="col-md-6 mt-9">
+                        {!!$pie->html() !!}
+                            </div>
+                            <div class="col-md-6 mt-9">
+                        {!!$Gedad->html() !!}
+                            </div>
+                        </div>
+                </div>
+
+
+
+              {!! Charts::scripts() !!}
+        {!! $pie->script() !!}
+        {!! $chart->script() !!}
+        {!! $Gedad->script() !!}
             </div>
           </div>
       </div>
