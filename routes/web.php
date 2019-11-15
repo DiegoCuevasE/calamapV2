@@ -75,7 +75,7 @@ Route::get('test', function () {
     return view('admin/dashboard');
 });
 
-Route::get('admin/home', 'GraficoController@index')->name('inicioAdmin');;
+Route::get('admin/home', 'GraficoController@indexI')->name('inicioAdmin');;
 
 
 // Eventos!!
@@ -139,7 +139,7 @@ Route::get('SitiosTuristicos', 'SitioTuristicoController@MostrarSitios')->name('
 Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
 Route::get('evento{id}', 'Evento@MostrarSitio')->name('evento');
 
-
+Route::get('mype/hoteles', 'MypeVisitasController@getIndex');
 
 //Route::get('/sitioTuristico/{sitio_id}', 'SitioturisticoController@MostrarSitio');
 

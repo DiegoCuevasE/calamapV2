@@ -200,7 +200,7 @@
                                 <p class="card-text ">{{$servicio->nombre_servicio}}</p>
                                 @endforeach
                               </div>
-                              <div class="mt-2 col-12">
+                              <div class="mt-2 col-4">
                                 <h5 class="">Horario</h5>
                                 <p class="card-text"> 
                                 @if($mype->horario_mype=="Personalizado")

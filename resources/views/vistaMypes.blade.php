@@ -194,8 +194,5 @@
   e.preventDefault();
   });
   </script>
-
-
-
 @endsection
 
