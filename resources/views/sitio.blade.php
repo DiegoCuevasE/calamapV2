@@ -58,12 +58,8 @@
                           </p>
                       </div>
                       <div class="mt-3 col-lg-6">
-                          <h6 class="card-title mb-2">Horario</h6>
-                          <p class="card-text ">Lun-Vie 9:00-17:30 | Sab-Dom 10:00.17:30</p>
-                      </div>
-                      <div class="mt-3 col-lg-6">
                           <h6 class="card-title mb-2">Entrada</h6>
-                          <p class="card-text ">{{$sitio->entrada_sitio}}</p>
+                          <p class="card-text ">{{$sitio->entrada_sitio=="0" ? 'Liberada':'' }}</p>
                       </div>
                       <div class="mt-3 col-lg-12 ">
                           <h6 class=" mb-2 ">Sobre {{$sitio->nombre_turistico}}</h6>
@@ -106,16 +102,6 @@
         </div>
       </div>
 
-        <div class="col-lg-4">
-          <div class="d-flex">
-              <div class="col-4">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" >
-              </div>
-              <div class=" col-8">
-                <p class="card-text">El Topater</p>
-              </div>
-          </div>
-        </div>
       </div>
      
     </div>
