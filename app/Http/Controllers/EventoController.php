@@ -31,9 +31,24 @@ class EventoController extends Controller
         return view('admin.gestionEvento')->with('eventos',$eventos);
     }
 
-    public function MostrarSitio($sitio_id){
+    public function MostrarEvento($sitio_id){
+
+        $vfrom = date('Y-12-21');
+        $vto = date('Y-03-20');
+        $oFrom = date('Y-03-21');
+        $oTo = date('Y-06-20');
+        $iFrom = date('Y-06-21');
+        $iTo = date('Y-09-20');
+        $pFrom = date('Y-09-21');
+        $pTo = date('Y-12-20');
+        
+        $verano=Evento::whereBetween('fecha_inicio_evento', [$vfrom, $vto])->get();
+        $otoño=Evento::whereBetween('fecha_inicio_evento', [$oFrom, $oTo])->get();
+        $invierno=Evento::whereBetween('fecha_inicio_evento', [$iFrom, $iTo])->get();
+        $primavera=Evento::whereBetween('fecha_inicio_evento', [$pFrom, $pTo])->get();
+
         $evento = Evento::where('id',$sitio_id)->first();
-        return view('evento', ['evento'=>$evento]);
+        return view('vistaEvento', ['evento'=>$evento,'verano'=>$verano,'otoño'=>$otoño,'invierno'=>$invierno,'primavera'=>$primavera]);
     }
 
     /**
@@ -45,6 +60,7 @@ class EventoController extends Controller
     {
         return view('admin/agregarEvento');
     }
+    
 
     /**
      * Store a newly created resource in storage.

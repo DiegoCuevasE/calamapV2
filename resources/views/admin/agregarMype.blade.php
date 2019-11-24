@@ -349,6 +349,7 @@
 </div>
 
 @endsection
+
 <script>
 
     function getHorario(select){

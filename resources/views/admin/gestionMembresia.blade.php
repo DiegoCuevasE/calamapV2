@@ -17,36 +17,30 @@
               <div class="card-body">
                 <form class="navbar-form ">
                   <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Nombre de la MyPE</label>
-                      <input type="text" class="form-control" >
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Dirección</label>
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-2">
+                    <div class="col-md-6">
                       <div class="form-group">
-                          <label class="bmd-label-floating">Dirección</label>
                           <select class="form-control selectpicker" data-style="btn btn-link" id="selectUser">
-                          <option>1</option>
+                          <option selected >Selecciona la Mype</option>
                           <option>2</option>
                           <option>3</option>
                           <option>4</option>
                           <option>5</option>
+                          <option>5</option>
                         </select>
                       </div>
-                  </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Total</label>
-                          <input type="text" class="form-control">
-                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Cant. meses</label>
+                        <input type="text" class="form-control" >
                       </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Total</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
                 </div>
                 </form>
               </div>
@@ -112,15 +106,9 @@
                           02/2020
                         </td>
                         <td>
-                            <div class="form-group">
-                                <select class="form-control" data-style="btn btn-link" id="selectUser">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
-                            </div>
+                          <div class="form-group" style="max-width: 100px;">
+                            <input type="text" class="form-control">
+                          </div>
                         </td>
                         <td>
                             $4.990

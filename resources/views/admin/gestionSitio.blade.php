@@ -65,9 +65,7 @@
                   <th class="font-weight-bold">
                     Dirección
                   </th>
-                  <th class="font-weight-bold">
-                    Horario
-                  </th>
+
                   <th class="font-weight-bold">
                     Entrada
                   </th>
@@ -87,9 +85,7 @@
                       <td>
                         {{$sitio->direccion_turistico}}
                       </td>
-                      <td>
-                        {{$sitio->horario_turistico}}
-                      </td>
+
                       <td>
                         {{$sitio->entrada_sitio ? $sitio->precio_sitio : 'Liberada'}}
                       </td>
@@ -182,7 +178,7 @@
                         </div>
                       </div>
                     </div>
-                    <!-- Fin Ventana Modal vista Sitios-->
+                    <!-- Fin Ventana Modal vista -->
                   @endforeach
                   </tbody>
               </table>
