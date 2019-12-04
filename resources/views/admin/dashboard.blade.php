@@ -20,7 +20,9 @@
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{ asset('dashboard/img/favicon.png')}}">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible " content="IE=edge,chrome=1" />
+  <meta http-equiv="Content-Security-Policy " content="upgrade-insecure-requests" />
+
   <title>
     Panel Calama Turística
   </title>
@@ -55,6 +57,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+          @if (Auth::user()->tipo_usuario == "0")
           <li class="nav-item">
             <a class="nav-link" href="{{ route('inicioAdmin') }}">
               <i class="material-icons">home</i>
@@ -65,6 +68,12 @@
             <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
               <p>Perfil</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ route('gestionMype')}}">
+              <i class="material-icons">store</i>
+              <p>MyPES</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -79,18 +88,34 @@
               <p>Sitios Turísticos</p>
             </a>
           </li>
-          <li class="nav-item ">
-          <a class="nav-link" href="{{ route('gestionMype')}}">
-              <i class="material-icons">store</i>
-              <p>MyPES</p>
-            </a>
-          </li>
+          
           <li class="nav-item ">
             <a class="nav-link" href="{{ route('gestionSocio')}}">
               <i class="fas fa-users"></i>
               <p>Socios</p>
             </a>
           </li>
+          @endif
+          @if (Auth::user()->tipo_usuario == "1")
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('inicioMype') }}">
+              <i class="material-icons">home</i>
+              <p>Inicio</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./user.html">
+              <i class="material-icons">person</i>
+              <p>Perfil</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ route('gestionMype')}}">
+              <i class="material-icons">store</i>
+              <p>MyPES</p>
+            </a>
+          </li>
+          @endif
         </ul>
       </div>
     </div>

@@ -19,15 +19,12 @@ class GraficoController extends Controller
         $date = \Carbon\Carbon::today()->subDays(30);
         $idMype = DB::table('mypes')->where('user_id', Auth::id())->value('id'); 
    
-
         $cantVisitas = DB::table('visitas')
         ->where('mype_id', $idMype)
         ->where('created_at', '>=', $date)
         ->count();
 
-
         $date1 = new DateTime('tomorrow -1 month');
-
 
         $users2 = DB::table('mypes')
         ->leftJoin('visitas', 'mypes.id', '=', 'visitas.mype_id')
@@ -35,7 +32,6 @@ class GraficoController extends Controller
         ->where('visitas.created_at', '>=', $date)
         ->get();
 
-        
         $chart = Charts::database($users2, 'area', 'highcharts')
         ->title("<strong>Visitantes del mes</strong>")
         ->elementLabel("Total de visitas diarias")

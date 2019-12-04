@@ -17,7 +17,6 @@ use App\SitioTuristico;
 
 Route::post('visita/post', 'VisitaController@store');
 
-Route::get('adminMype/grafico', 'GraficoController@index');
 Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
 //Route::get('adminMype/listaMypes', 'MypeController@index');
 //Route::get('adminMype/vistaMypes', 'MypeController@index');
@@ -75,6 +74,8 @@ Route::get('test', function () {
     return view('admin/dashboard');
 });
 
+Route::get('mype/home', 'GraficoController@index')->name('inicioMype');
+
 Route::get('admin/home', 'GraficoController@indexI')->name('inicioAdmin');;
 
 
@@ -101,8 +102,6 @@ Route::delete('admin/eliminarEvento{id}', 'EventoController@destroy')->name('eli
 Route::get('admin/editarEvento{id}', 'EventoController@edit')->name('editarEvento');
 Route::put('admin/updateEvento{id}', 'EventoController@update')->name('updateEvento');
 
-
-
 //MyPES!!
 Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
 Route::get('admin/agregarMype', 'MypeController@llenarForm')->name('agregarMype');
@@ -112,17 +111,23 @@ Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
 Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
 Route::get('admin/gestionMype/update', 'MypeController@updateStatus')->name('users.update.status');
 
-Route::get('admin/gestionMembresia', function () {
-    return view('admin/gestionMembresia');
-})->name('gestionMembresia');
+//Socios
+Route::get('admin/gestionSocio', 'UserController@index')->name('gestionSocio');
+Route::get('user-list-pdf', 'UserController@exportPdf')->name('users.pdf');
+
+
+//Membresia
+Route::get('admin/gestionMembresia', 'MembresiaController@index')->name('gestionMembresia');
+Route::post('admin/registrarMembresia', 'MembresiaController@store')->name('registrarMembresia');
+Route::put('admin/updateMembresia{id}', 'MembresiaController@update')->name('updateMembresia');
+
+//Route::post('admin/registrarMembresia', 'MembresiaController@update')->name('registrarMembresia');
+
+
 
 
 
 //Socios!!
-
-Route::get('admin/gestionSocio', function () {
-    return view('admin/gestionSocio');
-})->name('gestionSocio');
 
 Route::get('admin/agregarSocio', function () {
     return view('admin/agregarSocio');

@@ -19,16 +19,20 @@
               {{ csrf_field() }}   
             
             <div class="row ">  
+              @if(Auth::user()->tipo_usuario =='0')
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="user_id">Dueño MyPE&nbsp;<span class="text-danger">*</span></label>
-                  <select class="form-control selectpicker" data-style="btn btn-link" id="user_id" name="user_id">
+                  <select class="form-control selectpicker" data-style="btn btn-link" id="user_id" name="user_id" >
                     @foreach ($users as $user)
-                    <option value="{{$user->id}}">{{$user->nombre}} {{$user->apellido_usuario}}</option>
+                    <option  value="{{$user->id}}">{{$user->nombre}} {{$user->apellido_usuario}}</option >
                     @endforeach
                   </select>
                 </div>
               </div>
+              @elseif(Auth::user()->tipo_usuario ='1')
+              <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
+              @endif
               <div class="col-md-6">
                 <div class="form-group ">
                   <label for="rubro_mype">Seleccione el Rubro&nbsp;<span class="text-danger">*</span></label>

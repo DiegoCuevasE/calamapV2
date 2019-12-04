@@ -38,11 +38,17 @@ class MypeController extends Controller
     public function index()
     {
 
-
+        if (Auth::user()->tipo_usuario == "0"){
+            
             $mypes = Mype::all();
-            //return $mypes;
             return view('admin.gestionMype')->with('mypes',$mypes);
+            
+        }elseif(Auth::user()->tipo_usuario == "1"){
+            
+            $mypes = Mype::where('user_id','=',Auth::user()->id)->get();
 
+            return view('admin.gestionMype')->with('mypes',$mypes);
+        }
             //$users = User::all();
             //return view('admin.gestionMype')->with('users',$users);
             //return $users;

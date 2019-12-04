@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         if ($tipo == 1) {
             
-            return 'adminMype/historico';
+            return 'mype/home';
         }elseif ($tipo == 2) {
             return '/';
         }elseif ($tipo == 0) {
