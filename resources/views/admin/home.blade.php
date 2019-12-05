@@ -6,7 +6,7 @@
     <!-- panel de gestión -->
     
     <div class="row justify-content-center">
-        @if(Auth::user()->tipo_usuario ='0')
+        @if(Auth::user()->tipo_usuario =='0')
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
           <div class="card-header card-header-rose card-header-icon">

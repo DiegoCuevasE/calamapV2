@@ -13,6 +13,7 @@ use App\Visita;
 
 class GraficoController extends Controller
 {
+
     public function index()
     {
         

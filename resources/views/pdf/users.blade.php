@@ -17,9 +17,9 @@
 </head>
 
 <body style="background-color: white">
-        <div style="width: 300px">
-        <img src="{{ asset('template2/images/logockalamaweb.png') }}" alt="Image" class="img-fluid">
-        </div>
+    <div style="width: 300px">
+    <img src="{{ asset('template2/images/logockalamaweb.png') }}" alt="Image" class="img-fluid">
+    </div>
     <br>
     <h4>Listado de Socios de la plataforma</h4>
     <table class="table">
@@ -46,10 +46,7 @@
             @endforeach
         </tbody>
     </table>
-    <script src="{{ asset('dashboard/js/core/jquery.min.js')}}"></script>
-    <script src="{{ asset('dashboard/js/core/popper.min.js')}}"></script>
-    <script src="{{ asset('dashboard/js/core/bootstrap-material-design.min.js')}}"></script>
-    <script src="{{ asset('dashboard/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+
 </body>
 
 </html>

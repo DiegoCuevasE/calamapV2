@@ -93,6 +93,7 @@
                     </tbody>
                   </table>
                 </div>
+                <div class="row justify-content-center mt-3">{{$users->links()}}</div>
           </div>
         </div>
       </div>

@@ -257,6 +257,7 @@
                     <label for="horario_mype " class="bmd-label-floating">Horario</label>
                     {!! $errors->first('horario','<div class="invalid-feedback">:message</div>') !!}
                     <select class="form-control selectpicker" data-style="btn btn-link" name="horario_mype" id="horario_mype" onchange="getHorario(this)">
+                      
                       <option value="Siempre abierto" {{ old('horario_mype') == "Siempre abierto" ? 'selected' : '' }}>Siempre abierto</option>
                       <option value="Personalizado" {{ old('horario_mype') == "Personalizado" ? 'selected' : '' }}>Personalizado</option>
                     </select>

@@ -17,6 +17,7 @@ use Session;
 use Redirect;
 
 use App\Servicio;
+use App\Horario;
 
 class SitioturisticoController extends Controller
 {
@@ -46,9 +47,10 @@ class SitioturisticoController extends Controller
 
     public function llenarForm()
     {
+        $horarios = Horario::all();
         $servicios = Servicio::all();
 
-        return view('admin/agregarSitio',['servicios' => $servicios]);
+        return view('admin/agregarSitio',['servicios' => $servicios, 'horarios' => $horarios]);
     }
 
 
@@ -87,17 +89,37 @@ class SitioturisticoController extends Controller
         $datoSitioTuristico->nombre_turistico =  $request['nombre_turistico'];
         $datoSitioTuristico->direccion_turistico = $request['direccion_turistico'];
         $datoSitioTuristico->descripcion_turistico = ucfirst(mb_strtolower(request('descripcion_turistico')));
-
         $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
-        if($datoSitioTuristico->entrada_sitio) { $datoSitioTuristico->precio_sitio=request('precio_turistico'); }
+        $datoSitioTuristico->horario_turistico = $request['horario_sitio'];
+
+
+        if($datoSitioTuristico->entrada_sitio) 
+        { 
+            $datoSitioTuristico->precio_sitio=request('precio_turistico');
+        }
 
         $datoSitioTuristico->save();
 
+        
         $nombre = $request['nombre_turistico'];
 
         $idSitio = DB::select( DB::raw("SELECT sitio_turisticos.id FROM sitio_turisticos WHERE sitio_turisticos.nombre_turistico = '$nombre'"));
         $idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
         $datoImagenSitio=request()->only('enlace_imagen_turistico'); 
+
+        if ($datoSitioTuristico->horario_turistico== "Personalizado") {
+            for ($i = 1; $i <= 7; $i++) {
+
+                $datoSitioTuristico->id = $idSitio2;
+                $datoSitioTuristico->horarios()->attach($i,[
+
+                'hora_inicio'=> request($i.'I'),
+                'hora_termino'=>request($i.'T'),
+                'hora_inicio_dos'=> request($i.'II'),
+                'hora_termino_dos'=>request($i.'TT'),
+                ]);
+                
+            }}
         //----------------------------------------------------------------------------------------
 
         $sitio = new \App\SitioTuristico();
@@ -254,11 +276,29 @@ class SitioturisticoController extends Controller
         $datoSitioTuristico->nombre_turistico = $request->get('nombre_turistico');
         $datoSitioTuristico->direccion_turistico =  $request->get('direccion_turistico');
         $datoSitioTuristico->descripcion_turistico =  $request->get('descripcion_turistico');
+        $datoSitioTuristico->horario_turistico =  $request->get('horario_turistico');
+
 
         $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
         if($datoSitioTuristico->entrada_sitio) { $datoSitioTuristico->precio_sitio=request('precio_turistico'); }
 
         $datoSitioTuristico->save();
+
+        if ($datoSitioTuristico->horario_turistico== "Personalizado") {
+
+            for ($i = 1; $i <= 7; $i++) {
+        
+                $datoSitioTuristico->horarios()->updateExistingPivot($i,[
+
+                'hora_inicio'       => request($i.'I'),
+                'hora_termino'      => request($i.'T'),
+                'hora_inicio_dos'   => request($i.'II'),
+                'hora_termino_dos'  => request($i.'TT'),
+
+                ]);
+                
+            }
+        }
         $datoSitioTuristico->id = $id;
         $datoSitioTuristico->servicios()->sync(request('servicioS'));
 
