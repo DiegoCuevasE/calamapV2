@@ -28,7 +28,7 @@
   <section class="mx-md-5 dark-grey-text text-center">
     <div class="row-card">
       @foreach ($mypes as $mype)
-
+      <form id="form{{$mype->id}}" name="form{{$mype->id}}" class="progress-form">
       <div class="col-md-4 mb-2 mt-5 mt-md-0">
         <!-- Card -->
         <div class="card card-cascade narrower card-ecommerce h-100">
@@ -48,12 +48,11 @@
           <div class="card-body card-body-cascade text-center">
             <!-- Category & Title -->
             <div class="mb-auto">
-            <a href="" class="text-muted">
-              <h5>{{$mype->rubro_mype}}</h5>
-            </a>
+                <input type="hidden"  name="mype_id" value="{{$mype->id}}">
             <h4 class="card-title my-4">
               <strong>
-                <a href=""  class="text-warning visita-user" id="visita-user{{$mype->id}}" data-number="{{$mype->id}}" value="Ver más"  aria-expanded="false"  data-toggle="modal" data-target="#mype{{$mype->id}}">{{$mype->nombre_fantasia_mype}}</a>
+                  <input type="button" class="btn btn-primary visita-user" id="visita-user{{$mype->id}}" data-number="{{$mype->id}}" value="Ver más" data-toggle="collapse" href="#collapseContent{{$mype->id}}" aria-expanded="false" aria-controls="collapseContent{{$mype->id}}">
+               <!-- <a href=""  class="text-warning visita-user" id="visita-user{{$mype->id}}" data-number="{{$mype->id}}" value="Ver más"  aria-expanded="false"  data-toggle="modal" data-target="#mype{{$mype->id}}">{{$mype->nombre_fantasia_mype}}</a> -->
               </strong>
             </h4>
             <!-- Description -->
@@ -166,16 +165,13 @@
           </div>
         </div>
       </div>
-
+      </form>
       @endforeach
     </div>
   </section>
 </div>
-
-
-  
-  
-  <script type="text/javascript">
+@stop
+@section('scripts')
   
   $('.progress-form').submit(function(e){
   
@@ -193,6 +189,10 @@
     });
   e.preventDefault();
   });
-  </script>
-@endsection
+
+@stop
+
+
+
+
 
