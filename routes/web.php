@@ -79,52 +79,56 @@ Route::get('admin/gestionEvento', function () {
     return view('admin/gestionEvento');
 })->name('gestionevento');
 
-Route::group(['middleware' => ['usuarioAdmin']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('admin/home', 'GraficoController@indexI')->name('inicioAdmin');;
-
-
-    //Socios
-    Route::get('admin/gestionSocio', 'UserController@index')->name('gestionSocio');
-    Route::get('user-list-pdf', 'UserController@exportPdf')->name('users.pdf');
+    Route::group(['middleware' => ['usuarioAdmin']], function () {
 
 
-    //Membresia
-    Route::get('admin/gestionMembresia', 'MembresiaController@index')->name('gestionMembresia');
-    Route::post('admin/registrarMembresia', 'MembresiaController@store')->name('registrarMembresia');
-    Route::put('admin/updateMembresia{id}', 'MembresiaController@update')->name('updateMembresia');
+        //Socios
+        Route::get('admin/gestionSocio', 'UserController@index')->name('gestionSocio');
+        Route::get('user-list-pdf', 'UserController@exportPdf')->name('users.pdf');
 
-    //Sitios turísticos!!
-    Route::get('admin/gestionSitio', 'SitioturisticoController@index')->name('gestionSitio');
-    Route::get('admin/agregarSitio', 'SitioturisticoController@llenarForm')->name('agregarSitio');
-    Route::post('admin/registrarSitio', 'MypeController@store')->name('registrarSitio');
 
-    //Eventos!!
-    Route::get('admin/gestionEvento', 'EventoController@index')->name('gestionEvento');
-    Route::get('admin/agregarEvento', 'EventoController@create')->name('agregarEvento');
-    Route::post('admin/registrarEvento', 'EventoController@store')->name('registrarEvento');
-    Route::delete('admin/eliminarEvento{id}', 'EventoController@destroy')->name('eliminarEvento');
-    Route::get('admin/editarEvento{id}', 'EventoController@edit')->name('editarEvento');
-    Route::put('admin/updateEvento{id}', 'EventoController@update')->name('updateEvento');
+        //Membresia
+        Route::get('admin/gestionMembresia', 'MembresiaController@index')->name('gestionMembresia');
+        Route::post('admin/registrarMembresia', 'MembresiaController@store')->name('registrarMembresia');
+        Route::put('admin/updateMembresia{id}', 'MembresiaController@update')->name('updateMembresia');
 
-    //MyPES!!
-    Route::get('admin/gestionMype/update', 'MypeController@updateStatus')->name('users.update.status');
+        //Sitios turísticos!!
+        Route::get('admin/gestionSitio', 'SitioturisticoController@index')->name('gestionSitio');
+        Route::get('admin/agregarSitio', 'SitioturisticoController@llenarForm')->name('agregarSitio');
+        Route::post('admin/registrarSitio', 'MypeController@store')->name('registrarSitio');
+
+        //Eventos!!
+        Route::get('admin/gestionEvento', 'EventoController@index')->name('gestionEvento');
+        Route::get('admin/agregarEvento', 'EventoController@create')->name('agregarEvento');
+        Route::post('admin/registrarEvento', 'EventoController@store')->name('registrarEvento');
+        Route::delete('admin/eliminarEvento{id}', 'EventoController@destroy')->name('eliminarEvento');
+        Route::get('admin/editarEvento{id}', 'EventoController@edit')->name('editarEvento');
+        Route::put('admin/updateEvento{id}', 'EventoController@update')->name('updateEvento');
+
+        //MyPES!!
+        Route::get('admin/gestionMype/update', 'MypeController@updateStatus')->name('users.update.status');
+
+    });
+
+    Route::group(['middleware' => ['usuarioMype'||'usuarioAdmin']], function () {
+
+        Route::get('admin/home', 'GraficoController@indexI')->name('inicioAdmin');;
+        
+        Route::get('mype/home', 'GraficoController@index')->name('inicioMype');
+
+        //MyPES!!
+        Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
+        Route::get('admin/agregarMype', 'MypeController@llenarForm')->name('agregarMype');
+        Route::post('admin/registrarMype', 'MypeController@store')->name('registrarMype');
+        Route::delete('admin/eliminarMype{id}', 'MypeController@destroy')->name('eliminarMype');
+        Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
+        Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
+
+    });
+
 });
-
-Route::group(['middleware' => ['usuarioMype'||'usuarioAdmin']], function () {
-
-    Route::get('mype/home', 'GraficoController@index')->name('inicioMype');
-
-    //MyPES!!
-    Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
-    Route::get('admin/agregarMype', 'MypeController@llenarForm')->name('agregarMype');
-    Route::post('admin/registrarMype', 'MypeController@store')->name('registrarMype');
-    Route::delete('admin/eliminarMype{id}', 'MypeController@destroy')->name('eliminarMype');
-    Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
-    Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
-});
-
-
 
 
 
