@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-
+        @if (Auth::user()->tipo_usuario == "0")
         <!-- Boton agregar membresia-->
         <div class="col-lg-4 col-md-6">
           <div class="card">
@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-
+        @endif
       <!-- Tabla vista previa-->
         <div class="col-md-12">
           <div class="card">
@@ -117,7 +117,7 @@
 
                         <div class="togglebutton">
                           <label>
-                            <input type="checkbox" data-id="{{ $mype->id }}"   onclick="md.showNotification('top','right')" name="status" class="js-switch" {{ $mype->estado_mype == 1 ? 'checked' : '' }}>
+                            <input  type="checkbox" data-id="{{ $mype->id }}"   onclick="md.showNotification('top','right')" name="status" class="js-switch" {{ $mype->estado_mype == 1 ? 'checked' : '' }} {{Auth::user()->tipo_usuario == 1 ? 'disabled':'' }}>
                             <span class="toggle"></span>
                           </label>
                         </div>
@@ -244,31 +244,7 @@
     </div>
   </div>
 </div>
-<script>
-    // Text Counter
-    (function($) {
-        $.fn.extend( {
-            limiter: function(limit, elem) {
-                $(this).on("keyup focus", function() {
-                    setCount(this, elem);
-                });
-                function setCount(src, elem) {
-                    var chars = src.value.length;
-                    if (chars > limit) {
-                        src.value = src.value.substr(0, limit);
-                        chars = limit;
-                    }
-                    elem.html( limit - chars );
-                }
-                setCount($(this)[0], elem);
-            }
-        });
-    })(jQuery);
 
-    var elem = $("#chars");
-    $("#text").limiter(40, elem);
-
-</script>
 
 @endsection
 

@@ -30,4 +30,9 @@ class Mype extends Model
     {
     	return $this->belongsTo(User::class);
     }
+
+    public function membresia()
+    {
+    	return $this->hasOne(Membresia::class);
+    }
 }

@@ -36,6 +36,7 @@
                 <h4 class="card-title font-weight-bold">Socios de la plataforma</h4>
             </div>
             <p class="card-category">Esta lista es una vista previa de los Socios registrados en la plataforma</p>
+            <p class="font-weight-bold"><a href="{{route('users.pdf')}}"  target="_blank">Generar PDF</a></p>
             </div>
             <div class="col-md-4 justify-content-end">
               <form class="navbar-form">
@@ -70,20 +71,12 @@
                       </th>
                     </thead>
                     <tbody>
+                      @foreach ($users as $user)
                       <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          dak@test.com
-                        </td>
-                        
-                        <td>
-                          +5695698456
-                        </td>
-                        <td>
-                         3
-                        </td>
+                        <td>{{$user->nombre.' '.$user->apellido_usuario}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->celular_usuario}}</td>
+                        <td>{{$user->mypes->count()}}</td>
                         <td class="text-primary">
                             <button class="btn btn-info btn-fab btn-fab-mini btn-round">
                                 <i class="material-icons">remove_red_eye</i>
@@ -96,9 +89,11 @@
                             </button>
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
+                <div class="row justify-content-center mt-3">{{$users->links()}}</div>
           </div>
         </div>
       </div>

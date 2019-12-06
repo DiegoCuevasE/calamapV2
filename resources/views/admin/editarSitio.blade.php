@@ -84,6 +84,57 @@
               </div>
 
               <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="horario_turistico " class="bmd-label-floating">Horario</label>
+                      {!! $errors->first('horario','<div class="invalid-feedback">:message</div>') !!}
+                      <select class="form-control selectpicker" data-style="btn btn-link" name="horario_turistico" id="horario_turistico" onchange="getHorario(this)">
+                        <option value="Siempre abierto" {{ $sitio->horario_turistico == "Siempre abierto" ? 'selected' : '' }}>Siempre abierto</option>
+                        <option value="Personalizado" {{ $sitio->horario_turistico == "Personalizado" ? 'selected' : '' }}>Personalizado</option>
+                      </select>
+                  </div>
+                </div>   
+                    
+                <div class="col-12" id="horario" {{ $sitio->horario_turistico== "Personalizado" ? 'style=display:block;' : 'style=display:none;' }} >
+                  @foreach($sitio->horarios as $horario)
+                  
+                  <div class="row align-items-center" >
+                  <label class="label-primary col-md-2">{{$horario->dia}}</label>
+                    <div class="d-flex col-md-4 align-items-center">
+                      <div class="col">      
+                        <div class="form-group">
+                        <input type="text" id="{{$horario->id}}I" name="{{$horario->id}}I" value="{{$horario->pivot->hora_inicio}}" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    <label class="label-primary">Hasta</label>
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}T" name="{{$horario->id}}T" value="{{$horario->pivot->hora_termino}}" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    </div>
+                    <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
+                    <div class="expandir col-md-4">
+                      <div class="d-flex align-items-center">
+                        <div class="col">      
+                          <div class="form-group">
+                            <input type="text" id="{{$horario->id}}II" name="{{$horario->id}}II" value="{{$horario->pivot->hora_inicio_dos}}" class="form-control timepicker" />
+                          </div>
+                        </div>
+                      <label class="label-primary">Hasta</label>
+                        <div class="col">      
+                          <div class="form-group">
+                            <input type="text" id="{{$horario->id}}TT" name="{{$horario->id}}TT" value="{{$horario->pivot->hora_termino_dos}}" class="form-control timepicker" />
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  @endforeach
+                </div>
+              </div>
+
+              <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Descripción</label>

@@ -17,7 +17,6 @@ use App\SitioTuristico;
 
 Route::post('visita/post', 'VisitaController@store');
 
-Route::get('adminMype/grafico', 'GraficoController@index');
 Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
 //Route::get('adminMype/listaMypes', 'MypeController@index');
 //Route::get('adminMype/vistaMypes', 'MypeController@index');
@@ -71,14 +70,6 @@ Route::get('vistaEvento', function () {
 Route::get('vistaRuta', function () {
     return view('vistaRuta');
 });
-Route::get('test', function () {
-    return view('admin/dashboard');
-});
-
-Route::get('admin/home', 'GraficoController@indexI')->name('inicioAdmin');;
-
-
-// Eventos!!
 
 Route::get('admin/agregarEvento', function () {
     return view('admin/agregarEvento');
@@ -88,45 +79,59 @@ Route::get('admin/gestionEvento', function () {
     return view('admin/gestionEvento');
 })->name('gestionevento');
 
-//Sitios turísticos!!
-Route::get('admin/gestionSitio', 'SitioturisticoController@index')->name('gestionSitio');
-Route::get('admin/agregarSitio', 'SitioturisticoController@llenarForm')->name('agregarSitio');
-Route::post('admin/registrarSitio', 'MypeController@store')->name('registrarSitio');
+Route::group(['middleware' => ['usuarioAdmin']], function () {
 
-//Eventos!!
-Route::get('admin/gestionEvento', 'EventoController@index')->name('gestionEvento');
-Route::get('admin/agregarEvento', 'EventoController@create')->name('agregarEvento');
-Route::post('admin/registrarEvento', 'EventoController@store')->name('registrarEvento');
-Route::delete('admin/eliminarEvento{id}', 'EventoController@destroy')->name('eliminarEvento');
-Route::get('admin/editarEvento{id}', 'EventoController@edit')->name('editarEvento');
-Route::put('admin/updateEvento{id}', 'EventoController@update')->name('updateEvento');
+    Route::get('admin/home', 'GraficoController@indexI')->name('inicioAdmin');;
 
 
-
-//MyPES!!
-Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
-Route::get('admin/agregarMype', 'MypeController@llenarForm')->name('agregarMype');
-Route::post('admin/registrarMype', 'MypeController@store')->name('registrarMype');
-Route::delete('admin/eliminarMype{id}', 'MypeController@destroy')->name('eliminarMype');
-Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
-Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
-Route::get('admin/gestionMype/update', 'MypeController@updateStatus')->name('users.update.status');
-
-Route::get('admin/gestionMembresia', function () {
-    return view('admin/gestionMembresia');
-})->name('gestionMembresia');
+    //Socios
+    Route::get('admin/gestionSocio', 'UserController@index')->name('gestionSocio');
+    Route::get('user-list-pdf', 'UserController@exportPdf')->name('users.pdf');
 
 
+    //Membresia
+    Route::get('admin/gestionMembresia', 'MembresiaController@index')->name('gestionMembresia');
+    Route::post('admin/registrarMembresia', 'MembresiaController@store')->name('registrarMembresia');
+    Route::put('admin/updateMembresia{id}', 'MembresiaController@update')->name('updateMembresia');
 
-//Socios!!
+    //Sitios turísticos!!
+    Route::get('admin/gestionSitio', 'SitioturisticoController@index')->name('gestionSitio');
+    Route::get('admin/agregarSitio', 'SitioturisticoController@llenarForm')->name('agregarSitio');
+    Route::post('admin/registrarSitio', 'MypeController@store')->name('registrarSitio');
 
-Route::get('admin/gestionSocio', function () {
-    return view('admin/gestionSocio');
-})->name('gestionSocio');
+    //Eventos!!
+    Route::get('admin/gestionEvento', 'EventoController@index')->name('gestionEvento');
+    Route::get('admin/agregarEvento', 'EventoController@create')->name('agregarEvento');
+    Route::post('admin/registrarEvento', 'EventoController@store')->name('registrarEvento');
+    Route::delete('admin/eliminarEvento{id}', 'EventoController@destroy')->name('eliminarEvento');
+    Route::get('admin/editarEvento{id}', 'EventoController@edit')->name('editarEvento');
+    Route::put('admin/updateEvento{id}', 'EventoController@update')->name('updateEvento');
 
-Route::get('admin/agregarSocio', function () {
-    return view('admin/agregarSocio');
-})->name('agregarSocio');
+    //MyPES!!
+    Route::get('admin/gestionMype/update', 'MypeController@updateStatus')->name('users.update.status');
+});
+
+Route::group(['middleware' => ['usuarioMype'||'usuarioAdmin']], function () {
+
+    Route::get('mype/home', 'GraficoController@index')->name('inicioMype');
+
+    //MyPES!!
+    Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
+    Route::get('admin/agregarMype', 'MypeController@llenarForm')->name('agregarMype');
+    Route::post('admin/registrarMype', 'MypeController@store')->name('registrarMype');
+    Route::delete('admin/eliminarMype{id}', 'MypeController@destroy')->name('eliminarMype');
+    Route::get('admin/editarMype{id}', 'MypeController@edit')->name('editarMype');
+    Route::put('admin/updateMype{id}', 'MypeController@update')->name('updateMype');
+});
+
+
+
+
+
+
+
+
+
 
 
 Route::get('Hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
@@ -136,8 +141,8 @@ Route::get('Turismo', 'MypeVisitasController@getIndexT')->name('turismo');
 Route::get('Comercio', 'MypeVisitasController@getIndexC')->name('comercio');
 
 Route::get('SitiosTuristicos', 'SitioTuristicoController@MostrarSitios')->name('sitios');
-
 Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
+
 Route::get('evento{id}', 'EventoController@MostrarEvento')->name('evento');
 
 Route::get('mype/hoteles', 'MypeVisitasController@getIndex');

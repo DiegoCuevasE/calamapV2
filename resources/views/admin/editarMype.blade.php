@@ -323,35 +323,35 @@
               </div>   
                   
               <div class="col-12" id="horario" {{ $mypes->horario_mype== "Personalizado" ? 'style=display:block;' : 'style=display:none;' }} >
-                @foreach($horarios as $horario)
+                @foreach($mypes->horarios as $horario)
                 
                 <div class="row align-items-center" >
                 <label class="label-primary col-md-2">{{$horario->dia}}</label>
                   <div class="d-flex col-md-4 align-items-center">
                     <div class="col">      
                       <div class="form-group">
-                      <input type="text" id="{{$horario->id}}I" name="{{$horario->id}}I" value="" class="form-control timepicker" />
+                      <input type="text" id="{{$horario->id}}I" name="{{$horario->id}}I" value="{{$horario->pivot->hora_inicio}}" class="form-control timepicker" />
                       </div>
                     </div>
                   <label class="label-primary">Hasta</label>
                     <div class="col">      
                       <div class="form-group">
-                        <input type="text" id="{{$horario->id}}T" name="{{$horario->id}}T" class="form-control timepicker" />
+                        <input type="text" id="{{$horario->id}}T" name="{{$horario->id}}T" value="{{$horario->pivot->hora_termino}}" class="form-control timepicker" />
                       </div>
                     </div>
                   </div>
                   <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
-                  <div class="expandir col-md-4" style="display:none">
+                  <div class="expandir col-md-4">
                     <div class="d-flex align-items-center">
                       <div class="col">      
                         <div class="form-group">
-                          <input type="text" id="{{$horario->id}}II" name="{{$horario->id}}II" class="form-control timepicker" />
+                          <input type="text" id="{{$horario->id}}II" name="{{$horario->id}}II" value="{{$horario->pivot->hora_inicio_dos}}" class="form-control timepicker" />
                         </div>
                       </div>
                     <label class="label-primary">Hasta</label>
                       <div class="col">      
                         <div class="form-group">
-                          <input type="text" id="{{$horario->id}}TT" name="{{$horario->id}}TT" class="form-control timepicker" />
+                          <input type="text" id="{{$horario->id}}TT" name="{{$horario->id}}TT" value="{{$horario->pivot->hora_termino_dos}}" class="form-control timepicker" />
                         </div>
                       </div>
                     </div>

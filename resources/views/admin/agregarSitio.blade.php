@@ -17,6 +17,7 @@
           <div class="card-body">
             <form action="{{ url('/admin')}}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}  
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -32,8 +33,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                      <label for="entrada_evento">Entrada&nbsp;<span class="text-danger">*</span></label>
                       <select class="form-control selectpicker" data-style="btn btn-link" id="entrada_turistico" name="entrada_turistico" onchange="getPrecio(this)">
+                        <option selected disabled>Entrada&nbsp;<span class="text-danger">*</span></option>
                         <option value="0">Liberada</option>
                         <option value="1">Con valor</option>
                       </select>
@@ -74,8 +75,58 @@
                   </div>
                 </div>
               </div>
+
+              <div>
+                <div class=" row ">
+                    <div class="form-group col-md-6">
+                      <label for="horario_sitio " class="bmd-label-floating">Horario</label>
+                      {!! $errors->first('horario','<div class="invalid-feedback">:message</div>') !!}
+                      <select class="form-control selectpicker" data-style="btn btn-link" name="horario_sitio" id="horario_sitio" onchange="getHorario(this)">
+                        <option value="Siempre abierto" {{ old('horario_sitio') == "Siempre abierto" ? 'selected' : '' }}>Siempre abierto</option>
+                        <option value="Personalizado" {{ old('horario_sitio') == "Personalizado" ? 'selected' : '' }}>Personalizado</option>
+                      </select>
+                  </div>
+                </div>   
+                    
+                <div id="horario" {{ old('horario_sitio') == "Personalizado" ? 'style=display:block;' : 'style=display:none;' }}>
+                  @foreach ($horarios as $horario)
+                  <div class="row align-items-center" >
+                  <label class="label-primary col-2">{{$horario->dia}}</label>
+                    <div class="d-flex col-md-4 align-items-center">
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}I" name="{{$horario->id}}I" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    <label class="label-primary">Hasta</label>
+                      <div class="col">      
+                        <div class="form-group">
+                          <input type="text" id="{{$horario->id}}T" name="{{$horario->id}}T" class="form-control timepicker" />
+                        </div>
+                      </div>
+                    </div>
+                    <a href="#" class="mostrarHorario"><i class="fas fa-plus align-items-center"></i></a>
+                    <div class="expandir col-md-4" style="display:none">
+                      <div class="d-flex align-items-center">
+                        <div class="col">      
+                          <div class="form-group">
+                            <input type="text" id="{{$horario->id}}II" name="{{$horario->id}}II" class="form-control timepicker" />
+                          </div>
+                        </div>
+                      <label class="label-primary">Hasta</label>
+                        <div class="col">      
+                          <div class="form-group">
+                            <input type="text" id="{{$horario->id}}TT" name="{{$horario->id}}TT" class="form-control timepicker" />
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  @endforeach
+                </div>
+              </div>
                 
-              <div class="row">
+              <div class="row mt-3">
                 <div class="form-group form-file-upload form-file-multiple col-md-4">
                   <input type="file" multiple="" class="inputFileHidden" name="enlace_imagen_turistico">
                   <input type="hidden" name="tipo_imagen_turistico" id="tipo_imagen_turistico" value=''>
@@ -136,5 +187,17 @@
   }
 </script>
 
+<script>
+  function getHorario(select){
+    var selectedString = select.options[select.selectedIndex].value;
+    if(selectedString == "Personalizado")
+    {
+        document.getElementById("horario").style.display = "block";
+    }else {
+        document.getElementById("horario").style.display = "none";
+    }
+
+  }
+</script>
 
 @endsection

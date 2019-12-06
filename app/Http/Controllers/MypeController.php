@@ -29,7 +29,10 @@ class MypeController extends Controller
         imagenmype $photo )
     {
         $this->photo = $photo;
+ 
     }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -38,11 +41,17 @@ class MypeController extends Controller
     public function index()
     {
 
-
+        if (Auth::user()->tipo_usuario == "0"){
+            
             $mypes = Mype::all();
-            //return $mypes;
             return view('admin.gestionMype')->with('mypes',$mypes);
+            
+        }elseif(Auth::user()->tipo_usuario == "1"){
+            
+            $mypes = Mype::where('user_id','=',Auth::user()->id)->get();
 
+            return view('admin.gestionMype')->with('mypes',$mypes);
+        }
             //$users = User::all();
             //return view('admin.gestionMype')->with('users',$users);
             //return $users;
@@ -147,10 +156,6 @@ class MypeController extends Controller
 
         $this->validate($request,$validar,$mensaje);
 
-
-        //return $request;
-        //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
-        
         $datosmype = new Mype();
 
         $datosmype->user_id=request('user_id');
@@ -171,23 +176,20 @@ class MypeController extends Controller
         $datosmype->save();
 
     //-----------------------------------------------------------------------------
-    $nombre = $request['nombre_fantasia_mype'];
 
-    //$idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
-    $idSitio2 = DB::table('mypes')->where('nombre_fantasia_mype', $nombre)->value('id');
+    $idSitio2 = DB::table('mypes')->where('nombre_fantasia_mype', $datosmype->nombre_fantasia_mype)->value('id');
     
     if ($datosmype->horario_mype== "Personalizado") {
     for ($i = 1; $i <= 7; $i++) {
-        $mype4 = new \App\Mype;
-        $mype4->id = $idSitio2;
-        if(request($i.'I')){
-        $mype4->horarios()->attach($i,[
+
+        $datosmype->id = $idSitio2;
+        $datosmype->horarios()->attach($i,[
         'hora_inicio'=> request($i.'I'),
         'hora_termino'=>request($i.'T'),
         'hora_inicio_dos'=> request($i.'II'),
         'hora_termino_dos'=>request($i.'TT'),
         ]);
-        }
+        
     }}
     
 
@@ -369,29 +371,41 @@ class MypeController extends Controller
 
         $datosmype = Mype::find($id);
 
-        $datosmype->user_id=request('user_id');
-        $datosmype->rubro_mype=request('rubro_mype');
+        $datosmype->user_id             =request('user_id');
+        $datosmype->rubro_mype          =request('rubro_mype');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
-        $datosmype->razon_social_mype=request('razon_social_mype');
-        $datosmype->direccion_mype=request('direccion_mype');
+        $datosmype->razon_social_mype   =request('razon_social_mype');
+        $datosmype->direccion_mype      =request('direccion_mype');
         $desc=ucfirst(mb_strtolower(request('descripcion_mype')));
-        $datosmype->descripcion_mype=$desc;
-        $datosmype->horario_mype= request('horario_mype');
-        $datosmype->estado_mype=request('estado_mype');
-        $datosmype->telefono_mype=request('telefono_mype');
-        $datosmype->celular_mype=request('celular_mype');
-        $datosmype->correo_mype=request('correo_mype');
-        $datosmype->pagina_mype=request('pagina_mype');
-        $datosmype->facebook_mype=request('facebook_mype');
-        $datosmype->instagram_mype=request('instagram_mype');
+        $datosmype->descripcion_mype    =$desc;
+        $datosmype->horario_mype        =request('horario_mype');
+        $datosmype->estado_mype         =request('estado_mype');
+        $datosmype->telefono_mype       =request('telefono_mype');
+        $datosmype->celular_mype        =request('celular_mype');
+        $datosmype->correo_mype         =request('correo_mype');
+        $datosmype->pagina_mype         =request('pagina_mype');
+        $datosmype->facebook_mype       =request('facebook_mype');
+        $datosmype->instagram_mype      =request('instagram_mype');
         //return$datosmype;
         $datosmype->update();
         $mype = Mype::findOrFail($id);
-        //return view('moduloMype.editarMype', compact('mype'));
 
-        //$nombre = $request['nombre_fantasia_mype'];
+        if ($datosmype->horario_mype== "Personalizado") {
 
-        //$idSitio2 = DB::table('mypes')->where('razon_social_mype', $nombre)->value('id');
+            for ($i = 1; $i <= 7; $i++) {
+        
+                $datosmype->horarios()->updateExistingPivot($i,[
+
+                'hora_inicio'       => request($i.'I'),
+                'hora_termino'      => request($i.'T'),
+                'hora_inicio_dos'   => request($i.'II'),
+                'hora_termino_dos'  => request($i.'TT'),
+
+                ]);
+                
+            }
+        }
+
         $idSitio2 = $id;
 
         //0 español y otros
