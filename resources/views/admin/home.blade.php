@@ -77,12 +77,21 @@
       <!-- panel de estadísticas -->
     <div class="row">
         <div class="card">
-          <div class="card-header card-header-warning">
-            <div class="d-flex">
-              <i class="material-icons mr-2">bar_chart</i>
-              <h4 class="card-title font-weight-bold">Estadisticas de la plataforma</h4>
+          <div class="card-header card-header-warning row">
+            <div class="col-md-8">
+              <div class="d-flex">
+                <i class="material-icons mr-2">bar_chart</i>
+                <h4 class="card-title font-weight-bold">Estadisticas de la plataforma</h4>
+              </div>
+                <p class="card-category">Monitorea como va el tráfico en la plataforma</p>
             </div>
-              <p class="card-category">Monitorea como va el tráfico en la plataforma</p>
+            <div class="justify-content-end col-md-4">
+              <form action="">
+                <select name="" id="">
+                  <option value="">1</option>
+                </select>
+              </form>
+            </div>
             </div>
             <div class="card-body">
 

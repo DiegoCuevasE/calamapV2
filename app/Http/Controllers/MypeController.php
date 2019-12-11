@@ -567,7 +567,7 @@ class MypeController extends Controller
     {
         //
         Mype::destroy($id);
-        return redirect('moduloMype');
+        return redirect('admin/home');
     }
 
     public function getMype(){
