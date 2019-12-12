@@ -105,15 +105,18 @@ class MypeController extends Controller
     public function store(Request $request)
     {
         
+        
         $validarDatos =[
             'nombre_fantasia_mype' => 'required|max:100',
             'direccion_mype' => 'required|max:100',
             'descripcion_mype' => 'required|max:1000',
             'enlace_imagen_mype' => 'required',
             'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            "image" => ["required","array","max:3"],
         ];
+
+        
 
         switch (request('rubro_mype')) {
             case "Hotelería":
@@ -145,8 +148,9 @@ class MypeController extends Controller
             "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
             "descripcion_mype.required"=>'La descripción de la MyPE es obligatoria',
             "enlace_imagen_mype.required" => 'Si no posee un logo, ingrese una imagen de su MyPE',
-            "image.required" => 'Debe adjuntar minimo 1 imagen de su MyPE',
-            "idioma.required" => 'Debe seleccionar un idioma al menos',
+            "image.required" => 'Debes adjuntar minimo 1 imagen de galeria',
+            "image.max" => 'Debe adjuntar maximo 3 imagenes de su MyPE',
+            "idioma.required" => 'Debes seleccionar un idioma al menos',
             "servicioT.required" => 'Debes seleccionar al menos un servicio',
             "servicioH.required" => 'Debes seleccionar al menos un servicio',
             "servicioA.required" => 'Debes seleccionar al menos un servicio',
