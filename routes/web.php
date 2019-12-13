@@ -20,7 +20,7 @@ use App\SitioTuristico;
 
 Route::post('visita/post', 'VisitaController@store');
 
-Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
+Route::get('adminMype/historico', 'GraficoController@indexH')->name('historico');
 //Route::get('adminMype/listaMypes', 'MypeController@index');
 //Route::get('adminMype/vistaMypes', 'MypeController@index');
 //Route::get('adminMype/registroMype', 'MypeController@llenarForm');
@@ -171,7 +171,7 @@ Auth::routes();
 Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@indexH')->name('home');
 
 
 
