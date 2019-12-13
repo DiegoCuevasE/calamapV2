@@ -89,7 +89,7 @@
             </div>
             </div>
             <div class="card-body">
-                @if(!Auth::user()->mypes)
+ 
                 <div class="panel-body">
                     <div class="mb-7">
                     {!! $chart->html() !!}
@@ -106,16 +106,9 @@
                         {!!$Gedad->html() !!}
                             </div>
                             <div id="geo"></div>
-      <?= $lava->render('GeoChart', 'Visitas', 'geo') ?>
+               <?= $lava->render('GeoChart', 'Visitas', 'geo') ?>
                         </div>
                 </div>
-
-                
-                @else
-                <div class="text-center h3">
-                No tienes MyPES registradas
-              </div>
-                @endif
 
 
 

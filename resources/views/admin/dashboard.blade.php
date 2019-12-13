@@ -68,12 +68,7 @@
               <p>Inicio</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>Perfil</p>
-            </a>
-          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="{{ route('gestionMype')}}">
               <i class="material-icons">store</i>
