@@ -19,15 +19,17 @@
               {{ csrf_field() }}   
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Nombre del evento</label>
-                    <input type="text" id="titulo_evento" name="titulo_evento" class="form-control" >
+                  <div class="form-group {{$errors->has('titulo_evento')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Nombre del evento&nbsp;<span class="text-danger">*</span></label>
+                    <input type="text" id="titulo_evento" name="titulo_evento" class="form-control" value="{{ old('titulo_evento')}}">
+                      {!! $errors->first('titulo_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Dirección</label>
-                    <input type="text" id="direccion_evento" name="direccion_evento" class="form-control">
+                  <div class="form-group {{$errors->has('direccion_evento')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
+                    <input type="text" id="direccion_evento" name="direccion_evento" class="form-control" value="{{ old('titulo_evento')}}">
+                    {!! $errors->first('direccion_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -61,9 +63,11 @@
               <div class="row mt-5">  
                  
                 <div class="col-md-3">      
-                  <div class="form-group">
-                    <label class="label-control">Fecha de Inicio</label>
-                    <input type="text" id="fecha_inicio_evento" name="fecha_inicio_evento" class="form-control datepicker" />
+                  <div class="form-group {{$errors->has('fecha_inicio_evento')?'has-danger':''}}">
+                    <label class="label-control">Fecha de Inicio&nbsp;<span class="text-danger">*</span></label>
+                    <input type="text" id="fecha_inicio_evento" name="fecha_inicio_evento" class="form-control datepicker" value="{{ old('fecha_inicio_evento')}}"/>
+                    {!! $errors->first('fecha_inicio_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+
                   </div>
                 </div>
                 <div class="col-md-3">      
@@ -73,9 +77,10 @@
                   </div>
                 </div>
                 <div class="col-md-3">      
-                  <div class="form-group">
-                    <label class="label-control">Hora de Inicio</label>
-                    <input type="text" id="hora_inicio_evento" name="hora_inicio_evento" class="form-control timepicker" />
+                  <div class="form-group {{$errors->has('hora_inicio_evento')?'has-danger':''}}">
+                    <label class="label-control">Hora de Inicio&nbsp;<span class="text-danger">*</span></label>
+                    <input type="text" id="hora_inicio_evento" name="hora_inicio_evento" class="form-control timepicker" value="{{ old('hora_inicio_evento')}}"/>
+                    {!! $errors->first('hora_inicio_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-3">      
@@ -90,32 +95,35 @@
                 <div class="form-group form-file-upload form-file-multiple col-md-6">
                   <input type="file" id="enlace_imagen_evento" name="enlace_imagen_evento" multiple="" class="inputFileHidden">
                     <div class="input-group">
-                      <input type="text" class="form-control inputFileVisible" placeholder="Foto Portada">
+                      <input type="text" class="form-control inputFileVisible" placeholder="Foto de Portada *">
                       <span class="input-group-btn">
                       <button type="button" class="btn btn-fab btn-round btn-primary">
                       <i class="material-icons">attach_file</i>
                       </button>
                       </span>
                     </div>
+                    {!! $errors->first('enlace_imagen_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                   
                   <div class="form-group form-file-upload form-file-multiple col-md-6">
                     <input type="file" name="image[]" multiple="" class="inputFileHidden">
                     <div class="input-group">
-                      <input type="text" class="form-control inputFileVisible" placeholder="Galería de Imagenes" multiple>
+                      <input type="text" class="form-control inputFileVisible" placeholder="Galería de Imagenes *" multiple>
                       <span class="input-group-btn">
                       <button type="button" class="btn btn-fab btn-round btn-info">
                         <i class="material-icons">layers</i>
                       </button>
                       </span>
                     </div>
+                    {!! $errors->first('image','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div> 
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label>Descripción</label>
-                    <div class="form-group">
+                    <label>Descripción&nbsp;<span class="text-danger">*</span></label>
+                    <div class="form-group {{$errors->has('descripcion_evento')?'has-danger':''}}">
                       <label class="bmd-label-floating"> Agrege la información necesaria para que el publico conosca detalladamente el evento</label>
-                      <textarea class="form-control" id="descripcion_evento" name="descripcion_evento" rows="5"></textarea>
+                      <textarea class="form-control" id="descripcion_evento" name="descripcion_evento" rows="5" value="{{ old('descripcion_evento')}}"></textarea>
+                        {!! $errors->first('descripcion_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                     </div>
                   </div>
 

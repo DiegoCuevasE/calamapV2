@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <div class="form-group {{$errors->has('direccion_mype')?'has-danger':''}}" >
+                <div class="form-group {{$errors->has('direccion_mype')?'has-danger':''}}">
                   <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
                   <input type="text" id="direccion_mype" name="direccion_mype" class="form-control" value="{{ old('direccion_mype')}}">
                   {!! $errors->first('direccion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
@@ -257,13 +257,11 @@
                     <label for="horario_mype " class="bmd-label-floating">Horario</label>
                     {!! $errors->first('horario','<div class="invalid-feedback">:message</div>') !!}
                     <select class="form-control selectpicker" data-style="btn btn-link" name="horario_mype" id="horario_mype" onchange="getHorario(this)">
-                      
                       <option value="Siempre abierto" {{ old('horario_mype') == "Siempre abierto" ? 'selected' : '' }}>Siempre abierto</option>
                       <option value="Personalizado" {{ old('horario_mype') == "Personalizado" ? 'selected' : '' }}>Personalizado</option>
                     </select>
                 </div>
               </div>   
-                  
               <div id="horario" {{ old('horario_mype') == "Personalizado" ? 'style=display:block;' : 'style=display:none;' }}>
                 @foreach ($horarios as $horario)
                 <div class="row align-items-center" >
@@ -332,7 +330,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Descripción&nbsp;<span class="text-danger">*</span></label>
-                  <div class="form-group" {{$errors->has('descripcion_mype')?'has-danger':''}}>
+                  <div class="form-group {{$errors->has('descripcion_mype')?'has-danger':''}}">
                     <label class="bmd-label-floating"> Agrege la información necesaria para que el publico conosca detalladamente su MyPE</label>
                     <textarea class="form-control" rows="5" id="descripcion_mype" name="descripcion_mype">{{ old('descripcion_mype')}}</textarea>
                     {!! $errors->first('descripcion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}

@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Response;
 use App\Evento;
 use App\SitioTuristico;
 
+//
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,10 +70,6 @@ Route::get('vistaEvento', function () {
     return view('vistaEvento');
 });
 
-Route::get('vistaRuta', function () {
-    return view('vistaRuta');
-});
-
 Route::get('admin/agregarEvento', function () {
     return view('admin/agregarEvento');
 })->name('agregarEvento');
@@ -78,6 +77,13 @@ Route::get('admin/agregarEvento', function () {
 Route::get('admin/gestionEvento', function () {
     return view('admin/gestionEvento');
 })->name('gestionevento');
+
+//Rutas Turisticas
+
+Route::get('RutaCascoHistorico', function () {return view('vistaRutaHistorico');})->name('vistaCascoHistorico');
+Route::get('RutaOasisCalamaUrbano', function () {return view('vistaRutaOasis');})->name('vistaOasis');
+Route::get('RutaAncestralPatrimonial', function () {return view('vistaRutaAncestral');})->name('vistaAncestral');
+
 
 Route::group(['middleware' => ['auth']], function () {
 
