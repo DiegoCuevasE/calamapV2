@@ -265,16 +265,16 @@ class GraficoController extends Controller
         ->responsive(true);
 
 
-
+        $paises = DB::table('visitas')->distinct()->get('visitas.pais');
         $lava = new Lavacharts; 
-        $fans = $lava->DataTable();
-        $value=Visita::select('user_id as 0', 'mype_id as 1')
-                        ->get()
-                        ->toArray();
-        $fans->addStringColumn('Country')
-                   ->addNumberColumn('Visitas')
-                   ->addRows($value);
-        $lava->GeoChart('Visitas', $fans);
+        $grafico= $lava->DataTable();
+        $grafico->addStringColumn('Pais')->addNumberColumn('Visitas');
+        foreach ($paises as $pais) {
+              $grafico->addRow(array($pais->pais, DB::table('visitas')->where('visitas.pais', '=',  $pais->pais)->count()))    ;
+        }
+                       
+                   
+        $lava->GeoChart('Visitas', $grafico);
          
          return view('admin/home',compact('pie','chart', 'Gedad','cantVisitas','lava'));
 
