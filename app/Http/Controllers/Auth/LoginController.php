@@ -32,15 +32,18 @@ class LoginController extends Controller
         $tipo = Auth::user()->tipo_usuario; 
         
         // Check user role
-
-        if ($tipo == 1) {
-            
-            return 'mype/home';
-        }elseif ($tipo == 2) {
-            return '/';
-        }elseif ($tipo == 0) {
-            return 'admin/home';
+        switch ($tipo) {
+            case '0':
+                return 'admin/home';
+                break;
+            case '1':
+                return 'mype/home';
+                break;
+            case '2':
+                return '/';
+                break;
         }
+
         /*
         switch ($tipo) {
 

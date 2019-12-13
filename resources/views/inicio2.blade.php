@@ -143,8 +143,8 @@
               <!--Featured image-->
               @foreach ($evento->imageneventos as $imagen)
               @if ($imagen->tipo_imagen_evento == 'portada')
-              <div class="view overlay rounded z-depth-1">
-                <img src="{{$imagen->enlace_imagen_evento}}" class="img-fluid" alt="Sample project image">
+              <div class="view overlay rounded z-depth-1" style= "height:170px ">
+                <img src="{{$imagen->enlace_imagen_evento}}" class="img-fluid" alt="Sample project image ">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
