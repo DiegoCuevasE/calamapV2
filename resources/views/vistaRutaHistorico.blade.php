@@ -57,11 +57,15 @@ function addInfoBubble(map) {
   '<div class="text-center"><h4>Feria Modelo</h4><p>Inaugurada en la década de 1960, ampliada en 1998, es un lugar diverso donde se venden frutas y verduras traídas de los pueblos de Alto el Loa...</p></div>'); 
 
   addMarkerToGroup(group, {lat:-22.461230, lng:-68.925873},
-  '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/feriaModelo.jpg" ></div>'+
-  '<div class="text-center"><h4>Mercado Municipal</h4><p></p></div>'); 
-  addMarkerToGroup(group, {lat:-22.462375, lng:-68.927176},'Plaza de Armas' +  'Anfield Capacity: 45,362');
+  '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/Mercado.jpg" ></div>'+
+  '<div class="text-center"><h4>Mercado Municipal</h4><p>Principal calle</p></div>'); 
+  addMarkerToGroup(group, {lat:-22.462375, lng:-68.927176},
+  '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/Plaza.jpg" ></div>'+
+  '<div class="text-center"><h4>Plaza de Armas</h4><p>Principal calle</p></div>'); 
 
-  addMarkerToGroup(group, {lat:-22.461960, lng:-68.926274},'Paseo Ramírez' +  'Anfield Capacity: 45,362');
+  addMarkerToGroup(group, {lat:-22.461960, lng:-68.926274},
+  '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/Paseo.jpg" ></div>'+
+  '<div class="text-center"><h4>Paseo Ramírez</h4><p>Principal calle</p></div>'); 
 
 
 }
