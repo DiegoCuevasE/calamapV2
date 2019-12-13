@@ -80,15 +80,18 @@
 
             <div class="row mt-2">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Nombre de la MyPE</label>
+                <div class="form-group  {{$errors->has('nombre_fantasia_mype')?'has-danger':''}}">
+                  <label class="bmd-label-floating">Nombre de la MyPE&nbsp;<span class="text-danger">*</span></label>
                   <input type="text" name="nombre_fantasia_mype" id="nombre_fantasia_mype" value="{{ old('nombre_fantasia_mype', $mypes->nombre_fantasia_mype) }}" class="form-control" >
+                  {!! $errors->first('nombre_fantasia_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Dirección</label>
+                <div class="form-group {{$errors->has('direccion_mype')?'has-danger':''}}">
+                  <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
                   <input type="text" id="direccion_mype" name="direccion_mype" value="{{ old('direccion_mype', $mypes->direccion_mype) }}" class="form-control">
+                  {!! $errors->first('direccion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+                
                 </div>
               </div>
             </div> 
@@ -124,6 +127,7 @@
               <!-- Mostrar servicios de restaurant-->
               <div class="col-md-12" id="serviciosG" @if ($mypes->rubro_mype == "Gastronomía") style="display:display;"@else style="display:none;" @endif>
                 <label for="serviciosG" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioH','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                     @foreach ($servicios as $servicio)
@@ -151,6 +155,7 @@
               <!-- Mostrar servicios de turismo-->
               <div class="col-md-12" id="serviciosT" @if ($mypes->rubro_mype == "Turismo") style="display:display;" @else style="display:none;" @endif>
                 <label for="serviciosT" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioT','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
@@ -178,6 +183,7 @@
               <!-- Mostrar servicios de Bazar-->
               <div class="col-md-12" id="serviciosB"  @if ($mypes->rubro_mype == "Bazares") style="display:display;"@else style="display:none;" @endif>
                 <label for="serviciosB" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioB','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
@@ -205,6 +211,7 @@
               <!-- Mostrar servicios de Artesanias-->
               <div class="col-md-12" id="serviciosA" @if ($mypes->rubro_mype == "Artesanía") style="display:display;"@else style="display:none;" @endif>
                 <label for="serviciosA" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioA','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                     @foreach ($servicios as $servicio)
@@ -308,7 +315,6 @@
                   </div>
                 </div>                           
             </div>
-
             <hr>
             <div class="row">
               <div class="col-md-3">
@@ -411,9 +417,10 @@
               </div> 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label>Descripción</label>
-                  <div class="form-group">
+                  <label>Descripción&nbsp;<span class="text-danger">*</span></label>
+                  <div class="form-group {{$errors->has('descripcion_mype')?'has-danger':''}}">
                     <textarea class="form-control" rows="5"  id="descripcion_mype" name="descripcion_mype"> {{$mypes->descripcion_mype }} </textarea>
+                    {!! $errors->first('descripcion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
               </div>

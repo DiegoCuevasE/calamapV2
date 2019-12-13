@@ -23,15 +23,17 @@
                 <input type="hidden" name="user_id" id="user_id" value="1"> 
               <div class="row mt-3">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Nombre del Sitio Turístico</label>
+                  <div class="form-group {{$errors->has('nombre_turistico')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Nombre del Sitio Turístico&nbsp;<span class="text-danger">*</span></label>
                     <input name="nombre_turistico" id="nombre_turistico" value="{{ old('nombre_turistico', $sitio->nombre_turistico) }}" type="text" class="form-control" >
-                  </div>
+                    {!! $errors->first('nombre_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+                  </div> 
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Dirección</label>
+                  <div class="form-group {{$errors->has('direccion_turistico')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
                     <input name="direccion_turistico" id="direccion_turistico" value="{{ old('direccion_turistico', $sitio->direccion_turistico) }}" type="text" class="form-control">
+                    {!! $errors->first('direccion_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -136,10 +138,11 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Descripción</label>
+                  <div class="form-group {{$errors->has('descripcion_sitio')?'has-danger':''}}">
+                    <label>Descripción&nbsp;<span class="text-danger">*</span></label>
                     <div class="form-group">
                       <textarea name="descripcion_turistico" id="descripcion_turistico" class="form-control" rows="5">{{ $sitio->descripcion_turistico}}</textarea>
+                      {!! $errors->first('descripcion_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                     </div>
                   </div>
                 </div>      

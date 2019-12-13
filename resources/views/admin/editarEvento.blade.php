@@ -21,15 +21,18 @@
               {{ csrf_field() }} 
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Nombre del evento</label>
+                  <div class="form-group {{$errors->has('titulo_evento')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Nombre del evento&nbsp;<span class="text-danger">*</span></label>
                     <input type="text" id="titulo_evento" name="titulo_evento" value="{{ old('titulo_evento', $evento->titulo_evento) }}" class="form-control" >
+                    {!! $errors->first('titulo_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Dirección</label>
+                  <div class="form-group {{$errors->has('direccion_evento')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
                     <input type="text" id="direccion_evento" name="direccion_evento" value="{{ old('direccion_evento', $evento->direccion_evento) }}"class="form-control">
+                    {!! $errors->first('direccion_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+                  
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -69,15 +72,18 @@
                   </div>
                 </div>
                 <div class="col-md-3">      
-                  <div class="form-group">
-                    <label class="label-control">Fecha de Término</label>
+                  <div class="form-group {{$errors->has('fecha_inicio_evento')?'has-danger':''}}">
+                    <label class="label-control">Fecha de Inicio&nbsp;<span class="text-danger">*</span></label>
                     <input type="text" id="fecha_termino_evento" name="fecha_termino_evento" value="{{$evento->fecha_termino_evento}}" class="form-control datepicker" />
+                    {!! $errors->first('fecha_inicio_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+                  
                   </div>
                 </div>
                 <div class="col-md-3">      
-                  <div class="form-group">
-                    <label class="label-control">Hora de Inicio</label>
+                  <div class="form-group {{$errors->has('hora_inicio_evento')?'has-danger':''}}">
+                    <label class="label-control">Hora de Inicio&nbsp;<span class="text-danger">*</span></label>
                     <input type="text" id="hora_inicio_evento" name="hora_inicio_evento" value="{{$evento->hora_inicio_evento}}" class="form-control timepicker" />
+                    {!! $errors->first('hora_inicio_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-3">      
@@ -136,10 +142,11 @@
                   
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label>Descripción</label>
-                    <div class="form-group">
+                    <label>Descripción&nbsp;<span class="text-danger">*</span></label>
+                    <div class="form-group {{$errors->has('descripcion_evento')?'has-danger':''}}">
                       <label class="bmd-label-floating"> Agrege la información necesaria para que el publico conosca detalladamente el evento</label>
                       <textarea class="form-control" id="descripcion_evento" name="descripcion_evento" rows="5">{{$evento->descripcion_evento}}</textarea>
+                      {!! $errors->first('descripcion_evento','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                     </div>
                   </div>
                 </div>
