@@ -125,7 +125,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         //anual
         //mensual
-        Route::get('mype/home', 'GraficoController@index')->name('inicioMype');
+        Route::get('mype/home', 'GraficoController@indexH')->name('inicioMype');
 
         //MyPES!!
         Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');
