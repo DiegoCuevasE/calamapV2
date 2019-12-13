@@ -58,14 +58,14 @@ function addInfoBubble(map) {
 
   addMarkerToGroup(group, {lat:-22.461230, lng:-68.925873},
   '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/Mercado.jpg" ></div>'+
-  '<div class="text-center"><h4>Mercado Municipal</h4><p>Principal calle</p></div>'); 
+  '<div class="text-center"><h4>Mercado Municipal</h4><p>Principal calle comercial de la ciudad. El mercado central fue inaugurado en la década de 1930.</p></div>'); 
   addMarkerToGroup(group, {lat:-22.462375, lng:-68.927176},
   '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/Plaza.jpg" ></div>'+
-  '<div class="text-center"><h4>Plaza de Armas</h4><p>Principal calle</p></div>'); 
+  '<div class="text-center"><h4>Plaza de Armas</h4><p>La Plaza 23 de marzo se alza como uno de los símbolos de la ciudad en la que se congrega en tono a diferentes manifestaciones culturales y artísticas</p></div>'); 
 
   addMarkerToGroup(group, {lat:-22.461960, lng:-68.926274},
   '<div style="width:200px"><img class="w-100" src="template2/imagenRutas/Paseo.jpg" ></div>'+
-  '<div class="text-center"><h4>Paseo Ramírez</h4><p>Principal calle</p></div>'); 
+  '<div class="text-center"><h4>Paseo Ramírez</h4><p>Ubicado en céntrica calle Eleuterio Ramírez, es el centro del comercio de Calama. Debe su nombre al héroe nacional Eleuterio Ramírez Molina, conocido también como el León de Tarapacá.</p></div>'); 
 
 
 }
