@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                      <div class="row form-group">
+                      <div class=" form-group row">
                           <div class="col-md-6">
                             <label class="text-black" for="treatment">Fecha de nacimiento</label> 
                             <input type="date" id="fechaNac" name="fechaNac" class="form-control" placeholder="DD/MM/AAAA">
@@ -85,18 +85,6 @@
                           </div>
                         </div>
           
-                        <div class="row form-group">
-                          <div class="col-md-12">
-                            <label class="text-black" for="nacionalidad">Nacionalidad</label> 
-                            <select name="nacionalidad" id="nacionalidad" class="form-control">
-                              <option value="Chile" name="nacionalidad">Chile</option>
-                              <option value="Argentina" name="nacionalidad">Argentina</option>
-                              <option value="Perú" name="nacionalidad">Perú</option>
-                              <option value="Bolivia" name="nacionalidad">Bolivia</option>
-                              <option value="Brasil" name="nacionalidad">Brasil</option>
-                            </select>
-                          </div>
-                        </div>
 
                       <div class="form-group row mb-0">
                           <div class="col-md-6 offset-md-4">

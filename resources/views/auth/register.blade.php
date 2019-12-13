@@ -74,19 +74,6 @@
                             </div>
                           </div>
             
-                          <div class="row form-group">
-                            <div class="col-md-12">
-                              <label class="text-black" for="nacionalidad">Nacionalidad</label> 
-                              <select name="nacionalidad" id="nacionalidad" class="form-control">
-                                <option value="Japan" name="nacionalidad">Japan</option>
-                                <option value="Japan" name="nacionalidad">Europe</option>
-                                <option value="Japan" name="nacionalidad">China</option>
-                                <option value="Japan" name="nacionalidad">France</option>
-                                <option value="Japan" name="nacionalidad">Philippines</option>
-                              </select>
-                            </div>
-                          </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
