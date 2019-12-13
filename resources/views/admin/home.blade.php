@@ -111,7 +111,7 @@
                         {!!$Gedad->html() !!}
                             </div>
                             <div id="geo"></div>
-      <?= $lava->render('GeoChart', 'Football Fans', 'geo') ?>
+      <?= $lava->render('GeoChart', 'Visitas', 'geo') ?>
                         </div>
                 </div>
 
