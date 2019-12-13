@@ -33,8 +33,10 @@ Route::post('subirimagen', 'FotoController@uploadImage');
 
 
 Route::get('/', function () {
+    $date = today()->format('Y-m-d');
 
-    $eventos= Evento::paginate(6);
+    $eventos=Evento::orderBy('fecha_inicio_evento', 'ASC')->where('fecha_inicio_evento', '>=', $date)->paginate(6);
+
     $sitios= SitioTuristico::paginate(6);
     return view('inicio2',['eventos'=> $eventos,'sitios'=> $sitios]);
     
@@ -136,14 +138,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
-
-
-
-
-
-
-
-
 Route::get('Hoteles', 'MypeVisitasController@getIndex')->name('hoteles');
 Route::get('Artesanias', 'MypeVisitasController@getIndexA')->name('artesanias');
 Route::get('Restaurantes', 'MypeVisitasController@getIndexR')->name('restaurantes');
@@ -152,6 +146,8 @@ Route::get('Comercio', 'MypeVisitasController@getIndexC')->name('comercio');
 
 Route::get('SitiosTuristicos', 'SitioTuristicoController@MostrarSitios')->name('sitios');
 Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
+
+Route::get('eventos', 'EventoController@MostrarEventos')->name('portal');
 
 Route::get('evento{id}', 'EventoController@MostrarEvento')->name('evento');
 

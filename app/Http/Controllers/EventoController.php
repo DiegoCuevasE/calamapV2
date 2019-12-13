@@ -47,8 +47,22 @@ class EventoController extends Controller
         $invierno=Evento::whereBetween('fecha_inicio_evento', [$iFrom, $iTo])->get();
         $primavera=Evento::whereBetween('fecha_inicio_evento', [$pFrom, $pTo])->get();
 
+        $eventos=Evento::all();
         $evento = Evento::where('id',$sitio_id)->first();
-        return view('vistaEvento', ['evento'=>$evento,'verano'=>$verano,'otoño'=>$otoño,'invierno'=>$invierno,'primavera'=>$primavera]);
+        //return view('vistaEvento', ['evento'=>$evento,'verano'=>$verano,'otoño'=>$otoño,'invierno'=>$invierno,'primavera'=>$primavera]);
+        return view('vistaEvento', ['evento'=>$evento,'eventos'=>$eventos]);
+    }
+
+    public function MostrarEventos(){
+
+        $eventos=Evento::all();
+
+        $date = today()->format('Y-m-d');
+
+        $evento=Evento::orderBy('fecha_inicio_evento', 'ASC')->get()->where('fecha_inicio_evento', '>=', $date)->first();
+        //return $evento;
+        return view('vistaEvento', ['eventos'=>$eventos,'evento'=>$evento]);
+
     }
 
     /**
