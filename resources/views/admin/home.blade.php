@@ -110,6 +110,8 @@
                             <div class="col-md-6 mt-9">
                         {!!$Gedad->html() !!}
                             </div>
+                            <div id="geo"></div>
+      <?= $lava->render('GeoChart', 'Football Fans', 'geo') ?>
                         </div>
                 </div>
 

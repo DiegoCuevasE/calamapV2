@@ -182,6 +182,7 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
 
 
@@ -246,6 +247,7 @@ return [
         
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
     ],
 

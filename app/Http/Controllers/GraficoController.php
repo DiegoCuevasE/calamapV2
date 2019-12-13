@@ -10,7 +10,7 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Visita;
-
+use Khill\Lavacharts\Lavacharts;
 class GraficoController extends Controller
 {
 
@@ -131,6 +131,10 @@ class GraficoController extends Controller
         ->values([$rango1,$rango2,$rango3])
         ->dimensions(450,450)
         ->responsive(true);
+
+
+
+
          
          return view('admin/home',compact('pie','chart', 'Gedad'));
 
@@ -259,8 +263,20 @@ class GraficoController extends Controller
         ->values([$rango1,$rango2,$rango3])
         ->dimensions(450,450)
         ->responsive(true);
+
+
+
+        $lava = new Lavacharts; 
+        $fans = $lava->DataTable();
+        $value=Visita::select('user_id as 0', 'mype_id as 1')
+                        ->get()
+                        ->toArray();
+        $fans->addStringColumn('Country')
+                   ->addNumberColumn('Visitas')
+                   ->addRows($value);
+        $lava->GeoChart('Visitas', $fans);
          
-         return view('admin/home',compact('pie','chart', 'Gedad','cantVisitas'));
+         return view('admin/home',compact('pie','chart', 'Gedad','cantVisitas','lava'));
 
     }
 }
