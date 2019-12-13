@@ -80,15 +80,18 @@
 
             <div class="row mt-2">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Nombre de la MyPE</label>
+                <div class="form-group  {{$errors->has('nombre_fantasia_mype')?'has-danger':''}}">
+                  <label class="bmd-label-floating">Nombre de la MyPE&nbsp;<span class="text-danger">*</span></label>
                   <input type="text" name="nombre_fantasia_mype" id="nombre_fantasia_mype" value="{{ old('nombre_fantasia_mype', $mypes->nombre_fantasia_mype) }}" class="form-control" >
+                  {!! $errors->first('nombre_fantasia_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Dirección</label>
+                <div class="form-group {{$errors->has('direccion_mype')?'has-danger':''}}">
+                  <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
                   <input type="text" id="direccion_mype" name="direccion_mype" value="{{ old('direccion_mype', $mypes->direccion_mype) }}" class="form-control">
+                  {!! $errors->first('direccion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
+                
                 </div>
               </div>
             </div> 
@@ -124,6 +127,7 @@
               <!-- Mostrar servicios de restaurant-->
               <div class="col-md-12" id="serviciosG" @if ($mypes->rubro_mype == "Gastronomía") style="display:display;"@else style="display:none;" @endif>
                 <label for="serviciosG" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioH','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                     @foreach ($servicios as $servicio)
@@ -151,6 +155,7 @@
               <!-- Mostrar servicios de turismo-->
               <div class="col-md-12" id="serviciosT" @if ($mypes->rubro_mype == "Turismo") style="display:display;" @else style="display:none;" @endif>
                 <label for="serviciosT" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioT','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
@@ -178,6 +183,7 @@
               <!-- Mostrar servicios de Bazar-->
               <div class="col-md-12" id="serviciosB"  @if ($mypes->rubro_mype == "Bazares") style="display:display;"@else style="display:none;" @endif>
                 <label for="serviciosB" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioB','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                   @foreach ($servicios as $servicio)
@@ -205,6 +211,7 @@
               <!-- Mostrar servicios de Artesanias-->
               <div class="col-md-12" id="serviciosA" @if ($mypes->rubro_mype == "Artesanía") style="display:display;"@else style="display:none;" @endif>
                 <label for="serviciosA" class="mb-2">Servicios</label>
+                {!! $errors->first('servicioA','<div class="invalid-feedback">:message</div>') !!}
                 <div class="form-check">
                   <div class="row">
                     @foreach ($servicios as $servicio)
@@ -308,7 +315,6 @@
                   </div>
                 </div>                           
             </div>
-
             <hr>
             <div class="row">
               <div class="col-md-3">
@@ -411,10 +417,20 @@
               </div> 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label>Descripción</label>
-                  <div class="form-group">
+                  <label>Descripción&nbsp;<span class="text-danger">*</span></label>
+                  <div class="form-group {{$errors->has('descripcion_mype')?'has-danger':''}}">
                     <textarea class="form-control" rows="5"  id="descripcion_mype" name="descripcion_mype"> {{$mypes->descripcion_mype }} </textarea>
+                    {!! $errors->first('descripcion_mype','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
+                  <label>Ubicación</label>
+                  <div class="form-group">
+                  <label class="bmd-label-floating"> Elija la ubicación del mype en el mapa arrastrando el marcador.</label>
+                  <div id="map" style="width:100%; height:400px"></div>
+                  </div>
+                  
+                 <input name="coordenadas" id="coordenadas" type="hidden" value="POINT ({{$mypes->longitud_mype}} {{$mypes->latitud_mype}})"/> 
+
+                  
                 </div>
               </div>
             </div>
@@ -431,7 +447,6 @@
 </div>
 </div>
 
-@endsection
 
 <script>
 
@@ -501,3 +516,91 @@
 
   }
 </script>
+
+
+<script>
+    
+	      
+  function addDraggableMarker(map, behavior){
+  
+    marketfinal = "no";
+    var marker = new H.map.Marker({lat:<?php echo $mypes->latitud_mype; ?>, lng:<?php echo $mypes->longitud_mype; ?>}, {
+      // mark the object as volatile for the smooth dragging
+      volatility: true
+    });
+    // Ensure that the marker can receive drag events
+    marker.draggable = true;
+    map.addObject(marker);
+  
+    // disable the default draggability of the underlying map
+    // and calculate the offset between mouse and target's position
+    // when starting to drag a marker object:
+    map.addEventListener('dragstart', function(ev) {
+      var target = ev.target,
+          pointer = ev.currentPointer;
+      if (target instanceof H.map.Marker) {
+        var targetPosition = map.geoToScreen(target.getGeometry());
+        target['offset'] = new H.math.Point(pointer.viewportX - targetPosition.x, pointer.viewportY - targetPosition.y);
+        behavior.disable();
+        
+      }
+    }, false);
+  
+  
+    // re-enable the default draggability of the underlying map
+    // when dragging has completed
+    map.addEventListener('dragend', function(ev) {
+      var target = ev.target;
+      if (target instanceof H.map.Marker) {
+        behavior.enable();
+        console.log(target.getGeometry())
+        document.getElementById("coordenadas").value = target.getGeometry();
+      }
+    }, false);
+    // Listen to the drag event and move the position of the marker
+    // as necessary
+     map.addEventListener('drag', function(ev) {
+      var target = ev.target,
+          pointer = ev.currentPointer;
+      if (target instanceof H.map.Marker) {
+        target.setGeometry(map.screenToGeo(pointer.viewportX - target['offset'].x, pointer.viewportY - target['offset'].y));
+      }
+    }, false);
+  }
+  
+  /**
+   * Boilerplate map initialization code starts below:
+   */
+  
+  //Step 1: initialize communication with the platform
+  // In your own code, replace variable window.apikey with your own apikey
+  var platform = new H.service.Platform({
+    'apikey': 'RMYfIbHj8enSZO2qI4ojFKC4clcClrGgMifRzrX5yAA'
+  });
+  var defaultLayers = platform.createDefaultLayers();
+  
+  //Step 2: initialize a map - this map is centered over Boston
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.vector.normal.map, {
+    center: {lat:<?php echo $mypes->latitud_mype; ?>, lng:<?php echo $mypes->longitud_mype; ?>},
+    zoom: 14,
+    pixelRatio: window.devicePixelRatio || 1
+  });
+  // add a resize listener to make sure that the map occupies the whole container
+  window.addEventListener('resize', () => map.getViewPort().resize());
+  
+  //Step 3: make the map interactive
+  // MapEvents enables the event system
+  // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  
+  // Step 4: Create the default UI:
+  var ui = H.ui.UI.createDefault(map, defaultLayers, 'es-ES');
+  
+  // Add the click event listener.
+  addDraggableMarker(map, behavior);
+  
+  
+  </script>
+
+@endsection

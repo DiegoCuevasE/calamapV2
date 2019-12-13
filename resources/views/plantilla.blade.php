@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('template2/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template2/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('template2/css/jquery-ui.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" /> 
     <link rel="stylesheet" href="{{ asset('template2/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template2/css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('template2/fonts/flaticon/font2/flaticon.css') }}">
@@ -25,6 +25,11 @@
 
     <script src="{{ asset('template2/vendors/vendors/jquery.min.js') }}"></script>
     <script defer src="{{ asset('template2/owlcarousel/owl.carousel.js') }}"></script>
+
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -70,7 +75,7 @@
           <nav class="site-navigation position-relative text-center" role="navigation">
             <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block list-unstyled">
               <li><a href="{{ route('hoteles') }}">¿Dónde Dormir?</a></li>
-              <li><a href="#">¿Qué hacer?</a></li>
+              <li><a href="{{ route('portal') }}">¿Qué hacer?</a></li>
               <li><a href="{{ route('restaurantes') }}">¿Dónde Comer?</a></li>
               <li><a href="{{ route('sitios') }}">¿Dónde ir?</a></li>
             </ul>

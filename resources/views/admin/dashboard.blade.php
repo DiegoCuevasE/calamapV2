@@ -20,6 +20,7 @@
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{ asset('dashboard/img/favicon.png')}}">
+  <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" /> 
   <meta http-equiv="X-UA-Compatible " content="IE=edge,chrome=1" />
   <meta http-equiv="Content-Security-Policy " content="upgrade-insecure-requests" />
 
@@ -38,7 +39,10 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Material Design Bootstrap -->
-
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 
 </head>
 
@@ -143,7 +147,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Perfil</a>
-                  <a class="dropdown-item" href="#">Configuración</a>
+                  <a class="dropdown-item" href="/">Sección Turista</a>
+
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">

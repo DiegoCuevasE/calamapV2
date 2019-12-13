@@ -40,9 +40,10 @@ class VisitaController extends Controller
         $visita = new Visita();
         $visita->user_id=Auth::id();
         $visita->mype_id=$request['mype_id'];
+        $visita->pais=geoip()->getLocation()->country;
         $visita->save();
 
-        return response()->json(['success'=>'Data is successfully added']);
+        return dd(geoip()->getLocation()->country);
     }
 
     /**

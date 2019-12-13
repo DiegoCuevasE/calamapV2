@@ -130,6 +130,7 @@
                           <a href="{{ route('editarMype',$mype->id) }}">
                             <button class="btn btn-success btn-fab btn-fab-mini btn-round" ><i class="material-icons">edit</i> </button>
                           </a>
+                          <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('eliminarMype',$mype->id)}}"><i class="fa fa-trash"></i></a>
                             {{ Form::open(array('url' => 'admin/eliminarMype' . $mype->id)) }}
                             {{Form::hidden('_method', 'DELETE') }}
                             {{ Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-rose btn-fab btn-fab-mini btn-round'] ),['onclick' => 'return confirm("¿Borrar?")']}}

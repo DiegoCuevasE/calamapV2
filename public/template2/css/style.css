@@ -1297,3 +1297,8 @@ margin-top: 50px;
 .fondo-evento{
   background-color: #f8f9faee !important;
 }
+
+#mapid { 
+  height: 180px; 
+  width: 180px;
+}

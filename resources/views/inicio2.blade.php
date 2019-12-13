@@ -28,7 +28,7 @@
         <div class="container-extend" >
           <div class="d-flex" >
             <div class="" >
-              <a href="#" class="unit-1 text-center">
+            <a href="{{route('vistaCascoHistorico')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaHis.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Histórica</h3>
@@ -36,7 +36,7 @@
               </a>
             </div>
             <div class="">
-              <a href="#" class="unit-1 text-center">
+              <a href="{{route('vistaOasis')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaGastro.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Gastronómica</h3>
@@ -44,7 +44,7 @@
               </a>
             </div>
             <div class="">
-              <a href="#" class="unit-1 text-center">
+              <a href="{{route('vistaAncestral')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaAnc.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Ancestral</h3>
@@ -52,7 +52,7 @@
               </a>
             </div>
             <div class="">
-              <a href="#" class="unit-1 text-center">
+              <a href="{{route('vistaOasis')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaOasis.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Oasis</h3>
@@ -143,8 +143,8 @@
               <!--Featured image-->
               @foreach ($evento->imageneventos as $imagen)
               @if ($imagen->tipo_imagen_evento == 'portada')
-              <div class="view overlay rounded z-depth-1">
-                <img src="{{$imagen->enlace_imagen_evento}}" class="img-fluid" alt="Sample project image">
+              <div class="view overlay rounded z-depth-1" style= "height:170px ">
+                <img src="{{$imagen->enlace_imagen_evento}}" class="img-fluid" alt="Sample project image ">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -156,7 +156,8 @@
                 <div class=" "> 
                     <a href="{{ url('evento'.$evento->id) }}"></a>
                   <h4 class="font-weight-bold mt-1 mb-3">{{$evento->titulo_evento}}</h4></a>
-                  <span class=" text-right">{{date('d/m/y', strtotime($evento->fecha_inicio_evento))}}  </span>
+                  <i class="far fa-calendar-alt h3"></i>
+                  <span class=" text-right h6">{{date('d/m/y', strtotime($evento->fecha_inicio_evento))}}  </span>
                 </div>
                 <p class="grey-text">{{str_limit($evento->descripcion_evento, $limit = 150, $end = '...') }}
                 </p>

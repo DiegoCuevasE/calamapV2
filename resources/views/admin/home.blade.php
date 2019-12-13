@@ -77,15 +77,19 @@
       <!-- panel de estadísticas -->
     <div class="row">
         <div class="card">
-          <div class="card-header card-header-warning">
-            <div class="d-flex">
-              <i class="material-icons mr-2">bar_chart</i>
-              <h4 class="card-title font-weight-bold">Estadisticas de la plataforma</h4>
+          <div class="card-header card-header-warning row">
+            <div class="col-md-8">
+              <div class="d-flex">
+                <i class="material-icons mr-2">bar_chart</i>
+                <h4 class="card-title font-weight-bold">Estadisticas de la plataforma</h4>
+              </div>
+                <p class="card-category">Monitorea como va el tráfico en la plataforma</p>
             </div>
-              <p class="card-category">Monitorea como va el tráfico en la plataforma</p>
+            <div class="justify-content-end col-md-4">
+            </div>
             </div>
             <div class="card-body">
-
+                @if(!Auth::user()->mypes)
                 <div class="panel-body">
                     <div class="mb-7">
                     {!! $chart->html() !!}
@@ -101,12 +105,21 @@
                             <div class="col-md-6 mt-9">
                         {!!$Gedad->html() !!}
                             </div>
+                            <div id="geo"></div>
+      <?= $lava->render('GeoChart', 'Visitas', 'geo') ?>
                         </div>
                 </div>
 
+                
+                @else
+                <div class="text-center h3">
+                No tienes MyPES registradas
+              </div>
+                @endif
 
 
-              {!! Charts::scripts() !!}
+
+        {!! Charts::scripts() !!}
         {!! $pie->script() !!}
         {!! $chart->script() !!}
         {!! $Gedad->script() !!}

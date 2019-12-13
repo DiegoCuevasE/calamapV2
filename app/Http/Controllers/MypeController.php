@@ -105,15 +105,18 @@ class MypeController extends Controller
     public function store(Request $request)
     {
         
+        
         $validarDatos =[
             'nombre_fantasia_mype' => 'required|max:100',
             'direccion_mype' => 'required|max:100',
             'descripcion_mype' => 'required|max:1000',
             'enlace_imagen_mype' => 'required',
             'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            "image" => ["required","array","max:3"],
         ];
+
+        
 
         switch (request('rubro_mype')) {
             case "Hotelería":
@@ -145,8 +148,9 @@ class MypeController extends Controller
             "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
             "descripcion_mype.required"=>'La descripción de la MyPE es obligatoria',
             "enlace_imagen_mype.required" => 'Si no posee un logo, ingrese una imagen de su MyPE',
-            "image.required" => 'Debe adjuntar minimo 1 imagen de su MyPE',
-            "idioma.required" => 'Debe seleccionar un idioma al menos',
+            "image.required" => 'Debes adjuntar minimo 1 imagen de galeria',
+            "image.max" => 'Debe adjuntar maximo 3 imagenes de su MyPE',
+            "idioma.required" => 'Debes seleccionar un idioma al menos',
             "servicioT.required" => 'Debes seleccionar al menos un servicio',
             "servicioH.required" => 'Debes seleccionar al menos un servicio',
             "servicioA.required" => 'Debes seleccionar al menos un servicio',
@@ -157,6 +161,12 @@ class MypeController extends Controller
         $this->validate($request,$validar,$mensaje);
 
         $datosmype = new Mype();
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
 
         $datosmype->user_id=request('user_id');
 
@@ -173,6 +183,8 @@ class MypeController extends Controller
         $datosmype->pagina_mype=request('pagina_mype');
         $datosmype->facebook_mype=request('facebook_mype');
         $datosmype->instagram_mype=request('instagram_mype');
+        $datosmype->longitud_mype=$longitud;
+        $datosmype->latitud_mype=$latitud;
         $datosmype->save();
 
     //-----------------------------------------------------------------------------
@@ -365,12 +377,66 @@ class MypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //return $request;
+       
+        $validarDatos =[
+            'nombre_fantasia_mype' => 'required|max:100',
+            'direccion_mype' => 'required|max:100',
+            'descripcion_mype' => 'required|max:1000',
+            'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+
+        switch (request('rubro_mype')) {
+            case "Hotelería":
+            $validar =$validarDatos+['servicioH' => 'required',];
+                break;
+            case "Gastronomía":
+            $validar =$validarDatos+['servicioG' => 'required',];
+                break;
+            case "Turismo":
+            $validar =$validarDatos+['servicioT' => 'required',];
+                break;
+            case "Artesanía":
+            $validar =$validarDatos+['servicioA' => 'required',];
+                break;
+            case "Bazares":
+            $validar =$validarDatos+['servicioB' => 'required',];
+                break;
+        }
+
+        switch (request('idioma_mype')) {
+            case "0":
+            $validar =$validar+['idioma'=>'required',];
+                break;
+        }
+        
+
+        $mensaje=[
+            "nombre_fantasia_mype.required"=>'El nombre de la MyPE es obligatorio',
+            "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
+            "descripcion_mype.required"=>'La descripción de la MyPE es obligatoria',
+            "idioma.required" => 'Debe seleccionar un idioma al menos',
+            "servicioT.required" => 'Debes seleccionar al menos un servicio',
+            "servicioH.required" => 'Debes seleccionar al menos un servicio',
+            "servicioA.required" => 'Debes seleccionar al menos un servicio',
+            "servicioB.required" => 'Debes seleccionar al menos un servicio',
+            "servicioG.required" => 'Debes seleccionar al menos un servicio',
+        ];
+        $this->validate($request,$validarDatos,$mensaje);
+
+        //return $request;
 
         //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
 
         $datosmype = Mype::find($id);
 
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
+        $datosmype->longitud_mype=$longitud;
+        $datosmype->latitud_mype=$latitud;
         $datosmype->user_id             =request('user_id');
         $datosmype->rubro_mype          =request('rubro_mype');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');
@@ -567,7 +633,7 @@ class MypeController extends Controller
     {
         //
         Mype::destroy($id);
-        return redirect('moduloMype');
+        return redirect('admin/home');
     }
 
     public function getMype(){

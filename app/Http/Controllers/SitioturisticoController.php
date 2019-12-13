@@ -81,17 +81,48 @@ class SitioturisticoController extends Controller
      */
     public function store(Request $request)
     {   
+        $campos =[
+            'nombre_turistico' => 'required|max:100',
+            'direccion_turistico' => 'required|max:100',
+            'descripcion_turistico' => 'required|max:1000',
+            'enlace_imagen_turistico' => 'required',
+            'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ];
+        $mensaje=[
+            "nombre_turistico.required"=>'El nombre del sitio turístico es obligatorio',
+            "nombre_turistico.max"=>'El nombre del sitio turístico acepta hasta 100 caracteres',
+            "direccion_turistico.required"=>'La dirección del sitio turístico es obligatoria',
+            "direccion_turistico.max"=>'La dirección del sitio turístico acepta hasta 100 caracteres',
+            "descripcion_turistico.required"=>'La descripcion del sitio turñistico es obligatoria',
+            "descripcion_turistico.max"=>'La descripción del sitio turístico acepta hasta 100 caracteres',
+            "enlace_imagen_turistico.required" => 'Ingrese una imagen del sitio turístico',
+            "image.required" => 'Debe adjuntar minimo 1 imagen del sitio tyristico',
+        ];
+        
+        $this->validate($request,$campos,$mensaje);
+        
         //return response()->json($request);
         $datoSitioTuristico= new Sitioturistico();
 
         $datoSitioTuristico->user_id = Auth::user()->id;
+
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+
 
         $datoSitioTuristico->nombre_turistico =  $request['nombre_turistico'];
         $datoSitioTuristico->direccion_turistico = $request['direccion_turistico'];
         $datoSitioTuristico->descripcion_turistico = ucfirst(mb_strtolower(request('descripcion_turistico')));
         $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
         $datoSitioTuristico->horario_turistico = $request['horario_sitio'];
-
+        $datoSitioTuristico->latitud_turistico = $latitud;
+        $datoSitioTuristico->longitud_turistico = $longitud;
+        
 
         if($datoSitioTuristico->entrada_sitio) 
         { 
@@ -264,12 +295,38 @@ class SitioturisticoController extends Controller
     public function update(Request $request, $id)
 
     {
+        $campos =[
+            'nombre_turistico' => 'required|max:100',
+            'direccion_turistico' => 'required|max:100',
+            'descripcion_turistico' => 'required|max:1000',
+            'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ];
+        $mensaje=[
+            "nombre_turistico.required"=>'El nombre del sitio turístico es obligatorio',
+            "nombre_turistico.max"=>'El nombre del sitio turístico acepta hasta 100 caracteres',
+            "direccion_turistico.required"=>'La dirección del sitio turístico es obligatoria',
+            "direccion_turistico.max"=>'La dirección del sitio turístico acepta hasta 100 caracteres',
+            "descripcion_turistico.required"=>'La descripcion del sitio turñistico es obligatoria',
+            "descripcion_turistico.max"=>'La descripción del sitio turístico acepta hasta 100 caracteres',
+        ];
+        
+        $this->validate($request,$campos,$mensaje);
         $nombre = $request['nombre_turistico'];
 
         //$idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
 
 
         //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
+
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
+
+
         
         $datoSitioTuristico= Sitioturistico::find($id);
 
@@ -277,6 +334,8 @@ class SitioturisticoController extends Controller
         $datoSitioTuristico->direccion_turistico =  $request->get('direccion_turistico');
         $datoSitioTuristico->descripcion_turistico =  $request->get('descripcion_turistico');
         $datoSitioTuristico->horario_turistico =  $request->get('horario_turistico');
+        $datoSitioTuristico->latitud_turistico = $latitud;
+        $datoSitioTuristico->longitud_turistico = $longitud;
 
 
         $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];

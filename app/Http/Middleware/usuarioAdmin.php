@@ -17,7 +17,8 @@ class usuarioAdmin
     {
         $user = \Auth::user();
         if($user->tipo_usuario!=0){
-            return view ("privilegios");
+            
+            return response()->json(["message", "Authentication Required!"], 401);
         }
         return $next($request);
     }

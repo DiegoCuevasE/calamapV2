@@ -47,8 +47,22 @@ class EventoController extends Controller
         $invierno=Evento::whereBetween('fecha_inicio_evento', [$iFrom, $iTo])->get();
         $primavera=Evento::whereBetween('fecha_inicio_evento', [$pFrom, $pTo])->get();
 
+        $eventos=Evento::all();
         $evento = Evento::where('id',$sitio_id)->first();
-        return view('vistaEvento', ['evento'=>$evento,'verano'=>$verano,'otoño'=>$otoño,'invierno'=>$invierno,'primavera'=>$primavera]);
+        //return view('vistaEvento', ['evento'=>$evento,'verano'=>$verano,'otoño'=>$otoño,'invierno'=>$invierno,'primavera'=>$primavera]);
+        return view('vistaEvento', ['evento'=>$evento,'eventos'=>$eventos]);
+    }
+
+    public function MostrarEventos(){
+
+        $eventos=Evento::all();
+
+        $date = today()->format('Y-m-d');
+
+        $evento=Evento::orderBy('fecha_inicio_evento', 'ASC')->get()->where('fecha_inicio_evento', '>=', $date)->first();
+        //return $evento;
+        return view('vistaEvento', ['eventos'=>$eventos,'evento'=>$evento]);
+
     }
 
     /**
@@ -70,15 +84,52 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
+        $campos =[
+            'titulo_evento' => 'required|max:100',
+            'direccion_evento' => 'required|max:100',
+            'descripcion_evento' => 'required|max:1000',
+            'fecha_inicio_evento' => 'required',
+            'hora_inicio_evento' => 'required',
+            'enlace_imagen_evento' => 'required',
+            'enlace_imagen_evento.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+        
+        $mensaje=[
+            "titulo_evento.required"=> 'El título del evento es obligatorio',
+            "titulo_evento.max"=> 'El titulo solo puede contener 100 caracteres',
+            "direccion_evento.required"=> 'La dirección del evento es obligatoria',
+            "direccion_evento.max"=> 'La direccion solo puede contener 100 caracteres',
+            "descripcion_evento.required" => 'La desripción del evento es obligatoria',
+            "descripcion_evento.max    " => 'La desripción solo puede contenre 1000 caracteres',
+            "fecha_inicio_evento.required" => 'La fecha de inicio de un evento es obligatoria',
+            "hora_inicio_evento.required" => 'La hora de inicio del evento es obligatoria',
+            "enlace_imagen_evento.required" => 'Ingrese una imagen principal para el Evento',
+            "image.required" => 'Debe adjuntar minimo 1 imagen del Evento',
+        ];
+
+        $this->validate($request,$campos,$mensaje);
+        
+        
         //return $request;
         $evento = new Evento();
 
         //reemplazar '1' por usuario logeado
         $evento->user_id= Auth::user()->id;
 
+
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+
         $evento->titulo_evento=request('titulo_evento');
         $evento->direccion_evento=request('direccion_evento');
         $evento->entrada_evento=request('entrada_evento');
+        $evento->longitud_evento=$longitud;
+        $evento->latitud_evento=$latitud;
 
         if($evento->entrada_evento) { $evento->precio_evento=request('precio_evento'); }
 
@@ -199,11 +250,42 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $campos =[
+            'titulo_evento' => 'required|max:100',
+            'direccion_evento' => 'required|max:100',
+            'descripcion_evento' => 'required|max:1000',
+            'fecha_inicio_evento' => 'required',
+            'hora_inicio_evento' => 'required',
+            'enlace_imagen_evento.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+        
+        $mensaje=[
+            "titulo_evento.required"=> 'El título del evento es obligatorio',
+            "titulo_evento.max"=> 'El titulo solo puede contener 100 caracteres',
+            "direccion_evento.required"=> 'La dirección del evento es obligatoria',
+            "direccion_evento.max"=> 'La direccion solo puede contener 100 caracteres',
+            "descripcion_evento.required" => 'La desripción del evento es obligatoria',
+            "descripcion_evento.max    " => 'La desripción solo puede contenre 1000 caracteres',
+            "fecha_inicio_evento.required" => 'La fecha de inicio de un evento es obligatoria',
+            "hora_inicio_evento.required" => 'La hora de inicio del evento es obligatoria',
+        ];
+
+        $this->validate($request,$campos,$mensaje);
+        
         $evento = Evento::where('id',$id)->first();
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
 
         $evento->titulo_evento=request('titulo_evento');
         $evento->direccion_evento=request('direccion_evento');
         $evento->entrada_evento=request('entrada_evento');
+        $evento->longitud_evento=$longitud;
+        $evento->latitud_evento=$latitud;
 
         if($evento->entrada_evento) { $evento->precio_evento=request('precio_evento'); }
 

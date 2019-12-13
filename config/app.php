@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Santiago',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
 
 
@@ -244,6 +246,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
     ],
 
