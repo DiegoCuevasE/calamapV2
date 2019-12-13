@@ -27,17 +27,10 @@
                   </div>
                 </div>
                 <div class="col-md-6 mb-auto">
-<<<<<<< HEAD
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Dirección</label>
-                    <input name="direccion_turistico" id="direccion_turistico" type="text" class="form-control">
-                    
-=======
                   <div class="form-group {{$errors->has('direccion_turistico')?'has-danger':''}}">
                     <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
                     <input name="direccion_turistico" id="direccion_turistico" type="text" class="form-control" value="{{ old('direccion_turistico')}}">
                     {!! $errors->first('direccion_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
->>>>>>> master
                   </div>
                 </div>
                 <div class="col-md-6">
