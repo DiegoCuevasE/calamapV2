@@ -30,6 +30,8 @@ class CreateMypesTable extends Migration
             $table->string('facebook_mype', 50)->nullable();;
             $table->string('instagram_mype', 50)->nullable();;
             $table->string('pagina_mype', 50)->nullable();;
+            $table->string('latitud_mype', 25);
+            $table->string('longitud_mype', 25);
             $table->timestamps();
         });
     }

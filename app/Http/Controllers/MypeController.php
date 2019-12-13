@@ -168,9 +168,6 @@ class MypeController extends Controller
         $latitud = substr($coordenadas[1], 0, -1);
         
 
-        $datosmype->titulo_mype=request('titulo_datosmype');
-        $datosmype->direccion_mype=request('direccion_datosmype');
-        $datosmype->entrada_mype=request('entrada_datosmype');
         $datosmype->user_id=request('user_id');
 
         $datosmype->rubro_mype=request('rubro_mype');
