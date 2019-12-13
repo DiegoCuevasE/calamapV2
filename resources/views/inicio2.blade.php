@@ -28,7 +28,7 @@
         <div class="container-extend" >
           <div class="d-flex" >
             <div class="" >
-              <a href="#" class="unit-1 text-center">
+            <a href="{{route('vistaCascoHistorico')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaHis.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Histórica</h3>
@@ -36,7 +36,7 @@
               </a>
             </div>
             <div class="">
-              <a href="#" class="unit-1 text-center">
+              <a href="{{route('vistaOasis')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaGastro.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Gastronómica</h3>
@@ -44,7 +44,7 @@
               </a>
             </div>
             <div class="">
-              <a href="#" class="unit-1 text-center">
+              <a href="{{route('vistaAncestral')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaAnc.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Ancestral</h3>
@@ -52,7 +52,7 @@
               </a>
             </div>
             <div class="">
-              <a href="#" class="unit-1 text-center">
+              <a href="{{route('vistaOasis')}}" class="unit-1 text-center">
                 <img src="{{ asset('template2/images/rutaOasis.png') }}" alt="Image" class="img-fluid">
                 <div class="unit-1-text">
                   <h3 class="unit-1-heading">Ruta Oasis</h3>
