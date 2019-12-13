@@ -15,6 +15,7 @@ class CreateVisitasTable extends Migration
     {
         Schema::create('visitas', function (Blueprint $table) {
             $table->Bigincrements('id');
+            $table->string('pais', 254);
             $table->Biginteger('user_id')->unsigned()->nullable();
             $table->Biginteger('mype_id')->unsigned()->nullable();
 
