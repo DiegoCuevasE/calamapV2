@@ -108,12 +108,21 @@ class SitioturisticoController extends Controller
 
         $datoSitioTuristico->user_id = Auth::user()->id;
 
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+
+
         $datoSitioTuristico->nombre_turistico =  $request['nombre_turistico'];
         $datoSitioTuristico->direccion_turistico = $request['direccion_turistico'];
         $datoSitioTuristico->descripcion_turistico = ucfirst(mb_strtolower(request('descripcion_turistico')));
         $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
         $datoSitioTuristico->horario_turistico = $request['horario_sitio'];
-
+        $datoSitioTuristico->latitud_turistico = $latitud;
+        $datoSitioTuristico->longitud_turistico = $longitud;
+        
 
         if($datoSitioTuristico->entrada_sitio) 
         { 
@@ -309,6 +318,15 @@ class SitioturisticoController extends Controller
 
 
         //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
+
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
+
+
         
         $datoSitioTuristico= Sitioturistico::find($id);
 
@@ -316,6 +334,8 @@ class SitioturisticoController extends Controller
         $datoSitioTuristico->direccion_turistico =  $request->get('direccion_turistico');
         $datoSitioTuristico->descripcion_turistico =  $request->get('descripcion_turistico');
         $datoSitioTuristico->horario_turistico =  $request->get('horario_turistico');
+        $datoSitioTuristico->latitud_turistico = $latitud;
+        $datoSitioTuristico->longitud_turistico = $longitud;
 
 
         $datoSitioTuristico->entrada_sitio = $request['entrada_turistico'];
