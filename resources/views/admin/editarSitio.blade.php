@@ -202,7 +202,7 @@
                           <div id="map" style="width:100%; height:400px"></div>
                           </div>
                           
-                          <input name="coordenadas" id="coordenadas" type="hidden" value=""/> 
+                          <input name="coordenadas" id="coordenadas" type="hidden" value="POINT ({{$sitio->longitud_turistico}} {{$sitio->latitud_turistico}})"/> 
                         </div>
                     </div>
               </div>

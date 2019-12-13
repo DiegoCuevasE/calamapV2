@@ -430,6 +430,13 @@ class MypeController extends Controller
 
         $datosmype = Mype::find($id);
 
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
+        $datosmype->longitud_mype=$longitud;
+        $datosmype->latitud_mype=$latitud;
         $datosmype->user_id             =request('user_id');
         $datosmype->rubro_mype          =request('rubro_mype');
         $datosmype->nombre_fantasia_mype=request('nombre_fantasia_mype');

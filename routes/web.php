@@ -144,8 +144,8 @@ Route::get('Restaurantes', 'MypeVisitasController@getIndexR')->name('restaurante
 Route::get('Turismo', 'MypeVisitasController@getIndexT')->name('turismo');
 Route::get('Comercio', 'MypeVisitasController@getIndexC')->name('comercio');
 
-Route::get('SitiosTuristicos', 'SitioTuristicoController@MostrarSitios')->name('sitios');
-Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
+Route::get('SitiosTuristicos', 'SitioturisticoController@MostrarSitios')->name('sitios');
+Route::get('sitio{id}', 'SitioturisticoController@MostrarSitio')->name('sitio');
 
 Route::get('eventos', 'EventoController@MostrarEventos')->name('portal');
 
