@@ -158,6 +158,15 @@ class MypeController extends Controller
 
         $datosmype = new Mype();
 
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
+
+        $datosmype->titulo_mype=request('titulo_datosmype');
+        $datosmype->direccion_mype=request('direccion_datosmype');
+        $datosmype->entrada_mype=request('entrada_datosmype');
         $datosmype->user_id=request('user_id');
 
         $datosmype->rubro_mype=request('rubro_mype');
@@ -173,6 +182,8 @@ class MypeController extends Controller
         $datosmype->pagina_mype=request('pagina_mype');
         $datosmype->facebook_mype=request('facebook_mype');
         $datosmype->instagram_mype=request('instagram_mype');
+        $datosmype->longitud_mype=$longitud;
+        $datosmype->latitud_mype=$latitud;
         $datosmype->save();
 
     //-----------------------------------------------------------------------------

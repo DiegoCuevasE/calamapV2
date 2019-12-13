@@ -24,6 +24,8 @@ class CreateSitioTuristicosTable extends Migration
             $table->string('nombre_turistico', 50)->unique();
             $table->string('direccion_turistico', 254);
             $table->string('descripcion_turistico', 1024);
+            $table->string('latitud_turistico', 25);
+            $table->string('longitud_turistico', 25);
             $table->timestamps();
         });
     }

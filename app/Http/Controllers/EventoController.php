@@ -76,9 +76,18 @@ class EventoController extends Controller
         //reemplazar '1' por usuario logeado
         $evento->user_id= Auth::user()->id;
 
+
+
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+
         $evento->titulo_evento=request('titulo_evento');
         $evento->direccion_evento=request('direccion_evento');
         $evento->entrada_evento=request('entrada_evento');
+        $evento->longitud_evento=$longitud;
+        $evento->latitud_evento=$latitud;
 
         if($evento->entrada_evento) { $evento->precio_evento=request('precio_evento'); }
 
@@ -201,9 +210,17 @@ class EventoController extends Controller
     {
         $evento = Evento::where('id',$id)->first();
 
+        $corte = substr($request['coordenadas'], 7);
+        $coordenadas = explode(" ", $corte);
+        $longitud = $coordenadas[0];
+        $latitud = substr($coordenadas[1], 0, -1);
+        
+
         $evento->titulo_evento=request('titulo_evento');
         $evento->direccion_evento=request('direccion_evento');
         $evento->entrada_evento=request('entrada_evento');
+        $evento->longitud_evento=$longitud;
+        $evento->latitud_evento=$latitud;
 
         if($evento->entrada_evento) { $evento->precio_evento=request('precio_evento'); }
 

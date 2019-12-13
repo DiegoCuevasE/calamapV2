@@ -27,6 +27,8 @@ class CreateEventosTable extends Migration
             $table->time('hora_termino_evento')->nullable();
             $table->date('fecha_inicio_evento');
             $table->date('fecha_termino_evento')->nullable();
+            $table->string('latitud_evento', 25);
+            $table->string('longitud_evento', 25);
 
             $table->string('descripcion_evento', 1024);
             $table->timestamps();
