@@ -42,7 +42,7 @@ class VisitaController extends Controller
         $visita->mype_id=$request['mype_id'];
         $visita->save();
 
-        return response()->json(['success'=>'Data is successfully added']);
+        return dd(geoip()->getLocation('27.974.399.65'));
     }
 
     /**

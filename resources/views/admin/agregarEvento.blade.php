@@ -131,7 +131,7 @@
                     <div class="form-group">
                       <label class="bmd-label-floating"> Elija la ubicación del sitio en el mapa arrastrando el marcador</label>
                       <div id="map" style="width:100%; height:400px"></div>
-                      <input name="coordenadas" id="coordenadas" type="hidden" value=""/> 
+                      <input name="coordenadas" id="coordenadas" type="hidden" value="POINT (-68.925093 -22.458678)"/> 
                     </div>
                 </div>
               </div>
