@@ -86,15 +86,10 @@
                 <p class="card-category">Monitorea como va el tráfico en la plataforma</p>
             </div>
             <div class="justify-content-end col-md-4">
-              <form action="">
-                <select name="" id="">
-                  <option value="">1</option>
-                </select>
-              </form>
             </div>
             </div>
             <div class="card-body">
-
+                @if(!Auth::user()->mypes)
                 <div class="panel-body">
                     <div class="mb-7">
                     {!! $chart->html() !!}
@@ -113,9 +108,16 @@
                         </div>
                 </div>
 
+                
+                @else
+                <div class="text-center h3">
+                No tienes MyPES registradas
+              </div>
+                @endif
 
 
-              {!! Charts::scripts() !!}
+
+        {!! Charts::scripts() !!}
         {!! $pie->script() !!}
         {!! $chart->script() !!}
         {!! $Gedad->script() !!}
