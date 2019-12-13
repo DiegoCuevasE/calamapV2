@@ -151,7 +151,7 @@ Route::get('Turismo', 'MypeVisitasController@getIndexT')->name('turismo');
 Route::get('Comercio', 'MypeVisitasController@getIndexC')->name('comercio');
 
 Route::get('SitiosTuristicos', 'SitioturisticoController@MostrarSitios')->name('sitios');
-Route::get('sitio{id}', 'SitioTuristicoController@MostrarSitio')->name('sitio');
+Route::get('sitio{id}', 'SitioturisticoController@MostrarSitio')->name('sitio');
 
 Route::get('evento{id}', 'EventoController@MostrarEvento')->name('evento');
 
