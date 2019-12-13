@@ -369,7 +369,54 @@ class MypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //return $request;
+       
+        $validarDatos =[
+            'nombre_fantasia_mype' => 'required|max:100',
+            'direccion_mype' => 'required|max:100',
+            'descripcion_mype' => 'required|max:1000',
+            'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+
+        switch (request('rubro_mype')) {
+            case "Hotelería":
+            $validar =$validarDatos+['servicioH' => 'required',];
+                break;
+            case "Gastronomía":
+            $validar =$validarDatos+['servicioG' => 'required',];
+                break;
+            case "Turismo":
+            $validar =$validarDatos+['servicioT' => 'required',];
+                break;
+            case "Artesanía":
+            $validar =$validarDatos+['servicioA' => 'required',];
+                break;
+            case "Bazares":
+            $validar =$validarDatos+['servicioB' => 'required',];
+                break;
+        }
+
+        switch (request('idioma_mype')) {
+            case "0":
+            $validar =$validar+['idioma'=>'required',];
+                break;
+        }
+        
+
+        $mensaje=[
+            "nombre_fantasia_mype.required"=>'El nombre de la MyPE es obligatorio',
+            "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
+            "descripcion_mype.required"=>'La descripción de la MyPE es obligatoria',
+            "idioma.required" => 'Debe seleccionar un idioma al menos',
+            "servicioT.required" => 'Debes seleccionar al menos un servicio',
+            "servicioH.required" => 'Debes seleccionar al menos un servicio',
+            "servicioA.required" => 'Debes seleccionar al menos un servicio',
+            "servicioB.required" => 'Debes seleccionar al menos un servicio',
+            "servicioG.required" => 'Debes seleccionar al menos un servicio',
+        ];
+        $this->validate($request,$validarDatos,$mensaje);
+
+        //return $request;
 
         //$horario=request('d1').' a '.request('d2').' de '.request('h1').' hrs a '.request('h2').' hrs';
 

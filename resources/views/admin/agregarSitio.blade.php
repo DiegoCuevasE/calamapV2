@@ -20,15 +20,17 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Nombre del Sitio Turístico</label>
-                    <input name="nombre_turistico" id="nombre_turistico" type="text" class="form-control" >
+                  <div class="form-group {{$errors->has('nombre_turistico')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Nombre del Sitio Turístico&nbsp;<span class="text-danger">*</span></label>
+                    <input name="nombre_turistico" id="nombre_turistico" type="text" class="form-control" value="{{ old('nombre_turistico')}}">
+                    {!! $errors->first('nombre_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-6 mb-auto">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Dirección</label>
-                    <input name="direccion_turistico" id="direccion_turistico" type="text" class="form-control">
+                  <div class="form-group {{$errors->has('direccion_turistico')?'has-danger':''}}">
+                    <label class="bmd-label-floating">Dirección&nbsp;<span class="text-danger">*</span></label>
+                    <input name="direccion_turistico" id="direccion_turistico" type="text" class="form-control" value="{{ old('direccion_turistico')}}">
+                    {!! $errors->first('direccion_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -124,41 +126,41 @@
                   </div>
                   @endforeach
                 </div>
-              </div>
-                
+              </div>   
               <div class="row mt-3">
                 <div class="form-group form-file-upload form-file-multiple col-md-4">
                   <input type="file" multiple="" class="inputFileHidden" name="enlace_imagen_turistico">
                   <input type="hidden" name="tipo_imagen_turistico" id="tipo_imagen_turistico" value=''>
                     <div class="input-group">
-                      <input type="text" class="form-control inputFileVisible" placeholder="Foto de Portada">
+                      <input type="text" class="form-control inputFileVisible" placeholder="Foto de Portada *">
                       <span class="input-group-btn">
                       <button type="button" class="btn btn-fab btn-round btn-primary">
                       <i class="material-icons">attach_file</i>
                       </button>
                       </span>
                     </div>
+                    {!! $errors->first('enlace_imagen_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div>
-                  
-                  
                   <div class="form-group form-file-upload form-file-multiple col-md-8">
                     <input type="file" multiple="" class="inputFileHidden" name="image[]">
                     <div class="input-group">
-                      <input type="text" class="form-control inputFileVisible" placeholder="Galeria de Imágenes" multiple>
+                      <input type="text" class="form-control inputFileVisible" placeholder="Galeria de Imágenes *" multiple>
                       <span class="input-group-btn">
                       <button type="button" class="btn btn-fab btn-round btn-info">
                         <i class="material-icons">layers</i>
                       </button>
                       </span>
                     </div>
+                    {!! $errors->first('image','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                   </div> 
                   
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Descripción</label>
+                  <div class="form-group {{$errors->has('descripcion_sitio')?'has-danger':''}}">
+                    <label>Descripción&nbsp;<span class="text-danger">*</span></label>
                     <div class="form-group">
                       <label class="bmd-label-floating"> Agrege la información necesaria para que el publico conosca detalladamente el evento</label>
-                      <textarea name="descripcion_turistico" id="descripcion_turistico" class="form-control" rows="5"></textarea>
+                      <textarea name="descripcion_turistico" id="descripcion_turistico" class="form-control" rows="5" value="{{ old('descripcion_turistico')}}"></textarea>
+                      {!! $errors->first('descripcion_turistico','<div class="invalid-feedback" style="display:block">:message</div>') !!}
                     </div>
                   </div>
                 </div>

@@ -81,6 +81,28 @@ class SitioturisticoController extends Controller
      */
     public function store(Request $request)
     {   
+        $campos =[
+            'nombre_turistico' => 'required|max:100',
+            'direccion_turistico' => 'required|max:100',
+            'descripcion_turistico' => 'required|max:1000',
+            'enlace_imagen_turistico' => 'required',
+            'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ];
+        $mensaje=[
+            "nombre_turistico.required"=>'El nombre del sitio turístico es obligatorio',
+            "nombre_turistico.max"=>'El nombre del sitio turístico acepta hasta 100 caracteres',
+            "direccion_turistico.required"=>'La dirección del sitio turístico es obligatoria',
+            "direccion_turistico.max"=>'La dirección del sitio turístico acepta hasta 100 caracteres',
+            "descripcion_turistico.required"=>'La descripcion del sitio turñistico es obligatoria',
+            "descripcion_turistico.max"=>'La descripción del sitio turístico acepta hasta 100 caracteres',
+            "enlace_imagen_turistico.required" => 'Ingrese una imagen del sitio turístico',
+            "image.required" => 'Debe adjuntar minimo 1 imagen del sitio tyristico',
+        ];
+        
+        $this->validate($request,$campos,$mensaje);
+        
         //return response()->json($request);
         $datoSitioTuristico= new Sitioturistico();
 
@@ -264,6 +286,23 @@ class SitioturisticoController extends Controller
     public function update(Request $request, $id)
 
     {
+        $campos =[
+            'nombre_turistico' => 'required|max:100',
+            'direccion_turistico' => 'required|max:100',
+            'descripcion_turistico' => 'required|max:1000',
+            'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ];
+        $mensaje=[
+            "nombre_turistico.required"=>'El nombre del sitio turístico es obligatorio',
+            "nombre_turistico.max"=>'El nombre del sitio turístico acepta hasta 100 caracteres',
+            "direccion_turistico.required"=>'La dirección del sitio turístico es obligatoria',
+            "direccion_turistico.max"=>'La dirección del sitio turístico acepta hasta 100 caracteres',
+            "descripcion_turistico.required"=>'La descripcion del sitio turñistico es obligatoria',
+            "descripcion_turistico.max"=>'La descripción del sitio turístico acepta hasta 100 caracteres',
+        ];
+        
+        $this->validate($request,$campos,$mensaje);
         $nombre = $request['nombre_turistico'];
 
         //$idSitio2 = DB::table('sitio_turisticos')->where('nombre_turistico', $nombre)->value('id');
