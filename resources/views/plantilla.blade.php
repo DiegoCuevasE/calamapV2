@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('template2/owlcarousel/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('template2/owlcarousel/assets/owl.theme.default.min.css') }}">
 
-    <script src="{{ asset('template2/vendors/vendors/jquery.min.js') }}"></script>
+    <script src="{{ asset('template2/vendors/jquery.min.js') }}"></script>
     <script defer src="{{ asset('template2/owlcarousel/owl.carousel.js') }}"></script>
 
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
