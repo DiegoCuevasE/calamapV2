@@ -1277,7 +1277,9 @@ margin-top: 50px;
  }
  .card-footer {
   padding:0.75rem 1.25rem;
-  /*! background-color:rgba(0, 0, 0, 0.03); */border-top:1px solid rgba(0, 0, 0, 0.125);
+  /*! background-color:rgba(0, 0, 0, 0.03); */
+  border-top:1px solid rgba(0, 0, 0, 0.125);
+
  }
 
  .row-card{
@@ -1301,4 +1303,21 @@ margin-top: 50px;
 #mapid { 
   height: 180px; 
   width: 180px;
+}
+
+.modal-xl{
+  max-width: 1000px;
+}
+
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-image: url('../images/default.gif');
+  background-repeat: no-repeat; 
+  background-color: #FFF;
+  background-position: center;
 }

@@ -138,8 +138,9 @@
         <div class="test owl-carousel owl-theme">
           @if(!is_null($eventos))
           @foreach ($eventos as $evento)
-          <div class="item">
-            <div class="mb-lg-0 mb-4" >
+
+          <div class="item  m-2">
+            <div class="card mb-lg-0 mb-4" >
               <!--Featured image-->
               @foreach ($evento->imageneventos as $imagen)
               @if ($imagen->tipo_imagen_evento == 'portada')
@@ -164,6 +165,7 @@
               </div>
             </div>
           </div>
+
           @endforeach
           @endif
         </div>

@@ -47,7 +47,7 @@
               <div class="col-md-5 ">
                 <div class="tab-content" id="nav-tabContent">
 
-                  <div class="tab-pane fade show active " id="{{$evento->id}}" role="tabpanel" aria-labelledby="list-profile-home">
+                  <div class="tab-pane fade show active " id="{{$evento->id}}" >
                       <div class=" justify-content-center">
                           <div class="card-deck row ">
                             <div class="card">
@@ -127,7 +127,7 @@
                         </div>
                   </div>
 
-                  <div class="tab-pane fade" id="2" role="tabpanel" aria-labelledby="list-profile-list">
+                  <div class="tab-pane fade" id="2"  >
                       <div class=" justify-content-center">
                           <div class="card-deck row ">
                             <div class="card">

@@ -44,10 +44,10 @@
             </div>
             <!-- Card image -->
             <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
+            <div class="card-body card-body-cascade text-center h-50">
               <!-- Category & Title -->
-              <div class="mb-auto">
-              <h4 class="card-title my-4">
+              <div class="mb-auto ">
+              <h4 class="card-title my-2">
                 <strong>
                   <a href=""  class="text-warning visita-user" id="visita-user{{$mype->id}}" data-number="{{$mype->id}}" onclick="trackClick('{{$mype->id}}')" value="Ver más"  aria-expanded="false"  data-toggle="modal" data-target="#mype{{$mype->id}}">{{$mype->nombre_fantasia_mype}}</a>
                 </strong>
@@ -57,7 +57,10 @@
               </p>
               </div>
               <!-- Card footer -->
-              <div class="card-footer px-1 align-self-end">
+              
+            </div>
+            <div class="card-body">
+              <div class="card-footer mt-1 ">
                 <span class="float-right">
                   @if (!is_null($mype->instagram_mype))
                 <a href="{{$mype->instagram_mype}}" class="material-tooltip-main" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist">
@@ -83,93 +86,109 @@
         </div>
   
         <!-- Ventana Modal Vista Mype-->
-        <div id="mype{{$mype->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-                  <!--Indicadores-->
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-                    <li data-target="#carousel-example-1z" data-slide-to="3"></li>
-                  </ol>
-                  <!--Slides-->
-                  <div class="carousel-inner" role="listbox">
-                    @foreach ($mype->imagenmypes as $imagen)
-                    @if ($imagen->tipo_imagen_mype == 'logo')  
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="../{{$imagen->enlace_imagen_mype}}" alt="First slide">
-                    </div>
-                    @endif
-                    @if ($imagen->tipo_imagen_mype == 'galeria')  
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="../{{$imagen->enlace_imagen_mype}}" alt="Second slide">
-                    </div>
-                    @endif
-                    @endforeach
+      <div class="modal fade mt-5" id="mype{{$mype->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-12 my-2">
+                      <h2 class="h2-responsive product-name">
+                          <strong>{{$mype->nombre_fantasia_mype}}</strong>
+                      </h2>
                   </div>
-                  <!--Flechas-->
-                  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-                <div class="modal-header">
-                  <h5 class="modal-title font-weight-bold">{{$mype->nombre_fantasia_mype}}</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                  <div class="modal-body">
-                    <div class="row my-auto">
-                      @if (!is_null($mype->celular_mype))
-                        <div class="col-md-6 d-flex text-right">
-                          <i class="fas fa-mobile-alt fa-lg mr-2"></i>
-                          <p class="card-title">{{$mype->celular_mype}}</p>
+                  <div class="col-lg-6">
+                    <!--Carousel Wrapper-->
+                    <div id="carousel-thumb{{$mype->id}}" class="carousel slide carousel-fade carousel-thumbnails"
+                      data-ride="carousel">
+                      <!--Slides-->
+                      <div class="carousel-inner" role="listbox">
+                        @foreach ($mype->imagenmypes as $imagen)  
+                        @if ($imagen->tipo_imagen_mype == 'logo')  
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src="../{{$imagen->enlace_imagen_mype}}" alt="First slide">
                         </div>
-                      @endif
-                      @if (!is_null($mype->telefono_mype))
-                        <div class="col-md-6 d-flex text-right">
-                          <i class="fas fa-phone fa-lg mr-2"></i>
-                          <p class="card-title">{{$mype->telefono_mype}}</p>
+                        @elseif($imagen->tipo_imagen_mype == 'galeria') 
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="../{{$imagen->enlace_imagen_mype}}" alt="Second slide">
                         </div>
-                      @endif
-                      @if (!is_null($mype->correo_mype))
-                        <div class="col-md-6 d-flex text-right">
-                          <i class="fas fa-envelope fa-lg mr-2"></i>
-                          <p class="card-title">{{$mype->correo_mype}}</p>
-                        </div>
-                      @endif
-                      @if (!is_null($mype->direccion_mype))
-                        <div class="col-md-6 d-flex text-right">
-                          <i class="fas fa-map-marker-alt fa-lg mr-2"></i>
-                          <p class="card-title">{{$mype->direccion_mype}}</p>
-                        </div>
-                      @endif
+                        @endif
+                        @endforeach
+                      </div>
+                      <!--/.Slides-->
+                      <!--Controls-->
+                      <a class="carousel-control-prev" href="#carousel-thumb{{$mype->id}}" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                        <span class="sr-only white">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carousel-thumb{{$mype->id}}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon " aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                      <!--/.Controls-->
                     </div>
-                    <div class="card-text">
-                      <p>
-                          {{$mype->descripcion_mype}}
-                      </p>                                
-                    </div>
+                    <!--/.Carousel Wrapper-->
                   </div>
-  
+                  <div class="col-lg-6 secciones{{$mype->id}}">
+                    
+
+
+                    <div class="d-xl-inline-block">
+                      <ul class="tabs js-clone-nav ml-auto list-unstyled d-flex text-right mb-0 " data-class="social">
+                          <li><a href="#informacion{{$mype->id}}" class="pr-2 font-weight-bold"><u>Información</u> </a></li>
+                          <li><a href="#fotos{{$mype->id}}" class="pr-2 font-weight-bold"><u>Fotos y videos</u></a></li>
+                          <li><a href="#mapa{{$mype->id}}" class="pr-2 font-weight-bold"><u>ubicación</u> </a></li>
+                      </ul>
+                  </div>
+                  <article id="informacion{{$mype->id}}">
+                    <div class="card-text text-justify">
+                    {{$mype->descripcion_mype}}
+                      </div>
+                  </article >
+                  <article id="fotos{{$mype->id}}">
+                    {{$mype->id}}
+                  </article >
+                  <article id="mapa{{$mype->id}}">
+                  </article >
+
+
+                    <!-- Add to Cart -->
+                    
+                    <!-- /.Add to Cart -->
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-  
         @endforeach
       </div>
+
+
     </section>
   </div>
   
-  
-    
+  @foreach($mypes as $mype)
+  <script>
+    $(document).ready(function(){
+      
+      $('#visita-user{{$mype->id}}').click(function(){
+        $('.secciones{{$mype->id}} article').hide();
+        $('.secciones{{$mype->id}} article:first').show();
+      });
+
+      $('ul.tabs li a').click(function(){
+        $('this').addClass('active');
+        $('.secciones{{$mype->id}} article').hide();
+
+        var activeTab = $(this).attr('href');
+        $(activeTab).show();
+        return false;
+        }
+      );
+
+    });
+    </script>
+    @endforeach
     
     <script type="text/javascript">
     

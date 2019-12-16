@@ -59,7 +59,8 @@ class EventoController extends Controller
 
         $date = today()->format('Y-m-d');
 
-        $evento=Evento::orderBy('fecha_inicio_evento', 'ASC')->get()->where('fecha_inicio_evento', '>=', $date)->first();
+        $evento=Evento::orderBy('fecha_inicio_evento', 'ASC')->where('fecha_inicio_evento', '>=', $date)->get()->first();
+        
         //return $evento;
         return view('vistaEvento', ['eventos'=>$eventos,'evento'=>$evento]);
 
