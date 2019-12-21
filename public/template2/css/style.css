@@ -1321,3 +1321,9 @@ margin-top: 50px;
   background-color: #FFF;
   background-position: center;
 }
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+
+  font-size: 2.5rem;
+  
+  }

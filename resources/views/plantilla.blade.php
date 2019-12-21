@@ -196,6 +196,7 @@
     $(document).ready(function(){
       $('.test').owlCarousel({
         loop:true,
+        
         margin:10,  
         responsive:{
             0:{

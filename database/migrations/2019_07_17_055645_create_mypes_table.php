@@ -17,8 +17,7 @@ class CreateMypesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('nombre_fantasia_mype', 20)->nullable();;
-            $table->string('razon_social_mype', 100)->unique()->nullable();;
+            $table->string('nombre_fantasia_mype', 20)->unique();;
             $table->string('rubro_mype', 50)->nullable();;
             $table->string('direccion_mype', 50)->nullable();;
             $table->string('descripcion_mype', 1024)->nullable();;

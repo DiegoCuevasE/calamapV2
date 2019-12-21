@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Str;
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
+/*
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $database = substr($url["path"], 1);
+*/
 return [
 
     /*
@@ -21,9 +22,9 @@ return [
     */
 
     
-    'default' => env('DB_CONNECTION', 'your_heroku_mysql_connection'),
-    /* 'default' => env('DB_CONNECTION', 'mysql'), 
-*/
+    //'default' => env('DB_CONNECTION', 'your_heroku_mysql_connection'),
+     'default' => env('DB_CONNECTION', 'mysql'), 
+
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -70,7 +71,7 @@ return [
             ]) : [],
         ],
 
-        
+        /*
         'your_heroku_mysql_connection' => array(
             'driver' => 'mysql',
             'host' => $host,
@@ -80,7 +81,7 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
-        ),
+        ),*/
 
 
         'pgsql' => [

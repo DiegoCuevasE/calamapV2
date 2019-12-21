@@ -24,43 +24,80 @@
         </div>  
       </div>
 
-      <div class="" style="position: absolute;left: 0;right: 0;bottom: 0px;margin: 0 auto; z-index:1;">      
-        <div class="container-extend" >
-          <div class="d-flex" >
-            <div class="" >
-            <a href="{{route('vistaCascoHistorico')}}" class="unit-1 text-center">
-                <img src="{{ asset('template2/images/rutaHis.png') }}" alt="Image" class="img-fluid">
-                <div class="unit-1-text">
-                  <h3 class="unit-1-heading">Ruta Histórica</h3>
-                </div>
-              </a>
+      <div class="container mt-5" style="position: absolute;left: 0;right: 0;bottom: 0px;margin: 0 auto; z-index:1;">
+        <section>
+          <style>
+            .news-tile .card-title {
+              position: absolute;
+              bottom: 15px;
+              left: 40px;
+            }
+            .rgba-stylish-strong {
+              background-color: rgba(62, 69, 81, .5);
+            }
+            .max-height{
+              max-height: 200px;
+            }
+            
+          </style>
+          <div class="row">
+            <div class="col-4">
+              <div class="news-tile view zoom z-depth-1 rounded mb-4 max-height">
+                <a href="{{route('vistaCascoHistorico')}}" class="text-white">
+                  <img src="{{ asset('template2/images/rutaHis.png') }}"
+                    class="img-fluid rounded-bottom" alt="sample image">
+                  <div class="mask rgba-stylish-strong">
+                    <div class="text-white text-center py-lg-5 py-0 my-0">
+                      <div>
+                        <h5 class=" font-weight-bold pt-2">
+                          <strong>Ruta Casco Histórico</strong>
+                        </h5>
+                        <p class="mx-5 clearfix d-none d-md-block"></p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
-            <div class="">
-              <a href="{{route('vistaOasis')}}" class="unit-1 text-center">
-                <img src="{{ asset('template2/images/rutaGastro.png') }}" alt="Image" class="img-fluid">
-                <div class="unit-1-text">
-                  <h3 class="unit-1-heading">Ruta Gastronómica</h3>
-                </div>
-              </a>
+
+            <div class="col-4">
+              <div class="news-tile view zoom z-depth-1 rounded mb-4 max-height">
+                <a href="{{route('vistaAncestral')}}" class="text-white">
+                  <img src="{{ asset('template2/images/rutaAnc.png') }}"
+                    class="img-fluid rounded-bottom" alt="sample image">
+                  <div class="mask rgba-stylish-strong">
+                    <div class="text-white text-center py-lg-5 py-0 my-0">
+                      <div>
+                        <h4 class=" font-weight-bold pt-2">
+                          <strong>Ruta Ancestral</strong>
+                        </h4>
+                        <p class="mx-5 clearfix d-none d-md-block"></p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
-            <div class="">
-              <a href="{{route('vistaAncestral')}}" class="unit-1 text-center">
-                <img src="{{ asset('template2/images/rutaAnc.png') }}" alt="Image" class="img-fluid">
-                <div class="unit-1-text">
-                  <h3 class="unit-1-heading">Ruta Ancestral</h3>
-                </div>
-              </a>
-            </div>
-            <div class="">
-              <a href="{{route('vistaOasis')}}" class="unit-1 text-center">
-                <img src="{{ asset('template2/images/rutaOasis.png') }}" alt="Image" class="img-fluid">
-                <div class="unit-1-text">
-                  <h3 class="unit-1-heading">Ruta Oasis</h3>
-                </div>
-              </a>
+            <div class="col-4">
+              <div class="news-tile view zoom z-depth-1 rounded mb-4 max-height">
+                <a href="{{route('vistaOasis')}}" class="text-white">
+                  <img src="{{ asset('template2/images/rutaOasis.png') }}"
+                    class="img-fluid rounded-bottom" alt="sample image">
+                  <div class="mask rgba-stylish-strong">
+                    <div class="text-white text-center py-lg-5 py-0 my-0">
+                      <div>
+                        <h5 class=" font-weight-bold pt-2">
+                          <strong>Ruta Oasis</strong>
+                        </h5>
+                        <p class="mx-5 clearfix d-none d-md-block"></p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-        </div>  
+        </section>
       </div>
     </div>
 
@@ -75,7 +112,7 @@
         <div class="row align-items-stretch justify-content-center">
           <div class="col-md-4 col-lg-3 col-xl-2 mb-4 mb-lg-0 flex-column d-flex">
             <div class="unit-4 d-flex mb-auto">
-              <div class="unit-4-icon mr-4"><span class="orange-text flaticon-hotel"></span></div>
+              <div class="unit-4-icon mr-2"><span class="orange-text flaticon-hotel"></span></div>
               <div class="h-100">
                 <h3>Hoteles</h3>
                 <p>Porque necesitas descanzar, te recomendamos los mejores hoteles de la ciudad.</p>
@@ -85,7 +122,7 @@
           </div>
           <div class="col-md-4 col-lg-3 col-xl-2 mb-4 mb-lg-0 flex-column d-flex">
             <div class="unit-4 d-flex mb-auto">
-              <div class="unit-4-icon mr-4"><span class="orange-text flaticon-fork"></span></div>
+              <div class="unit-4-icon mr-2"><span class="orange-text flaticon-fork"></span></div>
               <div class="h-100">
                 <h3>Restaurantes</h3>
                 <p>Disfruta de una excelente comida de los platos típicos de la zona.</p>
@@ -95,7 +132,7 @@
           </div>
           <div class="col-md-4 col-lg-3 col-xl-2 mb-4 mb-lg-0 flex-column d-flex">
             <div class="unit-4 d-flex mb-auto">
-              <div class="unit-4-icon mr-4"><span class="orange-text flaticon-vase"></span></div>
+              <div class="unit-4-icon mr-2"><span class="h1 orange-text flaticon-vase"></span></div>
               <div class="h-100">
                 <h3>Artesanías</h3>
                 <p>Conoce todo tipo de artesanías elaboradas con materia prima de la zona.</p>
@@ -105,7 +142,7 @@
           </div>
           <div class="col-md-4 col-lg-3 col-xl-2 mb-4 mb-lg-0 flex-column d-flex">
             <div class="unit-4 d-flex mb-auto">
-              <div class="unit-4-icon mr-4"><span class="orange-text flaticon-bread"></span></div>
+              <div class="unit-4-icon mr-2"><span class="orange-text flaticon-turismo"></span></div>
               <div class="h-100">
                 <h3>Agencias de turismo</h3>
                 <p>Conoce la historia y cultura de la ciudad mediante las agencia de turismo.</p>
@@ -115,7 +152,7 @@
           </div>
           <div class="col-md-4 col-lg-3 col-xl-2 mb-4 mb-lg-0 flex-column d-flex">
             <div class="unit-4 d-flex mb-auto">
-              <div class="unit-4-icon mr-4"><span class="orange-text flaticon-fork"></span></div>
+              <div class="unit-4-icon mr-2"><span class="orange-text flaticon-tienda"></span></div>
               <div class="h-100">
                 <h3>Comercio</h3>
                 <p>Conoce los distintos locales de la ciudad que te ofrecen una varierdad de productos.</p>
@@ -234,7 +271,7 @@
             <div class="unit-4"> 
               <div class="d-flex align-items-center">
                   <div class="col-6 view">
-                      <img src="{{ asset('template2/images/turista.svg')}}" class="img-fluid" alt="smaple image">
+                      <img src="{{ asset('template2/images/turista1.svg')}}" class="img-fluid" alt="smaple image">
                   </div>
                   <div class="col-6 ">
                     <h3>Regístrate como turista</h3>
@@ -248,7 +285,7 @@
             <div class="unit-4 ">
               <div class="d-flex align-items-center">
                 <div class="col-6 view">
-                    <img src="{{ asset('template2/images/turista.svg')}}" class="img-fluid" alt="smaple image">
+                    <img src="{{ asset('template2/images/mypes.svg')}}" class="img-fluid" alt="smaple image">
                 </div>
                 <div class="col-6">
                   <h3>Regístrate como MyPE</h3>

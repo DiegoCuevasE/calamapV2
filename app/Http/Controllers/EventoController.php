@@ -86,20 +86,22 @@ class EventoController extends Controller
     public function store(Request $request)
     {
         $campos =[
-            'titulo_evento' => 'required|max:100',
+            'titulo_evento' => 'required|max:100|unique:eventos,titulo_evento',
             'direccion_evento' => 'required|max:100',
             'descripcion_evento' => 'required|max:1000',
             'fecha_inicio_evento' => 'required',
             'hora_inicio_evento' => 'required',
             'enlace_imagen_evento' => 'required',
             'enlace_imagen_evento.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            "image" => ["required","array","max:7"],
+
         ];
         
         $mensaje=[
             "titulo_evento.required"=> 'El título del evento es obligatorio',
             "titulo_evento.max"=> 'El titulo solo puede contener 100 caracteres',
+            "titulo_evento.unique"=>'El nombre ya existe',
             "direccion_evento.required"=> 'La dirección del evento es obligatoria',
             "direccion_evento.max"=> 'La direccion solo puede contener 100 caracteres',
             "descripcion_evento.required" => 'La desripción del evento es obligatoria',
@@ -108,6 +110,8 @@ class EventoController extends Controller
             "hora_inicio_evento.required" => 'La hora de inicio del evento es obligatoria',
             "enlace_imagen_evento.required" => 'Ingrese una imagen principal para el Evento',
             "image.required" => 'Debe adjuntar minimo 1 imagen del Evento',
+            "image.max" => 'Debe adjuntar maximo 7 imágenes del evento',
+
         ];
 
         $this->validate($request,$campos,$mensaje);

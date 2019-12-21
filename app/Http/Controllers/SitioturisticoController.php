@@ -296,19 +296,23 @@ class SitioturisticoController extends Controller
 
     {
         $campos =[
-            'nombre_turistico' => 'required|max:100',
+            'nombre_turistico' => 'required|max:100|unique:sitio_turisticos',
             'direccion_turistico' => 'required|max:100',
             'descripcion_turistico' => 'required|max:1000',
             'enlace_imagen_turistico.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            "image" => ["required","array","max:7"],
             ];
+
         $mensaje=[
             "nombre_turistico.required"=>'El nombre del sitio turístico es obligatorio',
+            "nombre_turistico.unique"=>'El nombre ya existe',
             "nombre_turistico.max"=>'El nombre del sitio turístico acepta hasta 100 caracteres',
             "direccion_turistico.required"=>'La dirección del sitio turístico es obligatoria',
             "direccion_turistico.max"=>'La dirección del sitio turístico acepta hasta 100 caracteres',
-            "descripcion_turistico.required"=>'La descripcion del sitio turñistico es obligatoria',
+            "descripcion_turistico.required"=>'La descripcion del sitio turistico es obligatoria',
             "descripcion_turistico.max"=>'La descripción del sitio turístico acepta hasta 100 caracteres',
+            "image.max" => 'Debe adjuntar maximo 7 imágenes del sitio',
         ];
         
         $this->validate($request,$campos,$mensaje);

@@ -90,12 +90,28 @@
           <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content rounded">
               <div class="modal-body">
-                <div class="row">
-                  <div class="col-lg-12 my-2">
+                <div class="row secciones{{$mype->id}}">
+                  <div class="col-lg-12 my-2 ">
                       <h2 class="h2-responsive product-name">
                           <strong>{{$mype->nombre_fantasia_mype}}</strong>
                       </h2>
+                      <div class="mt-2 col-12">
+                        
+                        <p class="card-text ">
+                        @foreach ($mype->servicios as $servicio)
+                        {{$servicio->nombre_servicio}}
+                        @endforeach
+                      </p>
+                      </div>
+                    <div class="d-xl-inline-block ">
+                      <ul class="tabs js-clone-nav ml-auto list-unstyled d-flex text-center " data-class="social">
+                          <li><a href="#descripcion{{$mype->id}}" class="pr-2 font-weight-bold"><u>Descripción</u> </a></li>
+                          <li><a href="#contacto{{$mype->id}}" class="pr-2 font-weight-bold"><u>Contacto</u></a></li>
+                          <li><a href="#mapa{{$mype->id}}" class="pr-2 font-weight-bold"><u>Horario</u> </a></li>
+                      </ul>
+                    </div>
                   </div>
+                  
                   <div class="col-lg-6">
                     <!--Carousel Wrapper-->
                     <div id="carousel-thumb{{$mype->id}}" class="carousel slide carousel-fade carousel-thumbnails"
@@ -128,26 +144,75 @@
                     </div>
                     <!--/.Carousel Wrapper-->
                   </div>
-                  <div class="col-lg-6 secciones{{$mype->id}}">
+                  <div class="col-lg-6 border-2">
                     
 
 
-                    <div class="d-xl-inline-block">
-                      <ul class="tabs js-clone-nav ml-auto list-unstyled d-flex text-right mb-0 " data-class="social">
-                          <li><a href="#informacion{{$mype->id}}" class="pr-2 font-weight-bold"><u>Información</u> </a></li>
-                          <li><a href="#fotos{{$mype->id}}" class="pr-2 font-weight-bold"><u>Fotos y videos</u></a></li>
-                          <li><a href="#mapa{{$mype->id}}" class="pr-2 font-weight-bold"><u>ubicación</u> </a></li>
-                      </ul>
-                  </div>
-                  <article id="informacion{{$mype->id}}">
+                    
+                  <article id="descripcion{{$mype->id}}">
                     <div class="card-text text-justify">
-                    {{$mype->descripcion_mype}}
-                      </div>
+                     {{$mype->descripcion_mype}}
+                    </div>
                   </article >
-                  <article id="fotos{{$mype->id}}">
-                    {{$mype->id}}
+                  <article id="contacto{{$mype->id}}">
+                    <div class="row my-auto">
+                      @if (!is_null($mype->celular_mype))
+                        <div class="col-md-6 d-flex text-right">
+                          <i class="fas fa-mobile-alt fa-lg mr-2"></i>
+                          <p class="card-title">{{$mype->celular_mype}}</p>
+                        </div>
+                      @endif
+                      @if (!is_null($mype->telefono_mype))
+                        <div class="col-md-6 d-flex text-right">
+                          <i class="fas fa-phone fa-lg mr-2"></i>
+                          <p class="card-title">{{$mype->telefono_mype}}</p>
+                        </div>
+                      @endif
+                      @if (!is_null($mype->correo_mype))
+                        <div class="col-md-6 d-flex text-right">
+                          <i class="fas fa-envelope fa-lg mr-2"></i>
+                          <p class="card-title">{{$mype->correo_mype}}</p>
+                        </div>
+                      @endif
+                      @if (!is_null($mype->direccion_mype))
+                        <div class="col-md-6 d-flex text-right">
+                          <i class="fas fa-map-marker-alt fa-lg mr-2"></i>
+                          <p class="card-title">{{$mype->direccion_mype}}</p>
+                        </div>
+                      @endif
+                    </div>
                   </article >
-                  <article id="mapa{{$mype->id}}">
+                  <article id="mapa{{$mype->id}}" class="text-left">
+                    <div class="mt-2 ">
+                      <p class="card-text"> 
+                      @if($mype->horario_mype=="Personalizado")
+
+                      <table style="width: 100%;">
+                        @foreach($mype->horarios as $horario)
+                        <tr>
+                          <td>{{$horario->dia}}</td>
+                          @if($horario->pivot->hora_inicio)
+                          <td>{{$horario->pivot->hora_inicio}}</td>
+                          <td>{{$horario->pivot->hora_termino}}</td>
+                          @if($horario->pivot->hora_inicio_dos)
+                          <td>--</td>
+                          <td>{{$horario->pivot->hora_inicio_dos}}</td>
+                          <td>{{$horario->pivot->hora_termino_dos}}</td>
+                          @endif
+                          @else
+                          <td>Cerrado</td>
+                          @endif
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        @endforeach
+                      </table>
+                      @else
+                        {{$mype->horario_mype}}
+                      @endif
+                      </p>
+                    </div>
                   </article >
 
 

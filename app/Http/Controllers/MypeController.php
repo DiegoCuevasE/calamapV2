@@ -107,9 +107,10 @@ class MypeController extends Controller
         
         
         $validarDatos =[
-            'nombre_fantasia_mype' => 'required|max:100',
+
+            'nombre_fantasia_mype' => 'required|max:100|unique:mypes,nombre_fantasia_mype',
             'direccion_mype' => 'required|max:100',
-            'descripcion_mype' => 'required|max:1000',
+            'descripcion_mype' => 'required|max:500',
             'enlace_imagen_mype' => 'required',
             'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
@@ -117,7 +118,7 @@ class MypeController extends Controller
         ];
 
         
-
+        
         switch (request('rubro_mype')) {
             case "Hotelería":
             $validar =$validarDatos+['servicioH' => 'required',];
@@ -141,12 +142,16 @@ class MypeController extends Controller
             $validar =$validar+['idioma'=>'required',];
                 break;
         }
+
         
 
         $mensaje=[
+            
             "nombre_fantasia_mype.required"=>'El nombre de la MyPE es obligatorio',
+            "nombre_fantasia_mype.unique"=>'El nombre ya existe',
             "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
-            "descripcion_mype.required"=>'La descripción de la MyPE es obligatoria',
+            "descripcion_mype.required"=>'La descripción no debe exceder de los 500 caracteres',
+            "descripcion_mype.max"=>'La descripción de la MyPE es obligatoria',
             "enlace_imagen_mype.required" => 'Si no posee un logo, ingrese una imagen de su MyPE',
             "image.required" => 'Debes adjuntar minimo 1 imagen de galeria',
             "image.max" => 'Debe adjuntar maximo 3 imagenes de su MyPE',
@@ -180,9 +185,9 @@ class MypeController extends Controller
         $datosmype->telefono_mype=request('telefono_mype');
         $datosmype->celular_mype=request('celular_mype');
         $datosmype->correo_mype=request('correo_mype');
-        $datosmype->pagina_mype=request('pagina_mype');
-        $datosmype->facebook_mype=request('facebook_mype');
-        $datosmype->instagram_mype=request('instagram_mype');
+        $datosmype->pagina_mype='https://'.request('pagina_mype');
+        $datosmype->facebook_mype='https://'.request('facebook_mype');
+        $datosmype->instagram_mype='https://'.request('instagram_mype');
         $datosmype->longitud_mype=$longitud;
         $datosmype->latitud_mype=$latitud;
         $datosmype->save();
