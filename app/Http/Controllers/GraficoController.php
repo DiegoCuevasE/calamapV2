@@ -158,10 +158,8 @@ class GraficoController extends Controller
 
         
         
-        $idMype = DB::select(DB::raw(" SELECT id FROM mypes where user_id =".$iduser.""));
-        $idMype = array();
-        $stringData = implode(', ', $idMype);
-       return dd($stringData);
+        $idMype = DB::table('mypes')->where('user_id', Auth::id())->value('id'); 
+       //return dd($idMype);
         $cantVisitas = DB::table('visitas')
         ->where('mype_id', $idMype)
         ->get();
@@ -170,14 +168,13 @@ class GraficoController extends Controller
 
 
         
-    $asd = DB::select('SELECT * FROM mypes where user_id = '.$iduser.'');
         $users2 = DB::table('mypes')
         ->leftJoin('visitas', 'mypes.id', '=', 'visitas.mype_id')
         ->where('visitas.mype_id', $idMype)
         ->get();
 
        
-        $chart = Charts::database($cantVisitas, 'area', 'highcharts')
+        $chart = Charts::database($users2, 'area', 'highcharts')
         ->title("<strong>Visitantes por mes</strong>")
         ->elementLabel("Total de visitas mensual")
         ->dimensions(500, 500)
@@ -292,12 +289,11 @@ class GraficoController extends Controller
     {
         
         $date = \Carbon\Carbon::today()->subDays(30);
-        $idMype = DB::table('mypes')->where('user_id', Auth::id())->value('id'); 
    
 
         $cantVisitas = DB::table('visitas')
-        ->count();
-
+        ->get();
+        //return dd($cantVisitas);
 
         $date1 = new DateTime('tomorrow -1 month');
 
@@ -307,7 +303,7 @@ class GraficoController extends Controller
         ->get();
 
         
-        $chart = Charts::database($users2, 'area', 'highcharts')
+        $chart = Charts::database($cantVisitas, 'area', 'highcharts')
         ->title("<strong>Visitantes por mes</strong>")
         ->elementLabel("Total de visitas mensual")
         ->dimensions(500, 500)

@@ -20,7 +20,7 @@ use App\SitioTuristico;
 
 Route::post('visita/post', 'VisitaController@store');
 
-Route::get('adminMype/historico', 'GraficoController@indexH')->name('historico');
+Route::get('adminMype/historico', 'GraficoController@indexI')->name('historico');
 //Route::get('adminMype/listaMypes', 'MypeController@index');
 //Route::get('adminMype/vistaMypes', 'MypeController@index');
 //Route::get('adminMype/registroMype', 'MypeController@llenarForm');
@@ -125,7 +125,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         //anual
         //mensual
-        Route::get('mype/home', 'GraficoController@indexH')->name('inicioMype');
+        Route::get('mype/home', 'GraficoController@indexI')->name('inicioMype');
 
         //MyPES!!
         Route::get('admin/gestionMype', 'MypeController@index')->name('gestionMype');

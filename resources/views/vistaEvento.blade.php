@@ -8,6 +8,9 @@
   <div class="row mb-5 mt-5 justify-content-between">
     <div class="col-md-8 ">
       <h2 class=" card-text">Eventos en Ckalama</h2>
+      <button onclick="getLocation()">Try It</button>
+<p id="demo"></p>
+
       <p class="color-black-opacity-5">Descubre todas las actividades culturales que se realizan dentro de la ciudad de Calama</p>
     </div>
     <div class="col-md-4 justify-content-end" >
@@ -215,22 +218,51 @@
 
         });
 
+        
     });
   </script>
-<script>
+
+  <script>
+    var x = document.getElementById("demo");
+    var uLa = "nada";
+    var uLo = "nada2";
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+
+      var uLa = position.coords.latitude;
+      var uLo = position.coords.longitude;
+
+    }
+
+  </script>
+
+  <script>
+    
+
+
     function addMarkersToMap(map) {
       var parisMarker = new H.map.Marker({lat:<?php echo $evento->latitud_evento; ?>, lng:<?php echo $evento->longitud_evento; ?>});
       map.addObject(parisMarker);
   
   }
-
+  
+  
   function calculateRouteFromAtoB (platform) {
+    
     var router = platform.getRoutingService(),
       routeRequestParams = {
         mode: 'shortest;pedestrian',
         representation: 'display',
         waypoint0: '<?php echo $evento->latitud_evento; ?>,<?php echo $evento->longitud_evento; ?>', 
-        waypoint1: '-22.458138,-68.922977',  // Tate Modern
+        waypoint1: uLa,uLo,  // Tate Modern
         routeattributes: 'waypoints,summary,shape,legs',
         maneuverattributes: 'direction,action'
       };
@@ -486,6 +518,7 @@
   window.onload = function () {
     addMarkersToMap(map);
   }
+    </script>
 
-</script>
+
 @endsection
