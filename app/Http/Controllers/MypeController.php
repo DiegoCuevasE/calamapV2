@@ -43,7 +43,7 @@ class MypeController extends Controller
 
         if (Auth::user()->tipo_usuario == "0"){
             
-            $mypes = Mype::all();
+            $mypes = Mype::paginate(6);
             return view('admin.gestionMype')->with('mypes',$mypes);
             
         }elseif(Auth::user()->tipo_usuario == "1"){
@@ -150,8 +150,8 @@ class MypeController extends Controller
             "nombre_fantasia_mype.required"=>'El nombre de la MyPE es obligatorio',
             "nombre_fantasia_mype.unique"=>'El nombre ya existe',
             "direccion_mype.required"=>'La dirección de la MyPE es obligatoria',
-            "descripcion_mype.required"=>'La descripción no debe exceder de los 500 caracteres',
-            "descripcion_mype.max"=>'La descripción de la MyPE es obligatoria',
+            "descripcion_mype.required"=>'La descripción es obligatoria',
+            "descripcion_mype.max"=>'La descripción no debe exceder de los 500 caracteres',
             "enlace_imagen_mype.required" => 'Si no posee un logo, ingrese una imagen de su MyPE',
             "image.required" => 'Debes adjuntar minimo 1 imagen de galeria',
             "image.max" => 'Debe adjuntar maximo 3 imagenes de su MyPE',
@@ -638,7 +638,7 @@ class MypeController extends Controller
     {
         //
         Mype::destroy($id);
-        return redirect('admin/home');
+        return redirect('admin/gestionMype');
     }
 
     public function getMype(){

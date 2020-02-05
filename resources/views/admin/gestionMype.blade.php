@@ -238,6 +238,7 @@
                   </tbody>
                 </table>
               </div>
+              <div class="row justify-content-center mt-3">{{$mypes->links()}}</div>
             </div>
           </div>
         </div>

@@ -22,7 +22,8 @@ class MypeVisitasController extends Controller
 
         $mypes = Mype::where('rubro_mype','gastronomia')
         ->where('estado_mype','1')
-        ->paginate(4);
+        ->inRandomOrder('1234')
+        ->paginate(3);
         $titulo="Visita los mejores lugares para comer";
         $subtitulo="Descubre los restaurantes disponibles en la ciudad.";
 
@@ -33,7 +34,8 @@ class MypeVisitasController extends Controller
 
         $mypes = Mype::where('rubro_mype','artesanias')
         ->where('estado_mype','1')
-        ->paginate(4);
+        ->inRandomOrder('1234')
+        ->paginate(3);
         $titulo="Visita a los artesanos de la zona";
         $subtitulo="Encuentra a los verdaderos artesanos de la ciudad.";
 
@@ -44,7 +46,8 @@ class MypeVisitasController extends Controller
 
         $mypes = Mype::where('rubro_mype','turismo')
         ->where('estado_mype','1')
-        ->paginate(4);
+        ->inRandomOrder('1234')
+        ->paginate(3);
         $titulo="Conoce la ciudad y sus alrededores con las mejores agencias de turismo";
         $subtitulo="Conoce la rica cultura que ofrece la ciudad de Calama";
 
@@ -55,7 +58,8 @@ class MypeVisitasController extends Controller
 
         $mypes = Mype::where('rubro_mype','comercio')
         ->where('estado_mype','1')
-        ->paginate(4);
+        ->inRandomOrder('1234')
+        ->paginate(3);
         $titulo="Descubre el comercio que ofrece la ciudad";
         $subtitulo="Encuentra desde frutas y verduras hasta ropa a la moda";
 

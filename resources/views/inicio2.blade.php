@@ -222,20 +222,33 @@
               <div class="col-lg-12">
                 <div id="mdb-lightbox-ui"></div>
                 <div class="d-grid mdb-lightbox">
-                  @if (!is_null($sitios))
-                  @foreach ($sitios as $sitio)
-                  @foreach ($sitio->imagenSitioTuristicos as $imagen)
-                  @if ($imagen->tipo_imagen_turistico == 'portada')        
-                  <figure class="item">
-                    <a href="{{ url('sitio'.$sitio->id) }}"
-                      class="z-depth-1 rounded" data-size="1600x1067">
-                      <img src="{{$imagen->enlace_imagen_turistico}}" />
-                    </a>
-                  </figure>
+                  <div class="sitio owl-carousel owl-theme">
+                      @if (!is_null($sitios))
+                      @foreach ($sitios as $sitio)
+                      @foreach ($sitio->imagenSitioTuristicos as $imagen)
+                      @if ($imagen->tipo_imagen_turistico == 'portada')     
+                    <div class="item">
+                      <div class="row">
+                        <div class="">
+                          <div class="view overlay rounded z-depth-1" style= "height:170px ">
+                            <img src="{{$imagen->enlace_imagen_turistico}}" class="img-fluid" >
+                            <a>
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+                          <a href="{{ url('sitio'.$sitio->id) }}"
+                            class="z-depth-1 rounded" data-size="1600x1067">
+                            <img src="{{$imagen->enlace_imagen_turistico}}" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  
                   @endif
                   @endforeach
                   @endforeach
                   @endif
+                </div>
                 </div>
               </div>
             </div>

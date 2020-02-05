@@ -7,7 +7,7 @@
 
 
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center site-section mt-5">
       <div class="col-md-8">
           <div class="card">
               <div class="card-header">{{ __('Registro de usuario') }}</div>

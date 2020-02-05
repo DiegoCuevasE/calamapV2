@@ -7,7 +7,7 @@
   <!-- Titulo -->
   <div class="row mt-5">
     <div class="col-md-8 ">
-      <h2 class=" card-text">Ruta Casco Historico</h2>
+      <h2 class=" card-text">Ruta Casco Histórico</h2>
       <p class="color-black-opacity-5">Conoce las edificaciones mas imporantes de la ciudad</p>
     </div>
   </div>

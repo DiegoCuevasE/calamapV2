@@ -210,6 +210,12 @@
             }
         }
       })
+      $('.sitio').owlCarousel({
+        loop:true,
+        
+        margin:10,  
+
+      })
     });
     </script>
 

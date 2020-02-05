@@ -25,31 +25,25 @@
     <div class="">
       <div class=" mb-4">
         <div class="card-body secciones mb-2">
-          <div class=" col-md-12 " >
-            <div class="row mb-5 mt-3 justify-content-center">
-              <button type="button" class="btn btn-amber btn-rounded col-md-2 col-sm-5">Primavera</button>
-              <button type="button" class="btn btn-amber btn-rounded col-md-2 col-sm-5">Otoño</button>
-              <button type="button" class="btn btn-amber btn-rounded col-md-2 col-sm-5">Invierno</button>
-              <button type="button" class="btn btn-amber btn-rounded col-md-2 col-sm-5">Verano</button>
-            </div>
-          </div>
+
           
           <div class="row justify-content-around">
               <div class="col-md-5 ">
                 <div class="list-group list-group-flush" id="list-tab" role="tablist">
                   @foreach($eventos as $tEvento)
-                  <a class="list-group-item list-group-item-action " id="{{$tEvento->id}}" data-toggle="list" href="#{{$tEvento->id}}" role="tab" aria-controls="home">
+                  <a class="list-group-item list-group-item-action " href="{{ url('evento'.$tEvento->id) }}" >
                     <div class="d-flex justify-content-between">
                       <p class="mb-2 font-weight-bold ">{{$tEvento->titulo_evento}}</p>
-                      <small>{{$tEvento->fecha_inicio_evento}}</small>
+                      <small>{{date('d/m/Y', strtotime($tEvento->fecha_inicio_evento))}}</small>
                     </div>
                   </a>
                   @endforeach
                 </div>
               </div>
+              
               <div class="col-md-5 ">
                 <div class="tab-content" id="nav-tabContent">
-
+                  @if($evento != null)
                   <div class="tab-pane fade show active " id="{{$evento->id}}" >
                       <div class=" justify-content-center">
                           <div class="card-deck row ">
@@ -129,70 +123,20 @@
                           </div>
                         </div>
                   </div>
+                  @else
+                  <div class="justify-content-center">
+                    <div class="card">
 
-                  <div class="tab-pane fade" id="2"  >
-                      <div class=" justify-content-center">
-                          <div class="card-deck row ">
-                            <div class="card">
-                                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-                                    <!--Indicadores-->
-                                    <ol class="carousel-indicators">
-                                      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                                      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                                      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-                                    </ol>
-                                    <!--Slides-->
-                                    <div class="carousel-inner" role="listbox">
-                                      <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(141).jpg" alt="First slide">
-                                      </div>
-                                      <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(136).jpg" alt="Second slide">
-                                      </div>
-                                      <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(137).jpg" alt="Third slide">
-                                      </div>
-                                    </div>
-                                    <!--Flechas-->
-                                    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                      <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                      <span class="sr-only">Next</span>
-                                    </a>
-                                  </div>
-                                
-                              <div class="card-body secciones">
-                                  <div class="">
-                                      <p class="card-title h5">Limpieza de canales</p>
-                                  </div>
-                                  <div class="row my-auto">
-                                    <div class="col-md-6 d-flex text-right">
-                                      <i class="far fa-calendar-alt fa-lg mr-2"></i>
-                                      <p class="card-title">15 de Febrero</p>
-                                    </div>
-                                    <div class="col-md-6 d-flex text-right">
-                                        <i class="fas fa-map-marker-alt fa-lg mr-2"></i>
-                                        <p class="card-title">Plaza Calama</p>
-                                      </div>
-                                  </div>
-                                  <div class="card-text">
-                                    <p>
-                                      Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad
-                                      laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim
-                                      incididunt laboris deserunt <br><br>
-                                      anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi
-                                      culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa
-                                      commodo veniam incididunt veniam. 
-                                     </p>                                
-                                  </div>
-                              </div>
-                            </div>
+                      <div class="card-body">
+                        <div class="row justify-content-center">
+                          <div class="col-8">
+                            <h5 class="text-center">Por el momento no hay eventos proximos :(</h5>
                           </div>
-                        </div>  
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  @endif
 
                 </div>
               </div>
@@ -204,6 +148,7 @@
 <script src="{{ asset('template2/js/jquery-3.3.1.min.js') }}"></script>
 
 <script>
+  
     $(document).ready(function(){
         $('.secciones article').hide();
         $('.secciones article:first').show();
@@ -430,6 +375,7 @@
    * Creates a series of H.map.Marker points from the route and adds them to the map.
    * @param {Object} route  A route as received from the H.service.RoutingService
    */
+   
   function addWaypointsToPanel(waypoints){
   
   

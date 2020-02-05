@@ -64,10 +64,10 @@
                         Celular personal
                       </th>
                       <th class="font-weight-bold">
-                        MyPES asociadas
+                        Teléfono personal
                       </th>
                       <th class="font-weight-bold">
-                        Acciones
+                        MyPES asociadas
                       </th>
                     </thead>
                     <tbody>
@@ -76,18 +76,8 @@
                         <td>{{$user->nombre.' '.$user->apellido_usuario}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->celular_usuario}}</td>
+                        <td>{{$user->telefono_usuario}}</td>
                         <td>{{$user->mypes->count()}}</td>
-                        <td class="text-primary">
-                            <button class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-                            <button class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="btn btn-rose btn-fab btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
                       </tr>
                       @endforeach
                     </tbody>

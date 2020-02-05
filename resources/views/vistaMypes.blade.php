@@ -227,6 +227,8 @@
         </div>
         @endforeach
       </div>
+      <div class="row justify-content-center mt-3">{{$mypes->links()}}</div>
+
 
 
     </section>
