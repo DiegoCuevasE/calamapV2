@@ -212,8 +212,8 @@
       })
       $('.sitio').owlCarousel({
         loop:true,
-        
-        margin:10,  
+        center:true,
+        items:1, 
 
       })
     });

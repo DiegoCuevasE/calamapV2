@@ -255,11 +255,11 @@ class MypeController extends Controller
     if ($request->hasFile('enlace_imagen_mype')) {
         $logos = $request->file('enlace_imagen_mype');
         $org_img = $thm_img = true;
-        if( ! File::exists('images/originals/')) {
-            $org_img = File::makeDirectory('images/originals/', 0777, true);
+        if( ! File::exists('images/mypes/'.$idSitio2.'/originals/')) {
+            $org_img = File::makeDirectory('images/mypes/'.$idSitio2.'/originals/', 0777, true);
         }
-        if ( ! File::exists('images/thumbnails/')) {
-            $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+        if ( ! File::exists('images/mypes/'.$idSitio2.'/thumbnails/')) {
+            $thm_img = File::makeDirectory('images/mypes/'.$idSitio2.'/thumbnails/', 0777, true);
         }
         // loop through each image to save and upload
             //create new instance of Photo class
@@ -267,10 +267,10 @@ class MypeController extends Controller
             //get file name of image  and concatenate with 4 random integer for unique
             $filename = rand(1111,9999).time().'.'.$logos->getClientOriginalExtension();
             //path of image for upload
-            $org_path = 'images/originals/' . $filename;
-            $thm_path = 'images/thumbnails/' . $filename;
-            $newPhoto->enlace_imagen_mype = 'images/originals/'.$filename;
-            $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+            $org_path = 'images/mypes/'.$idSitio2.'/originals/'. $filename;
+            $thm_path = 'images/mypes/'.$idSitio2.'/thumbnails/' . $filename;
+            $newPhoto->enlace_imagen_mype = 'images/mypes/'.$idSitio2.'/originals/'.$filename;
+            $newPhoto->thumbnail = 'images/mypes/'.$idSitio2.'/thumbnails/'.$filename;
             $newPhoto->tipo_imagen_mype = 'logo';
             $newPhoto->mype_id = $idSitio2;
             //don't upload file when unable to save name to database
@@ -299,11 +299,11 @@ class MypeController extends Controller
         $org_img = $thm_img = true;
 
         // create new directory for uploading image if doesn't exist
-        if( ! File::exists('images/originals/')) {
-            $org_img = File::makeDirectory('images/originals/', 0777, true);
+        if( ! File::exists('images/mypes/'.$idSitio2.'/originals/')) {
+            $org_img = File::makeDirectory('images/mypes/'.$idSitio2.'/originals/', 0777, true);
         }
-        if ( ! File::exists('images/thumbnails/')) {
-            $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+        if ( ! File::exists('images/mypes/'.$idSitio2.'/thumbnails/')) {
+            $thm_img = File::makeDirectory('images/mypes/'.$idSitio2.'/thumbnails/', 0777, true);
         }
 
         // loop through each image to save and upload
@@ -313,10 +313,10 @@ class MypeController extends Controller
             //get file name of image  and concatenate with 4 random integer for unique
             $filename = rand(1111,9999).time().'.'.$image->getClientOriginalExtension();
             //path of image for upload
-            $org_path = 'images/originals/' . $filename;
-            $thm_path = 'images/thumbnails/' . $filename;
-            $newPhoto->enlace_imagen_mype = 'images/originals/'.$filename;
-            $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+            $org_path = 'images/mypes/'.$idSitio2.'/originals/'. $filename;
+            $thm_path = 'images/mypes/'.$idSitio2.'/thumbnails/' . $filename;
+            $newPhoto->enlace_imagen_mype = 'images/mypes/'.$idSitio2.'/originals/'.$filename;
+            $newPhoto->thumbnail = 'images/mypes/'.$idSitio2.'/thumbnails/'.$filename;
             $newPhoto->tipo_imagen_mype = 'galeria';
             $newPhoto->mype_id = $idSitio2;
 
@@ -535,11 +535,11 @@ class MypeController extends Controller
 
         $logos = $request->file('enlace_imagen_mype');
         $org_img = $thm_img = true;
-        if( ! File::exists('images/originals/')) {
-            $org_img = File::makeDirectory('images/originals/', 0777, true);
+        if( ! File::exists('images/mypes/'.$idSitio2.'/originals/')) {
+            $org_img = File::makeDirectory('images/mypes/'.$idSitio2.'/originals/', 0777, true);
         }
-        if ( ! File::exists('images/thumbnails/')) {
-            $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+        if ( ! File::exists('images/mypes/'.$idSitio2.'/thumbnails/')) {
+            $thm_img = File::makeDirectory('images/mypes/'.$idSitio2.'/thumbnails', 0777, true);
         }
         // loop through each image to save and upload
             //create new instance of Photo class
@@ -547,10 +547,10 @@ class MypeController extends Controller
             //get file name of image  and concatenate with 4 random integer for unique
             $filename = rand(1111,9999).time().'.'.$logos->getClientOriginalExtension();
             //path of image for upload
-            $org_path = 'images/originals/' . $filename;
-            $thm_path = 'images/thumbnails/' . $filename;
-            $newPhoto->enlace_imagen_mype = 'images/originals/'.$filename;
-            $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+            $org_path = 'images/mypes/'.$idSitio2.'/originals/'. $filename;
+            $thm_path = 'images/mypes/'.$idSitio2.'/thumbnails/' . $filename;
+            $newPhoto->enlace_imagen_mype = 'images/mypes/'.$idSitio2.'/originals/'.$filename;
+            $newPhoto->thumbnail = 'images/mypes/'.$idSitio2.'/thumbnails/'.$filename;
             $newPhoto->tipo_imagen_mype = 'logo';
             $newPhoto->mype_id = $idSitio2;
             //don't upload file when unable to save name to database
@@ -585,11 +585,11 @@ class MypeController extends Controller
         $org_img = $thm_img = true;
 
         // create new directory for uploading image if doesn't exist
-        if( ! File::exists('images/originals/')) {
-            $org_img = File::makeDirectory('images/originals/', 0777, true);
+        if( ! File::exists('images/mypes/'.$idSitio2.'/originals/')) {
+            $org_img = File::makeDirectory('images/mypes/'.$idSitio2.'/originals/', 0777, true);
         }
-        if ( ! File::exists('images/thumbnails/')) {
-            $thm_img = File::makeDirectory('images/thumbnails', 0777, true);
+        if ( ! File::exists('images/mypes/'.$idSitio2.'/thumbnails/')) {
+            $thm_img = File::makeDirectory('images/mypes/'.$idSitio2.'/thumbnails', 0777, true);
         }
 
         // loop through each image to save and upload
@@ -599,10 +599,10 @@ class MypeController extends Controller
             //get file name of image  and concatenate with 4 random integer for unique
             $filename = rand(1111,9999).time().'.'.$image->getClientOriginalExtension();
             //path of image for upload
-            $org_path = 'images/originals/' . $filename;
-            $thm_path = 'images/thumbnails/' . $filename;
-            $newPhoto->enlace_imagen_mype = 'images/originals/'.$filename;
-            $newPhoto->thumbnail = 'images/thumbnails/'.$filename;
+            $org_path = 'images/mypes/'.$idSitio2.'/originals/'. $filename;
+            $thm_path = 'images/mypes/'.$idSitio2.'/thumbnails/' . $filename;
+            $newPhoto->enlace_imagen_mype = 'images/mypes/'.$idSitio2.'/originals/'.$filename;
+            $newPhoto->thumbnail = 'images/mypes/'.$idSitio2.'/thumbnails/'.$filename;
             $newPhoto->tipo_imagen_mype = 'galeria';
             $newPhoto->mype_id = $idSitio2;
 
