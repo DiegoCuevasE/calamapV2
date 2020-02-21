@@ -24,7 +24,7 @@
 
   @foreach ($sitios as $sitio)
    
-    <div class="card-deck col-lg-4">
+    <div class="card-deck col-sm-8 col-lg-4">
       <div class="card mb-4"> 
         @foreach ($sitio->imagenSitioTuristicos as $imagen)
         @if($imagen->tipo_imagen_turistico=='portada')

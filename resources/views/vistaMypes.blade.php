@@ -28,16 +28,20 @@
       <div class="row-card">
         @foreach ($mypes as $mype)
   
-        <div class="col-md-4 mb-2 mt-5 mt-md-0">
+        <div class="col-sm-8 col-lg-4 mb-2 mt-5 mt-md-0">
           <!-- Card -->
-          <div class="card card-cascade narrower card-ecommerce h-100">
+          <div class="card card-cascade narrower card-ecommerce h-100" style="min-height: 400px">
             <!-- Card image -->
             <div class="view view-cascade overlay">
+              @if($mype->imagenmypes->count() > 0)
               @foreach ($mype->imagenmypes as $imagen)
-              @if ($imagen->tipo_imagen_mype == 'logo') 
-              <img src="../{{$imagen->enlace_imagen_mype}}" class="card-img-top"alt="sample photo">
-              @endif
+                  @if ($imagen->tipo_imagen_mype == 'logo') 
+                  <img src="../{{$imagen->enlace_imagen_mype}}" class="card-img-top"alt="sample photo">
+                  @endif
               @endforeach
+              @else
+                <img src="{{ asset('template2/images/mypeGenerica.png') }}" class="card-img-top"alt="sample photo">
+              @endif
               <a>
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -118,7 +122,8 @@
                       data-ride="carousel">
                       <!--Slides-->
                       <div class="carousel-inner" role="listbox">
-                        @foreach ($mype->imagenmypes as $imagen)  
+                        @if($mype->imagenmypes->count() > 0)
+                        @foreach ($mype->imagenmypes as $imagen)
                         @if ($imagen->tipo_imagen_mype == 'logo')  
                         <div class="carousel-item active">
                           <img class="d-block w-100" src="../{{$imagen->enlace_imagen_mype}}" alt="First slide">
@@ -129,6 +134,11 @@
                         </div>
                         @endif
                         @endforeach
+                        @else
+                          <img src="{{ asset('template2/images/mypeGenerica.png') }}" class="card-img-top"alt="sample photo">
+                        @endif
+
+                        
                       </div>
                       <!--/.Slides-->
                       <!--Controls-->

@@ -56,7 +56,7 @@ class SitioturisticoController extends Controller
 
     public function MostrarSitios()
     {
-        $sitios= Sitioturistico::paginate(6);
+        $sitios= Sitioturistico::paginate(3);
 
         return view('sitios')->with('sitios',$sitios);
     }

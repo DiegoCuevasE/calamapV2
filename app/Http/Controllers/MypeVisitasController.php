@@ -11,7 +11,7 @@ class MypeVisitasController extends Controller
     public function getIndex(){
         $mypes = Mype::where('rubro_mype','hoteleria')
         ->where('estado_mype','1')
-        ->paginate(4);
+        ->paginate(3);
         $titulo="Busca el mejor lugar para descansar";
         $subtitulo="Descubre los hoteles y hospedajes disponibles en ciudad.";
         

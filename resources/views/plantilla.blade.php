@@ -196,7 +196,7 @@
     $(document).ready(function(){
       $('.test').owlCarousel({
         loop:true,
-        
+        center:true,
         margin:10,  
         responsive:{
             0:{
@@ -210,6 +210,7 @@
             }
         }
       })
+      
       $('.sitio').owlCarousel({
         loop:true,
         center:true,

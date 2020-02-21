@@ -111,10 +111,9 @@ class MypeController extends Controller
             'nombre_fantasia_mype' => 'required|max:100|unique:mypes,nombre_fantasia_mype',
             'direccion_mype' => 'required|max:100',
             'descripcion_mype' => 'required|max:500',
-            'enlace_imagen_mype' => 'required',
-            'enlace_imagen_mype.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            "image" => ["required","array","max:3"],
+            'enlace_imagen_mype' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,svg',
+            "image" => ["array","max:3"],
         ];
 
         

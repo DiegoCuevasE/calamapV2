@@ -166,22 +166,22 @@
 
     <div class="site-section block-13 fondo-evento">
       <div class="container ">
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center">
           <div class="col-md-7 text-center">
             <h2 class="font-weight-light text-black">Eventos en CALAMA</h2>
             <p class="color-black-opacity-5">Conoce los eventos culturales de la ciudad y sus alrededores</p>
           </div>
         </div>
-        <div class="test owl-carousel owl-theme">
+        <div class="card-body test owl-carousel owl-theme">
           @if(!is_null($eventos))
           @foreach ($eventos as $evento)
 
           <div class="item  m-2">
-            <div class="card mb-lg-0 mb-4" >
+            <div class="card mb-lg-0 mb-4" style="min-height:480px">
               <!--Featured image-->
               @foreach ($evento->imageneventos as $imagen)
               @if ($imagen->tipo_imagen_evento == 'portada')
-              <div class="view overlay rounded z-depth-1" style= "height:170px ">
+              <div class="view overlay rounded z-depth-1" style= "min-height:150px ">
                 <img src="{{$imagen->enlace_imagen_evento}}" class="img-fluid" alt="Sample project image ">
                 <a>
                   <div class="mask rgba-white-slight"></div>
@@ -213,17 +213,17 @@
     <div class="site-section">    
       <div class="container ">
           <!--Section: Content-->
-          <section class="dark-grey-text z-depth-1 p-5">
-            <div class=" align-items-center">
+          <section class="dark-grey-text ">
+            <div class="card-body align-items-center">
               <div class="col-12">
                 <h2 class="font-weight-normal mb-4 text-center">Sitios Turísticos</h2>
                 <p class="lead text-muted text-center">Conoce los distintos lugares turísticos que ofrece la ciudad para ti.</p>
               </div>
-              <div class="sitio owl-carousel owl-theme">
+              <div class="card sitio owl-carousel owl-theme">
                 @if(!is_null($sitios))
                 @foreach ($sitios as $sitio)
       
-                <div class="item  m-2">
+                <div class="card-body item  m-2">
                   <div class="row " >
                     <div class="col-md-6">
                       @foreach ($sitio->imagenSitioTuristicos as $imagen)
@@ -238,7 +238,7 @@
                       @endforeach
                     </div>
                     <div class="col-md-6">
-                    <h3>{{$sitio->nombre_turistico}}</h3>
+                    <h3 class="mt-4">{{$sitio->nombre_turistico}}</h3>
                     <p>{{$sitio->descripcion_turistico}}</p>
                     </div>
                   </div>

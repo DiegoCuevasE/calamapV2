@@ -2,33 +2,33 @@
 
 @section('contenido')
       
-<div class="container site-section mt-5">
+<div >
 
   <!-- Titulo -->
-  <div class="row mb-5 mt-5 justify-content-between">
-    <div class="col-md-8 ">
-      <h2 class=" card-text">Eventos en Ckalama</h2>
-      <button onclick="getLocation()">Try It</button>
-<p id="demo"></p>
-
-      <p class="color-black-opacity-5">Descubre todas las actividades culturales que se realizan dentro de la ciudad de Calama</p>
-    </div>
-    <div class="col-md-4 justify-content-end" >
-      <form class="form-inline md-form mr-auto mb-4">
-        <input class="form-control mr-sm-1 " type="text" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-elegant btn-rounded btn-sm my-0"  type="submit">Buscar</button>
-      </form>
+  <div class=" site-section mt-5">
+    <div class="container-extend justify-content-center">
+      <div class="row">
+        <div class="col-md-8 ">
+          <h2 class=" card-text">Eventos en Ckalama</h2>
+          <p class="color-black-opacity-5">Descubre todas las actividades culturales que se realizan dentro de la ciudad de Calama</p>
+        </div>
+        <div class="col-md-4" >
+          <form class="form-inline md-form mr-auto mb-4 text-right">
+            <input class="form-control mr-sm-1 " type="text" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-elegant btn-rounded btn-sm my-0"  type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-
   <!-- Listado Eventos -->
-    <div class="">
+    <div class="container">
       <div class=" mb-4">
         <div class="card-body secciones mb-2">
 
           
           <div class="row justify-content-around">
-              <div class="col-md-5 ">
+              <div class="col-lg-5 ">
                 <div class="list-group list-group-flush" id="list-tab" role="tablist">
                   @foreach($eventos as $tEvento)
                   <a class="list-group-item list-group-item-action " href="{{ url('evento'.$tEvento->id) }}" >
@@ -41,7 +41,7 @@
                 </div>
               </div>
               
-              <div class="col-md-5 ">
+              <div class="col-lg-5 ">
                 <div class="tab-content" id="nav-tabContent">
                   @if($evento != null)
                   <div class="tab-pane fade show active " id="{{$evento->id}}" >
@@ -105,6 +105,7 @@
                                   </div>
                                   <div class="card-text">
                                     <p>
+                                      
                                         {{$evento->descripcion_evento}}
                                      </p>                                
                                   </div>
